@@ -1,3 +1,4 @@
+import {t} from './i18n.js';
 // Data-source boundary: every adapter returns a validated Match v1.
 // Future approved sources belong behind a server endpoint; secrets never belong here.
 export const ROLES = ['Top', 'Jungle', 'Mid', 'ADC', 'Support'];
@@ -7,29 +8,34 @@ export const SAMPLES = {
   support: {champion:'Leona',role:'Support',result:'Victory',durationMinutes:30,kills:2,deaths:5,assists:21,cs:34,visionScore:65,teamKills:30,notes:'I tried to place vision with teammates before objectives.'}
 };
 export class InputError extends Error {
-  constructor(messages) { super(messages.join(' ')); this.name='InputError'; this.messages=messages; }
+  constructor(messages) {
+    const resolve=()=>messages.map(message=>typeof message==='function'?message():message);
+    super(resolve().join(' '));
+    this.name='InputError';
+    Object.defineProperty(this,'messages',{enumerable:true,get:resolve});
+  }
 }
 export function normalizeMatch(input, {allowShort = false} = {}) {
-  if (!input || typeof input !== 'object' || Array.isArray(input)) throw new InputError(['Paste one match as a JSON object. Use the example to see the format.']);
+  if (!input || typeof input !== 'object' || Array.isArray(input)) throw new InputError([()=>t("Dán một trận dưới dạng đối tượng JSON. Xem mẫu để biết định dạng.")]);
   const out = {schemaVersion:1}; const errors=[];
   out.champion = typeof input.champion === 'string' ? input.champion.trim() : '';
-  if (!out.champion || out.champion.length>40) errors.push('Champion must contain 1–40 characters.');
+  if (!out.champion || out.champion.length>40) errors.push(()=>t("Tên tướng cần từ 1–40 ký tự."));
   out.role=ROLES.find(x=>x.toLowerCase()===String(input.role).toLowerCase());
-  if(!out.role) errors.push('Role must be Top, Jungle, Mid, ADC, or Support.');
+  if(!out.role) errors.push(()=>t("Vị trí phải là Top, Jungle, Mid, ADC hoặc Support."));
   out.result=['Victory','Defeat'].find(x=>x.toLowerCase()===String(input.result).toLowerCase());
-  if(!out.result) errors.push('Result must be Victory or Defeat.');
-  const fields=[['durationMinutes','Duration',allowShort ? 0.1 : 5,90,false,false],['kills','Kills',0,100,true,false],['deaths','Deaths',0,100,true,false],['assists','Assists',0,100,true,false],['cs','CS',0,2000,true,true],['visionScore','Vision score',0,500,true,true],['teamKills','Team kills',0,200,true,true]];
+  if(!out.result) errors.push(()=>t("Kết quả phải là Victory hoặc Defeat."));
+  const fields=[['durationMinutes',"Thời lượng",allowShort ? 0.1 : 5,90,false,false],['kills',"Hạ gục",0,100,true,false],['deaths',"Chết",0,100,true,false],['assists',"Hỗ trợ",0,100,true,false],['cs','CS',0,2000,true,true],['visionScore',"Điểm tầm nhìn",0,500,true,true],['teamKills',"Hạ gục của đội",0,200,true,true]];
   for(const [key,label,min,max,integer,optional] of fields) {
     const v=input[key];
-    if(v===undefined || v===null || (typeof v==='string' && v.trim()==='')) { if(optional) out[key]=null; else errors.push(`${label} is required.`); continue; }
+    if(v===undefined || v===null || (typeof v==='string' && v.trim()==='')) { if(optional) out[key]=null; else errors.push(()=>t("{label} là bắt buộc.", {label:t(label)})); continue; }
     const n=typeof v==='number'||typeof v==='string'?Number(v):NaN;
-    if(!Number.isFinite(n)||n<min||n>max||(integer&&!Number.isInteger(n))) errors.push(`${label} must be ${integer?'a whole number':'a number'} from ${min} to ${max}.`);
+    if(!Number.isFinite(n)||n<min||n>max||(integer&&!Number.isInteger(n))) errors.push(()=>t("{label} cần là {type} từ {min} đến {max}.", {label:t(label), type:integer?t('số nguyên'):t('số'), min:min, max:max}));
     else out[key]=n;
   }
-  if(out.teamKills!==null && Number.isFinite(out.teamKills) && Number.isFinite(out.kills) && Number.isFinite(out.assists) && out.kills+out.assists>out.teamKills) errors.push('Team kills must be at least kills + assists. Leave it blank if unknown.');
-  if(input.notes!==undefined && input.notes!==null && typeof input.notes!=='string') errors.push('Reflection must be text.');
+  if(out.teamKills!==null && Number.isFinite(out.teamKills) && Number.isFinite(out.kills) && Number.isFinite(out.assists) && out.kills+out.assists>out.teamKills) errors.push(()=>t("Tổng hạ gục của đội phải ít nhất bằng hạ gục + hỗ trợ. Để trống nếu chưa biết."));
+  if(input.notes!==undefined && input.notes!==null && typeof input.notes!=='string') errors.push(()=>t("Ghi chú phải là văn bản."));
   out.notes=typeof input.notes==='string'?input.notes.trim():'';
-  if(out.notes.length>2000) errors.push('Reflection must be 2,000 characters or fewer.');
+  if(out.notes.length>2000) errors.push(()=>t("Ghi chú không được quá 2.000 ký tự."));
   if(errors.length) throw new InputError(errors);
   return out;
 }
@@ -40,8 +46,8 @@ export const manualDataSource = {
 export const jsonDataSource = {
   id:'json', label:'Pasted JSON',
   async load(payload) {
-    if(typeof payload!=='string'||payload.length>20000) throw new InputError(['Paste a JSON object under 20,000 characters.']);
-    let obj; try {obj=JSON.parse(payload);} catch {throw new InputError(['That JSON could not be read. Check double quotes, commas, and brackets, or load the example.']);}
+    if(typeof payload!=='string'||payload.length>20000) throw new InputError([()=>t("Dán đối tượng JSON dưới 20.000 ký tự.")]);
+    let obj; try {obj=JSON.parse(payload);} catch {throw new InputError([()=>t("Không đọc được JSON. Kiểm tra dấu nháy kép, dấu phẩy, dấu ngoặc hoặc tải mẫu.")]);}
     return normalizeMatch(obj);
   }
 };

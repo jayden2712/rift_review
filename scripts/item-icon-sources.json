@@ -1,0 +1,2219 @@
+{
+  "metadataVersion": "16.18.1",
+  "page": "https://wiki.leagueoflegends.com/en-us/Item",
+  "retrievedAt": "2026-09-23T16:04:44.783268+00:00",
+  "items": {
+    "1001": {
+      "english": "Boots",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Boots_item.png?1e048",
+      "provider": "League of Legends Wiki",
+      "sha256": "d87ae55c4b3fcf98bfccf7c8f414f25842538f3ea10bc54461655f1cfe443765",
+      "wikiName": "Boots"
+    },
+    "1004": {
+      "english": "Faerie Charm",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Faerie_Charm_item.png?ac401",
+      "provider": "League of Legends Wiki",
+      "sha256": "f65e2637f54c1b2b08b01025b7d643212e43e4f529c7911c2eda63c6a51c3116",
+      "wikiName": "Faerie Charm"
+    },
+    "1006": {
+      "english": "Rejuvenation Bead",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rejuvenation_Bead_item.png?8103b",
+      "provider": "League of Legends Wiki",
+      "sha256": "15f8c1541a9cf2d58abe26d1635bbbe7744a55ac74ad959c0bea3d3b1645b497",
+      "wikiName": "Rejuvenation Bead"
+    },
+    "1011": {
+      "english": "Giant's Belt",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Giant%27s_Belt_item.png?f8588",
+      "provider": "League of Legends Wiki",
+      "sha256": "236cfbc8e080699c00077d868c81087091241873aa005546b78011d9a78eabae",
+      "wikiName": "Giant's Belt"
+    },
+    "1018": {
+      "english": "Cloak of Agility",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cloak_of_Agility_item.png?05126",
+      "provider": "League of Legends Wiki",
+      "sha256": "6b2b1570ba2165de86d981340edc676b97cce52238ac91664722202575887a3b",
+      "wikiName": "Cloak of Agility"
+    },
+    "1026": {
+      "english": "Blasting Wand",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Blasting_Wand_item.png?7ef49",
+      "provider": "League of Legends Wiki",
+      "sha256": "c9b98b1bc12cfa5f3e8128a9c5ba8b1144f1e7a21ed5e4a6cfd1d779263cd29a",
+      "wikiName": "Blasting Wand"
+    },
+    "1027": {
+      "english": "Sapphire Crystal",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sapphire_Crystal_item.png?afdb1",
+      "provider": "League of Legends Wiki",
+      "sha256": "3b7fe56a9aec58f403ab53a58039e15ad2f22c7b399da33697a5e48b23b63092",
+      "wikiName": "Sapphire Crystal"
+    },
+    "1028": {
+      "english": "Ruby Crystal",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ruby_Crystal_item.png?bf858",
+      "provider": "League of Legends Wiki",
+      "sha256": "90f05f646a8b604d6cd5e586ba885050b9f9178e147e4cfafbcb4632d5a2f915",
+      "wikiName": "Ruby Crystal"
+    },
+    "1029": {
+      "english": "Cloth Armor",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cloth_Armor_item.png?dcaab",
+      "provider": "League of Legends Wiki",
+      "sha256": "b64db0440490182b03cf3301b04de71dff823c9bd5780ed56cc09d3ce17ed4f5",
+      "wikiName": "Cloth Armor"
+    },
+    "1031": {
+      "english": "Chain Vest",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Chain_Vest_item.png?d4a35",
+      "provider": "League of Legends Wiki",
+      "sha256": "67fd69435ea0329d88d170b45703a154ce873c608d562584916d160d651d9007",
+      "wikiName": "Chain Vest"
+    },
+    "1033": {
+      "english": "Null-Magic Mantle",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Null-Magic_Mantle_item.png?883ac",
+      "provider": "League of Legends Wiki",
+      "sha256": "1a95a81ebbc6914bbc5a61cb41548195fdfadd3814b278bc00f6e9f9faf96b63",
+      "wikiName": "Null-Magic Mantle"
+    },
+    "1036": {
+      "english": "Long Sword",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Long_Sword_item.png?8bb79",
+      "provider": "League of Legends Wiki",
+      "sha256": "20d38acce2aa3fa67c496a62e36edc3e7afc7c3b7064e0df007c4a8c6f98bc32",
+      "wikiName": "Long Sword"
+    },
+    "1037": {
+      "english": "Pickaxe",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Pickaxe_item.png?1d921",
+      "provider": "League of Legends Wiki",
+      "sha256": "b844c7de59ca58f7e1303ce227ba20ce130913386ce7b394fb229595b93e485a",
+      "wikiName": "Pickaxe"
+    },
+    "1038": {
+      "english": "B. F. Sword",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/B._F._Sword_item.png?d3411",
+      "provider": "League of Legends Wiki",
+      "sha256": "4bc069943090ead9e1755d7829162216ac94fd96b8c9d2c33c83d0e2baabaae6",
+      "wikiName": "B. F. Sword"
+    },
+    "1042": {
+      "english": "Dagger",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dagger_item.png?660f1",
+      "provider": "League of Legends Wiki",
+      "sha256": "cc88205feefb864920406bea3e076b527449b0d0a88232fdd68ca96757579660",
+      "wikiName": "Dagger"
+    },
+    "1043": {
+      "english": "Recurve Bow",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Recurve_Bow_item.png?904d7",
+      "provider": "League of Legends Wiki",
+      "sha256": "cc11fd3ee69ba03d1f925afefb782957f1435778e24e2e1f2efa2f4170b9a725",
+      "wikiName": "Recurve Bow"
+    },
+    "1052": {
+      "english": "Amplifying Tome",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Amplifying_Tome_item.png?8541d",
+      "provider": "League of Legends Wiki",
+      "sha256": "d8d16842239d2d63d0f0cfcacee3633b62b374f1be0b19b999f2972bf923bddc",
+      "wikiName": "Amplifying Tome"
+    },
+    "1053": {
+      "english": "Vampiric Scepter",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Vampiric_Scepter_item.png?4231c",
+      "provider": "League of Legends Wiki",
+      "sha256": "21c2f8069d6cdc4aed218ae6f99018f32e73ae31e3b4253a145fb55e03a6e93d",
+      "wikiName": "Vampiric Scepter"
+    },
+    "1054": {
+      "english": "Doran's Shield",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Doran%27s_Shield_item.png?dc6b2",
+      "provider": "League of Legends Wiki",
+      "sha256": "b85ff0dadc325b4f8c1ab7c9ad293278c1d390bcc5cc24447023fd149aa8f0a7",
+      "wikiName": "Doran's Shield"
+    },
+    "1055": {
+      "english": "Doran's Blade",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Doran%27s_Blade_item.png?a63de",
+      "provider": "League of Legends Wiki",
+      "sha256": "a161d9f866d388ffda3daa098ba7b22af5d890beea165e7dc33bc89a9da7a0ed",
+      "wikiName": "Doran's Blade"
+    },
+    "1056": {
+      "english": "Doran's Ring",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Doran%27s_Ring_item.png?1ce48",
+      "provider": "League of Legends Wiki",
+      "sha256": "c40db97f9ba970c76d32f49669eb59afe53bc21c4f29dae7a1e93dfe143eebe0",
+      "wikiName": "Doran's Ring"
+    },
+    "1057": {
+      "english": "Negatron Cloak",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Negatron_Cloak_item.png?7fb53",
+      "provider": "League of Legends Wiki",
+      "sha256": "2aceb82355ea579a7638770d7a42cf74d649321f6226983c4498c0a56fcbbe1a",
+      "wikiName": "Negatron Cloak"
+    },
+    "1058": {
+      "english": "Needlessly Large Rod",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Needlessly_Large_Rod_item.png?19346",
+      "provider": "League of Legends Wiki",
+      "sha256": "4dcaa502997feddbcf7acf884e903b44ca411a914f96dcf09f4dfc3b8535afda",
+      "wikiName": "Needlessly Large Rod"
+    },
+    "1082": {
+      "english": "Dark Seal",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dark_Seal_item.png?eb21b",
+      "provider": "League of Legends Wiki",
+      "sha256": "fb2ab8d857cf1eb608eb131c4d7d84a7a01b85478911d256f6af20f26c494880",
+      "wikiName": "Dark Seal"
+    },
+    "1083": {
+      "english": "Cull",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cull_item.png?4d4e9",
+      "provider": "League of Legends Wiki",
+      "sha256": "2f18b7a7370942fb232b8c9763a36036b7198d2c6b2a5ed236c770439e393140",
+      "wikiName": "Cull"
+    },
+    "1086": {
+      "english": "Doran's Bow",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Doran%27s_Bow_item.png?52c83",
+      "provider": "League of Legends Wiki",
+      "sha256": "3b97e603497bdb7ade868727b85cd0a50dd209ed2b32f982ca7c1d72360dd2b0",
+      "wikiName": "Doran's Bow"
+    },
+    "1101": {
+      "english": "Scorchclaw Pup",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Scorchclaw_Pup_item.png?2aeb6",
+      "provider": "League of Legends Wiki",
+      "sha256": "ecd2a770858740d1d10fa2c0a5058b277a7e8f1c288c2fb203c34919da83442a",
+      "wikiName": "Scorchclaw Pup"
+    },
+    "1102": {
+      "english": "Gustwalker Hatchling",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gustwalker_Hatchling_item.png?40d8f",
+      "provider": "League of Legends Wiki",
+      "sha256": "4e28bc7d08822b3b128dba113a61a3055d53066f639ad734cf2b71d3c98634be",
+      "wikiName": "Gustwalker Hatchling"
+    },
+    "1103": {
+      "english": "Mosstomper Seedling",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mosstomper_Seedling_item.png?9f790",
+      "provider": "League of Legends Wiki",
+      "sha256": "5d51ace7b2c154a43ff3a31bb8e2108837afb49d6ec31e635bc88cc210d2f58a",
+      "wikiName": "Mosstomper Seedling"
+    },
+    "1105": {
+      "english": "Mosstomper Seedling",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mosstomper_Seedling_item.png?9f790",
+      "provider": "League of Legends Wiki",
+      "sha256": "5d51ace7b2c154a43ff3a31bb8e2108837afb49d6ec31e635bc88cc210d2f58a",
+      "wikiName": "Mosstomper Seedling"
+    },
+    "1106": {
+      "english": "Gustwalker Hatchling",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gustwalker_Hatchling_item.png?40d8f",
+      "provider": "League of Legends Wiki",
+      "sha256": "4e28bc7d08822b3b128dba113a61a3055d53066f639ad734cf2b71d3c98634be",
+      "wikiName": "Gustwalker Hatchling"
+    },
+    "1107": {
+      "english": "Scorchclaw Pup",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Scorchclaw_Pup_item.png?2aeb6",
+      "provider": "League of Legends Wiki",
+      "sha256": "ecd2a770858740d1d10fa2c0a5058b277a7e8f1c288c2fb203c34919da83442a",
+      "wikiName": "Scorchclaw Pup"
+    },
+    "1120": {
+      "english": "Doran's Helm",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Doran%27s_Helm_item.png?f4e0a",
+      "provider": "League of Legends Wiki",
+      "sha256": "cd23a98f2ed44b1423c6eaf11feeaeeeb03de1fd7d18875da431d6d16cc4cae3",
+      "wikiName": "Doran's Helm"
+    },
+    "1501": {
+      "english": "Fortification",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fortification.png?e4550",
+      "provider": "League of Legends Wiki",
+      "sha256": "a8000daff0c43d35e150ceae47e26faaa1ac62b3d542c0dfb2372f2a181d0372",
+      "wikiName": "Fortification"
+    },
+    "1502": {
+      "english": "Reinforced Armor",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1502.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "d04f3e65074dde028cbb77c21460226fb34bd77f3cf6ce896fdaaf03e704a97e",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "1503": {
+      "english": "Warden's Eye",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Warden%27s_Eye_item.png?68c99",
+      "provider": "League of Legends Wiki",
+      "sha256": "f324a3eb54597ce5fbee594066d5d4dfcb3515bd53e9fc90d4c882d806ff7760",
+      "wikiName": "Warden's Eye"
+    },
+    "1505": {
+      "english": "Reinforced Armor",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1505.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "d04f3e65074dde028cbb77c21460226fb34bd77f3cf6ce896fdaaf03e704a97e",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "1506": {
+      "english": "Reinforced Armor",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1506.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "d04f3e65074dde028cbb77c21460226fb34bd77f3cf6ce896fdaaf03e704a97e",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "1507": {
+      "english": "Overcharged",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Overcharged_item.png?3599b",
+      "provider": "League of Legends Wiki",
+      "sha256": "20e9bcb8c62fcb9570ccab17b4e8a36028e72d53f12798c7d7259de70b3c1077",
+      "wikiName": "Overcharged"
+    },
+    "1508": {
+      "english": "Anti-tower Socks",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Anti-tower_Socks_item.png?b1710",
+      "provider": "League of Legends Wiki",
+      "sha256": "d0b0576d4862ac923131a05492e410552e3fb43bd4c7ff60e1cada093455c776",
+      "wikiName": "Anti-Tower Socks"
+    },
+    "1509": {
+      "english": "Gusto",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gusto_item.png?f0496",
+      "provider": "League of Legends Wiki",
+      "sha256": "f170a6791548dd87c02f21f90f503a6e8700371061215375d296d06e166ab99a",
+      "wikiName": "Gusto"
+    },
+    "1510": {
+      "english": "Phreakish Gusto",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Phreakish_Gusto_item.png?a1e7a",
+      "provider": "League of Legends Wiki",
+      "sha256": "6a4e3c9312b33fc28b9ca60ba553a153c1b878c96a57bb8bd7cc671c34c383d0",
+      "wikiName": "Phreakish Gusto"
+    },
+    "1511": {
+      "english": "Super Mech Armor",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Super_Mech_Armor_item.png?dc4d9",
+      "provider": "League of Legends Wiki",
+      "sha256": "bb016a0e48f244642820ff397b8337128fccab6083f4933e1399ec430547fb26",
+      "wikiName": "Super Mech Armor"
+    },
+    "1512": {
+      "english": "Super Mech Power Field",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Super_Mech_Power_Field_item.png?ceab9",
+      "provider": "League of Legends Wiki",
+      "sha256": "8e46bfa0e48a1eaa75ab9e380797c719a0081d3e9a165f8aee02ea68fe100253",
+      "wikiName": "Super Mech Power Field"
+    },
+    "1515": {
+      "english": "Turret Plating",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Turret_Plating.png?20261",
+      "provider": "League of Legends Wiki",
+      "sha256": "43291407d0b238f32de504a1d44fe1c51eb833ea8caf9fb73d1e03051b789057",
+      "wikiName": "Turret Plating"
+    },
+    "1516": {
+      "english": "Structure Bounty",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1516.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "e1ed59f4b24ec2e3265885cbc4131e4f8914b1bb05c8477cd607a26b3c55f66a",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "1517": {
+      "english": "Structure Bounty",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1517.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "e1ed59f4b24ec2e3265885cbc4131e4f8914b1bb05c8477cd607a26b3c55f66a",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "1518": {
+      "english": "Structure Bounty",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1518.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "e1ed59f4b24ec2e3265885cbc4131e4f8914b1bb05c8477cd607a26b3c55f66a",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "1519": {
+      "english": "Structure Bounty",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1519.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "e1ed59f4b24ec2e3265885cbc4131e4f8914b1bb05c8477cd607a26b3c55f66a",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "1520": {
+      "english": "OvererchargedHA",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1520.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "f478d8d5a7ec7a02e38b1572d8dac95db38ccf47e67e71af97b3e9372c9c5a7e",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "1521": {
+      "english": "Fortification",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fortification.png?e4550",
+      "provider": "League of Legends Wiki",
+      "sha256": "a8000daff0c43d35e150ceae47e26faaa1ac62b3d542c0dfb2372f2a181d0372",
+      "wikiName": "Fortification"
+    },
+    "1522": {
+      "english": "Tower Power-Up",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Vanguard_item.png?3f596",
+      "provider": "League of Legends Wiki",
+      "sha256": "df624a160e30cb94faf9139fb719db8120604a1ceaa95962fb9f8f11df84c967",
+      "wikiName": "Tower Power-Up"
+    },
+    "1523": {
+      "english": "Overcharged",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Overcharged_item.png?3599b",
+      "provider": "League of Legends Wiki",
+      "sha256": "20e9bcb8c62fcb9570ccab17b4e8a36028e72d53f12798c7d7259de70b3c1077",
+      "wikiName": "Overcharged"
+    },
+    "1524": {
+      "english": "Overgrowth",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/1524.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "44fc1ed712f8e168b69cb1eabc1b2cb3178a560c705f0007331a73aa28400c30",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "2001": {
+      "english": "Recall",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/2001.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "4e4b5f63e26ba0943fef82b2b0f5809cfd13cda36e07833438de8d29f02ac0a6",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "2003": {
+      "english": "Health Potion",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Health_Potion_item.png?5c0e8",
+      "provider": "League of Legends Wiki",
+      "sha256": "7a2e1f2b4ecee9b286ad121a55e4b994b4be9b775da5a3919a57544eef4b37ba",
+      "wikiName": "Health Potion"
+    },
+    "2007": {
+      "english": "Disabled Recall",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/2007.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "b006dd0a4e698627d16a94bc2f4e23b105a6448aeed5e0a59fde62cc8de130f5",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "2010": {
+      "english": "Total Biscuit of Everlasting Will",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Total_Biscuit_of_Everlasting_Will_item.png?1843d",
+      "provider": "League of Legends Wiki",
+      "sha256": "b421f884c019a93c0f2b5aaabb190593763848c4d6cecb5f978b0c33f17ada38",
+      "wikiName": "Total Biscuit of Everlasting Will"
+    },
+    "2019": {
+      "english": "Steel Sigil",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Steel_Sigil_item.png?e33d0",
+      "provider": "League of Legends Wiki",
+      "sha256": "f76531a4790e587cdfd3224286416b3a2b803fcbc925a90d8777453b8aa4f450",
+      "wikiName": "Steel Sigil"
+    },
+    "2020": {
+      "english": "The Brutalizer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/The_Brutalizer_item.png?b8724",
+      "provider": "League of Legends Wiki",
+      "sha256": "c68cf78c6e07bf2ece4c337e44d96f30851cf0640a87732b49b2a83251ed60d6",
+      "wikiName": "The Brutalizer"
+    },
+    "2021": {
+      "english": "Tunneler",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Tunneler_item.png?6b875",
+      "provider": "League of Legends Wiki",
+      "sha256": "584e84111979341ba986d3be6bab0fb02b4ff6936b88e516a6695d0716943961",
+      "wikiName": "Tunneler"
+    },
+    "2022": {
+      "english": "Glowing Mote",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Glowing_Mote_item.png?b3701",
+      "provider": "League of Legends Wiki",
+      "sha256": "06d1d49dfdf5614a5b3284c0c0523d10fb215a682a35e5c08fd8e8942b0669ac",
+      "wikiName": "Glowing Mote"
+    },
+    "2031": {
+      "english": "Refillable Potion",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Refillable_Potion_item.png?f3a1b",
+      "provider": "League of Legends Wiki",
+      "sha256": "6bad76fd5475609b592d2e8ee5258dadc90434c85688dd7df897faab46cacd55",
+      "wikiName": "Refillable Potion"
+    },
+    "2033": {
+      "english": "Corrupting Potion",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Corrupting_Potion_item.png?1769b",
+      "provider": "League of Legends Wiki",
+      "sha256": "3762f873ef59ab68e8711e586e05092950d2f9a916c250e98691ca1862368d68",
+      "wikiName": "Corrupting Potion"
+    },
+    "2051": {
+      "english": "Guardian's Horn",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Guardian%27s_Horn_item.png?7aee3",
+      "provider": "League of Legends Wiki",
+      "sha256": "659c7dba0f296b535c6dc7404084913cd4f4d4bb5805b84c793fd8144a5e8257",
+      "wikiName": "Guardian's Horn"
+    },
+    "2052": {
+      "english": "Poro-Snax",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Poro-Snax_item.png?18570",
+      "provider": "League of Legends Wiki",
+      "sha256": "d2730ecf8eb5d45f979877a659115a6970f9ae864f62c6c5ce2b9c480bf0a58b",
+      "wikiName": "Poro-Snax"
+    },
+    "2055": {
+      "english": "Control Ward",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Control_Ward_item.png?dae36",
+      "provider": "League of Legends Wiki",
+      "sha256": "d56470a9f354288c84621de5e5297f20af836b1d775592fdbd4cbfba3d4f5d8d",
+      "wikiName": "Control Ward"
+    },
+    "2065": {
+      "english": "Shurelya's Battlesong",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shurelya%27s_Battlesong_item.png?27906",
+      "provider": "League of Legends Wiki",
+      "sha256": "df177a79e5f148bbee120d354d23ae0cba15b77e5a963c30b994ad76231e0e7d",
+      "wikiName": "Shurelya's Battlesong"
+    },
+    "2138": {
+      "english": "Elixir of Iron",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Elixir_of_Iron_item.png?c39f0",
+      "provider": "League of Legends Wiki",
+      "sha256": "814e58e16c727c2afbb8cbb595f187e75bd7f53172dc77c5c9d32761640219c3",
+      "wikiName": "Elixir of Iron"
+    },
+    "2139": {
+      "english": "Elixir of Sorcery",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Elixir_of_Sorcery_item.png?8954e",
+      "provider": "League of Legends Wiki",
+      "sha256": "c75f8df9d3e857bf84114cdd0400d8093e4c39a5450b48632db92cea8f4933a7",
+      "wikiName": "Elixir of Sorcery"
+    },
+    "2140": {
+      "english": "Elixir of Wrath",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Elixir_of_Wrath_item.png?482d2",
+      "provider": "League of Legends Wiki",
+      "sha256": "976fdb8915caedf2d6457cf5a93c065b59b4b6267b6b10ca28ac9cde7f69632d",
+      "wikiName": "Elixir of Wrath"
+    },
+    "2141": {
+      "english": "Cappa Juice",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cappa_Juice_item.png?8aa04",
+      "provider": "League of Legends Wiki",
+      "sha256": "ae677086edbd2dfaec368d1b4131819f3c08e897d572d5016ad40257906febec",
+      "wikiName": "Cappa Juice"
+    },
+    "2150": {
+      "english": "Elixir of Skill",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ichor_of_Illumination_item.png?83fd7",
+      "provider": "League of Legends Wiki",
+      "sha256": "4a9c63adc5cb6c13815e34769a6e88370e6b121ae08e4b779284ab1f8a9b6892",
+      "wikiName": "Elixir of Skill"
+    },
+    "2151": {
+      "english": "Elixir of Avarice",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Elixir_of_Avarice_item.png?0284f",
+      "provider": "League of Legends Wiki",
+      "sha256": "b12ac183249ab1fd15e2d4970c68d7a6a854b60f438af51591e5e91c74706e80",
+      "wikiName": "Elixir of Avarice"
+    },
+    "2152": {
+      "english": "Elixir of Force",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Elixir_of_Force_item.png?cdaae",
+      "provider": "League of Legends Wiki",
+      "sha256": "76ba41a5e3035d4880cb49f90b4d630f9ea002a7f0e122ecf88fdcef20247d54",
+      "wikiName": "Elixir of Force"
+    },
+    "2403": {
+      "english": "Minion Dematerializer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Minion_Dematerializer_item.png?7e514",
+      "provider": "League of Legends Wiki",
+      "sha256": "aedd7cde88bba0c34e80ef293bbf6d0079a9fcdc4a8754c641640cf5a3228726",
+      "wikiName": "Minion Dematerializer"
+    },
+    "2420": {
+      "english": "Seeker's Armguard",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Seeker%27s_Armguard_item.png?703bc",
+      "provider": "League of Legends Wiki",
+      "sha256": "15101573d01a86029a0ac073ddfdc0ef2598319bbd63f442c2aedba0657c9749",
+      "wikiName": "Seeker's Armguard"
+    },
+    "2421": {
+      "english": "Shattered Armguard",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shattered_Armguard_item.png?b5770",
+      "provider": "League of Legends Wiki",
+      "sha256": "760a935522e33b319c88f83e5fe8fea5e609fe68c60a4bf08cd4e2effcf21cc6",
+      "wikiName": "Shattered Armguard"
+    },
+    "2422": {
+      "english": "Slightly Magical Footwear",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Slightly_Magical_Boots_item.png?c1989",
+      "provider": "League of Legends Wiki",
+      "sha256": "688e6968d64eff838a343623ee773fcb2f17f0c392d209bff9c9d9fba45e68ef",
+      "wikiName": "Slightly Magical Boots"
+    },
+    "2501": {
+      "english": "Overlord's Bloodmail",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Overlord%27s_Bloodmail_item.png?a10db",
+      "provider": "League of Legends Wiki",
+      "sha256": "8da7654dd2a17636e5d580e81d53f097cc7a40d54f195c7321264aca4fa19611",
+      "wikiName": "Overlord's Bloodmail"
+    },
+    "2502": {
+      "english": "Unending Despair",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Unending_Despair_item.png?cfe73",
+      "provider": "League of Legends Wiki",
+      "sha256": "1ac08bc85d6a0f3d88d0b7bc2942cba6241a914228ee3836b3b36b4f6d0b754a",
+      "wikiName": "Unending Despair"
+    },
+    "2503": {
+      "english": "Blackfire Torch",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Blackfire_Torch_item.png?3e150",
+      "provider": "League of Legends Wiki",
+      "sha256": "566276952d6baa2dd17442b416d6634b2918bff513854115c0010d50c9b813d3",
+      "wikiName": "Blackfire Torch"
+    },
+    "2504": {
+      "english": "Kaenic Rookern",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kaenic_Rookern_item.png?40f9e",
+      "provider": "League of Legends Wiki",
+      "sha256": "a6755585e61c78fe1852b4758be5f60bf7f486a2af9cd55aa24317469760a1d0",
+      "wikiName": "Kaenic Rookern"
+    },
+    "2508": {
+      "english": "Fated Ashes",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fated_Ashes_item.png?c18bb",
+      "provider": "League of Legends Wiki",
+      "sha256": "b1a0b59ab93ba005c47f5168f8522e98285fe02930276b1ba40946383887d5fb",
+      "wikiName": "Fated Ashes"
+    },
+    "2510": {
+      "english": "Dusk and Dawn",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dusk_and_Dawn_item.png?be79a",
+      "provider": "League of Legends Wiki",
+      "sha256": "d45cdda8de663a1747d2441b3a6a25c3c59ffa003d28b382305d6a7669a3c259",
+      "wikiName": "Dusk and Dawn"
+    },
+    "2512": {
+      "english": "Fiendhunter Bolts",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fiendhunter_Bolts_item.png?7596c",
+      "provider": "League of Legends Wiki",
+      "sha256": "9c3964e455dd6347ff52c1483f79b2bb1cea8418797b1e50ccb541fe1b86c82c",
+      "wikiName": "Fiendhunter Bolts"
+    },
+    "2517": {
+      "english": "Endless Hunger",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Endless_Hunger_item.png?cc802",
+      "provider": "League of Legends Wiki",
+      "sha256": "e32e1398967dcc307870062368f86ceab32c258f2c8076ff4f0b8f40facdd8e5",
+      "wikiName": "Endless Hunger"
+    },
+    "2520": {
+      "english": "Bastionbreaker",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bastionbreaker_item.png?ccdb8",
+      "provider": "League of Legends Wiki",
+      "sha256": "138db6a5e8ee2212e25fb47c4225f4be153f3095ec4989941a9aeee52b6e3743",
+      "wikiName": "Bastionbreaker"
+    },
+    "2522": {
+      "english": "Actualizer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Actualizer_item.png?33d1f",
+      "provider": "League of Legends Wiki",
+      "sha256": "cae7f583eff923ea81a6ce5e27c0d6ece4b26571be26bfc7050c84c528c81928",
+      "wikiName": "Actualizer"
+    },
+    "2523": {
+      "english": "Hexoptics C44",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hexoptics_C44_item.png?dd50f",
+      "provider": "League of Legends Wiki",
+      "sha256": "1794c3eb21382135f45e093c12f9988017b761453b664817dbfdc76fecce0d6f",
+      "wikiName": "Hexoptics C44"
+    },
+    "2524": {
+      "english": "Bandlepipes",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bandlepipes_item.png?3b6c0",
+      "provider": "League of Legends Wiki",
+      "sha256": "f7e4077aad44e7d8c2adb1ae0880fe25e921b5f5afaf412a6f90bb8602ea4e92",
+      "wikiName": "Bandlepipes"
+    },
+    "2525": {
+      "english": "Protoplasm Harness",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Protoplasm_Harness_item.png?2d12a",
+      "provider": "League of Legends Wiki",
+      "sha256": "d210f72cf34185d8aafc936a9a04996847bfa6ae9e0b69c7e291e07416188de3",
+      "wikiName": "Protoplasm Harness"
+    },
+    "2526": {
+      "english": "Whispering Circlet",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Whispering_Circlet_item.png?29a08",
+      "provider": "League of Legends Wiki",
+      "sha256": "29cbc6af488f4af62a19aaf0c039927407c91d11dac3f4eb210a41f66b29e0b5",
+      "wikiName": "Whispering Circlet"
+    },
+    "2530": {
+      "english": "Diadem of Songs",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Diadem_of_Songs_item.png?f69f8",
+      "provider": "League of Legends Wiki",
+      "sha256": "9823d0a01a4b8980fe76374012e91e383cb051a7cc078bb6995191f956d540ed",
+      "wikiName": "Diadem of Songs"
+    },
+    "3002": {
+      "english": "Trailblazer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Trailblazer_item.png?40a32",
+      "provider": "League of Legends Wiki",
+      "sha256": "4df6deea8dadf2caa0e338603d150299ed3fa118eb246545a7a013c3098debd5",
+      "wikiName": "Trailblazer"
+    },
+    "3003": {
+      "english": "Archangel's Staff",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Archangel%27s_Staff_item.png?df623",
+      "provider": "League of Legends Wiki",
+      "sha256": "c7c42b79d364bdcaf71e4e9afd8c87f2000fe76d1950202509c51762db62e389",
+      "wikiName": "Archangel's Staff"
+    },
+    "3004": {
+      "english": "Manamune",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Manamune_item.png?033ed",
+      "provider": "League of Legends Wiki",
+      "sha256": "135ddc64dea6623e4060bfabcca2a67ea4475e7fb91e02d3807deb06fead36ae",
+      "wikiName": "Manamune"
+    },
+    "3006": {
+      "english": "Berserker's Greaves",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Berserker%27s_Greaves_item.png?eafc6",
+      "provider": "League of Legends Wiki",
+      "sha256": "1bcdd1b984976c2ed37b462d59ec698aeb84c9e5ef157eb705b0b403b37857e7",
+      "wikiName": "Berserker's Greaves"
+    },
+    "3008": {
+      "english": "Gluttonous Greaves",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gluttonous_Greaves_item.png?d560e",
+      "provider": "League of Legends Wiki",
+      "sha256": "b22f9491b87487e52257973e1dbdfe98e142ee72bb74da94d4f48ce72a629a47",
+      "wikiName": "Gluttonous Greaves"
+    },
+    "3009": {
+      "english": "Boots of Swiftness",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Boots_of_Swiftness_item.png?4f2dc",
+      "provider": "League of Legends Wiki",
+      "sha256": "a69f1ce0277b6177feff6ec5ec95f446c7e8add6073a5ffbe0d0a4ac27491ade",
+      "wikiName": "Boots of Swiftness"
+    },
+    "3010": {
+      "english": "Symbiotic Soles",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Symbiotic_Soles_item.png?7f173",
+      "provider": "League of Legends Wiki",
+      "sha256": "ae7f84e282e736121a7a853b4c51697534abb3bc74bfb9a9af1a53cd20719e91",
+      "wikiName": "Symbiotic Soles"
+    },
+    "3011": {
+      "english": "Chemtech Putrifier",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Chemtech_Putrifier_item.png?3e101",
+      "provider": "League of Legends Wiki",
+      "sha256": "82616781ee0eab1ca8a307d0f78546889b8381e0d53b6cafe446487e112ccbda",
+      "wikiName": "Chemtech Putrifier"
+    },
+    "3013": {
+      "english": "Synchronized Souls",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Synchronized_Souls_item.png?9c23b",
+      "provider": "League of Legends Wiki",
+      "sha256": "eebd76b9ab295c7f0d82314777632319b4d6110918ccc0ca1d027f07f733a063",
+      "wikiName": "Synchronized Souls"
+    },
+    "3020": {
+      "english": "Sorcerer's Shoes",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sorcerer%27s_Shoes_item.png?41120",
+      "provider": "League of Legends Wiki",
+      "sha256": "7ccf8e9da88f0573567cf82ac76884de44be86140d4e102a8f8bf5f87821507f",
+      "wikiName": "Sorcerer's Shoes"
+    },
+    "3024": {
+      "english": "Glacial Buckler",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Glacial_Buckler_item.png?6760c",
+      "provider": "League of Legends Wiki",
+      "sha256": "2376661329b57fe1026b1659d51fa36b6ea8127855735aa461e82534ccc2d1a3",
+      "wikiName": "Glacial Buckler"
+    },
+    "3026": {
+      "english": "Guardian Angel",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Guardian_Angel_item.png?da4ce",
+      "provider": "League of Legends Wiki",
+      "sha256": "96e878b7995f5afdb5d3e2aa03c5e987ab55873d24aafea18ecffc7783df4845",
+      "wikiName": "Guardian Angel"
+    },
+    "3031": {
+      "english": "Infinity Edge",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Infinity_Edge_item.png?71b4c",
+      "provider": "League of Legends Wiki",
+      "sha256": "453cfc72d758a2c46756f468a605631d65cb673be5fb95a3d356405130faf428",
+      "wikiName": "Infinity Edge"
+    },
+    "3032": {
+      "english": "Yun Tal Wildarrows",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Yun_Tal_Wildarrows_item.png?f1b01",
+      "provider": "League of Legends Wiki",
+      "sha256": "047336e39c034935b041553d6b43386bc5441cdb0cedf31e2215c5e57d667d5f",
+      "wikiName": "Yun Tal Wildarrows"
+    },
+    "3033": {
+      "english": "Mortal Reminder",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mortal_Reminder_item.png?5e2c8",
+      "provider": "League of Legends Wiki",
+      "sha256": "2654ea175e77ad089b7d8871479bd1e8ae340001abafe1e1e49f968f50bc7391",
+      "wikiName": "Mortal Reminder"
+    },
+    "3035": {
+      "english": "Last Whisper",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Last_Whisper_item.png?a38dc",
+      "provider": "League of Legends Wiki",
+      "sha256": "b72afaa16b9e5acc02992a690e108e456891a54b7aefc09bded4d6572192cf3d",
+      "wikiName": "Last Whisper"
+    },
+    "3036": {
+      "english": "Lord Dominik's Regards",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lord_Dominik%27s_Regards_item.png?880e1",
+      "provider": "League of Legends Wiki",
+      "sha256": "2d5b3fd46f897797efcaeed213e2ff253a93cdfbc44fe6646586f5fee3e355ba",
+      "wikiName": "Lord Dominik's Regards"
+    },
+    "3040": {
+      "english": "Seraph's Embrace",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Seraph%27s_Embrace_item.png?4a118",
+      "provider": "League of Legends Wiki",
+      "sha256": "13c060e15c48cea2023a36e67db48c58e5ed463a09b51a5faab147b728493203",
+      "wikiName": "Seraph's Embrace"
+    },
+    "3041": {
+      "english": "Mejai's Soulstealer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mejai%27s_Soulstealer_item.png?4abeb",
+      "provider": "League of Legends Wiki",
+      "sha256": "6f4b49004cde48ea4c445ed6c14b6dd80279de93da880cef0d59afe8f16c63f7",
+      "wikiName": "Mejai's Soulstealer"
+    },
+    "3042": {
+      "english": "Muramana",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Muramana_item.png?480b6",
+      "provider": "League of Legends Wiki",
+      "sha256": "8a05515a22d7294802b1790c3b95796af1edda436a0d89c8071792cd7f5bdd3c",
+      "wikiName": "Muramana"
+    },
+    "3044": {
+      "english": "Phage",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Phage_item.png?b5b13",
+      "provider": "League of Legends Wiki",
+      "sha256": "07ef8681755f711a9bebe9b483af6b311e7e434160e46b84a09918c794346d17",
+      "wikiName": "Phage"
+    },
+    "3046": {
+      "english": "Phantom Dancer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Phantom_Dancer_item.png?fc803",
+      "provider": "League of Legends Wiki",
+      "sha256": "3e387a246b191ca70e51d9c1181bbe74102657a6820d711395c802583ec7b7e4",
+      "wikiName": "Phantom Dancer"
+    },
+    "3047": {
+      "english": "Plated Steelcaps",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Plated_Steelcaps_item.png?26af3",
+      "provider": "League of Legends Wiki",
+      "sha256": "ef907e68472a580e350a0a6b4748e93dfd38bce03a8b59c2bf3d3796a89d211e",
+      "wikiName": "Plated Steelcaps"
+    },
+    "3050": {
+      "english": "Zeke's Convergence",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zeke%27s_Convergence_item.png?7c1a0",
+      "provider": "League of Legends Wiki",
+      "sha256": "1be73e1d0db3df0acbb90d52a536e890a430fe2a047f8c5cd79774a92ca3904d",
+      "wikiName": "Zeke's Convergence"
+    },
+    "3051": {
+      "english": "Hearthbound Axe",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hearthbound_Axe_item.png?50ac8",
+      "provider": "League of Legends Wiki",
+      "sha256": "0c47a3877e3bbc96a0e14f2b199d3689493960d07896943ae66187549d5f079c",
+      "wikiName": "Hearthbound Axe"
+    },
+    "3053": {
+      "english": "Sterak's Gage",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sterak%27s_Gage_item.png?88a15",
+      "provider": "League of Legends Wiki",
+      "sha256": "645a7d6c7ff520db69724ba0d0221e243b476dc9df316d01089440b0306941e6",
+      "wikiName": "Sterak's Gage"
+    },
+    "3057": {
+      "english": "Sheen",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sheen_item.png?2bece",
+      "provider": "League of Legends Wiki",
+      "sha256": "a374d7cdc78bd01496e6574a24adac704ddc54122e31afa02fe8eabe5cd0703c",
+      "wikiName": "Sheen"
+    },
+    "3065": {
+      "english": "Spirit Visage",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Spirit_Visage_item.png?14937",
+      "provider": "League of Legends Wiki",
+      "sha256": "1d6ecd0e126fa5fde4336794a2d5c5149ee06bd6e07d942cc5612b9a9c61a694",
+      "wikiName": "Spirit Visage"
+    },
+    "3066": {
+      "english": "Winged Moonplate",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Winged_Moonplate_item.png?6c73f",
+      "provider": "League of Legends Wiki",
+      "sha256": "7fa82d42e67a04902e1ef54c3829c0b3d937a61c19471844fbdd4e44d0f17f5f",
+      "wikiName": "Winged Moonplate"
+    },
+    "3067": {
+      "english": "Kindlegem",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kindlegem_item.png?895fa",
+      "provider": "League of Legends Wiki",
+      "sha256": "5af576851b2db7f00f08503530e3a333933e08110d368caeb0a82c821d4e2284",
+      "wikiName": "Kindlegem"
+    },
+    "3068": {
+      "english": "Sunfire Aegis",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sunfire_Aegis_item.png?bcdcc",
+      "provider": "League of Legends Wiki",
+      "sha256": "b203e8854307e6373aa2d2903ae36235638d4852b7da8fa77ed1390809c00764",
+      "wikiName": "Sunfire Aegis"
+    },
+    "3070": {
+      "english": "Tear of the Goddess",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Tear_of_the_Goddess_item.png?21811",
+      "provider": "League of Legends Wiki",
+      "sha256": "3b65d35f2c2c91ff5dc82995d78efd721bba1248ab68be55858e6384ea30acbf",
+      "wikiName": "Tear of the Goddess"
+    },
+    "3071": {
+      "english": "Black Cleaver",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Black_Cleaver_item.png?98eed",
+      "provider": "League of Legends Wiki",
+      "sha256": "e1d0431d403b4496d1b7cd20088a265cd6c6c4390f2d43385ac5c1ecfc570f71",
+      "wikiName": "Black Cleaver"
+    },
+    "3072": {
+      "english": "Bloodthirster",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bloodthirster_item.png?58bf5",
+      "provider": "League of Legends Wiki",
+      "sha256": "3b222b2333d2d9dc028d974f8154340fc8ee144e19222c11dc5244a919feec8e",
+      "wikiName": "Bloodthirster"
+    },
+    "3073": {
+      "english": "Experimental Hexplate",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Experimental_Hexplate_item.png?3908f",
+      "provider": "League of Legends Wiki",
+      "sha256": "87d3a947158944540de745623b93403d7c809c81efe8572c5ca295537c6757ca",
+      "wikiName": "Experimental Hexplate"
+    },
+    "3074": {
+      "english": "Ravenous Hydra",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ravenous_Hydra_item.png?283cd",
+      "provider": "League of Legends Wiki",
+      "sha256": "d400dcd5981f5781ea04f9c8cd4654a58e2a3f69d04b035a1e9e81700c02ff58",
+      "wikiName": "Ravenous Hydra"
+    },
+    "3075": {
+      "english": "Thornmail",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Thornmail_item.png?949f9",
+      "provider": "League of Legends Wiki",
+      "sha256": "6824a59da379f568c1400d26d2d6d101c4f3a8ff5024e5f2de509da123bccb24",
+      "wikiName": "Thornmail"
+    },
+    "3076": {
+      "english": "Bramble Vest",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bramble_Vest_item.png?47b72",
+      "provider": "League of Legends Wiki",
+      "sha256": "3512d0bd89a54af612caeb95ccbc49b5e4b1b07bb4c6814bf83e8baf60f08037",
+      "wikiName": "Bramble Vest"
+    },
+    "3077": {
+      "english": "Tiamat",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Tiamat_item.png?7f1e3",
+      "provider": "League of Legends Wiki",
+      "sha256": "1c265db9aadaf8406460e00c83c2424aec7a2dc23982bc157ee6c9f92317e9db",
+      "wikiName": "Tiamat"
+    },
+    "3078": {
+      "english": "Trinity Force",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Trinity_Force_item.png?d3f5c",
+      "provider": "League of Legends Wiki",
+      "sha256": "da9a986ff0fbd6ad52240425e99b7c47be2252d8bbc0253c51143ad13a906520",
+      "wikiName": "Trinity Force"
+    },
+    "3082": {
+      "english": "Warden's Mail",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Warden%27s_Mail_item.png?2ac93",
+      "provider": "League of Legends Wiki",
+      "sha256": "c852cb6087e46750c2b7b298ab28d6f618635fae109353341603e8824526ea80",
+      "wikiName": "Warden's Mail"
+    },
+    "3083": {
+      "english": "Warmog's Armor",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Warmog%27s_Armor_item.png?44c9f",
+      "provider": "League of Legends Wiki",
+      "sha256": "d119a998a0073c3b46e514e5ea3737f5d85d34d7aec16cebbf0bb759bc7b42f5",
+      "wikiName": "Warmog's Armor"
+    },
+    "3084": {
+      "english": "Heartsteel",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Heartsteel_item.png?be381",
+      "provider": "League of Legends Wiki",
+      "sha256": "a9fd9498dc691f2defe3376fa576ce455b08ad316015e624fa7e9266f95df2d6",
+      "wikiName": "Heartsteel"
+    },
+    "3085": {
+      "english": "Runaan's Hurricane",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Runaan%27s_Hurricane_item.png?33c02",
+      "provider": "League of Legends Wiki",
+      "sha256": "c2da6b98bcf48b5ca39ed056c29236f8ee72ebb51fedfdd896421bc7590d5d44",
+      "wikiName": "Runaan's Hurricane"
+    },
+    "3086": {
+      "english": "Zeal",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zeal_item.png?c9af7",
+      "provider": "League of Legends Wiki",
+      "sha256": "e95e3e5557479b21e92d04b29405d8d458d622e537a1a656c5e2f8f4072e75fd",
+      "wikiName": "Zeal"
+    },
+    "3087": {
+      "english": "Statikk Shiv",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Statikk_Shiv_item.png?714b7",
+      "provider": "League of Legends Wiki",
+      "sha256": "a939868e98883065de1765e8b2712af2075421aebe1bfe6f72aca13164a85c70",
+      "wikiName": "Statikk Shiv"
+    },
+    "3089": {
+      "english": "Rabadon's Deathcap",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rabadon%27s_Deathcap_item.png?bdb08",
+      "provider": "League of Legends Wiki",
+      "sha256": "212b8059373064a82ad288f9369928b0261407dde94922972e4f5e5778ea75ec",
+      "wikiName": "Rabadon's Deathcap"
+    },
+    "3091": {
+      "english": "Wit's End",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Wit%27s_End_item.png?723a1",
+      "provider": "League of Legends Wiki",
+      "sha256": "c8f04db021682d6f5077f4a82d24441f646909fa371fb7e4e8884d8121db9e82",
+      "wikiName": "Wit's End"
+    },
+    "3094": {
+      "english": "Rapid Firecannon",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rapid_Firecannon_item.png?0cc9f",
+      "provider": "League of Legends Wiki",
+      "sha256": "5ea4ef93ecd2c3790f84e846fed0cc10219179a95cbb3d2160087f713bb2a43c",
+      "wikiName": "Rapid Firecannon"
+    },
+    "3095": {
+      "english": "Stormrazor",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Stormrazor_item.png?cb3db",
+      "provider": "League of Legends Wiki",
+      "sha256": "44707674fc5840b84c4f0a1865cfa2a593f2c59ee196c2c1e4b2f00c8f451f9a",
+      "wikiName": "Stormrazor"
+    },
+    "3100": {
+      "english": "Lich Bane",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lich_Bane_item.png?f215c",
+      "provider": "League of Legends Wiki",
+      "sha256": "44372a46c544474c22148b38db5000a64632d2df6b1f8797d31b32ffbef6df81",
+      "wikiName": "Lich Bane"
+    },
+    "3102": {
+      "english": "Banshee's Veil",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Banshee%27s_Veil_item.png?47857",
+      "provider": "League of Legends Wiki",
+      "sha256": "4c48e9a2ab961d9066282387b0e8e5fa87e96992c0dc74e81e0c56c43e5e7436",
+      "wikiName": "Banshee's Veil"
+    },
+    "3107": {
+      "english": "Redemption",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Redemption_item.png?74f75",
+      "provider": "League of Legends Wiki",
+      "sha256": "43834c9e4574fc9c95d17bca22306e57f221736999f28e8c2a0c88eaaf26429f",
+      "wikiName": "Redemption"
+    },
+    "3108": {
+      "english": "Fiendish Codex",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fiendish_Codex_item.png?505a0",
+      "provider": "League of Legends Wiki",
+      "sha256": "8bacf29a5e9e37008277f3f65694d2596ee602634a261d4e96aa03f599353082",
+      "wikiName": "Fiendish Codex"
+    },
+    "3109": {
+      "english": "Knight's Vow",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Knight%27s_Vow_item.png?5a5a0",
+      "provider": "League of Legends Wiki",
+      "sha256": "85d1e49002936d9b8934347d7d6da1bc841a44fe7816e5c80bc67fcabb805266",
+      "wikiName": "Knight's Vow"
+    },
+    "3110": {
+      "english": "Frozen Heart",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Frozen_Heart_item.png?5a6ce",
+      "provider": "League of Legends Wiki",
+      "sha256": "a8cdbcc34142c109e4aec418047e00f14c5da19ecfa2fdf4960cbe33024995a0",
+      "wikiName": "Frozen Heart"
+    },
+    "3111": {
+      "english": "Mercury's Treads",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mercury%27s_Treads_item.png?c2c57",
+      "provider": "League of Legends Wiki",
+      "sha256": "e805fe37ca3efa6f7b2c0f690c232eb71959f4b57bab37d56cd9d41d1fa1bbf8",
+      "wikiName": "Mercury's Treads"
+    },
+    "3112": {
+      "english": "Guardian's Orb",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Guardian%27s_Orb_item.png?9b35a",
+      "provider": "League of Legends Wiki",
+      "sha256": "a68d3d6bf61e681f4cd61b04265c6b15b0764bf5d6557de04dec322eb9900373",
+      "wikiName": "Guardian's Orb"
+    },
+    "3113": {
+      "english": "Aether Wisp",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Aether_Wisp_item.png?6cebd",
+      "provider": "League of Legends Wiki",
+      "sha256": "3b03e4203a727caa336e07e26be6d4c43fb59c9175eb4d9a8c7488751d807d64",
+      "wikiName": "Aether Wisp"
+    },
+    "3114": {
+      "english": "Forbidden Idol",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Forbidden_Idol_item.png?ba30f",
+      "provider": "League of Legends Wiki",
+      "sha256": "9b7e1999576817c779d1c279d00b8bfa61c2ff1e942b569170625c59e5fbdd9b",
+      "wikiName": "Forbidden Idol"
+    },
+    "3115": {
+      "english": "Nashor's Tooth",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nashor%27s_Tooth_item.png?df197",
+      "provider": "League of Legends Wiki",
+      "sha256": "3fcc1620f5211dbf204a18a2d608a2732a218c7563c352c82528b15571948c2c",
+      "wikiName": "Nashor's Tooth"
+    },
+    "3116": {
+      "english": "Rylai's Crystal Scepter",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rylai%27s_Crystal_Scepter_item.png?9b9b4",
+      "provider": "League of Legends Wiki",
+      "sha256": "5e47aba536e2ab8cc15885da3b523ebbc219c73915181f1fd5e656d0608046de",
+      "wikiName": "Rylai's Crystal Scepter"
+    },
+    "3117": {
+      "english": "Mobility Boots",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mobility_Boots_item.png?09447",
+      "provider": "League of Legends Wiki",
+      "sha256": "bd847d90c931a8547bc67dffa32b1da19f9b832ddb920f7837ac46a9191d8406",
+      "wikiName": "Mobility Boots"
+    },
+    "3118": {
+      "english": "Malignance",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Malignance_item.png?21ed2",
+      "provider": "League of Legends Wiki",
+      "sha256": "da812a7400e2efc38bdadb46b6b59826dcde3ce7ecc744762603eff4224c98b1",
+      "wikiName": "Malignance"
+    },
+    "3119": {
+      "english": "Winter's Approach",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Winter%27s_Approach_item.png?e6f5a",
+      "provider": "League of Legends Wiki",
+      "sha256": "673b515b0ca420186992e656f700b838c5551f41caa5a7a412e860c6efcb4245",
+      "wikiName": "Winter's Approach"
+    },
+    "3121": {
+      "english": "Fimbulwinter",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fimbulwinter_item.png?b1da3",
+      "provider": "League of Legends Wiki",
+      "sha256": "c8bd0c286b85d3afca412ccd6d9873597fdbd5f13c3fa971519ff13cdf34f635",
+      "wikiName": "Fimbulwinter"
+    },
+    "3123": {
+      "english": "Executioner's Calling",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Executioner%27s_Calling_item.png?b9445",
+      "provider": "League of Legends Wiki",
+      "sha256": "50f26f55a7f86859558a7ff39d5c1856e9bb19a524135eafe34404a6862bf355",
+      "wikiName": "Executioner's Calling"
+    },
+    "3124": {
+      "english": "Guinsoo's Rageblade",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Guinsoo%27s_Rageblade_item.png?570d1",
+      "provider": "League of Legends Wiki",
+      "sha256": "34c897b60f76ba98b3837a584a7223fa66cfae028e3037f8c3be9ff463b78643",
+      "wikiName": "Guinsoo's Rageblade"
+    },
+    "3133": {
+      "english": "Caulfield's Warhammer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Caulfield%27s_Warhammer_item.png?c3dd6",
+      "provider": "League of Legends Wiki",
+      "sha256": "c79f9c76f5b7a8d679137a9379e0f36308d57d1dc7158ac2a5a4bf5a05f04ff8",
+      "wikiName": "Caulfield's Warhammer"
+    },
+    "3134": {
+      "english": "Serrated Dirk",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Serrated_Dirk_item.png?36fd0",
+      "provider": "League of Legends Wiki",
+      "sha256": "fa55c8247fd64865b19686036d1e42b8edb288daebf4b1bed571aefeafa24c60",
+      "wikiName": "Serrated Dirk"
+    },
+    "3135": {
+      "english": "Void Staff",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Void_Staff_item.png?18138",
+      "provider": "League of Legends Wiki",
+      "sha256": "9e0101a221d220508957e49c69008d8c15c30278f06b681a1e2a97066acaad94",
+      "wikiName": "Void Staff"
+    },
+    "3137": {
+      "english": "Cryptbloom",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cryptbloom_item.png?dc96d",
+      "provider": "League of Legends Wiki",
+      "sha256": "7bb5a5ad009502b3f63395b592f6e0935e41aa9c5e078ebc0f4f6883f577b238",
+      "wikiName": "Cryptbloom"
+    },
+    "3139": {
+      "english": "Mercurial Scimitar",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mercurial_Scimitar_item.png?29dbc",
+      "provider": "League of Legends Wiki",
+      "sha256": "f5ee0e084e1131ec0fd1a37cb6c80b6f47eeadf91d5053b24831d7cb21adce3b",
+      "wikiName": "Mercurial Scimitar"
+    },
+    "3140": {
+      "english": "Quicksilver Sash",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Quicksilver_Sash_item.png?b37e2",
+      "provider": "League of Legends Wiki",
+      "sha256": "e9be532e9a8305ed7f341986abdb059f48c04b6112a5771bdf33d3c327fc1af5",
+      "wikiName": "Quicksilver Sash"
+    },
+    "3142": {
+      "english": "Youmuu's Ghostblade",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Youmuu%27s_Ghostblade_item.png?14787",
+      "provider": "League of Legends Wiki",
+      "sha256": "7f0f4a15eede5ae41d46bce801358d76248155e8d14deb5b2f475ae12799ed27",
+      "wikiName": "Youmuu's Ghostblade"
+    },
+    "3143": {
+      "english": "Randuin's Omen",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Randuin%27s_Omen_item.png?61f32",
+      "provider": "League of Legends Wiki",
+      "sha256": "fe87f246e6cf6e90fefe1f84fafa23cb79c0491292d0df50acb98a0ba1e756ff",
+      "wikiName": "Randuin's Omen"
+    },
+    "3144": {
+      "english": "Scout's Slingshot",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Scout%27s_Slingshot_item.png?47453",
+      "provider": "League of Legends Wiki",
+      "sha256": "53dcc5634315a98a1a9aa571eaa737dbd02455b751bb12b542eff223db073a57",
+      "wikiName": "Scout's Slingshot"
+    },
+    "3145": {
+      "english": "Hextech Alternator",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hextech_Alternator_item.png?288fa",
+      "provider": "League of Legends Wiki",
+      "sha256": "ccb45decc9327b4b56fa071251ec25744ec9c1304fbd537d67a58d8b31ecdbab",
+      "wikiName": "Hextech Alternator"
+    },
+    "3146": {
+      "english": "Hextech Gunblade",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hextech_Gunblade_item.png?9a7b2",
+      "provider": "League of Legends Wiki",
+      "sha256": "99da627e37a4b452c08dfa27e32e2702ad25dce6c929229871f35fb26109ba9a",
+      "wikiName": "Hextech Gunblade"
+    },
+    "3147": {
+      "english": "Haunting Guise",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Haunting_Guise_item.png?8a9b1",
+      "provider": "League of Legends Wiki",
+      "sha256": "9b66882a5e19a4fc93b812303771e5deee894c6a619670a5b6b25e022f8bb8a1",
+      "wikiName": "Haunting Guise"
+    },
+    "3152": {
+      "english": "Hextech Rocketbelt",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hextech_Rocketbelt_item.png?32609",
+      "provider": "League of Legends Wiki",
+      "sha256": "dddd802160d972b7ad98323fa4e13f42061456ee16187bb72eb2fd78056a3c53",
+      "wikiName": "Hextech Rocketbelt"
+    },
+    "3153": {
+      "english": "Blade of The Ruined King",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Blade_of_the_Ruined_King_item.png?f5f23",
+      "provider": "League of Legends Wiki",
+      "sha256": "eff4879de5721424b943f39c254e94aec842edbe78da04a26eeff7cf3b5c39e4",
+      "wikiName": "Blade of the Ruined King"
+    },
+    "3155": {
+      "english": "Hexdrinker",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hexdrinker_item.png?7270d",
+      "provider": "League of Legends Wiki",
+      "sha256": "24c4c64e92cfa8c0fc706e3a2f59f3a78e41a7c6d765026aa25e334f8530b787",
+      "wikiName": "Hexdrinker"
+    },
+    "3156": {
+      "english": "Maw of Malmortius",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Maw_of_Malmortius_item.png?aa1c1",
+      "provider": "League of Legends Wiki",
+      "sha256": "5adad4d5b2403b5d9e311dad9930750e06095c4fa6f9f4c211863e7cbd074d0e",
+      "wikiName": "Maw of Malmortius"
+    },
+    "3157": {
+      "english": "Zhonya's Hourglass",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zhonya%27s_Hourglass_item.png?8a884",
+      "provider": "League of Legends Wiki",
+      "sha256": "3b79536df468762b06f186fd9dd05b592fa1d8705c7f92f5f19e40a4bd7cf644",
+      "wikiName": "Zhonya's Hourglass"
+    },
+    "3158": {
+      "english": "Ionian Boots of Lucidity",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ionian_Boots_of_Lucidity_item.png?fc7aa",
+      "provider": "League of Legends Wiki",
+      "sha256": "8875f4591ee813105aa664af6129814f801170055a15948b1e153f8f79c93eb7",
+      "wikiName": "Ionian Boots of Lucidity"
+    },
+    "3161": {
+      "english": "Spear of Shojin",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Spear_of_Shojin_item.png?a8a8f",
+      "provider": "League of Legends Wiki",
+      "sha256": "f31c33d72744562f938c934306c4112b8b57637500c49342a7c34e1311d35874",
+      "wikiName": "Spear of Shojin"
+    },
+    "3165": {
+      "english": "Morellonomicon",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Morellonomicon_item.png?e9bc2",
+      "provider": "League of Legends Wiki",
+      "sha256": "d2ef76b5d237f452f22dd37202a22f1cf13b5404e856f113b3f53fefb16c2cf1",
+      "wikiName": "Morellonomicon"
+    },
+    "3168": {
+      "english": "Immortal Path",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Immortal_Path_item.png?c2e5b",
+      "provider": "League of Legends Wiki",
+      "sha256": "d4b6f31c593b521e15866cdf9e3b13415555a733c60ab1ed0ff953c5862e72e5",
+      "wikiName": "Immortal Path"
+    },
+    "3170": {
+      "english": "Swiftmarch",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Swiftmarch_item.png?50274",
+      "provider": "League of Legends Wiki",
+      "sha256": "bce746e65b640f4d64e915a6e5792110cd234faf389957d09d0a4abff2c664d5",
+      "wikiName": "Swiftmarch"
+    },
+    "3171": {
+      "english": "Crimson Lucidity",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Crimson_Lucidity_item.png?ff157",
+      "provider": "League of Legends Wiki",
+      "sha256": "68298ee392bf8322448f4f769a3a3f0b2b7e3ea2e8dbc547180f7d1bb7fadd89",
+      "wikiName": "Crimson Lucidity"
+    },
+    "3172": {
+      "english": "Gunmetal Greaves",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gunmetal_Greaves_item.png?f5849",
+      "provider": "League of Legends Wiki",
+      "sha256": "9e4b00bdb4748bfc3ab0ac83873fb4eaff7223a1854cbca1ec3820735a372171",
+      "wikiName": "Gunmetal Greaves"
+    },
+    "3173": {
+      "english": "Chainlaced Crushers",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Chainlaced_Crushers_item.png?c0063",
+      "provider": "League of Legends Wiki",
+      "sha256": "46b8dde8bdd6f822c94bd1cccbaca4894b8b1c680c90989bd116defab57b2cd5",
+      "wikiName": "Chainlaced Crushers"
+    },
+    "3174": {
+      "english": "Armored Advance",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Armored_Advance_item.png?3d928",
+      "provider": "League of Legends Wiki",
+      "sha256": "b7523933b37a17ada2c392c2f17ddbc5ecec40d62085e596d4d7b0ece054168b",
+      "wikiName": "Armored Advance"
+    },
+    "3175": {
+      "english": "Spellslinger's Shoes",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Spellslinger%27s_Shoes_item.png?34992",
+      "provider": "League of Legends Wiki",
+      "sha256": "00f2833d0017c6e184b070e4eccef1c7157ac98b27986c24ce6def8d500286e2",
+      "wikiName": "Spellslinger's Shoes"
+    },
+    "3176": {
+      "english": "Forever Forward",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Forever_Forward_item.png?095cf",
+      "provider": "League of Legends Wiki",
+      "sha256": "1fcdf95a36a017b05a651f88f04e4c4b35134149192d1ef6f49a99409739ef74",
+      "wikiName": "Forever Forward"
+    },
+    "3177": {
+      "english": "Guardian's Blade",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Guardian%27s_Blade_item.png?cdc72",
+      "provider": "League of Legends Wiki",
+      "sha256": "31edf214d59c3d06b20f2a7230bdd26d217e25dbefae26f37a34681089dedda5",
+      "wikiName": "Guardian's Blade"
+    },
+    "3179": {
+      "english": "Umbral Glaive",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Umbral_Glaive_item.png?9a77d",
+      "provider": "League of Legends Wiki",
+      "sha256": "dabdc540e04de9ad22001c6f17c053ca7dde4bb2b3b355816b2a3e93134d41f4",
+      "wikiName": "Umbral Glaive"
+    },
+    "3181": {
+      "english": "Hullbreaker",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hullbreaker_item.png?f6fd0",
+      "provider": "League of Legends Wiki",
+      "sha256": "e5f91a92a3980fb5cb1fe51a1e837e9b655fc9fc1a81e18b20e654ea3355ffa0",
+      "wikiName": "Hullbreaker"
+    },
+    "3184": {
+      "english": "Guardian's Hammer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Guardian%27s_Hammer_item.png?fd8ca",
+      "provider": "League of Legends Wiki",
+      "sha256": "a7fbb81e4013dee2dacdade31fc690bd5a481a9ca8b6d3badc4ee7e41a7612ae",
+      "wikiName": "Guardian's Hammer"
+    },
+    "3190": {
+      "english": "Locket of the Iron Solari",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Locket_of_the_Iron_Solari_item.png?25e7b",
+      "provider": "League of Legends Wiki",
+      "sha256": "405a245f45c66a271b0483f100131fcce5a08f8571427e77df216bde1d1ac815",
+      "wikiName": "Locket of the Iron Solari"
+    },
+    "3211": {
+      "english": "Spectre's Cowl",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Spectre%27s_Cowl_item.png?79959",
+      "provider": "League of Legends Wiki",
+      "sha256": "9fff317c2fdc8a155b8510929e25b5c6d97b0169eabcf7e618fb2f1ebb8f9019",
+      "wikiName": "Spectre's Cowl"
+    },
+    "322065": {
+      "english": "Shurelya's Battlesong",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shurelya%27s_Battlesong_item.png?27906",
+      "provider": "League of Legends Wiki",
+      "sha256": "df177a79e5f148bbee120d354d23ae0cba15b77e5a963c30b994ad76231e0e7d",
+      "wikiName": "Shurelya's Battlesong"
+    },
+    "3222": {
+      "english": "Mikael's Blessing",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mikael%27s_Blessing_item.png?0706d",
+      "provider": "League of Legends Wiki",
+      "sha256": "e90843af0dacc51c4ce560c9fd28faa4d91e468a94322999a94ffbdee08cd5dd",
+      "wikiName": "Mikael's Blessing"
+    },
+    "322526": {
+      "english": "Whispering Circlet",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Whispering_Circlet_item.png?29a08",
+      "provider": "League of Legends Wiki",
+      "sha256": "29cbc6af488f4af62a19aaf0c039927407c91d11dac3f4eb210a41f66b29e0b5",
+      "wikiName": "Whispering Circlet"
+    },
+    "322530": {
+      "english": "Diadem of Songs",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Diadem_of_Songs_item.png?f69f8",
+      "provider": "League of Legends Wiki",
+      "sha256": "9823d0a01a4b8980fe76374012e91e383cb051a7cc078bb6995191f956d540ed",
+      "wikiName": "Diadem of Songs"
+    },
+    "323002": {
+      "english": "Trailblazer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Trailblazer_item.png?40a32",
+      "provider": "League of Legends Wiki",
+      "sha256": "4df6deea8dadf2caa0e338603d150299ed3fa118eb246545a7a013c3098debd5",
+      "wikiName": "Trailblazer"
+    },
+    "323003": {
+      "english": "Archangel's Staff",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Archangel%27s_Staff_item.png?df623",
+      "provider": "League of Legends Wiki",
+      "sha256": "c7c42b79d364bdcaf71e4e9afd8c87f2000fe76d1950202509c51762db62e389",
+      "wikiName": "Archangel's Staff"
+    },
+    "323004": {
+      "english": "Manamune",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Manamune_item.png?033ed",
+      "provider": "League of Legends Wiki",
+      "sha256": "135ddc64dea6623e4060bfabcca2a67ea4475e7fb91e02d3807deb06fead36ae",
+      "wikiName": "Manamune"
+    },
+    "323040": {
+      "english": "Seraph's Embrace",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Seraph%27s_Embrace_item.png?4a118",
+      "provider": "League of Legends Wiki",
+      "sha256": "13c060e15c48cea2023a36e67db48c58e5ed463a09b51a5faab147b728493203",
+      "wikiName": "Seraph's Embrace"
+    },
+    "323042": {
+      "english": "Muramana",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Muramana_item.png?480b6",
+      "provider": "League of Legends Wiki",
+      "sha256": "8a05515a22d7294802b1790c3b95796af1edda436a0d89c8071792cd7f5bdd3c",
+      "wikiName": "Muramana"
+    },
+    "323050": {
+      "english": "Zeke's Convergence",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zeke%27s_Convergence_item.png?7c1a0",
+      "provider": "League of Legends Wiki",
+      "sha256": "1be73e1d0db3df0acbb90d52a536e890a430fe2a047f8c5cd79774a92ca3904d",
+      "wikiName": "Zeke's Convergence"
+    },
+    "323070": {
+      "english": "Tear of the Goddess",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Tear_of_the_Goddess_item.png?21811",
+      "provider": "League of Legends Wiki",
+      "sha256": "3b65d35f2c2c91ff5dc82995d78efd721bba1248ab68be55858e6384ea30acbf",
+      "wikiName": "Tear of the Goddess"
+    },
+    "323075": {
+      "english": "Thornmail",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Thornmail_item.png?949f9",
+      "provider": "League of Legends Wiki",
+      "sha256": "6824a59da379f568c1400d26d2d6d101c4f3a8ff5024e5f2de509da123bccb24",
+      "wikiName": "Thornmail"
+    },
+    "323107": {
+      "english": "Redemption",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Redemption_item.png?74f75",
+      "provider": "League of Legends Wiki",
+      "sha256": "43834c9e4574fc9c95d17bca22306e57f221736999f28e8c2a0c88eaaf26429f",
+      "wikiName": "Redemption"
+    },
+    "323109": {
+      "english": "Knight's Vow",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Knight%27s_Vow_item.png?5a5a0",
+      "provider": "League of Legends Wiki",
+      "sha256": "85d1e49002936d9b8934347d7d6da1bc841a44fe7816e5c80bc67fcabb805266",
+      "wikiName": "Knight's Vow"
+    },
+    "323110": {
+      "english": "Frozen Heart",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Frozen_Heart_item.png?5a6ce",
+      "provider": "League of Legends Wiki",
+      "sha256": "a8cdbcc34142c109e4aec418047e00f14c5da19ecfa2fdf4960cbe33024995a0",
+      "wikiName": "Frozen Heart"
+    },
+    "323119": {
+      "english": "Winter's Approach",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Winter%27s_Approach_item.png?e6f5a",
+      "provider": "League of Legends Wiki",
+      "sha256": "673b515b0ca420186992e656f700b838c5551f41caa5a7a412e860c6efcb4245",
+      "wikiName": "Winter's Approach"
+    },
+    "323121": {
+      "english": "Fimbulwinter",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fimbulwinter_item.png?b1da3",
+      "provider": "League of Legends Wiki",
+      "sha256": "c8bd0c286b85d3afca412ccd6d9873597fdbd5f13c3fa971519ff13cdf34f635",
+      "wikiName": "Fimbulwinter"
+    },
+    "323190": {
+      "english": "Locket of the Iron Solari",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Locket_of_the_Iron_Solari_item.png?25e7b",
+      "provider": "League of Legends Wiki",
+      "sha256": "405a245f45c66a271b0483f100131fcce5a08f8571427e77df216bde1d1ac815",
+      "wikiName": "Locket of the Iron Solari"
+    },
+    "323222": {
+      "english": "Mikael's Blessing",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mikael%27s_Blessing_item.png?0706d",
+      "provider": "League of Legends Wiki",
+      "sha256": "e90843af0dacc51c4ce560c9fd28faa4d91e468a94322999a94ffbdee08cd5dd",
+      "wikiName": "Mikael's Blessing"
+    },
+    "323504": {
+      "english": "Ardent Censer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ardent_Censer_item.png?aa186",
+      "provider": "League of Legends Wiki",
+      "sha256": "a54b4aa7ba3361492982a630916b268ddc1402aa2a702e7d746bc232853caad4",
+      "wikiName": "Ardent Censer"
+    },
+    "324005": {
+      "english": "Imperial Mandate",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Imperial_Mandate_item.png?79c04",
+      "provider": "League of Legends Wiki",
+      "sha256": "98fa290085bd5c52818d8af292a45451b5cdadfcf26125f7e43723f6422420aa",
+      "wikiName": "Imperial Mandate"
+    },
+    "326616": {
+      "english": "Staff of Flowing Water",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Staff_of_Flowing_Water_item.png?ee424",
+      "provider": "League of Legends Wiki",
+      "sha256": "b6cee81c0a0d4b416f76d7f1617f98054810a62cc3ec144e5e480beada09d8d8",
+      "wikiName": "Staff of Flowing Water"
+    },
+    "326617": {
+      "english": "Moonstone Renewer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Moonstone_Renewer_item.png?3af19",
+      "provider": "League of Legends Wiki",
+      "sha256": "53bf2d653c702c01cdeb20c31aee51345001fac5b2b185af20326406c4ef7533",
+      "wikiName": "Moonstone Renewer"
+    },
+    "326620": {
+      "english": "Echoes of Helia",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Echoes_of_Helia_item.png?c9fef",
+      "provider": "League of Legends Wiki",
+      "sha256": "f41b543ae9cdd43966ffc4a5ba58d3864033c7ea61079e6dd97057e9bcf9ad17",
+      "wikiName": "Echoes of Helia"
+    },
+    "326621": {
+      "english": "Dawncore",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dawncore_item.png?f9423",
+      "provider": "League of Legends Wiki",
+      "sha256": "0e5e547e9a0d5ce612c119ad01448758783800b46423496fbc4fa6e6d12efcf7",
+      "wikiName": "Dawncore"
+    },
+    "326657": {
+      "english": "Rod of Ages",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rod_of_Ages_item.png?2e093",
+      "provider": "League of Legends Wiki",
+      "sha256": "f0abb47b753feb2cc757bc4b5fac146c541fe2ada2ff734407f7f4bceda50358",
+      "wikiName": "Rod of Ages"
+    },
+    "328020": {
+      "english": "Abyssal Mask",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Abyssal_Mask_item.png?aac97",
+      "provider": "League of Legends Wiki",
+      "sha256": "66ecb10290b64a0c95656b4cb57ef844048d3d356f1397891d9bd3ed169adb38",
+      "wikiName": "Abyssal Mask"
+    },
+    "3302": {
+      "english": "Terminus",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Terminus_item.png?b891f",
+      "provider": "League of Legends Wiki",
+      "sha256": "8cedb2acad3daa8c29d21b1b67e30717413a10f5cd3db4e9f13575d3049214be",
+      "wikiName": "Terminus"
+    },
+    "3330": {
+      "english": "Scarecrow Effigy",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Scarecrow_Effigy_item.png?6fa17",
+      "provider": "League of Legends Wiki",
+      "sha256": "0c746808eb0d42c20a0ff5d7c06cf2667430702f309d0a31bc125156779c99c4",
+      "wikiName": "Scarecrow Effigy"
+    },
+    "3340": {
+      "english": "Stealth Ward",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Stealth_Ward_item.png?7cccb",
+      "provider": "League of Legends Wiki",
+      "sha256": "95da15034cb9f7a7168a7e5f357ad40c4a365eb629a4bf77939ffd9c081c96c1",
+      "wikiName": "Stealth Ward"
+    },
+    "3363": {
+      "english": "Farsight Alteration",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Farsight_Alteration_item.png?9bcb2",
+      "provider": "League of Legends Wiki",
+      "sha256": "a58569b3d510fb6f017f15613e1a7c8cc6edb0928db65c519361091c3b085297",
+      "wikiName": "Farsight Alteration"
+    },
+    "3364": {
+      "english": "Oracle Lens",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Oracle_Lens_item.png?526ae",
+      "provider": "League of Legends Wiki",
+      "sha256": "f27da03f827f1ebd74cd9b163caab095793927d54919bc36ae4148ca5c2d40bd",
+      "wikiName": "Oracle Lens"
+    },
+    "3400": {
+      "english": "Your Cut",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/%27Your_Cut%27_item.png?e93ef",
+      "provider": "League of Legends Wiki",
+      "sha256": "34f61ef541e7ad1f717e5de2fe8485b39dd22eb5d554a8a4d3d81c2a46361562",
+      "wikiName": "Your Cut"
+    },
+    "3504": {
+      "english": "Ardent Censer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ardent_Censer_item.png?aa186",
+      "provider": "League of Legends Wiki",
+      "sha256": "a54b4aa7ba3361492982a630916b268ddc1402aa2a702e7d746bc232853caad4",
+      "wikiName": "Ardent Censer"
+    },
+    "3508": {
+      "english": "Essence Reaver",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Essence_Reaver_item.png?f35b1",
+      "provider": "League of Legends Wiki",
+      "sha256": "3bfb07ed70296c4fe8a78faa80a43f0f310eb461acdeaec325eca5995531e35d",
+      "wikiName": "Essence Reaver"
+    },
+    "3599": {
+      "english": "Kalista's Black Spear",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Black_Spear_item.png?2231b",
+      "provider": "League of Legends Wiki",
+      "sha256": "a5129cca9d2e92f33dd92f21a731cd568679066445a3782ec819c93723d587cf",
+      "wikiName": "Black Spear"
+    },
+    "3600": {
+      "english": "Kalista's Black Spear",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Black_Spear_item.png?2231b",
+      "provider": "League of Legends Wiki",
+      "sha256": "a5129cca9d2e92f33dd92f21a731cd568679066445a3782ec819c93723d587cf",
+      "wikiName": "Black Spear"
+    },
+    "3742": {
+      "english": "Dead Man's Plate",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dead_Man%27s_Plate_item.png?39161",
+      "provider": "League of Legends Wiki",
+      "sha256": "c8c23cd4797de8222d00fdab7be1211e1aa3400c13de3af2df47c8b81af24204",
+      "wikiName": "Dead Man's Plate"
+    },
+    "3748": {
+      "english": "Titanic Hydra",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Titanic_Hydra_item.png?bc0ba",
+      "provider": "League of Legends Wiki",
+      "sha256": "8700f2ec0473d8c16afc54eb5a281a205dbf93beec93493c58993b1d5b5ad852",
+      "wikiName": "Titanic Hydra"
+    },
+    "3801": {
+      "english": "Crystalline Bracer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Crystalline_Bracer_item.png?d1ada",
+      "provider": "League of Legends Wiki",
+      "sha256": "0263cce64b0ee77a62ab6a6b0ba6c5db332d07001765243d6552f51a0d91bde3",
+      "wikiName": "Crystalline Bracer"
+    },
+    "3802": {
+      "english": "Lost Chapter",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lost_Chapter_item.png?2d8fb",
+      "provider": "League of Legends Wiki",
+      "sha256": "faeebdfa587241703b90cdf9d032e643758965f9b5f96ebb6a9273fc97cc6f37",
+      "wikiName": "Lost Chapter"
+    },
+    "3803": {
+      "english": "Catalyst of Aeons",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Catalyst_of_Aeons_item.png?4f7f5",
+      "provider": "League of Legends Wiki",
+      "sha256": "e537bfbc0493432e1a6fb9869b94725e1548faf824c3a5e0e89587ba6f6c2ce3",
+      "wikiName": "Catalyst of Aeons"
+    },
+    "3814": {
+      "english": "Edge of Night",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Edge_of_Night_item.png?84e88",
+      "provider": "League of Legends Wiki",
+      "sha256": "815e4068ac11746fa5313887fe35244d5a691db9b5a060b9ddf6fd98df695d24",
+      "wikiName": "Edge of Night"
+    },
+    "3865": {
+      "english": "World Atlas",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/World_Atlas_item.png?12600",
+      "provider": "League of Legends Wiki",
+      "sha256": "154e5f8221b8f94729bf2bc76978c7791d3e362ad1f6ae47c0217d3d4797cd58",
+      "wikiName": "World Atlas"
+    },
+    "3866": {
+      "english": "Runic Compass",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Runic_Compass_item.png?17900",
+      "provider": "League of Legends Wiki",
+      "sha256": "d301d69bf52df81b0a0f6f962648d2f351865013b26760629d483dcecec4c311",
+      "wikiName": "Runic Compass"
+    },
+    "3867": {
+      "english": "Bounty of Worlds",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bounty_of_Worlds_item.png?27215",
+      "provider": "League of Legends Wiki",
+      "sha256": "d810cf96a7a89810f707fd479c4affd4af0b6d10bf7430088a38b2fcd6849551",
+      "wikiName": "Bounty of Worlds"
+    },
+    "3869": {
+      "english": "Celestial Opposition",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Celestial_Opposition_item.png?29dd6",
+      "provider": "League of Legends Wiki",
+      "sha256": "6adb3e1671de3650b7fe71804f803bc6eeae9857388e23d8ce2027190b87909b",
+      "wikiName": "Celestial Opposition"
+    },
+    "3870": {
+      "english": "Dream Maker",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dream_Maker_item.png?3348e",
+      "provider": "League of Legends Wiki",
+      "sha256": "89020a1d021119c6c4861fc0734737eed56a7ad46890cf0e85e2a79b8bff658b",
+      "wikiName": "Dream Maker"
+    },
+    "3871": {
+      "english": "Zaz'Zak's Realmspike",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zaz%27Zak%27s_Realmspike_item.png?12600",
+      "provider": "League of Legends Wiki",
+      "sha256": "e803ece4e104f225ac8aae7734da2689d3b949611fb145783993c32f87505a28",
+      "wikiName": "Zaz'Zak's Realmspike"
+    },
+    "3876": {
+      "english": "Solstice Sleigh",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Solstice_Sleigh_item.png?0daa7",
+      "provider": "League of Legends Wiki",
+      "sha256": "707355dc1b8c23f36c870486d2b939a7cf1d11ca86199bfdb28c970f25a366b8",
+      "wikiName": "Solstice Sleigh"
+    },
+    "3877": {
+      "english": "Bloodsong",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bloodsong_item.png?4a66f",
+      "provider": "League of Legends Wiki",
+      "sha256": "3ea1b207612a96657ef57389d4ef58bcd9470ffced33f8e7282188ccf147c466",
+      "wikiName": "Bloodsong"
+    },
+    "3901": {
+      "english": "<rarityLegendary>Fire at Will</rarityLegendary><br><subtitleLeft><silver>500 Silver Serpents</silver></subtitleLeft>",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fire_at_Will_item.png?ad610",
+      "provider": "League of Legends Wiki",
+      "sha256": "ea2636d656b452a3448efc5edf7bdf879baff0216814a1a4664c939ee630fab3",
+      "wikiName": "Fire at Will"
+    },
+    "3902": {
+      "english": "<rarityLegendary>Death's Daughter</rarityLegendary><br><subtitleLeft><silver>500 Silver Serpents</silver></subtitleLeft>",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Death%27s_Daughter_item.png?c2c2d",
+      "provider": "League of Legends Wiki",
+      "sha256": "8c3439e56d3c2275c9bcc0812276ccec4644c60543e14f1d6191bd940fd78665",
+      "wikiName": "Death's Daughter"
+    },
+    "3903": {
+      "english": "<rarityLegendary>Raise Morale</rarityLegendary><br><subtitleLeft><silver>500 Silver Serpents</silver></subtitleLeft>",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Raise_Morale_item.png?6b696",
+      "provider": "League of Legends Wiki",
+      "sha256": "2b194bf010ee8a8568097b57796b7f4b2c6ed5597cdc9fbbe27ac5b6dce80067",
+      "wikiName": "Raise Morale"
+    },
+    "3916": {
+      "english": "Oblivion Orb",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Oblivion_Orb_item.png?229ab",
+      "provider": "League of Legends Wiki",
+      "sha256": "0323d3e27a57bf60a0ed4c6e68ffbbe9da8f69fc54dcf38b683d014184c627e3",
+      "wikiName": "Oblivion Orb"
+    },
+    "4005": {
+      "english": "Imperial Mandate",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Imperial_Mandate_item.png?79c04",
+      "provider": "League of Legends Wiki",
+      "sha256": "98fa290085bd5c52818d8af292a45451b5cdadfcf26125f7e43723f6422420aa",
+      "wikiName": "Imperial Mandate"
+    },
+    "4401": {
+      "english": "Force of Nature",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Force_of_Nature_item.png?36bff",
+      "provider": "League of Legends Wiki",
+      "sha256": "d9ca20518b23017d01714f680ec5702e92805b59cdc3b4f75de4ee1dda0d9ce5",
+      "wikiName": "Force of Nature"
+    },
+    "4628": {
+      "english": "Horizon Focus",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Horizon_Focus_item.png?c7901",
+      "provider": "League of Legends Wiki",
+      "sha256": "b2d56b1df08d83ab9d90934937f802643099ab8d9163525a2cf76961f668aa6e",
+      "wikiName": "Horizon Focus"
+    },
+    "4629": {
+      "english": "Cosmic Drive",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cosmic_Drive_item.png?1065b",
+      "provider": "League of Legends Wiki",
+      "sha256": "f0d3db99434119f80cd2ad51c61735ab3703e4f3e204eb498a679896d83a5e27",
+      "wikiName": "Cosmic Drive"
+    },
+    "4630": {
+      "english": "Blighting Jewel",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Blighting_Jewel_item.png?78a8a",
+      "provider": "League of Legends Wiki",
+      "sha256": "99b3a50f8308390fb408d7fd144125dba3bf17a0dbb84efb4ea7f37f639a7a10",
+      "wikiName": "Blighting Jewel"
+    },
+    "4632": {
+      "english": "Verdant Barrier",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Verdant_Barrier_item.png?5a308",
+      "provider": "League of Legends Wiki",
+      "sha256": "1f7ecb6ea1364697aab6ea11c215ed06c04e18ad4ed99a2965bc59fb92a4ea81",
+      "wikiName": "Verdant Barrier"
+    },
+    "4633": {
+      "english": "Riftmaker",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Riftmaker_item.png?88dc9",
+      "provider": "League of Legends Wiki",
+      "sha256": "61436075d5c00b32c3ee5f6345850f3ed0b8f6e2dc7ccae3f99ad4842fd53aca",
+      "wikiName": "Riftmaker"
+    },
+    "4635": {
+      "english": "Leeching Leer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Leeching_Leer_item.png?c6035",
+      "provider": "League of Legends Wiki",
+      "sha256": "775908c43c009d2be50fb8f98a5ba8fae06909b57f532492924f5c68421be15d",
+      "wikiName": "Leeching Leer"
+    },
+    "4636": {
+      "english": "Night Harvester",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Night_Harvester_item.png?60f41",
+      "provider": "League of Legends Wiki",
+      "sha256": "accd6eb6a78c156cf73aaf6b5c8ce7bb744c723f0248f334af2a5ead32758a4e",
+      "wikiName": "Night Harvester"
+    },
+    "4637": {
+      "english": "Demonic Embrace",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Demonic_Embrace_item.png?8cc8b",
+      "provider": "League of Legends Wiki",
+      "sha256": "db706a3ebea27f700f3ee7d4a5195c4092b097839c2c92b8a4773efc02a9e4e4",
+      "wikiName": "Demonic Embrace"
+    },
+    "4641": {
+      "english": "Stirring Wardstone",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Stirring_Wardstone_item.png?065a3",
+      "provider": "League of Legends Wiki",
+      "sha256": "02e422a36f5fdcd8f0d7d8f0baafec70dbf0c36586efa7ba3559b7b2b43f29ca",
+      "wikiName": "Stirring Wardstone"
+    },
+    "4642": {
+      "english": "Bandleglass Mirror",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bandleglass_Mirror_item.png?8f2bb",
+      "provider": "League of Legends Wiki",
+      "sha256": "01431b2790566fddee9539e8598edceb77c4e54df51482b2a4f86f789d0ce7ff",
+      "wikiName": "Bandleglass Mirror"
+    },
+    "4645": {
+      "english": "Shadowflame",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shadowflame_item.png?d40d4",
+      "provider": "League of Legends Wiki",
+      "sha256": "5d2ca9e61b2d1d7a70cc45db7259aad0a77f9925e4e64fbfa8a9387eefb5fa93",
+      "wikiName": "Shadowflame"
+    },
+    "4646": {
+      "english": "Stormsurge",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Stormsurge_item.png?43e99",
+      "provider": "League of Legends Wiki",
+      "sha256": "59cc9a4b8e9e3e4b0a2d71f688eb53ddfeb08ff660dd5e7309406dbc7eb05035",
+      "wikiName": "Stormsurge"
+    },
+    "6333": {
+      "english": "Death's Dance",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Death%27s_Dance_item.png?e35e5",
+      "provider": "League of Legends Wiki",
+      "sha256": "d978b2c0e255c010d5c8bce42c4184ce23b9a22bd03d3ef8a0cb47ab9863aa86",
+      "wikiName": "Death's Dance"
+    },
+    "6609": {
+      "english": "Chempunk Chainsword",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Chempunk_Chainsword_item.png?6ffbe",
+      "provider": "League of Legends Wiki",
+      "sha256": "864118a0ff2bcf7c7f6bbaf80509b87c127065c6a5efaec0b51f529bed69661f",
+      "wikiName": "Chempunk Chainsword"
+    },
+    "6610": {
+      "english": "Sundered Sky",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sundered_Sky_item.png?50a35",
+      "provider": "League of Legends Wiki",
+      "sha256": "0f8c7310624cc01fd0924307b14d3ec67bbf9a1147a738c57846d26dcc6d2776",
+      "wikiName": "Sundered Sky"
+    },
+    "6616": {
+      "english": "Staff of Flowing Water",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Staff_of_Flowing_Water_item.png?ee424",
+      "provider": "League of Legends Wiki",
+      "sha256": "b6cee81c0a0d4b416f76d7f1617f98054810a62cc3ec144e5e480beada09d8d8",
+      "wikiName": "Staff of Flowing Water"
+    },
+    "6617": {
+      "english": "Moonstone Renewer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Moonstone_Renewer_item.png?3af19",
+      "provider": "League of Legends Wiki",
+      "sha256": "53bf2d653c702c01cdeb20c31aee51345001fac5b2b185af20326406c4ef7533",
+      "wikiName": "Moonstone Renewer"
+    },
+    "6620": {
+      "english": "Echoes of Helia",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Echoes_of_Helia_item.png?c9fef",
+      "provider": "League of Legends Wiki",
+      "sha256": "f41b543ae9cdd43966ffc4a5ba58d3864033c7ea61079e6dd97057e9bcf9ad17",
+      "wikiName": "Echoes of Helia"
+    },
+    "6621": {
+      "english": "Dawncore",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dawncore_item.png?f9423",
+      "provider": "League of Legends Wiki",
+      "sha256": "0e5e547e9a0d5ce612c119ad01448758783800b46423496fbc4fa6e6d12efcf7",
+      "wikiName": "Dawncore"
+    },
+    "663039": {
+      "english": "Atma's Reckoning",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Atma%27s_Reckoning_item.png?30cc7",
+      "provider": "League of Legends Wiki",
+      "sha256": "1f86c9e647226b87bc6038ff408e4fd42df320f0af2e276ac7a6b48e2b9a2829",
+      "wikiName": "Atma's Reckoning"
+    },
+    "663056": {
+      "english": "Demon King's Crown",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Demon_King%27s_Crown_item.png?1c1b8",
+      "provider": "League of Legends Wiki",
+      "sha256": "fd489e987cc7942d08f5c0b18447071639aa99de96ae65b330ad938182ff0b23",
+      "wikiName": "Demon King's Crown"
+    },
+    "663058": {
+      "english": "Shield of Molten Stone",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shield_of_Molten_Stone_item.png?1707e",
+      "provider": "League of Legends Wiki",
+      "sha256": "f5539d4985bf17680593a592248a078a0ed6f7365350ad721393a1d685064fa7",
+      "wikiName": "Shield of Molten Stone"
+    },
+    "663059": {
+      "english": "Cloak of Starry Night",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cloak_of_Starry_Night_item.png?34542",
+      "provider": "League of Legends Wiki",
+      "sha256": "85fabeb0cc20a48256d6ca842b32b3454616602669a135b4481697d202db525a",
+      "wikiName": "Cloak of Starry Night"
+    },
+    "663060": {
+      "english": "Sword of the Divine",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sword_of_the_Divine_item.png?2f04e",
+      "provider": "League of Legends Wiki",
+      "sha256": "13603157991b6e4fed2ff017fb57b8988374dc457f2c9d227d2d9392e248c428",
+      "wikiName": "Sword of the Divine"
+    },
+    "663064": {
+      "english": "Veigar's Talisman of Ascension",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Talisman_of_Ascension_item.png?5ec6b",
+      "provider": "League of Legends Wiki",
+      "sha256": "58d47c600b0d4d4452ea5e5cd9171054d420a9e482ff9ded9343e5bee4b305b2",
+      "wikiName": "Veigar's Talisman of Ascension"
+    },
+    "6631": {
+      "english": "Stridebreaker",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Stridebreaker_item.png?7ad27",
+      "provider": "League of Legends Wiki",
+      "sha256": "ebb36eba0293cb2e634aae96f1b77d68a894a94d8185ddf5df21e576addf3091",
+      "wikiName": "Stridebreaker"
+    },
+    "663146": {
+      "english": "Hextech Gunblade",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hextech_Gunblade_item.png?9a7b2",
+      "provider": "League of Legends Wiki",
+      "sha256": "99da627e37a4b452c08dfa27e32e2702ad25dce6c929229871f35fb26109ba9a",
+      "wikiName": "Hextech Gunblade"
+    },
+    "663172": {
+      "english": "Zephyr",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zephyr_item.png?6194a",
+      "provider": "League of Legends Wiki",
+      "sha256": "de68120ffc1e457104b7f9e5f5b7d564ba41cda5dcd19a86a7966e5d1056e9d9",
+      "wikiName": "Zephyr"
+    },
+    "663193": {
+      "english": "Gargoyle Stoneplate",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gargoyle_Stoneplate_item.png?29656",
+      "provider": "League of Legends Wiki",
+      "sha256": "1a9276c19bc4c388c34a111eff76268953ef3accd91b755e725b7c401c83015d",
+      "wikiName": "Gargoyle Stoneplate"
+    },
+    "664011": {
+      "english": "Sword of Blossoming Dawn",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sword_of_Blossoming_Dawn_item.png?620ae",
+      "provider": "League of Legends Wiki",
+      "sha256": "4ff25287f8594c3fa9ceace0911ae789a1e1f63777597f51bb787dda74e06fc7",
+      "wikiName": "Sword of Blossoming Dawn"
+    },
+    "664403": {
+      "english": "The Golden Spatula",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Spatula_item.png?065a1",
+      "provider": "League of Legends Wiki",
+      "sha256": "96d66d54828ac7ef77d593757fcbb418f004364f925f60ca7610fe3981837912",
+      "wikiName": "The Golden Spatula"
+    },
+    "664644": {
+      "english": "Crown of the Shattered Queen",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Crown_of_the_Shattered_Queen_item.png?ac4af",
+      "provider": "League of Legends Wiki",
+      "sha256": "72cf7a32d50ab1c54288efdefc7f11886dd7480660af5db87d08d444380472e4",
+      "wikiName": "Crown of the Shattered Queen"
+    },
+    "6653": {
+      "english": "Liandry's Torment",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Liandry%27s_Torment_item.png?fc551",
+      "provider": "League of Legends Wiki",
+      "sha256": "bf02c84391d3f44805e3365a937543c3fd3bd24c7fd246612eddb35e0457b8a0",
+      "wikiName": "Liandry's Torment"
+    },
+    "6655": {
+      "english": "Luden's Echo",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Luden%27s_Tempest_item.png?e80fc",
+      "provider": "League of Legends Wiki",
+      "sha256": "7d7acdfcda9fc4bd5f03e4e8569167db7fb66dbd05ce4278f9b0c55daaffc92b",
+      "wikiName": "Luden's Echo"
+    },
+    "6657": {
+      "english": "Rod of Ages",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rod_of_Ages_item.png?2e093",
+      "provider": "League of Legends Wiki",
+      "sha256": "f0abb47b753feb2cc757bc4b5fac146c541fe2ada2ff734407f7f4bceda50358",
+      "wikiName": "Rod of Ages"
+    },
+    "6660": {
+      "english": "Bami's Cinder",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bami%27s_Cinder_item.png?8840c",
+      "provider": "League of Legends Wiki",
+      "sha256": "65535834e73c423f8e3155c5c0b28ebe86c7828f68fe31a1f88cfe34e47e62d6",
+      "wikiName": "Bami's Cinder"
+    },
+    "6662": {
+      "english": "Iceborn Gauntlet",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Iceborn_Gauntlet_item.png?9ef3e",
+      "provider": "League of Legends Wiki",
+      "sha256": "f3ad8c9d4e256dde8a1b76d3809cae4546fa712b71d56c9ea3c9f31811559d1d",
+      "wikiName": "Iceborn Gauntlet"
+    },
+    "6664": {
+      "english": "Hollow Radiance",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hollow_Radiance_item.png?10a26",
+      "provider": "League of Legends Wiki",
+      "sha256": "a740083ee4d3b3e88a736d0558ed9b629b41c1373fe5a1a8b3bfb9f0e1aab124",
+      "wikiName": "Hollow Radiance"
+    },
+    "6665": {
+      "english": "Jak'Sho, The Protean",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Jak%27Sho%2C_The_Protean_item.png?d70c8",
+      "provider": "League of Legends Wiki",
+      "sha256": "a1dbe68b7bd3f0ad0e282313e6f7752c8749be567cc6cfbc3fe5d514f9ffab08",
+      "wikiName": "Jak'Sho, The Protean"
+    },
+    "6670": {
+      "english": "Noonquiver",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Noonquiver_item.png?e4a41",
+      "provider": "League of Legends Wiki",
+      "sha256": "ebc466abc107956a3cdf62a6c859f3f69502202b7839049c5fb890fd50921404",
+      "wikiName": "Noonquiver"
+    },
+    "667101": {
+      "english": "Gambler's Blade",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gambler%27s_Blade_item.png?02555",
+      "provider": "League of Legends Wiki",
+      "sha256": "e4d77260ede7f8b0142644f80582f29c367c926ac73736ee04e3ea463ed638af",
+      "wikiName": "Gambler's Blade"
+    },
+    "667109": {
+      "english": "Cruelty",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Silvermere_Dawn_item.png?2d331",
+      "provider": "League of Legends Wiki",
+      "sha256": "19985cd4c16bb8a87a4d52c763f68809036c9f761b6df16f5d75714a7eecfa44",
+      "wikiName": "Cruelty"
+    },
+    "667112": {
+      "english": "Flesheater",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Flesheater_item.png?f18c2",
+      "provider": "League of Legends Wiki",
+      "sha256": "80b0c2ee6e268ca8ab75ae391cc7a0a9d0ebfae2bb71e69543af0f8e3bbea54f",
+      "wikiName": "Flesheater"
+    },
+    "6672": {
+      "english": "Kraken Slayer",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kraken_Slayer_item.png?fec7c",
+      "provider": "League of Legends Wiki",
+      "sha256": "bde38b78d7e8309643085898173c6eb1a85b75fdee54b2b9786e0c453b186596",
+      "wikiName": "Kraken Slayer"
+    },
+    "6673": {
+      "english": "Immortal Shieldbow",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Immortal_Shieldbow_item.png?548a5",
+      "provider": "League of Legends Wiki",
+      "sha256": "dde442e81677118b8aad3984485cb308589da2bc5eba7b9d2815786eaf5a2536",
+      "wikiName": "Immortal Shieldbow"
+    },
+    "6675": {
+      "english": "Navori Flickerblade",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Navori_Flickerblade_item.png?35cbf",
+      "provider": "League of Legends Wiki",
+      "sha256": "3ab9a335b38332c287dc0d25af5e6beaac35f29dc202eeb6e087b496ebb4b522",
+      "wikiName": "Navori Flickerblade"
+    },
+    "6676": {
+      "english": "The Collector",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/The_Collector_item.png?323cc",
+      "provider": "League of Legends Wiki",
+      "sha256": "ea53c453e5f7d4d94985ee47d3625ec000fe614d935c2ae5897c142ed50094b9",
+      "wikiName": "The Collector"
+    },
+    "667666": {
+      "english": "The Collector",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/The_Collector_item.png?323cc",
+      "provider": "League of Legends Wiki",
+      "sha256": "ea53c453e5f7d4d94985ee47d3625ec000fe614d935c2ae5897c142ed50094b9",
+      "wikiName": "The Collector"
+    },
+    "6690": {
+      "english": "Rectrix",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rectrix_item.png?bb085",
+      "provider": "League of Legends Wiki",
+      "sha256": "77c837c86240cc0b942945f930b6febb7ec899802f8e1a8aaab7b073f24aaf4a",
+      "wikiName": "Rectrix"
+    },
+    "6692": {
+      "english": "Eclipse",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Eclipse_item.png?1ad61",
+      "provider": "League of Legends Wiki",
+      "sha256": "367d17c56c1c5f54c5c4b0c0ef38201d3cb4e7885d8e4445e939dc9c1cce8cb2",
+      "wikiName": "Eclipse"
+    },
+    "6693": {
+      "english": "Prowler's Claw",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Prowler%27s_Claw_item.png?d9d92",
+      "provider": "League of Legends Wiki",
+      "sha256": "5d609526daef9c12c94574efb5a0de00ef1325eb394319d9081085082ef1c950",
+      "wikiName": "Prowler's Claw"
+    },
+    "6694": {
+      "english": "Serylda's Grudge",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Serylda%27s_Grudge_item.png?16d25",
+      "provider": "League of Legends Wiki",
+      "sha256": "ce3dff3506db2b43748fc32be42d5eef2ae147fac72ed91edd336c87403a534d",
+      "wikiName": "Serylda's Grudge"
+    },
+    "6695": {
+      "english": "Serpent's Fang",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Serpent%27s_Fang_item.png?ccb4b",
+      "provider": "League of Legends Wiki",
+      "sha256": "71a2efa4cf0fc6942b2e558572ea90c56165f690c34c0e3391561d2b3d17ae5b",
+      "wikiName": "Serpent's Fang"
+    },
+    "6696": {
+      "english": "Axiom Arc",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Axiom_Arc_item.png?faf11",
+      "provider": "League of Legends Wiki",
+      "sha256": "3cca861ed1a252fc3d6da4e52602472a25f4d031089fcc6f3391dfc0b0c3b692",
+      "wikiName": "Axiom Arc"
+    },
+    "6697": {
+      "english": "Hubris",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hubris_item.png?ffd9f",
+      "provider": "League of Legends Wiki",
+      "sha256": "137391d37076b6bd07eb73dd68704191fd738b85461e1a510042f27bb3c35799",
+      "wikiName": "Hubris"
+    },
+    "6698": {
+      "english": "Profane Hydra",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Profane_Hydra_item.png?fe7b8",
+      "provider": "League of Legends Wiki",
+      "sha256": "e4c123d12c65bc79078895d118732e4e457804b8a3aa683198146788d88e80cf",
+      "wikiName": "Profane Hydra"
+    },
+    "6699": {
+      "english": "Voltaic Cyclosword",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Voltaic_Cyclosword_item.png?fa25b",
+      "provider": "League of Legends Wiki",
+      "sha256": "5c4006ce3a2ebae731f13b18e24a16c8b569778807f97dc8b7a9fad5212ee0e5",
+      "wikiName": "Voltaic Cyclosword"
+    },
+    "6701": {
+      "english": "Opportunity",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Opportunity_item.png?9c86f",
+      "provider": "League of Legends Wiki",
+      "sha256": "bb263c7d5ccf10c25b5fc226f3f83840710a2f4c72e4ac04d86e522f19bea4c5",
+      "wikiName": "Opportunity"
+    },
+    "7050": {
+      "english": "Gangplank Placeholder",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/7050.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "a5316551de6added40bc9bed29296e8c2295ca70c2c05b378385a272b07db652",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "771500": {
+      "english": "Penetrating Bullets",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/img/item/771500.png",
+      "provider": "Riot Data Dragon",
+      "sha256": "504a65c8e2e5a203bcf18dd8c18b14d869f015f04c1f6c6d6cce558276402b4a",
+      "reason": "No matching icon in wiki Item catalog"
+    },
+    "8001": {
+      "english": "Anathema's Chains",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Anathema%27s_Chains_item.png?7d9c5",
+      "provider": "League of Legends Wiki",
+      "sha256": "d4ba2a38fccfe86005c5be58191da753f9964d88492102a8d859bc26acecb1db",
+      "wikiName": "Anathema's Chains"
+    },
+    "8010": {
+      "english": "Bloodletter's Curse",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bloodletter%27s_Curse_item.png?c79ca",
+      "provider": "League of Legends Wiki",
+      "sha256": "fd982547b3d55df5ca6f605310609cb8efcee3ecdc91a9d037c822a01cb87516",
+      "wikiName": "Bloodletter's Curse"
+    },
+    "8020": {
+      "english": "Abyssal Mask",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Abyssal_Mask_item.png?aac97",
+      "provider": "League of Legends Wiki",
+      "sha256": "66ecb10290b64a0c95656b4cb57ef844048d3d356f1397891d9bd3ed169adb38",
+      "wikiName": "Abyssal Mask"
+    }
+  }
+}

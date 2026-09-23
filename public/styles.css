@@ -8,3 +8,135 @@
 .lookup-section{padding:24px 0 0}.lookup-section form{display:grid;grid-template-columns:minmax(200px,1fr) 125px 200px auto;gap:14px;align-items:end;padding:20px;background:#1c1d26;border:1px solid #454056;border-radius:8px}.lookup-section label{font-size:.875rem;color:#bdbacd;display:flex;flex-direction:column;gap:6px}.lookup-section input,.lookup-section select{width:100%;font-size:1rem;min-height:46px}.lookup-section .primary-btn{min-height:46px}.lookup-section>p{margin:10px 2px 0}.lookup-error{color:#ffb2b8!important}.participants{margin:20px 0 12px;padding-top:16px;border-top:1px solid var(--border)}.participants h3{font-size:1rem;margin:0 0 4px}.participant-scroll{overflow-x:auto;max-width:100%;border:1px solid #393e4d;border-radius:5px}.participants table{border-collapse:collapse;width:100%;min-width:740px;font-size:.875rem}.participants th{text-align:left;padding:11px 12px;background:#232634;font-size:.75rem;color:#b8c0d2;font-weight:500;white-space:nowrap}.participants td{padding:11px 12px;border-top:1px solid #2b3040;font-size:.875rem;white-space:nowrap}.participants .player-row{background:#302d42}.participants .player-row td:first-child{border-left:3px solid var(--lime)}
 @media(max-width:950px){.lookup-section form{grid-template-columns:1fr 130px;gap:12px}.lookup-section .lookup-id{grid-column:1}.lookup-section .primary-btn{align-self:end}.lookup-section form label:nth-child(3){grid-column:1}}
 @media(max-width:520px){.lookup-section{padding-top:18px}.lookup-section form{padding:15px;grid-template-columns:1fr 1fr}.lookup-section .lookup-id{grid-column:1/-1}.lookup-section form label:nth-child(3){grid-column:2}.lookup-section .primary-btn{grid-column:1/-1}.lookup-section label{min-width:0}.lookup-section input,.lookup-section select{min-width:0;padding:9px;font-size:1rem}}
+
+/* Champion portraits retain the existing responsive avatar sizes. */
+.champion-avatar{position:relative;overflow:hidden}
+.champion-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.participant-champion{display:flex;align-items:center;gap:10px}
+
+/* Each side has a separate scoreboard with a persistent team identity. */
+.participants-heading{margin-bottom:18px}
+.participants-heading>p{margin:0}
+.participant-teams{display:grid;gap:28px}
+.participant-team{--team-color:#c0bbd2;--team-border:#494353;--team-header:#24212d;--team-surface:#1b1921;--team-columns:#25222e;--team-line:#38333f;border:1px solid var(--team-border);border-top:4px solid var(--team-color);border-radius:10px;overflow:hidden;background:var(--team-surface);min-width:0}
+.participant-team.team-blue{--team-color:#8ac2ff;--team-border:#365577;--team-header:#182f47;--team-surface:#141e2b;--team-columns:#1b293b;--team-line:#2b3c51}
+.participant-team.team-red{--team-color:#ffa0aa;--team-border:#79424e;--team-header:#3e222e;--team-surface:#281b23;--team-columns:#34232e;--team-line:#4b303e}
+.participant-team-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:var(--team-header);border-bottom:1px solid var(--team-border)}
+.participant-team-title{display:flex;align-items:center;gap:12px;min-width:0}
+.team-marker{width:12px;height:28px;flex:0 0 12px;border-radius:3px;background:var(--team-color)}
+.participant-team-title h4{margin:0;color:var(--team-color);font-size:1.06rem;font-weight:750;letter-spacing:.6px;text-transform:uppercase;line-height:1.4}
+.participant-team-title p{margin:2px 0 0;color:#c4c9d5;font-size:.8125rem}
+.your-team-badge{border:1px solid var(--team-color);border-radius:20px;padding:4px 10px;color:var(--team-color);font-size:.75rem;font-weight:650;white-space:nowrap}
+.participant-team .participant-scroll{border:0;border-radius:0}
+.participant-team .participant-scroll:focus-visible{outline:2px solid var(--team-color);outline-offset:-3px}
+.participant-team table{min-width:760px}
+.participant-team th{background:var(--team-columns);color:#d1d5e0;padding:12px 16px;font-weight:600}
+.participant-team td{padding:13px 16px;border-top:1px solid var(--team-line)}
+.participant-team tbody tr:nth-child(even){background:rgba(255,255,255,.025)}
+.participant-team tbody tr:hover{background:rgba(255,255,255,.055)}
+.participant-team .player-row,.participant-team .player-row:nth-child(even){background:rgba(196,242,121,.08)}
+.participant-team .player-row td:first-child{border-left:0;box-shadow:inset 3px 0 var(--lime)}
+.participant-name{display:flex;align-items:center;gap:9px}
+.participant-name>strong{font-weight:500}
+.participant-you{padding:1px 6px;border:1px solid #677b47;border-radius:4px;background:#2b3620;color:var(--lime);font-size:.6875rem;font-weight:650}
+.team-scroll-hint{display:none}
+@media(max-width:800px){.team-scroll-hint{display:block;margin:0 0 14px;font-size:.75rem}}
+@media(max-width:520px){.participant-teams{gap:24px}.participant-team-header{padding:15px 13px;gap:10px}.participant-team-title{gap:9px}.participant-team-title h4{font-size:.9375rem}.your-team-badge{font-size:.6875rem;padding:4px 8px}.participant-team td,.participant-team th{padding:11px 12px}}
+
+/* Compact match cards: build, performance, lobby and rosters remain distinct. */
+.match-card{border-radius:12px;margin-bottom:12px;background:#1b2535;border-color:#354862;border-left:4px solid #7aaeff}
+.match-card.defeat{background:#30212d;border-color:#553743;border-left-color:#ef899b}
+.match-card>summary{grid-template-columns:100px minmax(224px,1.25fr) 110px minmax(108px,.7fr) minmax(164px,1fr) 18px;grid-template-areas:"outcome build performance lobby rosters expand";gap:14px;padding:17px 16px;min-height:140px}
+.match-card>summary>*{min-width:0}
+.card-outcome{grid-area:outcome;display:flex;flex-direction:column;align-self:stretch;justify-content:center;gap:3px;padding-right:12px;border-right:1px solid #ffffff13}
+.card-outcome>strong{font-size:.79rem;letter-spacing:1.1px;color:#9cc8ff}
+.defeat .card-outcome>strong{color:#ffadb9}
+.card-queue{font-size:.75rem;font-weight:600;color:#d3d9e5}
+.card-date{font-size:.6875rem;color:#aab2c4;line-height:1.5;margin-top:5px}
+.card-duration{font-size:.8125rem;font-weight:650;font-variant-numeric:tabular-nums;color:#e1e5ef}
+.card-build{grid-area:build;display:flex;flex-direction:column;gap:11px}
+.card-champion-line{display:flex;align-items:center;gap:9px}
+.card-portrait{position:relative;flex:0 0 49px}
+.card-portrait .champion-avatar{width:49px;height:49px;border-radius:10px;flex-basis:49px;border-color:#8e7baa}
+.champion-level{position:absolute;right:-3px;bottom:-4px;min-width:19px;height:19px;padding:0 3px;border:1px solid #7b728b;border-radius:6px;background:#151821;text-align:center;line-height:17px;font-size:.625rem;font-weight:700;color:#fff}
+.card-champion-label{display:flex;flex-direction:column;gap:1px;flex:1;min-width:0}
+.card-champion-label>strong{font-size:.875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-champion-label>span{font-size:.6875rem;color:#aeb7c8}
+.game-icon,.equipment-slot{position:relative;display:inline-grid;place-items:center;width:26px;height:26px;flex:0 0 26px;border:1px solid #ffffff26;border-radius:5px;background:#121621;overflow:hidden;vertical-align:middle}
+.game-icon img,.equipment-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.game-icon-fallback{font-size:.75rem;color:#8790a5;line-height:1}
+.game-icon.is-empty,.equipment-slot.is-empty{background:#ffffff05;border-color:#ffffff12}
+.spell-pair,.rune-pair{display:flex;flex-direction:column;gap:3px}
+.card-champion-line .game-icon{width:23px;height:23px;flex-basis:23px;border-radius:4px}
+.rune-pair .game-icon{border-radius:50%;border-color:#ffffff14;background:#12141d}
+.equipment-row{display:flex;gap:4px;align-items:center}
+.equipment-slot{width:28px;height:28px;flex-basis:28px;border-radius:5px}
+.trinket-slot{margin-left:3px;border-color:#ad97605e;border-radius:50%}
+.card-performance{grid-area:performance;display:flex;flex-direction:column;gap:3px}
+.card-kda{font-size:1.08rem;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+.card-kda em{font-style:normal;color:#a4a8b7;font-weight:500}
+.card-ratio{font-size:.72rem;color:#d8c9ff;font-weight:650}
+.card-cs{margin-top:7px;font-size:.75rem;font-weight:600}
+.card-cs>span,.card-kp>span{color:#aab3c3;font-weight:400}
+.card-kp{font-size:.6875rem;color:#d2d9e6;white-space:nowrap}
+.card-lobby{grid-area:lobby;align-self:center;min-width:0}
+.lobby-rank{display:flex;align-items:center;gap:7px;font-size:.6875rem;line-height:1.5}
+.lobby-rank>img{width:28px;height:28px;object-fit:contain;flex-shrink:0}
+.lobby-rank>span{display:flex;flex-direction:column;min-width:0}
+.lobby-rank strong{color:#e2d7b7;font-size:.78rem}
+.lobby-rank>span>span,.rank-pending>span{color:#aeb5c5;font-size:.625rem}
+.rank-pending,.rank-unavailable{flex-direction:column;align-items:flex-start;gap:5px}
+.rank-unavailable strong{font-size:.6875rem;font-weight:500;color:#aeb5c5}
+.rank-load-button{border:1px solid #80739e;border-radius:6px;background:#b6a4f70d;color:#ddcdfd;font-size:.6875rem;font-weight:650;padding:6px 9px;line-height:1.4}
+.rank-load-button:hover{background:#b6a4f725}
+.rank-pending .rank-error{color:#ffb2bd;overflow-wrap:anywhere}
+.rank-loading{color:#d8c9ff}
+.card-rosters{grid-area:rosters;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-left:10px;border-left:1px solid #ffffff14}
+.card-roster{display:flex;flex-direction:column;gap:3px;min-width:0}
+.roster-player{display:flex;align-items:center;gap:5px;min-width:0;height:19px}
+.roster-player .champion-avatar{width:18px;height:18px;flex:0 0 18px;border-radius:4px;font-size:.5rem}
+.roster-player>span:last-child{font-size:.625rem;color:#adb7ca;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.roster-blue .champion-avatar{border-color:#628bbf}
+.roster-red .champion-avatar{border-color:#b77682}
+.roster-player.is-you>span:last-child{color:#e6f9c7;font-weight:700}
+.card-roster-empty{grid-area:rosters;font-size:.75rem;color:#bdc4d2;padding-left:12px;border-left:1px solid #ffffff14}
+.card-roster-empty>span{font-size:.6875rem;color:#8f99ac}
+.card-expand{grid-area:expand;align-self:stretch;display:flex;align-items:center;justify-content:center;color:#c1afd8;border-left:1px solid #ffffff0d}
+.card-expand .chevron{font-size:1.25rem}
+.match-card .match-detail{background:#151923;border-top:1px solid #ffffff13;padding:22px}
+.match-loadout-detail{padding:18px;border:1px solid #3b3b50;border-radius:10px;background:#1d2030;margin-bottom:22px}
+.loadout-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.loadout-heading h3{font-size:.875rem;margin:0;color:#e5def5}
+.loadout-heading>span{font-size:.6875rem;color:#a9aec0}
+.loadout-inventory{display:flex;align-items:center;gap:20px}
+.loadout-inventory>.spell-pair{flex-direction:row;border-left:1px solid #454053;padding-left:20px}
+.loadout-inventory .game-icon,.loadout-inventory .equipment-slot{width:34px;height:34px;flex-basis:34px}
+.rune-page{margin-top:20px;padding-top:18px;border-top:1px solid #3a3549}
+.rune-paths{display:grid;grid-template-columns:1.1fr 1fr .9fr;gap:20px}
+.rune-path{min-width:0}
+.rune-path h4{font-size:.75rem;font-weight:500;color:#b7accd;margin:0 0 12px}
+.rune-selections{display:flex;flex-direction:column;gap:9px}
+.rune-selection{display:flex;align-items:center;gap:9px;font-size:.72rem;color:#d8dbe7;line-height:1.45}
+.rune-selection .game-icon{width:30px;height:30px;flex-basis:30px;border-radius:50%;background:#151621}
+.rune-path-name{margin-bottom:14px}
+.rune-path-name .rune-selection{font-weight:700;color:#e7d5ff}
+.rune-path-name .game-icon{border-color:#847394}
+.participant-loadout{display:flex;gap:10px;align-items:center}
+.participant-loadout>.spell-pair{flex-direction:row}
+.participant-loadout .game-icon,.participant-loadout .equipment-slot{width:22px;height:22px;flex-basis:22px}
+.participant-loadout .equipment-row{gap:3px}
+.participant-team table{min-width:1060px}
+@media(max-width:1300px) and (min-width:1101px){.match-card>summary{grid-template-columns:92px minmax(224px,1fr) 120px 174px 16px;grid-template-areas:"outcome build performance rosters expand" "outcome build lobby rosters expand";gap:7px 12px}.card-cs{margin-top:3px}.card-lobby{align-self:start}.lobby-rank>img{width:22px;height:22px}.lobby-rank>span>span{font-size:.6rem}}
+@media(max-width:1100px) and (min-width:721px){.match-card>summary{grid-template-columns:90px minmax(220px,1fr) 128px 16px;grid-template-areas:"outcome build performance expand" "lobby rosters rosters expand";gap:15px}.card-rosters{display:flex;gap:18px;border:0;padding:0}.card-roster{flex-direction:row;gap:5px}.roster-player{height:22px}.roster-player .champion-avatar{width:22px;height:22px;flex-basis:22px}.roster-player>span:last-child{display:none}.card-roster-empty{grid-area:rosters}.card-kda{font-size:1.15rem}}
+@media(max-width:720px){.match-card>summary{grid-template-columns:1fr 1fr 16px;grid-template-areas:"outcome performance expand" "build build expand" "lobby lobby expand" "rosters rosters expand";gap:13px 10px;padding:15px}.card-outcome{border:0;padding:0;gap:2px}.card-date{margin-top:2px}.card-duration{font-size:.78rem}.card-performance{align-items:flex-end;align-self:start}.card-kda{font-size:1.05rem}.card-cs{margin-top:2px}.card-build{padding-top:12px;border-top:1px solid #ffffff16;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:13px}.card-champion-line{flex:1;min-width:210px;max-width:320px}.card-portrait,.card-portrait .champion-avatar{width:45px;height:45px;flex-basis:45px}.card-champion-label{min-width:80px}.card-lobby{border-bottom:1px solid #ffffff14;padding-bottom:12px}.lobby-rank{font-size:.72rem}.rank-pending{flex-direction:row;align-items:center;gap:10px}.rank-pending>span{max-width:180px}.card-rosters{padding:0;border:0;gap:18px}.roster-player{height:21px}.roster-player>span:last-child{font-size:.69rem}.roster-player .champion-avatar{width:20px;height:20px;flex-basis:20px}.card-expand{border:0}.match-card .match-detail{padding:15px 12px}.match-loadout-detail{padding:14px 12px}.loadout-inventory{gap:12px;flex-wrap:wrap}.loadout-inventory>.spell-pair{padding-left:0;border:0}.loadout-inventory .equipment-slot,.loadout-inventory .game-icon{width:28px;height:28px;flex-basis:28px}.rune-paths{grid-template-columns:1fr 1fr;gap:18px 12px}.stat-shards{grid-column:1/-1}.stat-shards .rune-selections{flex-direction:row;flex-wrap:wrap;gap:14px}.stat-shards .rune-selection{flex:1;min-width:110px}.rune-selection{font-size:.6875rem;gap:7px}.rune-selection .game-icon{width:26px;height:26px;flex-basis:26px}}
+@media(max-width:380px){.match-card>summary{padding:12px;column-gap:7px}.card-champion-line{gap:7px;min-width:195px}.card-champion-label{min-width:65px}.card-kp{font-size:.625rem}.equipment-slot{width:26px;height:26px;flex-basis:26px}.card-rosters{gap:10px}}
+
+/* Persistent, accessible language choice in the header. */
+.language-switch{display:inline-flex;align-items:center;gap:3px;flex-shrink:0;padding:3px;border:1px solid #494456;border-radius:8px;background:#1c1b25}
+.language-switch button{min-width:36px;min-height:34px;padding:5px 8px;border:0;border-radius:5px;background:transparent;color:#b8b4c8;font-size:.75rem;font-weight:700;line-height:1.2}
+.language-switch button[aria-pressed="true"]{background:#b6a4f7;color:#191524;box-shadow:0 1px 4px #0003}
+.language-switch button:hover{color:#f1eaff;background:#393147}
+.language-switch button[aria-pressed="true"]:hover{color:#191524;background:#cabcfb}
+.header-inner{gap:20px}.language-switch{margin-left:0}
+@media(max-width:1100px){.site-header .private{display:none}.language-switch{margin-left:auto}}
+@media(max-width:720px){.header-inner{flex-wrap:wrap;gap:12px}.language-switch button{min-width:38px;min-height:36px}.language-switch{margin-left:auto}.header-inner .game-label{display:none}}

@@ -50,3 +50,11 @@ test('missing and rejected keys produce actionable sanitized responses',async()=
  const missing=await handleApi(request(),{});assert.equal(missing.status,503);assert.equal((await missing.json()).error.code,'RIOT_NOT_CONFIGURED');
  const rejected=await handleApi(request(),{RIOT_API_KEY:'fixture-secret'},{fetchImpl:async()=>Response.json({message:'fixture-secret'},{status:403})});const text=await rejected.text();assert.ok(text.includes('RIOT_KEY_REJECTED'));assert.ok(!text.includes('fixture-secret'));
 });
+test('match detail preserves seconds and loadout IDs, distinguishing empty and missing slots',()=>{
+ const base=rawMatch();const p={...base.info.participants[2],champLevel:16,summoner1Id:4,summoner2Id:14,item0:3157,item1:0,item2:3089,item6:3363,perks:{styles:[{description:'primaryStyle',style:8100,selections:[{perk:8112},{perk:8139},{perk:8138},{perk:8106}]},{description:'subStyle',style:8200,selections:[{perk:8226},{perk:8210}]}],statPerks:{offense:5008,flex:5008,defense:5001}}};
+ const source={...base,info:{...base.info,gameDuration:1873,participants:base.info.participants.map((v,i)=>i===2?p:v)}};
+ const {detail}=mapRiotMatch(source,puuid,'OC1_123');const player=detail.participants.find(v=>v.isPlayer);
+ assert.equal(detail.durationSeconds,1873);assert.equal(player.championLevel,16);assert.deepEqual(player.summonerSpells,[4,14]);assert.deepEqual(player.items,[3157,0,3089,null,null,null,3363]);
+ assert.deepEqual(player.runes,{primaryStyle:8100,secondaryStyle:8200,primary:[8112,8139,8138,8106],secondary:[8226,8210],shards:[5008,5008,5001]});
+ const unknown=detail.participants.find(v=>!v.isPlayer);assert.equal(unknown.championLevel,null);assert.deepEqual(unknown.summonerSpells,[null,null]);assert.equal(unknown.runes,null);
+});
