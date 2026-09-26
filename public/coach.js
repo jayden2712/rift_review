@@ -3,6 +3,7 @@ export const RULES = Object.freeze({version:'1.0',csReview:{Top:6,Jungle:5,Mid:6
 const fixed=n=>n.toFixed(1);
 export function generateReport(m) {
  const metrics={kda:m.deaths===0?null:(m.kills+m.assists)/m.deaths,csPerMin:m.cs===null?null:m.cs/m.durationMinutes,visionPerMin:m.visionScore===null?null:m.visionScore/m.durationMinutes,participation:m.teamKills?((m.kills+m.assists)/m.teamKills):null,deathsPer30:m.deaths*30/m.durationMinutes};
+ if(m.queue==='ARAM Mayhem')return {engine:'ARAM Mayhem statistics',coachingAvailable:false,match:m,metrics,strengths:[],mistakes:[],priorities:[],limitations:[],summary:''};
  const strengths=[],mistakes=[];
  const add=(id,title,evidence,interpretation,action,target,weight)=>mistakes.push({id,title,evidence,interpretation,action,target,weight});
  if(metrics.deathsPer30>=RULES.deathsReview) add('survival','Stay available for the next play',`${m.deaths} deaths in ${m.durationMinutes} minutes · ${fixed(metrics.deathsPer30)} per 30 min.`,`This crosses the demo review threshold of ${RULES.deathsReview} deaths per 30 minutes. Death causes need replay review.`, m.role==='Support'?'Review your last three deaths. Check whether each engage gave your team a useful trade, and identify an exit before committing.':'Review your last three deaths. Before the next fight, identify an exit and check which opponents are visible.', 'Tag three deaths as avoidable, a useful trade, or unclear. Pick one repeated cause to work on.',100);

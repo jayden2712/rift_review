@@ -12,7 +12,7 @@ export class RiotError extends Error {
   constructor(code,message,status=502,retryAfter=0){super(message);this.name='RiotError';this.code=code;this.status=status;this.retryAfter=retryAfter;}
 }
 export function parseLookup(input) {
-  if(!input||typeof input!=='object')throw new RiotError('INVALID_INPUT','Nhập Riot ID và chọn server.',400);
+  if(!input||typeof input!=='object'||Array.isArray(input))throw new RiotError('INVALID_INPUT','Nhập Riot ID và chọn server.',400);
   const riotId=typeof input.riotId==='string'?input.riotId.trim().normalize('NFC'):'';
   const parts=riotId.split('#');
   if(parts.length!==2||!parts[0].trim()||!parts[1].trim()||riotId.length>100||/[\u0000-\u001f\u007f]/u.test(riotId))throw new RiotError('INVALID_ID','Riot ID cần dạng Tên#TAG. Giữ đúng dấu và khoảng trắng.',400);
@@ -20,7 +20,11 @@ export function parseLookup(input) {
   if(!Object.hasOwn(RIOT_REGIONS,region))throw new RiotError('INVALID_REGION','Chọn server của tài khoản League of Legends.',400);
   const count=input.count===undefined?20:Number(input.count);
   if(![10,20].includes(count))throw new RiotError('INVALID_COUNT','Mỗi lần tra cứu lấy 10 hoặc 20 trận gần nhất.',400);
-  return {gameName:parts[0].trim(),tagLine:parts[1].trim(),region,count};
+  const mode=input.mode===undefined?'sr':input.mode;
+  if(!['sr','mayhem'].includes(mode))throw new RiotError('INVALID_MODE','Chọn Summoner’s Rift hoặc ARAM Mayhem.',400);
+  const start=input.start===undefined?0:input.start;
+  if(!Number.isInteger(start)||start<0||start>490||start+count>500)throw new RiotError('INVALID_START','Vị trí tải lịch sử phải nằm trong phạm vi 500 trận.',400);
+  return {gameName:parts[0].trim(),tagLine:parts[1].trim(),region,count,mode,start};
 }
 
 // Node has no Cache API. Keep local responses bounded and honor upstream TTLs.
@@ -69,14 +73,15 @@ export function createRiotClient({key,origin,cache=null,fetchImpl=fetch,sleep=sl
     await reserve(route);
     let response;
     try{networkRequests++;response=await fetchImpl(`https://${route}.api.riotgames.com${path}`,{headers:{'X-Riot-Token':secret,'Accept':'application/json'},redirect:'error',signal:AbortSignal.timeout(15000)});}
-    catch{throw new RiotError('RIOT_UNAVAILABLE','Không kết nối được Riot. Dữ liệu đang xem vẫn được giữ nguyên. Thử lại sau.',502);}
+    catch(error){if(error?.name==='TimeoutError'||error?.name==='AbortError')throw new RiotError('RIOT_TIMEOUT','Riot phản hồi quá lâu. Dữ liệu đang xem vẫn được giữ nguyên; thử lại sau.',504);throw new RiotError('RIOT_UNAVAILABLE','Không kết nối được Riot. Dữ liệu đang xem vẫn được giữ nguyên. Thử lại sau.',502);}
     if(response.status===429){
       const raw=response.headers.get('Retry-After');
       const seconds=raw&&/^\d+(?:\.\d+)?$/.test(raw)?Math.max(1,Math.ceil(Number(raw))):raw&&Number.isFinite(Date.parse(raw))?Math.max(1,Math.ceil((Date.parse(raw)-now())/1000)):120;
       state.get(route).blockedUntil=now()+seconds*1000;
       throw new RiotError('RIOT_RATE_LIMIT','Riot giới hạn số yêu cầu. Hãy đợi rồi tra cứu lại.',429,seconds);
     }
-    if(response.status===401||response.status===403)throw new RiotError('RIOT_KEY_REJECTED','Riot không chấp nhận API key hiện tại. Cần cập nhật key trong phần cấu hình máy chủ.',502);
+    if(response.status===401)throw new RiotError('RIOT_AUTH_FAILED','Riot không xác thực được yêu cầu. Kiểm tra API key trong cấu hình máy chủ.',502);
+    if(response.status===403)throw new RiotError('RIOT_ACCESS_DENIED','Riot từ chối quyền truy cập yêu cầu này. Kiểm tra quyền truy cập và cấu hình máy chủ.',502);
     if(response.status===404)throw new RiotError('RIOT_NOT_FOUND','Không tìm thấy tài khoản hoặc trận trên server đã chọn.',404);
     if(response.status>=500&&attempt===0){await sleep(600);return get(route,path,ttl,1);}
     if(!response.ok)throw new RiotError('RIOT_RESPONSE_ERROR',`Riot chưa trả được dữ liệu (HTTP ${response.status}). Thử lại sau.`,502);
@@ -101,29 +106,33 @@ function runeView(perks) {
     primary:selections(primary,4),secondary:selections(secondary,2),
     shards:['offense','flex','defense'].map(name=>positiveId(perks.statPerks?.[name]))};
 }
-function participantView(p,targetPuuid) {
-  return {championLevel:positiveId(p.champLevel),summonerSpells:[positiveId(p.summoner1Id),positiveId(p.summoner2Id)],items:Array.from({length:7},(_,i)=>integer(p['item'+i])),runes:runeView(p.perks),riotId:p.riotIdGameName&&p.riotIdTagline?`${p.riotIdGameName}#${p.riotIdTagline}`:'',champion:typeof p.championName==='string'?p.championName:'Chưa rõ',role:roleNames[p.teamPosition]||roleNames[p.individualPosition]||'Chưa rõ',teamId:p.teamId,isPlayer:p.puuid===targetPuuid,kills:integer(p.kills),deaths:integer(p.deaths),assists:integer(p.assists),cs:integer(p.totalMinionsKilled)!==null&&integer(p.neutralMinionsKilled)!==null?p.totalMinionsKilled+p.neutralMinionsKilled:null,damageToChampions:integer(p.totalDamageDealtToChampions),goldEarned:integer(p.goldEarned),visionScore:integer(p.visionScore)};
+// No verified Mayhem augment payload contract is available yet. Unknown is not an empty loadout.
+export function mapRiotAugments(_participant) {return null;}
+function participantView(p,targetPuuid,mode='sr') {
+  return {championLevel:positiveId(p.champLevel),summonerSpells:[positiveId(p.summoner1Id),positiveId(p.summoner2Id)],items:Array.from({length:7},(_,i)=>integer(p['item'+i])),runes:runeView(p.perks),augments:mapRiotAugments(p),riotId:p.riotIdGameName&&p.riotIdTagline?`${p.riotIdGameName}#${p.riotIdTagline}`:'',champion:typeof p.championName==='string'?p.championName:'Chưa rõ',role:mode==='mayhem'?null:roleNames[p.teamPosition]||roleNames[p.individualPosition]||'Chưa rõ',teamId:p.teamId,isPlayer:p.puuid===targetPuuid,kills:integer(p.kills),deaths:integer(p.deaths),assists:integer(p.assists),cs:integer(p.totalMinionsKilled)!==null&&integer(p.neutralMinionsKilled)!==null?p.totalMinionsKilled+p.neutralMinionsKilled:null,damageToChampions:integer(p.totalDamageDealtToChampions),goldEarned:integer(p.goldEarned),visionScore:integer(p.visionScore)};
 }
-export function mapRiotMatch(raw,puuid,expectedId) {
+export function mapRiotMatch(raw,puuid,expectedId,mode='sr') {
   if(!raw?.info||raw.metadata?.matchId!==expectedId||!Array.isArray(raw.info.participants))throw new RiotError('RIOT_BAD_DATA','Cấu trúc trận từ Riot không hợp lệ.',502);
   const info=raw.info;
-  if(info.mapId!==11||!queues[info.queueId])return {skipped:'Chế độ ngoài Summoner’s Rift tiêu chuẩn'};
+  if(info.participants.some(p=>!p||typeof p!=='object'))throw new RiotError('RIOT_BAD_DATA','Danh sách người chơi không hợp lệ.',502);
+  const mayhem=mode==='mayhem';
+  if(mayhem?info.queueId!==2400:info.mapId!==11||!Object.hasOwn(queues,info.queueId))return {skipped:mayhem?'Trận không thuộc ARAM Mayhem (queue 2400)':'Chế độ ngoài Summoner’s Rift tiêu chuẩn'};
   const player=info.participants.find(p=>p.puuid===puuid);
   if(!player)throw new RiotError('PLAYER_MISMATCH','Riot trả trận không chứa đúng tài khoản đã tra cứu.',502);
   if(info.participants.filter(p=>p.puuid===puuid).length!==1)throw new RiotError('PLAYER_MISMATCH','Dữ liệu định danh người chơi không nhất quán.',502);
   const duration=finite(info.gameDuration);
   if(duration===null||duration<=0)return {skipped:'Thiếu thời lượng trận'};
-  if(duration<300)return {skipped:'Remake / trận kết thúc quá sớm'};
-  if(duration>5400)return {skipped:'Trận dài hơn phạm vi 90 phút hiện tại'};
-  const role=roleNames[player.teamPosition]||roleNames[player.individualPosition];
-  if(!role)return {skipped:'Riot chưa xác định vị trí chơi'};
+  if(!mayhem&&duration<300)return {skipped:'Remake / trận kết thúc quá sớm'};
+  if(!mayhem&&duration>5400)return {skipped:'Trận dài hơn phạm vi 90 phút hiện tại'};
+  const role=mayhem?null:roleNames[player.teamPosition]||roleNames[player.individualPosition];
+  if(!mayhem&&!role)return {skipped:'Riot chưa xác định vị trí chơi'};
   if(typeof player.win!=='boolean'||['kills','deaths','assists'].some(field=>integer(player[field])===null))throw new RiotError('RIOT_BAD_DATA','Thiếu kết quả hoặc KDA của người chơi.',502);
-  const self=participantView(player,puuid);
+  const self=participantView(player,puuid,mode);
   const teammates=info.participants.filter(p=>p.teamId===player.teamId);
   const teamKills=teammates.length===5&&teammates.every(p=>integer(p.kills)!==null)?teammates.reduce((total,p)=>total+p.kills,0):null;
   const played=finite(info.gameStartTimestamp)??finite(info.gameCreation);
-  const match={id:expectedId,playedAt:played===null?null:new Date(played).toISOString(),champion:self.champion,role,result:player.win?'Victory':'Defeat',queue:queues[info.queueId],durationMinutes:duration/60,kills:player.kills,deaths:player.deaths,assists:player.assists,cs:self.cs,visionScore:self.visionScore,teamKills:teamKills!==null&&teamKills>=player.kills+player.assists?teamKills:null,damageToChampions:self.damageToChampions,goldEarned:self.goldEarned,notes:'',isRemake:false};
-  const participants=info.participants.map(p=>participantView(p,puuid)).sort((a,b)=>a.teamId-b.teamId);
+  const match={id:expectedId,playedAt:played===null||played>8640000000000000?null:new Date(played).toISOString(),champion:self.champion,role,result:player.win?'Victory':'Defeat',queue:mayhem?'ARAM Mayhem':queues[info.queueId],durationMinutes:duration/60,kills:player.kills,deaths:player.deaths,assists:player.assists,cs:self.cs,visionScore:self.visionScore,teamKills:teamKills!==null&&teamKills>=player.kills+player.assists?teamKills:null,damageToChampions:self.damageToChampions,goldEarned:self.goldEarned,notes:'',isRemake:mayhem?null:false};
+  const participants=info.participants.map(p=>participantView(p,puuid,mode)).sort((a,b)=>a.teamId-b.teamId);
   return {match,detail:{durationSeconds:duration,gameVersion:typeof info.gameVersion==='string'?info.gameVersion:'',participants}};
 }
 
@@ -135,20 +144,24 @@ export async function loadRiotHistory(input,client) {
   const puuid=account.puuid;
   try{await client.get(region.platform,`/lol/summoner/v4/summoners/by-puuid/${encodeURIComponent(puuid)}`,600);}
   catch(error){if(error.code==='RIOT_NOT_FOUND')throw new RiotError('WRONG_SERVER','Riot ID tồn tại nhưng không tìm thấy hồ sơ LoL trên server này. Hãy kiểm tra server.',404);throw error;}
-  const ids=await client.get(region.routing,`/lol/match/v5/matches/by-puuid/${encodeURIComponent(puuid)}/ids?start=0&count=${query.count}`,120);
-  if(!Array.isArray(ids)||ids.some(id=>typeof id!=='string'||!/^[A-Z0-9]+_\d+$/.test(id)))throw new RiotError('RIOT_BAD_LIST','Danh sách trận từ Riot không hợp lệ.',502);
+  const ids=await client.get(region.routing,`/lol/match/v5/matches/by-puuid/${encodeURIComponent(puuid)}/ids?start=${query.start}&count=${query.count}${query.mode==='mayhem'?'&queue=2400':''}`,120);
+  if(!Array.isArray(ids)||ids.length>query.count||ids.some(id=>typeof id!=='string'||!/^[A-Z0-9]+_\d+$/.test(id)))throw new RiotError('RIOT_BAD_LIST','Danh sách trận từ Riot không hợp lệ.',502);
   const matches=[],details={},warnings=[];
   for(const id of [...new Set(ids)].slice(0,query.count)) {
     let raw;
     try{raw=await client.get(region.routing,`/lol/match/v5/matches/${encodeURIComponent(id)}`,86400);}
     catch(error){if(error.code==='RIOT_NOT_FOUND'){warnings.push({id,reason:'Riot chưa cung cấp chi tiết trận'});continue;}throw error;}
-    const mapped=mapRiotMatch(raw,puuid,id);
+    const mapped=mapRiotMatch(raw,puuid,id,query.mode);
     if(mapped.skipped)warnings.push({id,reason:mapped.skipped});
     else{matches.push(mapped.match);details[id]=mapped.detail;}
   }
-  if(!ids.length)throw new RiotError('NO_MATCHES','Tài khoản chưa có lịch sử trận mà Riot trả về ở khu vực này.',404);
-  if(!matches.length)throw new RiotError('NO_SUPPORTED_MATCHES',`${ids.length} trận gần nhất chưa có trận Summoner’s Rift phù hợp để đánh giá.`,422);
-  return {history:{schemaVersion:2,profile:{riotId:`${account.gameName||query.gameName}#${account.tagLine||query.tagLine}`,region:region.label,rank:''},matches},details,warnings,source:{provider:'riot',requested:query.count,returned:ids.length,included:matches.length,loadedAt:new Date().toISOString(),...client.stats()}};
+  if(query.start===0&&!ids.length)throw new RiotError('NO_MATCHES','Tài khoản chưa có lịch sử trận mà Riot trả về ở khu vực này.',404);
+  if(query.start===0&&!matches.length)throw new RiotError('NO_SUPPORTED_MATCHES',query.mode==='mayhem'?'Không có trận ARAM Mayhem hợp lệ trong trang lịch sử này.':`${ids.length} trận gần nhất chưa có trận Summoner’s Rift phù hợp để đánh giá.`,422);
+  // Cursor advances over the upstream page, including duplicate/skipped IDs, never the displayed rows.
+  const nextStart=query.start+ids.length;
+  const source={provider:'riot',mode:query.mode,start:query.start,count:query.count,nextStart,hasMore:ids.length===query.count&&nextStart<500,accountKey:`${region.platform}:${puuid}`,requested:query.count,returned:ids.length,included:matches.length,loadedAt:new Date().toISOString(),...client.stats()};
+  const history=matches.length?{schemaVersion:3,profile:{riotId:`${account.gameName||query.gameName}#${account.tagLine||query.tagLine}`,region:region.label,rank:''},matches,details}:null;
+  return {history,details,warnings,source};
 }
 
 export function parseLobbyLookup(input) {

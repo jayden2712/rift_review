@@ -3,6 +3,11 @@ import {InputError} from './data.js';
 import {normalizeHistory} from './history-data.js';
 
 const liveErrorMessages=Object.freeze({
+  RIOT_AUTH_FAILED:'Riot không xác thực được yêu cầu. Kiểm tra cấu hình API key trên máy chủ.',
+  RIOT_ACCESS_DENIED:'Riot từ chối quyền truy cập dữ liệu này. Chưa thể xác định do quyền API, đường dẫn hay API key.',
+  RIOT_TIMEOUT:'Riot phản hồi quá chậm. Hãy thử lại sau.',
+  INVALID_MODE:'Chế độ tra cứu không hợp lệ.',
+  INVALID_START:'Vị trí tải lịch sử không hợp lệ.',
   NETWORK_ERROR:'Không kết nối được máy chủ. Kiểm tra mạng rồi thử lại.',
   BAD_RESPONSE:'Không đọc được phản hồi. Hãy tải lại trang và kiểm tra đăng nhập.',
   SIGN_IN_REQUIRED:'Đăng nhập tài khoản có quyền truy cập web để tra cứu.',
@@ -15,7 +20,7 @@ const liveErrorMessages=Object.freeze({
   RIOT_NOT_FOUND:'Không tìm thấy tài khoản hoặc trận trên server đã chọn.',
   WRONG_SERVER:'Riot ID tồn tại nhưng không tìm thấy hồ sơ LoL trên server này. Hãy kiểm tra server.',
   NO_MATCHES:'Tài khoản chưa có lịch sử trận mà Riot trả về ở khu vực này.',
-  NO_SUPPORTED_MATCHES:'Không có trận Summoner’s Rift phù hợp trong lịch sử trả về.',
+  NO_SUPPORTED_MATCHES:'Chưa có trận hợp lệ cho chế độ đã chọn trong trang lịch sử này.',
   INVALID_ID:'Riot ID cần dạng Tên#TAG. Giữ đúng dấu và khoảng trắng.',
   INVALID_REGION:'Chọn server của tài khoản League of Legends.',
   INVALID_COUNT:'Mỗi lần tra cứu lấy 10 hoặc 20 trận gần nhất.',
@@ -43,7 +48,15 @@ export const riotDataSource={
     catch{throw new LiveDataError('Không kết nối được máy chủ. Kiểm tra mạng rồi thử lại.','NETWORK_ERROR');}
     let payload;try{payload=await response.json();}catch{throw new LiveDataError('Không đọc được phản hồi. Hãy tải lại trang và kiểm tra đăng nhập.','BAD_RESPONSE');}
     if(!response.ok)throw new LiveDataError(payload.error?.message||'Chưa thể tải lịch sử Riot.',payload.error?.code||'REQUEST_FAILED',Number(payload.error?.retryAfter)||0);
-    return {history:normalizeHistory(payload.history),details:payload.details||{},meta:{...payload.source,warnings:payload.warnings||[]}};
+    const meta={...payload.source,warnings:Array.isArray(payload.warnings)?payload.warnings:[]};
+    if(payload.history===null){
+      if(!(Number(query.start)>0&&meta.start===Number(query.start)&&Number.isInteger(meta.nextStart)&&meta.nextStart>=meta.start&&meta.nextStart<=500&&typeof meta.hasMore==='boolean'))throw new LiveDataError('Dữ liệu phản hồi không hợp lệ. Vui lòng thử lại.','BAD_RESPONSE');
+      return {history:null,details:{},meta};
+    }
+    const history=normalizeHistory({...payload.history,details:payload.details??payload.history?.details});
+    const mayhem=query.mode==='mayhem';
+    if(history.matches.some(match=>mayhem?match.queue!=='ARAM Mayhem':match.queue==='ARAM Mayhem'))throw new LiveDataError('Dữ liệu phản hồi không hợp lệ. Vui lòng thử lại.','BAD_RESPONSE');
+    return {history,details:history.details,meta};
   }
 };
 

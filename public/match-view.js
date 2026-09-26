@@ -55,8 +55,21 @@ export function renderRunePage(player){
   return `<section class="rune-page"><div class="loadout-heading"><h3>${t('Bảng ngọc')}</h3><span>${runes?t('Lựa chọn trong trận'):t('Chưa có dữ liệu ngọc cho trận này')}</span></div><div class="rune-paths">${path(t('Ngọc chính'),runes?.primaryStyle,runes?.primary,4)}${path(t('Ngọc phụ'),runes?.secondaryStyle,runes?.secondary,2)}<div class="rune-path stat-shards"><h4>${t('Mảnh chỉ số')}</h4><div class="rune-selections">${ids(runes?.shards,3).map(runeEntry).join('')}</div></div></div></section>`;
 }
 
-export function renderLoadout(player){
-  return `<section class="match-loadout-detail"><div class="loadout-heading"><h3>${t('Bộ trang bị & phép bổ trợ')}</h3><span>${player?t('Trang bị tại thời điểm kết thúc trận'):t('Chưa có dữ liệu — tra cứu Riot để xem')}</span></div><div class="loadout-inventory">${renderItemSlots(player)}${renderSpells(player)}</div>${renderRunePage(player)}</section>`;
+function hasRuneData(player){
+  const runes=player?.runes;
+  return [runes?.primaryStyle,runes?.secondaryStyle,...ids(runes?.primary,4),...ids(runes?.secondary,2),...ids(runes?.shards,3)].some(id=>Number.isSafeInteger(id)&&id>0);
+}
+
+function unavailableRunes(){
+  return `<section class="rune-page"><div class="loadout-heading"><h3>${t('Bảng ngọc')}</h3><span>${t('Chưa có dữ liệu ngọc cho trận này')}</span></div></section>`;
+}
+
+function unavailableAugments(){
+  return `<section class="mayhem-augments"><div class="loadout-heading"><h3>${t('Nâng cấp (Augments)')}</h3><span>${t('Chưa xác minh dữ liệu nâng cấp cho trận này')}</span></div></section>`;
+}
+
+export function renderLoadout(player,options={}){
+  return `<section class="match-loadout-detail"><div class="loadout-heading"><h3>${t('Bộ trang bị & phép bổ trợ')}</h3><span>${player?t('Trang bị tại thời điểm kết thúc trận'):t('Chưa có dữ liệu — tra cứu Riot để xem')}</span></div><div class="loadout-inventory">${renderItemSlots(player)}${renderSpells(player)}</div>${options.mayhem&&!hasRuneData(player)?unavailableRunes():renderRunePage(player)}${options.mayhem?unavailableAugments():''}</section>`;
 }
 
 function roster(detail){
@@ -66,6 +79,7 @@ function roster(detail){
 }
 
 export function renderLobbyRank(match,rankState,source){
+  if(match.queue==='ARAM Mayhem')return '';
   const rank=rankState?.lobbyRank;
   const rankedQueue=['Ranked Solo','Ranked Flex'].includes(match.queue);
   if(rank?.label&&['available','partial'].includes(rank.status)){
@@ -81,11 +95,15 @@ export function renderLobbyRank(match,rankState,source){
 }
 
 export function renderMatchSummary({match,metrics={},detail=null,rankState=null,source='json',dateLabel=''}){
+  const mayhem=match.queue==='ARAM Mayhem';
   const player=matchPlayer(detail);
   const level=Number.isInteger(player?.championLevel)&&player.championLevel>0?player.championLevel:null;
   const ratio=match.deaths===0?(match.kills+match.assists>0?t('Hoàn hảo'):'—'):fixed(metrics.kda);
-  return `<span class="card-outcome"><strong>${match.result==='Victory'?t('THẮNG'):t('THUA')}</strong><span class="card-queue">${escape(t(match.queue==='Standard'?'Summoner’s Rift':match.queue))}</span><time class="card-date">${escape(dateLabel||t('Chưa rõ ngày'))}</time><span class="card-duration">${formatDuration(match.durationMinutes,detail?.durationSeconds)}</span></span>
-    <span class="card-build"><span class="card-champion-line"><span class="card-portrait">${championAvatar(match.champion)}${level?`<span class="champion-level" title="${escape(t('Cấp {level}',{level}))}">${level}</span>`:''}</span><span class="card-champion-label"><strong>${escape(match.champion)}</strong><span>${escape(t(match.role))}</span></span>${renderSpells(player)}${compactRunes(player)}</span>${renderItemSlots(player)}</span>
-    <span class="card-performance"><strong class="card-kda">${number(match.kills)} <em>/ ${number(match.deaths)} /</em> ${number(match.assists)}</strong><span class="card-ratio">${ratio} KDA</span><span class="card-cs">${number(match.cs)} CS <span>(${fixed(metrics.csPerMin)}/m)</span></span><span class="card-kp">KP ${Number.isFinite(metrics.participation)?Math.round(metrics.participation*100)+'%':'—'} <span>· Vision ${number(match.visionScore)}</span></span></span>
+  const seconds=Number.isFinite(detail?.durationSeconds)&&detail.durationSeconds>0?detail.durationSeconds:match.durationMinutes*60;
+  const damagePerMinute=Number.isFinite(match.damageToChampions)&&seconds>0?match.damageToChampions*60/seconds:null;
+  const farming=mayhem?`<span class="card-damage">${t('Sát thương')} ${number(match.damageToChampions)} <span>(${fixed(damagePerMinute)}/m)</span></span>`:`<span class="card-cs">${number(match.cs)} CS <span>(${fixed(metrics.csPerMin)}/m)</span></span>`;
+  return `<span class="card-outcome"><strong>${mayhem&&match.isRemake===true?t('ĐẤU LẠI'):match.result==='Victory'?t('THẮNG'):t('THUA')}</strong><span class="card-queue">${escape(t(match.queue==='Standard'?'Summoner’s Rift':match.queue))}</span><time class="card-date">${escape(dateLabel||t('Chưa rõ ngày'))}</time><span class="card-duration">${formatDuration(match.durationMinutes,detail?.durationSeconds)}</span></span>
+    <span class="card-build"><span class="card-champion-line"><span class="card-portrait">${championAvatar(match.champion)}${level?`<span class="champion-level" title="${escape(t('Cấp {level}',{level}))}">${level}</span>`:''}</span><span class="card-champion-label"><strong>${escape(match.champion)}</strong><span>${escape(t(match.role||'Không áp dụng'))}</span></span>${renderSpells(player)}${mayhem&&!hasRuneData(player)?'':compactRunes(player)}</span>${renderItemSlots(player)}</span>
+    <span class="card-performance"><strong class="card-kda">${number(match.kills)} <em>/ ${number(match.deaths)} /</em> ${number(match.assists)}</strong><span class="card-ratio">${ratio} KDA</span>${farming}<span class="card-kp">KP ${Number.isFinite(metrics.participation)?Math.round(metrics.participation*100)+'%':'—'} ${mayhem?'':`<span>· Vision ${number(match.visionScore)}</span>`}</span></span>
     <span class="card-lobby" aria-live="polite">${renderLobbyRank(match,rankState,source)}</span>${roster(detail)}<span class="card-expand"><span class="sr-only">${t('Mở chi tiết trận')}</span><span class="chevron" aria-hidden="true">⌄</span></span>`;
 }

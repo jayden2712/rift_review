@@ -11,7 +11,7 @@ function rawMatch(id='OC1_123'){
 function clientFixture(fetchImpl,cache=null){let clock=1000000;return createRiotClient({key:'fixture-secret',origin:'https://example.test',cache,fetchImpl,state:new Map(),now:()=>clock,sleep:async ms=>clock+=ms});}
 
 test('Riot ID accents and spaces are preserved; untrusted regions and oversized counts rejected',()=>{
- assert.deepEqual(parseLookup({riotId:'not tày enough#idc',region:'OCE'}),{gameName:'not tày enough',tagLine:'idc',region:'oce',count:20});
+ assert.deepEqual(parseLookup({riotId:'not tày enough#idc',region:'OCE'}),{gameName:'not tày enough',tagLine:'idc',region:'oce',count:20,mode:'sr',start:0});
  for(const input of [{riotId:'Name',region:'oce'},{riotId:'A#B',region:'evil.test'},{riotId:'A#B',region:'oce',count:100},{riotId:'A#B#C',region:'oce'}])assert.throws(()=>parseLookup(input));
 });
 test('mapping selects the exact PUUID and includes correct CS, team kills and both teams',()=>{
@@ -48,7 +48,7 @@ test('API rejects unsigned and cross-origin callers before using any credential'
 test('missing and rejected keys produce actionable sanitized responses',async()=>{
  const request=()=>new Request('https://example.test/api/history',{method:'POST',headers:{'Content-Type':'application/json','oai-authenticated-user-id':'owner'},body:JSON.stringify({riotId:'not tày enough#idc',region:'oce'})});
  const missing=await handleApi(request(),{});assert.equal(missing.status,503);assert.equal((await missing.json()).error.code,'RIOT_NOT_CONFIGURED');
- const rejected=await handleApi(request(),{RIOT_API_KEY:'fixture-secret'},{fetchImpl:async()=>Response.json({message:'fixture-secret'},{status:403})});const text=await rejected.text();assert.ok(text.includes('RIOT_KEY_REJECTED'));assert.ok(!text.includes('fixture-secret'));
+ const rejected=await handleApi(request(),{RIOT_API_KEY:'fixture-secret'},{fetchImpl:async()=>Response.json({message:'fixture-secret'},{status:403})});const text=await rejected.text();assert.ok(text.includes('RIOT_ACCESS_DENIED'));assert.ok(!text.includes('fixture-secret'));
 });
 test('match detail preserves seconds and loadout IDs, distinguishing empty and missing slots',()=>{
  const base=rawMatch();const p={...base.info.participants[2],champLevel:16,summoner1Id:4,summoner2Id:14,item0:3157,item1:0,item2:3089,item6:3363,perks:{styles:[{description:'primaryStyle',style:8100,selections:[{perk:8112},{perk:8139},{perk:8138},{perk:8106}]},{description:'subStyle',style:8200,selections:[{perk:8226},{perk:8210}]}],statPerks:{offense:5008,flex:5008,defense:5001}}};

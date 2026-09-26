@@ -20,11 +20,13 @@ export function normalizeMatch(input, {allowShort = false} = {}) {
   const out = {schemaVersion:1}; const errors=[];
   out.champion = typeof input.champion === 'string' ? input.champion.trim() : '';
   if (!out.champion || out.champion.length>40) errors.push(()=>t("Tên tướng cần từ 1–40 ký tự."));
-  out.role=ROLES.find(x=>x.toLowerCase()===String(input.role).toLowerCase());
-  if(!out.role) errors.push(()=>t("Vị trí phải là Top, Jungle, Mid, ADC hoặc Support."));
+  const mayhem=input.queue==='ARAM Mayhem';
+  if(mayhem)out.queue='ARAM Mayhem';
+  out.role=mayhem?null:ROLES.find(x=>x.toLowerCase()===String(input.role).toLowerCase());
+  if(!mayhem&&!out.role) errors.push(()=>t("Vị trí phải là Top, Jungle, Mid, ADC hoặc Support."));
   out.result=['Victory','Defeat'].find(x=>x.toLowerCase()===String(input.result).toLowerCase());
   if(!out.result) errors.push(()=>t("Kết quả phải là Victory hoặc Defeat."));
-  const fields=[['durationMinutes',"Thời lượng",allowShort ? 0.1 : 5,90,false,false],['kills',"Hạ gục",0,100,true,false],['deaths',"Chết",0,100,true,false],['assists',"Hỗ trợ",0,100,true,false],['cs','CS',0,2000,true,true],['visionScore',"Điểm tầm nhìn",0,500,true,true],['teamKills',"Hạ gục của đội",0,200,true,true]];
+  const fields=[['durationMinutes',"Thời lượng",allowShort ? 0.1 : 5,mayhem?180:90,false,false],['kills',"Hạ gục",0,mayhem?1000:100,true,false],['deaths',"Chết",0,mayhem?1000:100,true,false],['assists',"Hỗ trợ",0,mayhem?1000:100,true,false],['cs','CS',0,2000,true,true],['visionScore',"Điểm tầm nhìn",0,500,true,true],['teamKills',"Hạ gục của đội",0,mayhem?5000:200,true,true]];
   for(const [key,label,min,max,integer,optional] of fields) {
     const v=input[key];
     if(v===undefined || v===null || (typeof v==='string' && v.trim()==='')) { if(optional) out[key]=null; else errors.push(()=>t("{label} là bắt buộc.", {label:t(label)})); continue; }

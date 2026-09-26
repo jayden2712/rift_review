@@ -15,10 +15,12 @@ export function aggregate(matches) {
 }
 
 export function selectMatches(history, filters={}) {
-  const eligible=history.matches.filter(m=>!exclusionReason(m));
-  const matching=eligible.filter(m=>(!filters.role||m.role===filters.role)&&(!filters.champion||m.champion===filters.champion)&&(!filters.queue||m.queue===filters.queue));
+  const mode=filters.mode==='mayhem'||(!filters.mode&&filters.queue==='ARAM Mayhem')?'mayhem':'sr';
+  const cohort=history.matches.filter(m=>mode==='mayhem'?m.queue==='ARAM Mayhem':m.queue!=='ARAM Mayhem');
+  const eligible=cohort.filter(m=>mode==='mayhem'||!exclusionReason(m));
+  const matching=eligible.filter(m=>(mode==='mayhem'||!filters.role||m.role===filters.role)&&(!filters.champion||m.champion===filters.champion)&&(!filters.queue||m.queue===filters.queue));
   const limit=[10,20,50,100,500].includes(Number(filters.limit))?Number(filters.limit):20;
-  return {matches:matching.slice(0,limit),available:matching.length,excluded:history.matches.length-eligible.length,eligible:eligible.length};
+  return {mode,matches:matching.slice(0,limit),available:matching.length,excluded:history.matches.length-eligible.length,eligible:eligible.length};
 }
 
 function groups(matches, field) {
@@ -48,9 +50,12 @@ function isStrength(id, {match:m,metrics:x}) {
 }
 
 export function buildTrend(matches, roleGroups) {
-  const role=roleGroups[0]?.name;
-  const cohort=matches.filter(m=>m.role===role);
-  if(cohort.length<10) return {available:false,role,n:cohort.length,reason:t('Cần ít nhất 10 trận cùng vị trí để so hai nhóm tối thiểu 5 trận.')};
+  const srMatches=matches.filter(m=>m.queue!=='ARAM Mayhem'&&!exclusionReason(m));
+  const role=roleGroups.find(group=>group.name!==null)?.name;
+  const sameRole=srMatches.filter(m=>m.role===role);
+  const queue=groups(sameRole,'queue')[0]?.name;
+  const cohort=sameRole.filter(m=>m.queue===queue);
+  if(cohort.length<10) return {available:false,role,queue,n:cohort.length,reason:t('Cần ít nhất 10 trận cùng vị trí để so hai nhóm tối thiểu 5 trận.')};
   const size=Math.min(10,Math.floor(cohort.length/2));
   const recentMatches=cohort.slice(0,size),previousMatches=cohort.slice(size,size*2);
   const recent=aggregate(recentMatches),previous=aggregate(previousMatches);
@@ -61,11 +66,12 @@ export function buildTrend(matches, roleGroups) {
     metric('vision',t('Vision / phút'),previous.vision.value,recent.vision.value,previous.vision.known,recent.vision.known),
     metric('kp','KP',previous.participation,recent.participation,previous.participationKnown,recent.participationKnown),
   ];
-  return {available:true,role,size,recent,previous,metrics,recentIds:recentMatches.map(m=>m.id),previousIds:previousMatches.map(m=>m.id)};
+  return {available:true,role,queue,size,recent,previous,metrics,recentIds:recentMatches.map(m=>m.id),previousIds:previousMatches.map(m=>m.id)};
 }
 
 export function analyzeHistory(history, filters={}) {
   const selected=selectMatches(history,filters),matches=selected.matches;
+  if(selected.mode==='mayhem')return analyzeMayhem(history,filters,selected);
   const stats=aggregate(matches),champions=groups(matches,'champion'),roles=groups(matches,'role');
   const entries=matches.map(match=>({match,...generateReport(match)}));
   const findings=[],strengths=[];
@@ -83,14 +89,35 @@ export function analyzeHistory(history, filters={}) {
   findings.sort((a,b)=>Number(b.repeated)-Number(a.repeated)||(b.fraction*b.weight-a.fraction*a.weight)||b.count-a.count);
   const priorities=findings.slice(0,2);
   const trend=buildTrend(matches,roles);
-  return {engine:t('Quy tắc coaching v2'),history,filters:{...filters},...selected,stats,champions,roles,entries,findings,strengths,priorities,trend,
+  return {engine:t('Quy tắc coaching v2'),coachingAvailable:true,history,filters:{...filters},...selected,stats,champions,roles,entries,findings,strengths,priorities,trend,
     coverage:[{label:'CS',known:stats.cs.known,total:stats.n},{label:'Vision',known:stats.vision.known,total:stats.n},{label:'KP',known:stats.participationKnown,total:stats.n},{label:t('Sát thương'),known:stats.damage.known,total:stats.n}],
     limitations:[t('Các ngưỡng là mục tiêu luyện tập minh họa, không phải chuẩn rank, tướng hoặc phiên bản game.'),t('Lịch sử chỉ cho thấy mối liên hệ giữa các chỉ số; không xác định nguyên nhân thắng/thua, cơ chế, vị trí đứng hoặc chất lượng quyết định.'),t('Thống kê và báo cáo dùng đúng bộ lọc hiện tại. Dữ liệu thiếu không được đổi thành 0. Remake, trận dưới 5 phút và chế độ không hỗ trợ được loại khỏi đánh giá.'),history.ordering==='date'?t('Trận được sắp theo playedAt, mới nhất trước.'):t('Có trận thiếu ngày giờ: toàn bộ lịch sử giữ thứ tự nhập, mới nhất trước. Xu hướng phụ thuộc thứ tự này.'),t('Các trận tải lên thuộc một người chơi do bạn xác nhận; danh tính, rank và dữ liệu nhập chưa được Riot xác minh.')]};
+}
+
+function analyzeMayhem(history,filters,selected){
+  const counted=selected.matches.filter(match=>match.isRemake!==true);
+  const stats=aggregate(counted);
+  return {engine:t('Thống kê ARAM Mayhem'),coachingAvailable:false,history,filters:{...filters,mode:'mayhem'},...selected,
+    stats,champions:groups(counted,'champion'),roles:[],entries:selected.matches.map(match=>({match,...generateReport(match)})),
+    findings:[],strengths:[],priorities:[],trend:{available:false,reason:t('ARAM Mayhem hiện chỉ có lịch sử và thống kê; chưa có coaching hoặc đánh giá tiến bộ.')},
+    coverage:[{label:'KP',known:stats.participationKnown,total:stats.n},{label:t('Sát thương'),known:stats.damage.known,total:stats.n},{label:t('Vàng'),known:stats.gold.known,total:stats.n}],
+    remakeCount:selected.matches.length-counted.length,
+    limitations:[t('Thống kê chỉ gồm ARAM Mayhem trong bộ lọc hiện tại. Trận remake vẫn hiển thị nhưng không được tính vào thống kê.'),t('Dữ liệu thiếu giữ nguyên là chưa biết. Trận ngắn không tự động được coi là remake.'),t('Không áp dụng ngưỡng farm, tầm nhìn, số lần chết hoặc KP của Summoner’s Rift cho Mayhem.'),t('Chưa xác minh dữ liệu augment từ Riot; không suy luận augment, rank hoặc MMR Mayhem.')]};
+}
+function mayhemMarkdown(r){
+ const s=r.stats;
+ return [`# Rift Review — ${r.history.profile.riotId}`,t('Thống kê ARAM Mayhem'),
+   t('Nguồn: {source} · {engine}',{source:r.sourceLabel??t('Dữ liệu nhập'),engine:r.engine}),
+   t('{n} trận · {wins} thắng / {losses} thua · WR {winRate}%',{n:s.n,wins:s.wins,losses:s.losses,winRate:format(s.winRate===null?null:s.winRate*100)}),
+   `KDA: ${s.perfect?t('Không chết'):format(s.kda,2)} · KP: ${format(s.participation===null?null:s.participation*100)}%`,
+   ...r.champions.map(c=>`${c.name}: ${c.stats.n} · ${format(c.stats.winRate*100)}% WR`),
+   t('## Giới hạn'),...r.limitations.map(line=>'- '+line)].join('\n\n');
 }
 
 const format=(n,d=1)=>n===null?'—':new Intl.NumberFormat(getLocale(),{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);
 export function historyReportToMarkdown(r) {
   const s=r.stats;
+  if(r.mode==='mayhem')return mayhemMarkdown(r);
   return [
     `# Rift Review — ${r.history.profile.riotId}`,
     t('Nguồn: {source} · {engine}',{source:r.sourceLabel??t('Dữ liệu nhập'),engine:r.engine}),

@@ -1,9 +1,12 @@
+import mayhemMatchTranslations from './i18n-mayhem-match.js';
+import mayhemDomainTranslations from './i18n-mayhem-domain.js';
+import mayhemTranslations from './i18n-mayhem.js';
 import staticTranslations from './i18n-en.js';
 import appTranslations from './i18n-app.js';
 import matchTranslations from './i18n-match.js';
 import domainTranslations from './i18n-domain.js';
 
-const translations = {...staticTranslations, ...appTranslations, ...matchTranslations, ...domainTranslations};
+const translations = {...staticTranslations, ...appTranslations, ...matchTranslations, ...domainTranslations, ...mayhemTranslations, ...mayhemMatchTranslations, ...mayhemDomainTranslations};
 const storageKey = 'rift-review-language';
 const supported = value => value === 'vi' || value === 'en';
 function savedLanguage() {
