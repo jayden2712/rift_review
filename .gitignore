@@ -8,3 +8,6 @@ test-results/
 
 __pycache__/
 *.pyc
+
+# Local private Data Lab snapshots
+.local/

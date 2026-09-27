@@ -256,3 +256,11 @@ initLanguageUI();refreshChampionOptions();render();renderLookupStatus();
 fetch('/api/status',{credentials:'same-origin'}).then(r=>r.ok?r.json():null).then(status=>{
   if(status&&!status.riotConfigured&&lookupState.kind==='idle'){lookupState={kind:'setup'};renderLookupStatus();}
 }).catch(()=>{});
+
+// Only the explicit local capability can load the development-only modules.
+fetch('/api/lab/status',{credentials:'same-origin'}).then(response=>response.ok?response.json():null).then(async capability=>{
+ if(capability?.enabled===true){
+  const {mountDataLab}=await import('./data-lab.js');
+  mountDataLab({getCurrent:()=>({history:exportHistory(history),source})});
+ }
+}).catch(()=>{console.warn('Data Lab is unavailable. Check the local development configuration.');});

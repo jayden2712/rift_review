@@ -7,7 +7,7 @@ import {spawnSync} from 'node:child_process';
 
 const configModule = new URL('../server/local-config.js', import.meta.url).href;
 function readConfig(path, extraEnv = {}) {
-  const env = Object.fromEntries(Object.entries(process.env).filter(([key]) => !['RIOT_API_KEY', 'PORT', 'NODE_OPTIONS'].includes(key)));
+  const env = Object.fromEntries(Object.entries(process.env).filter(([key]) => !['RIOT_API_KEY', 'PORT', 'NODE_OPTIONS', 'DATA_LAB_ENABLED'].includes(key)));
   return spawnSync(process.execPath, ['--input-type=module', '-e', `
     import {loadLocalConfig} from ${JSON.stringify(configModule)};
     try { console.log(JSON.stringify(loadLocalConfig(process.argv[1]))); }
@@ -21,11 +21,11 @@ test('local config loads .env, handles missing file and honors shell overrides',
   const file = join(root, '.env');
   const missing = readConfig(file);
   assert.equal(missing.status, 0);
-  assert.deepEqual(JSON.parse(missing.stdout), {port: 4173, env: {RIOT_API_KEY: ''}});
+  assert.deepEqual(JSON.parse(missing.stdout), {port: 4173, env: {RIOT_API_KEY: '', DATA_LAB_ENABLED: '0'}});
   await writeFile(file, '# comment\nRIOT_API_KEY="fixture-file-secret"\nPORT=4180\n');
-  assert.deepEqual(JSON.parse(readConfig(file).stdout), {port: 4180, env: {RIOT_API_KEY: 'fixture-file-secret'}});
+  assert.deepEqual(JSON.parse(readConfig(file).stdout), {port: 4180, env: {RIOT_API_KEY: 'fixture-file-secret', DATA_LAB_ENABLED: '0'}});
   const overridden = readConfig(file, {RIOT_API_KEY: 'fixture-shell-secret', PORT: '4190'});
-  assert.deepEqual(JSON.parse(overridden.stdout), {port: 4190, env: {RIOT_API_KEY: 'fixture-shell-secret'}});
+  assert.deepEqual(JSON.parse(overridden.stdout), {port: 4190, env: {RIOT_API_KEY: 'fixture-shell-secret', DATA_LAB_ENABLED: '0'}});
   await writeFile(file, 'RIOT_API_KEY="  "\n');
   assert.equal(JSON.parse(readConfig(file).stdout).env.RIOT_API_KEY, '');
 });
@@ -42,4 +42,13 @@ test('local config rejects invalid ports without echoing environment values', as
   const unreadable = readConfig(root);
   assert.equal(unreadable.status, 1);
   assert.match(unreadable.stderr, /\.env/);
+});
+
+
+test('Data Lab config enables only the explicit string 1', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'rift-env-'));
+  t.after(() => rm(root, {recursive: true, force: true}));
+  for (const flag of ['1', '0', 'true', 'yes', '']) {
+    assert.equal(JSON.parse(readConfig(join(root, '.env'), {DATA_LAB_ENABLED: flag}).stdout).env.DATA_LAB_ENABLED, flag === '1' ? '1' : '0');
+  }
 });

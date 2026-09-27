@@ -25,9 +25,9 @@ npm start
 
 Open http://localhost:4173. `npm start` serves both the UI and `/api/status` + `/api/history` using the existing Riot backend. Without a key, sample data and JSON/manual input still work; live lookup returns a configuration message. To use real history, set your own valid `RIOT_API_KEY` in `.env`, restart the server, then enter your Riot ID and server in the lookup form. `.env` is ignored by Git; never place keys in `public/` or commit them. Shell environment variables override `.env`. Set `PORT` to change the port, and stop an old static server if it already uses 4173. Press Ctrl+C to stop.
 
-The development server binds only to `127.0.0.1` and accepts `localhost` or `127.0.0.1` with its listening port. Local requests do not require a hosted login: the adapter checks the peer, Host and browser origin before supplying a local identity to the shared API. It rejects cross-origin requests and limits API bodies to 2 KB. Use the hosted Worker for deployment; do not expose the local adapter through a proxy or tunnel. The hosted authentication path is unchanged. Local lookups use the existing Riot throttling/retries and a bounded memory cache (128 entries, maximum 512 KiB per entry). Restarting clears local cache and throttling state; hosted deployments use the Worker Cache API.
+The development server binds only to `127.0.0.1` and accepts `localhost` or `127.0.0.1` with its listening port. Local requests do not require a hosted login: the adapter checks the peer, Host and browser origin before supplying a local identity to the shared API. It rejects cross-origin requests and limits existing API bodies to 2 KB; explicitly enabled Data Lab routes have a separate 8 MiB limit. Use the hosted Worker for deployment; do not expose the local adapter through a proxy or tunnel. The hosted authentication path is unchanged. Local lookups use the existing Riot throttling/retries and a bounded memory cache (128 entries, maximum 524,288 JSON string code units per entry). Restarting clears local cache and throttling state; hosted deployments use the Worker Cache API.
 
-`npm test` runs domain, translation and local HTTP integration tests; `python3 tests/wiki-assets.test.py` checks the wiki importer. The Node suite also checks the browser data provider against mocked Riot responses. `npm run build` embeds the existing public assets and hosted server modules in a self-contained Worker entrypoint at `dist/server/index.js`; it does not include `.env` or the local adapter. The build manifest is copied to `dist/.openai/hosting.json`. The optional browser regression script uses mocked Riot responses, not a live key. With Playwright and its browser installed outside the repository, run:
+`npm test` runs domain, translation and local HTTP integration tests; `python3 tests/wiki-assets.test.py` checks the wiki importer. The Node suite also checks the browser data provider against mocked Riot responses. `npm run build` embeds the existing public assets and hosted server modules in a self-contained Worker entrypoint at `dist/server/index.js`; it does not include `.env`, the local adapter, Data Lab server code or any `public/data-lab*` assets. The build manifest is copied to `dist/.openai/hosting.json`. The optional browser regression script uses mocked Riot responses, not a live key. With Playwright and its browser installed outside the repository, run:
 
 ```bash
 PLAYWRIGHT_MODULE=/tmp/rift-mayhem-browser/node_modules/playwright/index.mjs \
@@ -36,6 +36,64 @@ node tests/e2e/mayhem.mjs
 ```
 
 These example paths can be changed to an existing Playwright installation. They add no runtime dependency to the project. Tests/build and browser mocks do not verify live Mayhem availability.
+
+## Data Lab — kiểm tra dữ liệu local
+
+Data Lab dành cho kiểm tra dữ liệu Summoner’s Rift và bằng chứng của bộ luật coaching, **chưa sử dụng LLM**. Tính năng mặc định tắt. Chạy:
+
+```bash
+DATA_LAB_ENABLED=1 npm start
+```
+
+Hoặc thêm `DATA_LAB_ENABLED=1` vào `.env` rồi khởi động lại server. Mở http://localhost:4173 và chọn **Data Lab** trên thanh điều hướng. Chỉ giá trị `1` bật tính năng. Server vẫn chỉ nghe loopback và kiểm tra Host/Origin; hosted Worker không có API hay assets Data Lab, kể cả khi cấu hình cùng biến môi trường. Đặt `0` hoặc bỏ biến rồi khởi động lại để tắt.
+
+1. Chọn **10/20 trận**, nhập Riot ID/server rồi **Tra cứu Riot & lưu**. Cần Riot key hợp lệ ở backend. Data Lab lấy trang lịch sử mới nhất không lọc queue; các trận ngoài SR vẫn xem được nhưng bị loại khỏi coaching với lý do cụ thể. Lỗi Riot hoặc thiếu chi tiết trận không tạo Demo thay thế.
+2. Không có key: chọn **Dùng Demo SR**, **Dùng lịch sử đang xem**, hoặc nhập History JSON/snapshot. Lịch sử đang xem lấy tối đa 10/20 trận đầu; import nhận tối đa 20 trận, giới hạn **8 MiB**. Dữ liệu mẫu có nhãn Demo; dữ liệu nhập/lịch sử đang xem không được coi là Riot đã xác minh. Những thao tác này chưa tự lưu xuống đĩa.
+3. Trong tab **Dữ liệu**, lọc vị trí/tướng/queue/kết quả, chọn giới hạn nhóm và bấm tiêu đề cột để sắp xếp. Bấm tướng để mở dữ liệu trận, participant, trang bị, trường còn thiếu và công thức chỉ số. Hai tab dùng cùng nhóm sau lọc, sắp xếp và giới hạn; trận bị loại vẫn có thể kiểm tra.
+4. Tab **Coaching / Bằng chứng** tách số liệu quan sát, giả thuyết và đề xuất. Liên kết bằng chứng mở đúng trận. Ngưỡng là luật thử nghiệm hiện có, không phải chuẩn rank/patch hoặc kết luận về nguyên nhân.
+5. **Lưu snapshot** tạo bản JSON local; **Mở bản lưu** khôi phục bản đã chọn. **Xuất snapshot JSON** giữ riêng dữ liệu nguồn, dữ liệu chuẩn hóa, chỉ số và trạng thái dữ liệu. **Xuất Coaching input JSON** xuất schema v2 gồm phạm vi, trận, công thức/tử số/mẫu số, bằng chứng, giới hạn và `engine.llmUsed: false` trực tiếp từ lớp dữ liệu; không đọc HTML hoặc gửi đến nhà cung cấp AI.
+
+### Snapshot cũ và bổ sung dữ liệu nguồn
+
+Schema **v2** đọc được snapshot Data Lab **v1**. Mở bằng **Nhập History JSON hoặc snapshot**, hoặc chọn bản trên máy rồi **Mở bản lưu**. Migration tính lại trạng thái và chỉ số, nhưng giữ provenance: `projection: true` vẫn là **Dữ liệu nguồn đã rút gọn**. Những trường đã bị bỏ không thể khôi phục từ normalized data. Import một bản có nguồn Riot không xác minh lại nguồn đó; trạng thái nhập và dạng dữ liệu nguồn được thể hiện riêng.
+
+Để lấy lại nguồn cho một trận đã rút gọn, mở chi tiết trận rồi chọn **Bổ sung dữ liệu từ Riot**. Backend dùng match ID, routing và định danh người chơi để lấy riêng match detail qua Riot client/cache/rate limiter hiện có. Nếu thành công, nó giữ toàn bộ JSON body, chạy lại normalization, metrics, trạng thái dữ liệu và bằng chứng; lưu snapshot mới bằng UUID mới. File snapshot cũ không bị ghi đè. Nếu thất bại, dữ liệu đang xem được giữ nguyên và lỗi được hiển thị; HTTP 403 biểu thị bị từ chối quyền truy cập, không mặc định key hết hạn. Trận thiếu ID/routing/định danh phù hợp cần lấy lại qua tra cứu Riot. Không tự tải lại hàng loạt khi mở Data Lab, không gọi rank/mastery hoặc timeline.
+
+Snapshot nằm tại `.local/data-lab/<UUID>.json`, được Git bỏ qua, tối đa **100 bản**, mỗi bản tối đa **8 MiB**. Đây là bộ lưu trên máy, tách khỏi localStorage lịch sử Mayhem; không tự đồng bộ cloud hoặc xóa bản cũ. Khi đầy, xuất/sao lưu rồi tự dọn file không cần. API không nhận đường dẫn lưu từ trình duyệt. Import/lưu qua trình duyệt không tự trở thành nguồn Riot đã xác minh; Demo vẫn có nhãn Demo.
+
+### Trạng thái dữ liệu và remake
+
+Giao diện tách **thống kê cơ bản**, **thống kê bổ sung**, **dạng dữ liệu nguồn**, **remake**, **timeline** và **điều kiện coaching**. Thiếu `isRemake` không làm thống kê cơ bản đầy đủ bị gắn nhãn thiếu. Chi tiết trận liệt kê trường thiếu, ảnh hưởng đến chỉ số và phân biệt chưa thu thập, không có trong nguồn, giá trị không hợp lệ. Giá trị thiếu giữ `null`; số 0 hợp lệ vẫn là 0.
+
+`gameEndedInEarlySurrender` không được coi là `isRemake`. Khi không có bằng chứng trực tiếp, remake giữ **chưa xác định**; cờ remake rõ ràng trong dữ liệu nhập được giữ lại. Chính sách coaching vẫn cho phép trận remake chưa xác định nếu các điều kiện SR khác đạt, đồng thời ghi rõ giới hạn này; remake đã xác định, trận dưới 5 phút/trên 90 phút, ngoài SR hoặc thiếu trường bắt buộc bị loại với lý do cụ thể. Quy tắc thời lượng là điều kiện phân tích, không phải suy luận remake.
+
+Riêng **Dùng lịch sử đang xem** từ Riot: mapper lịch sử hiện tại `mapRiotMatch()` trong `server/riot.js` đã gán `isRemake: false` cho SR sau khi lọc thời lượng. Đây không phải cờ remake do Riot xác nhận. Data Lab bỏ suy luận này trong normalized data của nguồn `riot_projection`, đưa remake về `null`/unknown với basis `unsupported_projection_inference`, nhưng giữ nguyên giá trị trong raw. Quy tắc cũng áp dụng khi mở/xuất lại snapshot đó; không sửa hành vi lịch sử thông thường hoặc cờ remake rõ ràng của dữ liệu nhập thủ công.
+
+[Riot MATCH-V5](https://developer.riotgames.com/apis#match-v5) không tài liệu hóa trường `isRemake`; mô tả `gameEndedInEarlySurrender` hiện có nội dung không liên quan nên không dùng làm căn cứ suy luận. [Riot Remake FAQ](https://support.riotgames.com/en-us/league-of-legends/gameplay/remake-faq) và [patch 12.22](https://www.leagueoflegends.com/en-sg/news/game-updates/patch-12-22-notes/) phân biệt remake với early surrender. Không hardcode thời gian remake theo hướng dẫn gameplay để kết luận từ bảng cuối trận.
+
+Timeline là endpoint MATCH-V5 riêng và **chưa tải** trong phiên bản này. Có nguyên bản match detail không đồng nghĩa đã thu thập toàn bộ Riot API. Thống kê nhóm chỉ dùng trận SR đủ điều kiện và mỗi chỉ số có số mẫu riêng: *pooled* là tổng tử số chia tổng mẫu số; *mean* là trung bình tỷ lệ từng trận. Mẫu số bằng 0/không rõ được hiển thị riêng. Damage/gold share yêu cầu đủ dữ liệu đội; không suy luận macro, nguyên nhân chết hoặc thắng/thua từ số liệu cuối trận.
+
+### Vì sao v1 thiếu trường và cách v2 giữ raw
+
+Trong v1, `public/data-lab-model.js` dùng `rawRiot()`/`rawProjection()` để chỉ giữ các trường cho phép, nên `teams`, perks, summoner spells và trường ngoài danh sách bị bỏ. `fromRiot()` đặt `isRemake: null`; `record()` đưa nó vào `completeness.missingFields` và gộp thành `status: partial`. `renderLabRows()` trong `public/data-lab-view.js` chuyển trạng thái đó thành nhãn chung **Thiếu dữ liệu**, dù các chỉ số cơ bản đã có đủ.
+
+V2 giữ toàn bộ **JSON body match detail** trước normalization, bao gồm trường chưa dùng hoặc chưa biết trước, trong lớp raw riêng. Normalization không sửa raw. Phản hồi Riot nguyên bản, projection cũ, dữ liệu nhập và Demo được phân biệt; không tái tạo raw nguyên bản từ normalized data. JSON được kiểm tra để từ chối credentials/request headers trước khi lưu/xuất thay vì âm thầm xóa trường rồi gọi đó là nguyên bản. API key chỉ ở backend/environment; raw là JSON body, không bao gồm HTTP request/response headers.
+
+`createRiotClient().get()` trong `server/riot.js` đã nhận và cache toàn bộ JSON body trước projection. Cache bộ nhớ local tối đa **128 entry**, **524.288 code unit của chuỗi JSON mỗi entry**, TTL tối đa **24 giờ**; Data Lab và lịch sử có cache riêng. Cache không phải kho phục hồi bền vững: restart, hết hạn hoặc eviction có thể làm mất bản gốc. Snapshot v1 chỉ khôi phục trường đã bỏ khi người dùng chủ động bổ sung lại từ Riot; không hứa rằng cache vẫn còn.
+
+Kiểm tra backend/model và build bằng `npm test` cùng `npm run build`. E2E tùy chọn dùng fixture tổng hợp và thư mục tạm, không cần key; với Playwright được cài riêng:
+
+```bash
+PLAYWRIGHT_MODULE=/tmp/rift-mayhem-browser/node_modules/playwright/index.mjs \
+PLAYWRIGHT_BROWSERS_PATH=/tmp/rift-mayhem-browser/browsers \
+node tests/e2e/data-lab.mjs
+
+PLAYWRIGHT_MODULE=/tmp/rift-mayhem-browser/node_modules/playwright/index.mjs \
+PLAYWRIGHT_BROWSERS_PATH=/tmp/rift-mayhem-browser/browsers \
+node tests/e2e/data-lab-enrich.mjs
+```
+
+Thay hai đường dẫn bằng bản Playwright/Chromium có trên máy. `data-lab-enrich.mjs` dùng fixture kiểm tra lỗi 403 giữ dữ liệu cũ, sau đó bổ sung thành công giữ trường raw bổ sung và tạo UUID mới. Luồng kiểm thử fixture không xác minh Riot live.
 
 ## Interface language
 
@@ -56,7 +114,11 @@ Champion portraits are bundled under `public/champions/` from [TheePepS/League_O
 - `server/riot.js`: server-only ACCOUNT-V1, SUMMONER-V4, MATCH-V5 and LEAGUE-V4 client, routing allowlist, cache, Retry-After handling and PUUID-selected mapping.
 - `server/worker.js`: authenticated same-origin JSON API, protected status route and static asset responses.
 - `server/local.js`: loopback-only development HTTP server, public assets and adapter to the shared API.
-- `server/local-config.js`: server-side `.env` loading and local port validation.
+- `server/local-config.js`: server-side `.env` loading, local port validation and explicit Data Lab flag.
+- `server/data-lab.js`: local-only collection and bounded UUID snapshot storage; never bundled into the hosted Worker.
+- `public/data-lab-model.js` / `data-lab-metrics.js`: versioned snapshots, original/projection provenance, normalized records and explicit metric denominators.
+- `public/data-lab-findings.js`: rules-based findings, linked evidence and structured coaching exports.
+- `public/data-lab.js` / `data-lab-view.js`: local-only inspector UI and shared filtered cohort.
 - `public/riot-source.js`: live provider adapter; validates History v3 and the exhausted-page response, and translates sanitized API errors.
 - `public/data.js`: legacy Match v1 validator and adapters, with explicit Mayhem role and numeric limits. Short durations do not automatically imply a Mayhem remake.
 - `public/history-data.js`: History v3 validation with legacy import support, mode-aware exclusions, fictional samples and lossless export of supported normalized fields.

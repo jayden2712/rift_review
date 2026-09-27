@@ -8,7 +8,7 @@ async function readAsset(file, binary = false) {
     : {type: mime[file.slice(file.lastIndexOf('.'))], body: body.toString('utf8')}];
 }
 
-const entries = await Promise.all((await readdir('public', {withFileTypes: true})).map(async entry => {
+const entries = await Promise.all((await readdir('public', {withFileTypes: true})).filter(entry => !entry.name.toLowerCase().startsWith('data-lab')).map(async entry => {
   if (['champions', 'items', 'spells', 'runes', 'ranks'].includes(entry.name) && entry.isDirectory()) {
     return Promise.all((await readdir('public/' + entry.name, {withFileTypes: true})).map(image => {
       if (!image.isFile() || !/^[a-zA-Z0-9]+\.png$/.test(image.name)) {

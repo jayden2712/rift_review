@@ -5,6 +5,7 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 import {handleApi, jsonResponse} from './worker.js';
 import {RiotError} from './riot.js';
 import {loadLocalConfig} from './local-config.js';
+import {createDataLab, LAB_BODY_LIMIT, defaultLabDirectory} from './data-lab.js';
 
 const publicRoot = fileURLToPath(new URL('../public/', import.meta.url));
 const bodyLimit = 2048;
@@ -35,32 +36,34 @@ function validateLocalRequest(incoming) {
   return new URL(incoming.url, origin);
 }
 
-async function readBody(incoming) {
-  if (Number(incoming.headers['content-length']) > bodyLimit) {
-    throw new RiotError('INPUT_TOO_LARGE', 'Riot ID quá dài.', 413);
+async function readBody(incoming, limit = bodyLimit) {
+  if (Number(incoming.headers['content-length']) > limit) {
+    throw new RiotError('INPUT_TOO_LARGE', 'Dữ liệu yêu cầu quá lớn.', 413);
   }
   let body = Buffer.alloc(0);
   // Preserve the socket on early exit so oversized requests receive a JSON error.
   for await (const chunk of incoming.iterator({destroyOnReturn: false})) {
-    if (body.length + chunk.length > bodyLimit) {
-      throw new RiotError('INPUT_TOO_LARGE', 'Riot ID quá dài.', 413);
+    if (body.length + chunk.length > limit) {
+      throw new RiotError('INPUT_TOO_LARGE', 'Dữ liệu yêu cầu quá lớn.', 413);
     }
     body = Buffer.concat([body, chunk]);
   }
   return body;
 }
 
-async function serveApi(incoming, url, env, fetchImpl) {
+async function serveApi(incoming, url, env, fetchImpl, lab) {
+  const isLab = url.pathname.startsWith('/api/lab/');
+  if (isLab && !lab) return jsonResponse({error: {code: 'NOT_FOUND', message: 'Không tìm thấy chức năng này.'}}, 404);
   const headers = new Headers(Object.entries(incoming.headers)
     .filter(([name]) => ['content-type', 'origin', 'sec-fetch-site'].includes(name)));
   // The local boundary has already been checked; never trust a supplied identity.
   headers.set('oai-authenticated-user-id', 'local-developer');
-  const body = ['GET', 'HEAD'].includes(incoming.method) ? undefined : await readBody(incoming);
+  const body = ['GET', 'HEAD'].includes(incoming.method) ? undefined : await readBody(incoming, isLab ? LAB_BODY_LIMIT : bodyLimit);
   const request = new Request(url, {method: incoming.method, headers, body});
-  return handleApi(request, env, {fetchImpl});
+  return isLab ? lab(request) : handleApi(request, env, {fetchImpl});
 }
 
-async function serveStatic(incoming, url, directory) {
+async function serveStatic(incoming, url, directory, dataLabEnabled) {
   if (!['GET', 'HEAD'].includes(incoming.method)) {
     return new Response('Method not allowed', {status: 405, headers: {Allow: 'GET, HEAD'}});
   }
@@ -68,6 +71,7 @@ async function serveStatic(incoming, url, directory) {
   try { path = decodeURIComponent(url.pathname); }
   catch { return new Response('Invalid path', {status: 400}); }
   const file = path === '/' ? 'index.html' : path.slice(1);
+  if (file.toLowerCase().startsWith('data-lab') && !dataLabEnabled) return new Response('Not found', {status: 404});
   // Permit only known frontend files and game icons, never arbitrary nested paths.
   const allowed = /^[a-zA-Z0-9_-]+\.(html|js|css|svg)$/.test(file)
     || /^(champions|items|spells|runes|ranks)\/[a-zA-Z0-9]+\.png$/.test(file);
@@ -87,14 +91,16 @@ async function serveStatic(incoming, url, directory) {
   }
 }
 
-export function createLocalServer({env = {}, publicDirectory = publicRoot, fetchImpl = fetch} = {}) {
+export function createLocalServer({env = {}, publicDirectory = publicRoot, fetchImpl = fetch, labDirectory = defaultLabDirectory} = {}) {
   const localEnv = {RIOT_API_KEY: typeof env.RIOT_API_KEY === 'string' ? env.RIOT_API_KEY.trim() : ''};
+  const dataLabEnabled = env.DATA_LAB_ENABLED === '1';
+  const lab = dataLabEnabled ? createDataLab({directory: labDirectory, env: localEnv, fetchImpl}) : null;
   return createServer({requestTimeout: 15000, headersTimeout: 10000}, async (incoming, outgoing) => {
     try {
       const url = validateLocalRequest(incoming);
       const response = url.pathname.startsWith('/api/')
-        ? await serveApi(incoming, url, localEnv, fetchImpl)
-        : await serveStatic(incoming, url, publicDirectory);
+        ? await serveApi(incoming, url, localEnv, fetchImpl, lab)
+        : await serveStatic(incoming, url, publicDirectory, dataLabEnabled);
       const body = Buffer.from(await response.arrayBuffer());
       outgoing.writeHead(response.status, Object.fromEntries(response.headers));
       outgoing.end(incoming.method === 'HEAD' ? undefined : body);

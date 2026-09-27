@@ -17,5 +17,5 @@ export function loadLocalConfig(envFile = defaultEnvFile) {
   if (!/^\d+$/.test(rawPort) || !Number.isInteger(port) || port < 1 || port > 65535) {
     throw new Error('PORT cần là số nguyên từ 1 đến 65535.');
   }
-  return {port, env: {RIOT_API_KEY: (process.env.RIOT_API_KEY ?? '').trim()}};
+  return {port, env: {RIOT_API_KEY: (process.env.RIOT_API_KEY ?? '').trim(), DATA_LAB_ENABLED: process.env.DATA_LAB_ENABLED === '1' ? '1' : '0'}};
 }

@@ -1,0 +1,90 @@
+// Data Lab UI integration. Synthetic fixtures only; does not load .env or call Riot.
+import assert from 'node:assert/strict';
+import {mkdtemp,rm,readFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createLocalServer} from '../../server/local.js';
+const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
+const directory=await mkdtemp(join(tmpdir(),'rift-data-lab-e2e-'));
+const server=createLocalServer({env:{DATA_LAB_ENABLED:'1'},labDirectory:directory});
+await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+const origin=`http://127.0.0.1:${server.address().port}`;
+const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+try{
+ const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];
+ page.setDefaultTimeout(5000);page.on('pageerror',error=>errors.push(error.message));
+ await page.goto(origin);await page.locator('#coaching-tab').click();assert.equal(await page.locator('#coaching-panel').isVisible(),true);assert.ok((await page.locator('#coaching-report').innerText()).length>100);await page.locator('#history-tab').click();await page.locator('#open-data-lab').click();
+ await page.locator('#lab-demo').click();await page.waitForSelector('#lab-data-table > tbody > tr[data-lab-row]');
+ assert.equal(await page.locator('#lab-data-table > tbody > tr[data-lab-row]').count(),10);
+ assert.match(await page.locator('#lab-dataset-status').innerText(),/Demo/);
+ await page.locator('[data-lab-match]').first().click();
+ assert.match(await page.locator('#lab-detail').innerText(),/Chưa có timeline/);
+ assert.equal(await page.locator('[data-lab-match]').first().getAttribute('aria-expanded'),'true');
+ assert.equal(await page.locator('[data-lab-detail-row]').evaluate(el=>el.previousElementSibling.dataset.labRow),await page.locator('[data-lab-match]').first().getAttribute('data-lab-match'));
+ await page.locator('[data-lab-match]').first().press('Enter');assert.equal(await page.locator('#lab-detail').count(),0);
+ assert.equal(await page.locator('[data-lab-match]').first().evaluate(el=>el===document.activeElement),true);
+ // The match row itself is a pointer target, not just the champion icon.
+ await page.locator('[data-lab-row]').nth(1).locator('td').first().click();
+ assert.equal(await page.locator('[data-lab-detail-row]').count(),1);
+ assert.equal(await page.locator('[data-lab-detail-row]').evaluate(el=>el.previousElementSibling.dataset.labRow),await page.locator('[data-lab-row]').nth(1).getAttribute('data-lab-row'));
+ await page.locator('[data-lab-close-match]').click();assert.equal(await page.locator('#lab-detail').count(),0);
+ await page.locator('[data-lab-match]').first().press('Space');
+ assert.equal(await page.locator('#lab-detail .lab-participants tbody tr').count(),10);
+ await page.locator('#lab-coaching-tab').click();
+ assert.match(await page.locator('#lab-coaching-panel').innerText(),/chưa sử dụng LLM/);
+ assert.ok(await page.locator('[data-lab-evidence]').count()>0);
+ await page.locator('[data-lab-evidence]').first().click();
+ assert.equal(await page.locator('#lab-data-tab').getAttribute('aria-selected'),'true');
+ assert.equal(await page.locator('#lab-detail').isVisible(),true);
+ await page.locator('#lab-filters [name=result]').selectOption('Victory');
+ const rows=await page.locator('#lab-data-table > tbody > tr[data-lab-row]').count();assert.ok(rows>0&&rows<10);
+ // Changing language while an API request is pending must retain the cohort.
+ let release;const gate=new Promise(resolve=>{release=resolve;});
+ await page.route('**/api/lab/snapshots',async route=>{await gate;await route.continue();});
+ await page.locator('#lab-refresh-list').click();
+ await page.locator('[data-language=en]').click();
+ assert.equal(await page.locator('#lab-data-table > tbody > tr[data-lab-row]').count(),rows);
+ assert.equal(await page.locator('[data-lab-match]').first().isDisabled(),true);
+ release();await page.waitForFunction(()=>!document.querySelector('#data-lab').hasAttribute('aria-busy'));
+ await page.unroute('**/api/lab/snapshots');
+ await page.locator('#lab-filters [name=result]').selectOption('');
+ await page.locator('[data-lab-sort=damageShare]').click();
+ await page.locator('#lab-save').click();await page.waitForFunction(()=>document.querySelector('#lab-saved-list').options.length>1);
+ const savedID=await page.locator('#lab-saved-list').inputValue();assert.ok(savedID);
+ const onDisk=JSON.parse(await readFile(join(directory,savedID+'.json'),'utf8'));assert.equal(onDisk.records.length,10);
+ await page.locator('[data-language=en]').click();
+ assert.match(await page.locator('#lab-data-panel').innerText(),/Damage share/);
+ const exportEvent=page.waitForEvent('download');await page.locator('#lab-export').click();
+ const download=await exportEvent;const exported=JSON.parse(await readFile(await download.path(),'utf8'));
+ assert.equal(exported.records.length,10);assert.equal(exported.schemaVersion,2);
+ await page.locator('#lab-load').click();await page.waitForFunction(()=>document.querySelector('#lab-status').textContent==='Done.');
+ assert.equal(await page.locator('#lab-data-table > tbody > tr[data-lab-row]').count(),10);
+ await page.locator('#lab-import-box summary').click();
+ await page.locator('#lab-import-json').fill(JSON.stringify(exported));await page.locator('#lab-import').click();
+ assert.equal(await page.locator('#lab-data-table > tbody > tr[data-lab-row]').count(),10);
+ const inputEvent=page.waitForEvent('download');await page.locator('#lab-export-coaching').click();
+ const inputDownload=await inputEvent;const input=JSON.parse(await readFile(await inputDownload.path(),'utf8'));
+ assert.equal(input.engine.llmUsed,false);assert.ok(input.findings.length>0);
+ // Error preserves the currently inspected dataset.
+ await page.locator('#lab-import-json').fill('{broken');await page.locator('#lab-import').click();
+ assert.equal(await page.locator('#lab-error').isVisible(),true);assert.equal(await page.locator('#lab-data-table > tbody > tr[data-lab-row]').count(),10);
+ assert.match(await page.locator('#lab-error').innerText(),/Invalid JSON/);
+ // A failed list refresh after saving must not claim the prior snapshot was kept.
+ await page.route('**/api/lab/snapshots',route=>route.request().method()==='GET'?route.fulfill({status:500,contentType:'application/json',body:JSON.stringify({error:{code:'LAB_STORAGE_ERROR',message:'Không thể truy cập dữ liệu.'}})}):route.continue());
+ await page.locator('#lab-save').click();
+ await page.waitForFunction(()=>!document.querySelector('#data-lab').hasAttribute('aria-busy'));
+ assert.match(await page.locator('#lab-status').innerText(),/dataset was updated/);
+ assert.match(await page.locator('#lab-error').innerText(),/Cannot access local/);
+ await page.unroute('**/api/lab/snapshots');await page.locator('#lab-refresh-list').click();
+ await page.waitForFunction(()=>!document.querySelector('#data-lab').hasAttribute('aria-busy'));
+ await page.locator('#lab-import-box summary').click();
+ await page.locator('#lab-data-tab').evaluate(el=>el.scrollIntoView({block:'start'}));
+ await page.locator('[data-lab-match]').first().click();
+ for(const width of [1440,768,390]){await page.setViewportSize({width,height:950});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`overflow at ${width}`);assert.equal(await page.locator('#lab-detail').evaluate(el=>el.getBoundingClientRect().width<=el.closest('.lab-match-table-scroll').clientWidth+1),true,`detail too wide at ${width}`);}
+ await page.screenshot({path:'/tmp/rift-data-lab-mobile.png',fullPage:false});
+ await page.setViewportSize({width:1440,height:1000});await page.locator('#lab-data-tab').evaluate(el=>el.scrollIntoView({block:'start'}));await page.screenshot({path:'/tmp/rift-data-lab-desktop.png',fullPage:false});
+ await page.locator('#lab-coaching-tab').click();await page.locator('#lab-coaching-tab').evaluate(el=>el.scrollIntoView({block:'start'}));await page.screenshot({path:'/tmp/rift-data-lab-coaching.png',fullPage:false});
+ await page.locator('#lab-close').click();assert.equal(await page.locator('#workspace').isVisible(),true);
+ assert.ok(await page.locator('.match-row').count()>0);assert.deepEqual(errors,[]);
+ console.log('PASS: local Data Lab demo, filters/sort, metrics/details, evidence links, backend disk save/load, snapshot/coaching exports, VI/EN, mobile and existing history. Synthetic data only.');
+}finally{await browser.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));await rm(directory,{recursive:true,force:true});}
