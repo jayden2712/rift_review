@@ -1,0 +1,279 @@
+{
+  "metadataVersion": "16.19.1",
+  "page": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+  "retrievedAt": "2026-09-30T05:52:10.501801+00:00",
+  "spells": {
+    "21": {
+      "english": "Barrier",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Barrier.png?d27ae",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Barrier",
+      "sha256": "3b813e28f4ed94872330bef3fe89623662822ece56e45c279d1f79dcd7853235"
+    },
+    "721": {
+      "english": "Barrier",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Barrier.png?d27ae",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Barrier",
+      "sha256": "3b813e28f4ed94872330bef3fe89623662822ece56e45c279d1f79dcd7853235"
+    },
+    "716": {
+      "english": "Surge",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Surge.png?0adde",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Surge",
+      "sha256": "418ead2a98ee7df62d7ee254ff20a019d27c983ff97d40994682345add171317"
+    },
+    "1": {
+      "english": "Cleanse",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cleanse.png?53606",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Cleanse",
+      "sha256": "94ad1063fcd5767c357bb3d3f9b1312e0472eae60f993b0936882360d8bf887d"
+    },
+    "71": {
+      "english": "Cleanse",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cleanse.png?53606",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Cleanse",
+      "sha256": "94ad1063fcd5767c357bb3d3f9b1312e0472eae60f993b0936882360d8bf887d"
+    },
+    "2202": {
+      "english": "Flash",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Flash.png?3cd4f",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Flash",
+      "sha256": "e20139c9f798b9695eb47f421f42fd16c4e0c43505f3e5b32c411a45c0fe5b5f"
+    },
+    "2201": {
+      "english": "Flee",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Flee_augment.png?596d5",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Flee (Arena)",
+      "sha256": "77053d986147c36b603c88c5efc8c7810ea0e1b392fd3ff61b860ff5b9847ec5"
+    },
+    "75": {
+      "english": "Clairvoyance",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Clairvoyance.png?add17",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Clairvoyance",
+      "sha256": "5c073ed881f64f6000151131d3182caaf05843b8e06619543dbf2d1ba490b399"
+    },
+    "14": {
+      "english": "Ignite",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ignite.png?e6f55",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Ignite",
+      "sha256": "c04422e438f0ddf8bff4205e2075b06294d413855092463dd76c6eade3731181"
+    },
+    "714": {
+      "english": "Ignite",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ignite.png?e6f55",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Ignite",
+      "sha256": "c04422e438f0ddf8bff4205e2075b06294d413855092463dd76c6eade3731181"
+    },
+    "3": {
+      "english": "Exhaust",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Exhaust.png?bf898",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Exhaust",
+      "sha256": "97ea7648ab3ba82a29ce29a25dfae38148617b878837e096d61ab58014dfa120"
+    },
+    "73": {
+      "english": "Exhaust",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Exhaust.png?bf898",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Exhaust",
+      "sha256": "97ea7648ab3ba82a29ce29a25dfae38148617b878837e096d61ab58014dfa120"
+    },
+    "4": {
+      "english": "Flash",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Flash.png?3cd4f",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Flash",
+      "sha256": "e20139c9f798b9695eb47f421f42fd16c4e0c43505f3e5b32c411a45c0fe5b5f"
+    },
+    "74": {
+      "english": "Flash",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Flash.png?3cd4f",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Flash",
+      "sha256": "e20139c9f798b9695eb47f421f42fd16c4e0c43505f3e5b32c411a45c0fe5b5f"
+    },
+    "705": {
+      "english": "Fortify",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fortify.png?06105",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Fortify",
+      "sha256": "a8000daff0c43d35e150ceae47e26faaa1ac62b3d542c0dfb2372f2a181d0372"
+    },
+    "6": {
+      "english": "Ghost",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ghost.png?ee615",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Ghost",
+      "sha256": "10de95ca94dc703e7ec84b1089b71725973cf1b507c876a55d6d501d1b4115bb"
+    },
+    "76": {
+      "english": "Ghost",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ghost.png?ee615",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Ghost",
+      "sha256": "10de95ca94dc703e7ec84b1089b71725973cf1b507c876a55d6d501d1b4115bb"
+    },
+    "7": {
+      "english": "Heal",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Heal.png?e5e6a",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Heal",
+      "sha256": "e53bbc22e7b328f09ee817b53880e2adcd9c1850b636eefb6a040bc07ae910da"
+    },
+    "77": {
+      "english": "Heal",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Heal.png?e5e6a",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Heal",
+      "sha256": "e53bbc22e7b328f09ee817b53880e2adcd9c1850b636eefb6a040bc07ae910da"
+    },
+    "13": {
+      "english": "Clarity",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Clarity.png?6c946",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Clarity",
+      "sha256": "16d5ed381ed3907910dfc7da90078ec22f02e6ca184eb261158501e82324f703"
+    },
+    "713": {
+      "english": "Clarity",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Clarity.png?6c946",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Clarity",
+      "sha256": "16d5ed381ed3907910dfc7da90078ec22f02e6ca184eb261158501e82324f703"
+    },
+    "30": {
+      "english": "To the King!",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/To_the_King%21.png?0ca14",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Legend of the Poro King#To The King!",
+      "sha256": "0005b777cfcb623d92cef5ef5553a8ef6210d13b32c35226b079a1335f5b4931"
+    },
+    "31": {
+      "english": "Poro Toss",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Poro_Toss.png?f1e85",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Legend of the Poro King#Poro Toss / Poro Dash",
+      "sha256": "25aba4fef877b04c294852d1036455083373e6b14c507f3ca568eba3661a6e6b"
+    },
+    "709": {
+      "english": "Rally",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rally.png?f8af6",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Rally",
+      "sha256": "89af055a59263732f0e1e3b572cae5a86e67549a2844109e61b8153cd0d379d8"
+    },
+    "777": {
+      "english": "Revive",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Revive.png?a2207",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Revive",
+      "sha256": "d79e370cd28cc869b6204414f76ade66a9e503b724897002884106382425928d"
+    },
+    "11": {
+      "english": "Smite",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Smite.png?f07ec",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Smite",
+      "sha256": "d87d07037369cab362befbdb4410e35ef97b54c9e0eacbca07418d767607885a"
+    },
+    "711": {
+      "english": "Smite",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Smite.png?f07ec",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Smite",
+      "sha256": "d87d07037369cab362befbdb4410e35ef97b54c9e0eacbca07418d767607885a"
+    },
+    "39": {
+      "english": "Mark",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mark.png?650ad",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Mark",
+      "sha256": "0f2d62764f9b139f6b4591b02d5b61c080cc2b74d170a8d769e4aa31acfdcea0"
+    },
+    "32": {
+      "english": "Mark",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mark.png?650ad",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Mark",
+      "sha256": "0f2d62764f9b139f6b4591b02d5b61c080cc2b74d170a8d769e4aa31acfdcea0"
+    },
+    "720": {
+      "english": "Promote",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Promote.png?7b9a4",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Promote",
+      "sha256": "6190889f516d0aadd87227fa35d92c0187921ea80c5424da59cbf204a506d52d"
+    },
+    "12": {
+      "english": "Teleport",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Teleport.png?b4dbd",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Teleport",
+      "sha256": "e2e6fcce80796c37b7b17a66d3aadc7e7fae0204e58a4d4965b4c612b5d67e5e"
+    },
+    "712": {
+      "english": "Teleport",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Teleport.png?b4dbd",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "Teleport",
+      "sha256": "e2e6fcce80796c37b7b17a66d3aadc7e7fae0204e58a4d4965b4c612b5d67e5e"
+    },
+    "54": {
+      "english": "Placeholder",
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.19.1/img/spell/Summoner_UltBookPlaceholder.png",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "Riot Data Dragon",
+      "reason": "No exact image in the Wiki catalog; current pinned Riot artwork used",
+      "sha256": "320fba7ef6d9d036375c520cf6069e77e47ba385da98c48825063547cb06626d"
+    },
+    "55": {
+      "english": "Placeholder and Attack-Smite",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Placeholder_and_Attack-Smite.png?c56dc",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Summoner_spell",
+      "provider": "League of Legends Wiki",
+      "wikiName": "",
+      "sha256": "21ac9c962583dc78a6e2d6b96fb174f31a896d4c5d98fef08de45355b7977f4b"
+    }
+  }
+}

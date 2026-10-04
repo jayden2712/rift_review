@@ -1,5 +1,5 @@
-// Icons: TheePepS/League_Of_Legends_Assets, commit 6d4dd81a9fde8408d409f9b76b914b7485bd037e
-// Filenames are normalized from upstream display names; see README for attribution.
+// Icons: League of Legends Wiki, current champion catalog.
+// Source URLs and SHA-256 hashes: scripts/champion-icon-sources.json.
 const champions = Object.freeze([
   "aatrox", "ahri", "akali", "akshan", "alistar", "ambessa", "amumu", "anivia", "annie", "aphelios",
   "ashe", "aurelionsol", "aurora", "azir", "bard", "belveth", "blitzcrank", "brand", "braum", "briar",

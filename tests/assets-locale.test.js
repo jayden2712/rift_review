@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile, readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {gameAsset} from '../public/game-assets.js';
 
@@ -19,7 +19,7 @@ test('asset names follow the selected locale without changing icon URLs', () => 
 
 test('vendored item images have exact source URLs and hashes, including current wiki icons', async () => {
   const manifest = JSON.parse(await readFile(new URL('../scripts/item-icon-sources.json', import.meta.url), 'utf8'));
-  assert.equal(manifest.metadataVersion, '16.18.1');
+  assert.equal(manifest.metadataVersion, '16.19.1');
   assert.equal(manifest.page, 'https://wiki.leagueoflegends.com/en-us/Item');
   for (const id of ['1001', '3031', '3153', '2422']) {
     assert.equal(manifest.items[id].provider, 'League of Legends Wiki');
@@ -31,4 +31,30 @@ test('vendored item images have exact source URLs and hashes, including current 
     assert.match(record.url, /^https:\/\/(wiki\.leagueoflegends\.com|ddragon\.leagueoflegends\.com)\//);
     if (record.provider === 'Riot Data Dragon') assert.ok(record.reason);
   }
+});
+
+
+test('all champion, spell, rune and rank files match their documented sources', async () => {
+  const manifests = await Promise.all(['champion', 'spell', 'rune-rank'].map(async name =>
+    JSON.parse(await readFile(new URL(`../scripts/${name}-icon-sources.json`, import.meta.url), 'utf8'))));
+  const groups = {champions: manifests[0].champions, spells: manifests[1].spells,
+    runes: manifests[2].runes, ranks: manifests[2].ranks};
+  assert.equal(manifests[1].metadataVersion, '16.19.1');
+  for (const [group, entries] of Object.entries(groups)) {
+    const files = (await readdir(new URL(`../public/${group}/`, import.meta.url))).filter(name => name.endsWith('.png'));
+    assert.deepEqual(files.sort(), Object.keys(entries).map(id => `${id}.png`).sort(), group);
+    for (const [id, record] of Object.entries(entries)) {
+      const bytes = await readFile(new URL(`../public/${group}/${id}.png`, import.meta.url));
+      assert.equal(createHash('sha256').update(bytes).digest('hex'), record.sha256, `${group}/${id}`);
+      if (group === 'spells' && id === '54') {
+        assert.equal(record.provider, 'Riot Data Dragon');
+        assert.ok(record.reason);
+        assert.ok(record.url.startsWith('https://ddragon.leagueoflegends.com/cdn/16.19.1/img/spell/'));
+      } else {
+        assert.equal(record.provider, 'League of Legends Wiki', `${group}/${id}`);
+        assert.ok(record.url.startsWith('https://wiki.leagueoflegends.com/en-us/images/'));
+      }
+    }
+  }
+  assert.equal(gameAsset('rank', 'emerald').src, '/ranks/EMERALD.png');
 });

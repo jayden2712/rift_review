@@ -1,0 +1,1044 @@
+{
+  "page": "https://wiki.leagueoflegends.com/en-us/List_of_champions",
+  "retrievedAt": "2026-09-30T05:48:29.797587+00:00",
+  "champions": {
+    "aatrox": {
+      "wikiName": "Aatrox",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Aatrox_OriginalSquare.png?c0f58",
+      "provider": "League of Legends Wiki",
+      "sha256": "ccaac7f13e5eda5e34e812caf373ac8f123922b6f273352ae9dfdd8727d131ca"
+    },
+    "ahri": {
+      "wikiName": "Ahri",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ahri_OriginalSquare.png?d60a2",
+      "provider": "League of Legends Wiki",
+      "sha256": "e217088c6a7a0f21b339df42ca5736b31d8270992c81cd81e8442e82d3bc3175"
+    },
+    "akali": {
+      "wikiName": "Akali",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Akali_OriginalSquare.png?55774",
+      "provider": "League of Legends Wiki",
+      "sha256": "9b21b76cdf5a1b814871bbd2d2e2c0d2229aa37e4e4ddca2933c5006dc0b9108"
+    },
+    "akshan": {
+      "wikiName": "Akshan",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Akshan_OriginalSquare.png?f8657",
+      "provider": "League of Legends Wiki",
+      "sha256": "737aead5915871d842cd1b75837d5334d6ca0ee74a49bdcbb71e428f6b2c2bc8"
+    },
+    "alistar": {
+      "wikiName": "Alistar",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Alistar_OriginalSquare.png?12536",
+      "provider": "League of Legends Wiki",
+      "sha256": "7dadcce12c4f1c43bf8d0e7e098c56f67f4ebc6d11c3acd9697265cc6310eb23"
+    },
+    "ambessa": {
+      "wikiName": "Ambessa",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ambessa_OriginalSquare.png?6798d",
+      "provider": "League of Legends Wiki",
+      "sha256": "c522de88558f214b98dc4e6d952759c96df437ae563cf7a7e58029374a9bea3b"
+    },
+    "amumu": {
+      "wikiName": "Amumu",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Amumu_OriginalSquare.png?3fa85",
+      "provider": "League of Legends Wiki",
+      "sha256": "6f0a3c2db844489336be4d6d160dc6c85e95ed397966324cdb0d4b0133e87dce"
+    },
+    "anivia": {
+      "wikiName": "Anivia",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Anivia_OriginalSquare.png?dda87",
+      "provider": "League of Legends Wiki",
+      "sha256": "030088d50ec496d694a97c04d1cfb4d078f3931d9490760cbda6da12713f2896"
+    },
+    "annie": {
+      "wikiName": "Annie",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Annie_OriginalSquare.png?5e95f",
+      "provider": "League of Legends Wiki",
+      "sha256": "2633d548c09eae2f0e2365568f23035372b49dc6e5cfc550e41206d9f8ee6d0e"
+    },
+    "aphelios": {
+      "wikiName": "Aphelios",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Aphelios_OriginalSquare.png?4ae88",
+      "provider": "League of Legends Wiki",
+      "sha256": "b2dee59edfd088d5fdf7ce8f6918f1527ef7a42f8aa7eec770494c991dfc79db"
+    },
+    "ashe": {
+      "wikiName": "Ashe",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ashe_OriginalSquare.png?55e1d",
+      "provider": "League of Legends Wiki",
+      "sha256": "63f798efd4cd9168c330c147b3df8cb65c235a8aaa0da5058c1b72f7dbe00ce6"
+    },
+    "aurelionsol": {
+      "wikiName": "Aurelion Sol",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Aurelion_Sol_OriginalSquare.png?98383",
+      "provider": "League of Legends Wiki",
+      "sha256": "537f3f2773733d61278c4f220cb653256ab88e427af2a7c4fed10c75a755f343"
+    },
+    "aurora": {
+      "wikiName": "Aurora",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Aurora_OriginalSquare.png?5dac9",
+      "provider": "League of Legends Wiki",
+      "sha256": "17bd99a657f944f49efde90417ef79dc1478d19c31654878589eabea247851ed"
+    },
+    "azir": {
+      "wikiName": "Azir",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Azir_OriginalSquare.png?95417",
+      "provider": "League of Legends Wiki",
+      "sha256": "e08d38034073a7ce542f748f874e170a5b1d9989acf972c0b655963310c42c33"
+    },
+    "bard": {
+      "wikiName": "Bard",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bard_OriginalSquare.png?d0233",
+      "provider": "League of Legends Wiki",
+      "sha256": "9023eb7ec445e24ffd9bf28270810a278588f1974624848aab85813becc20f0e"
+    },
+    "belveth": {
+      "wikiName": "Bel'Veth",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bel%27Veth_OriginalSquare.png?88288",
+      "provider": "League of Legends Wiki",
+      "sha256": "a3a9bd080904a2bf97df85ac06caa5b528ec9f467bb78e973de433159ef76710"
+    },
+    "blitzcrank": {
+      "wikiName": "Blitzcrank",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Blitzcrank_OriginalSquare.png?af7dd",
+      "provider": "League of Legends Wiki",
+      "sha256": "9da489d3df74ad262fb524f12058f32073a912f8edf99bc97ff4f66ca3ea15c4"
+    },
+    "brand": {
+      "wikiName": "Brand",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Brand_OriginalSquare.png?336d6",
+      "provider": "League of Legends Wiki",
+      "sha256": "fe4e85b3f2362eb5c204b4f4b0c64767dc95c68d01dd438f0a6d8348b236ea36"
+    },
+    "braum": {
+      "wikiName": "Braum",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Braum_OriginalSquare.png?96d05",
+      "provider": "League of Legends Wiki",
+      "sha256": "cd05b3e3cc525eb048ec8972e82a2154bd8ba76ee5ac3716e61fc206317d526e"
+    },
+    "briar": {
+      "wikiName": "Briar",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Briar_OriginalSquare.png?37f17",
+      "provider": "League of Legends Wiki",
+      "sha256": "1ef62b48833adb7c484844b72d5e97ba30e1f7eb6402f683674fca52c5c84232"
+    },
+    "caitlyn": {
+      "wikiName": "Caitlyn",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Caitlyn_OriginalSquare.png?818cf",
+      "provider": "League of Legends Wiki",
+      "sha256": "f05bbf22409dbe264eeee2adb602599aad8eab1fd901cd5333a6ce370f07dc51"
+    },
+    "camille": {
+      "wikiName": "Camille",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Camille_OriginalSquare.png?aba4a",
+      "provider": "League of Legends Wiki",
+      "sha256": "004ad765c94f14149b04d217c4b306a9d602cffd907d489e69224d5b4a7b2896"
+    },
+    "cassiopeia": {
+      "wikiName": "Cassiopeia",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cassiopeia_OriginalSquare.png?56ef7",
+      "provider": "League of Legends Wiki",
+      "sha256": "61b91628353f08c0f9648167130f9b1186334e596dab6901ea3dc2a535c80206"
+    },
+    "chogath": {
+      "wikiName": "Cho'Gath",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cho%27Gath_OriginalSquare.png?70f42",
+      "provider": "League of Legends Wiki",
+      "sha256": "8fdfc393c69a7b5aae11ac94a9c399e225ed18f2cc13b177d4925d12fae318c9"
+    },
+    "corki": {
+      "wikiName": "Corki",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Corki_OriginalSquare.png?8bc1a",
+      "provider": "League of Legends Wiki",
+      "sha256": "9029405cf7acfdb2a613772f398b96398c2ff090b12513629fc115d99481821a"
+    },
+    "darius": {
+      "wikiName": "Darius",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Darius_OriginalSquare.png?aca4c",
+      "provider": "League of Legends Wiki",
+      "sha256": "e7ba49090885f602122482a1ed3151f671ae0d2117fed9508248623189dd0f97"
+    },
+    "diana": {
+      "wikiName": "Diana",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Diana_OriginalSquare.png?d5d54",
+      "provider": "League of Legends Wiki",
+      "sha256": "251a9cce45b7225d74156b7379040325efc3732ae37bf907f264a91baab186c6"
+    },
+    "draven": {
+      "wikiName": "Draven",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Draven_OriginalSquare.png?63957",
+      "provider": "League of Legends Wiki",
+      "sha256": "c96190c54544676eb0082177ce0e5b3a823b7e709abb5ce70dbde4598578bcf2"
+    },
+    "drmundo": {
+      "wikiName": "Dr. Mundo",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dr._Mundo_OriginalSquare.png?5756a",
+      "provider": "League of Legends Wiki",
+      "sha256": "83aaaae60654ec90bea5157739898c63cf796357af8a899c6951aaa63344f6ff"
+    },
+    "ekko": {
+      "wikiName": "Ekko",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ekko_OriginalSquare.png?15376",
+      "provider": "League of Legends Wiki",
+      "sha256": "27e299151a104d7f6a9894087050c5e98e3a75174ef04d07961ccb47ba439d59"
+    },
+    "elise": {
+      "wikiName": "Elise",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Elise_OriginalSquare.png?b97b0",
+      "provider": "League of Legends Wiki",
+      "sha256": "0a5e44243bd5f02bd6ccebe0fc71d2e97b3dbdfc7a906b2e8383544ac8e2a731"
+    },
+    "evelynn": {
+      "wikiName": "Evelynn",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Evelynn_OriginalSquare.png?1ed7f",
+      "provider": "League of Legends Wiki",
+      "sha256": "6a45da62622885384fdf46a32ad27935f2e91f9487a97a8f74717b9d5d7c2522"
+    },
+    "ezreal": {
+      "wikiName": "Ezreal",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ezreal_OriginalSquare.png?fc667",
+      "provider": "League of Legends Wiki",
+      "sha256": "3eec5e46027243055f1e8e0cbd35cd6bf42e7a2ee76216c5aeb4d0f6f1780509"
+    },
+    "fiddlesticks": {
+      "wikiName": "Fiddlesticks",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fiddlesticks_OriginalSquare.png?1082b",
+      "provider": "League of Legends Wiki",
+      "sha256": "f06af761173aaab64b7674a93fa425768ef67ed85b3417d400b66716f2d342c6"
+    },
+    "fiora": {
+      "wikiName": "Fiora",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fiora_OriginalSquare.png?0b643",
+      "provider": "League of Legends Wiki",
+      "sha256": "85fbbe5487d12bed592c4621c4ee3884d63a7f878329acdbead82764b9025799"
+    },
+    "fizz": {
+      "wikiName": "Fizz",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fizz_OriginalSquare.png?44c3d",
+      "provider": "League of Legends Wiki",
+      "sha256": "b55045fd48cd17cfb795f703d3ab95ed95fd7acce79dce72d7d38ce673f4fc0a"
+    },
+    "galio": {
+      "wikiName": "Galio",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Galio_OriginalSquare.png?698b3",
+      "provider": "League of Legends Wiki",
+      "sha256": "499a385d686861c3ee7bdf5957ed32f732122b554438062be4a2ea3b55d33f2a"
+    },
+    "gangplank": {
+      "wikiName": "Gangplank",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gangplank_OriginalSquare.png?6b5cf",
+      "provider": "League of Legends Wiki",
+      "sha256": "b8f2e64260e3255e55fef6799a37fea409188b45b2a205895bed9cd5fddcdcff"
+    },
+    "garen": {
+      "wikiName": "Garen",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Garen_OriginalSquare.png?37153",
+      "provider": "League of Legends Wiki",
+      "sha256": "9224e316f8ffb531cf65376bf552e646cb6ea6cacce1c44a7f7704e8558fc960"
+    },
+    "gnar": {
+      "wikiName": "Gnar",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gnar_OriginalSquare.png?11c50",
+      "provider": "League of Legends Wiki",
+      "sha256": "5b8f0b33348eb7b3b8b398b2a16e00649a0887447ff311fbda5a3891d7c1f67d"
+    },
+    "gragas": {
+      "wikiName": "Gragas",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gragas_OriginalSquare.png?41e2d",
+      "provider": "League of Legends Wiki",
+      "sha256": "2c7c30983fc6be80818b86b2333fa68db271420578f07a59194e76e6800d3edb"
+    },
+    "graves": {
+      "wikiName": "Graves",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Graves_OriginalSquare.png?1d234",
+      "provider": "League of Legends Wiki",
+      "sha256": "84e37da8e0e79596eae30733f7dbbd13041506df1fed4518361f53640ddc9abc"
+    },
+    "gwen": {
+      "wikiName": "Gwen",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gwen_OriginalSquare.png?794a1",
+      "provider": "League of Legends Wiki",
+      "sha256": "d895f789c70d80f25627a69922eb9bc665adc78d8fb1efafb8e914e4537f2815"
+    },
+    "hecarim": {
+      "wikiName": "Hecarim",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hecarim_OriginalSquare.png?89760",
+      "provider": "League of Legends Wiki",
+      "sha256": "efe0b7f0f6c92075dec151cd4be204aa357386e3b93104c9fe3ea02c697852a0"
+    },
+    "heimerdinger": {
+      "wikiName": "Heimerdinger",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Heimerdinger_OriginalSquare.png?80a6b",
+      "provider": "League of Legends Wiki",
+      "sha256": "4c4c265e277e0ab450851787cc4596ae6f080e63fc19af8f070997326ecf23bf"
+    },
+    "hwei": {
+      "wikiName": "Hwei",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hwei_OriginalSquare.png?0c03b",
+      "provider": "League of Legends Wiki",
+      "sha256": "2303edfc011be65f9fdf06b1e04f327f720c34e24db147c430fbabfe16374fde"
+    },
+    "illaoi": {
+      "wikiName": "Illaoi",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Illaoi_OriginalSquare.png?37418",
+      "provider": "League of Legends Wiki",
+      "sha256": "e80ed37e766711f21b794a174cfbb87ca7c868d974fb65d3694704986e61cee1"
+    },
+    "irelia": {
+      "wikiName": "Irelia",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Irelia_OriginalSquare.png?fad5e",
+      "provider": "League of Legends Wiki",
+      "sha256": "3c7d965f19ee33821cda890baf80abdf036d17264e2b919c1f5f31afdc89d541"
+    },
+    "ivern": {
+      "wikiName": "Ivern",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ivern_OriginalSquare.png?e28f2",
+      "provider": "League of Legends Wiki",
+      "sha256": "8f18c11b34ac58c05a2d1e60e5f19667dd79060ced92b1a035461ed24a74f37a"
+    },
+    "janna": {
+      "wikiName": "Janna",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Janna_OriginalSquare.png?ec2a0",
+      "provider": "League of Legends Wiki",
+      "sha256": "63a9c3424b196da02b8a4eee51d8ba571cf693ed6f9e5f8f62b4568e4d782c67"
+    },
+    "jarvaniv": {
+      "wikiName": "Jarvan IV",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Jarvan_IV_OriginalSquare.png?74a73",
+      "provider": "League of Legends Wiki",
+      "sha256": "b871f2fc64a31f8cefe7e22c6d1428479822531d16e47553ef778391a5bc7361"
+    },
+    "jax": {
+      "wikiName": "Jax",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Jax_OriginalSquare.png?6209d",
+      "provider": "League of Legends Wiki",
+      "sha256": "fa16657ff3fb7e8ca959a2e9e105b445ea00bdff7ad8411e6825c3e3992b9786"
+    },
+    "jayce": {
+      "wikiName": "Jayce",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Jayce_OriginalSquare.png?02706",
+      "provider": "League of Legends Wiki",
+      "sha256": "d0f4acd6c68080071a5999516761834dcdfe888d04d7f2d7beffb5c2e1150f25"
+    },
+    "jhin": {
+      "wikiName": "Jhin",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Jhin_OriginalSquare.png?893f1",
+      "provider": "League of Legends Wiki",
+      "sha256": "0e524d0daf2480855ef8a639d148f0f42ac72daffa61e7aa634159e06d39dc9a"
+    },
+    "jinx": {
+      "wikiName": "Jinx",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Jinx_OriginalSquare.png?95e74",
+      "provider": "League of Legends Wiki",
+      "sha256": "e5750b955a9369305443f762200f5f19814e858ec40f3e95ee7dd2a5b97c75f4"
+    },
+    "kaisa": {
+      "wikiName": "Kai'Sa",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kai%27Sa_OriginalSquare.png?3d567",
+      "provider": "League of Legends Wiki",
+      "sha256": "a942b1865fd313ef1135033bb9ff7b87e517afce098a6cc1b87052559b07ab56"
+    },
+    "kalista": {
+      "wikiName": "Kalista",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kalista_OriginalSquare.png?e5c71",
+      "provider": "League of Legends Wiki",
+      "sha256": "c7816a002bf589860ef9bd4553f688e216885810bb55974b80112d024fc199a9"
+    },
+    "karma": {
+      "wikiName": "Karma",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Karma_OriginalSquare.png?46695",
+      "provider": "League of Legends Wiki",
+      "sha256": "a83c2ac2b677627af34a067211ea9a652f8f82821453c129d89462f9e151c9b4"
+    },
+    "karthus": {
+      "wikiName": "Karthus",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Karthus_OriginalSquare.png?46df2",
+      "provider": "League of Legends Wiki",
+      "sha256": "afba5ca68257c0406e2bf39ece157f48248dcca893c2fca831358b04afd80e41"
+    },
+    "kassadin": {
+      "wikiName": "Kassadin",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kassadin_OriginalSquare.png?d6b88",
+      "provider": "League of Legends Wiki",
+      "sha256": "9a556dc00029c54ca88227e081a7f31450b6c39f2d6932fc5c0e5b24cf69dd9a"
+    },
+    "katarina": {
+      "wikiName": "Katarina",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Katarina_OriginalSquare.png?e11e0",
+      "provider": "League of Legends Wiki",
+      "sha256": "3586908ef364d4b54ace908eb535a5ab3f8d31921d717beea4a745fba8f83418"
+    },
+    "kayle": {
+      "wikiName": "Kayle",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kayle_OriginalSquare.png?4677c",
+      "provider": "League of Legends Wiki",
+      "sha256": "a9b804f726fefc184901d67622471361c9fff3c557fdf1b9248f1467a8f61a9d"
+    },
+    "kayn": {
+      "wikiName": "Kayn",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kayn_OriginalSquare.png?37607",
+      "provider": "League of Legends Wiki",
+      "sha256": "a53264518e794505dff46a6e7f0cb1d5a87e5b3e244bf49ba4b3c50b3dbc2853"
+    },
+    "kennen": {
+      "wikiName": "Kennen",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kennen_OriginalSquare.png?f8fad",
+      "provider": "League of Legends Wiki",
+      "sha256": "d4584e42f2f367471d73485cea603aa59e34713f462233a513dd748f82de0c61"
+    },
+    "khazix": {
+      "wikiName": "Kha'Zix",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kha%27Zix_OriginalSquare.png?a0597",
+      "provider": "League of Legends Wiki",
+      "sha256": "85ce1709479d79ea547354aceaaea2242b87a90d959eceb05a36bcfb47e88677"
+    },
+    "kindred": {
+      "wikiName": "Kindred",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kindred_OriginalSquare.png?86d26",
+      "provider": "League of Legends Wiki",
+      "sha256": "f42e141e271c5eb03ffe283ee2952059c9fffa3cf2e6e7fba9d2ae285fd02759"
+    },
+    "kled": {
+      "wikiName": "Kled",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kled_OriginalSquare.png?353e8",
+      "provider": "League of Legends Wiki",
+      "sha256": "c0b83dcccdc3bb65bd2f3860df103da86f57ef611515dad3cb12f9820d17acd0"
+    },
+    "kogmaw": {
+      "wikiName": "Kog'Maw",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Kog%27Maw_OriginalSquare.png?1f3d5",
+      "provider": "League of Legends Wiki",
+      "sha256": "c6d56b3941d4edbac6c803b8de2e032391130596fd8294a88faba25d645e0ebc"
+    },
+    "ksante": {
+      "wikiName": "K'Sante",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/K%27Sante_OriginalSquare.png?6c0c1",
+      "provider": "League of Legends Wiki",
+      "sha256": "5ae41260757766af9af6bcf27cd372837aee2124ef5ef8ebeeb85f94e0ea85f1"
+    },
+    "leblanc": {
+      "wikiName": "LeBlanc",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/LeBlanc_OriginalSquare.png?4031b",
+      "provider": "League of Legends Wiki",
+      "sha256": "a56c0dc2b5b6f2d4d90bd1867a506ce780691efbd6529ef643fc5dd44076273c"
+    },
+    "leesin": {
+      "wikiName": "Lee Sin",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lee_Sin_OriginalSquare.png?f1618",
+      "provider": "League of Legends Wiki",
+      "sha256": "cb1e8b3e7995bcfd6775680c0d4fec7a07baae209b781ad8b34eb12105abf4b7"
+    },
+    "leona": {
+      "wikiName": "Leona",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Leona_OriginalSquare.png?9c355",
+      "provider": "League of Legends Wiki",
+      "sha256": "27a3c038d5d67b6a809fed513b2cb634059bb29f8464c8d26dafe806e988c08a"
+    },
+    "lillia": {
+      "wikiName": "Lillia",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lillia_OriginalSquare.png?16dff",
+      "provider": "League of Legends Wiki",
+      "sha256": "91f54d7b9785c3d325b2b1d5c49a4eb3f8a11f899692cde1659ba7d588fd8a05"
+    },
+    "lissandra": {
+      "wikiName": "Lissandra",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lissandra_OriginalSquare.png?fe62c",
+      "provider": "League of Legends Wiki",
+      "sha256": "d5804c89d4231946aed49247f98e8e34aaa7dda6b70b6a82cb281406e4e7ffae"
+    },
+    "locke": {
+      "wikiName": "Locke",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Locke_OriginalSquare.png?3c5c5",
+      "provider": "League of Legends Wiki",
+      "sha256": "963ce9324151a91e0e5d07cadc4faed8283aacb779d379450c63f1813a801d88"
+    },
+    "lucian": {
+      "wikiName": "Lucian",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lucian_OriginalSquare.png?514f2",
+      "provider": "League of Legends Wiki",
+      "sha256": "be7b2d432b1c783d6f973381e34f30e19af012a37e74720516964776ae0a071a"
+    },
+    "lulu": {
+      "wikiName": "Lulu",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lulu_OriginalSquare.png?18777",
+      "provider": "League of Legends Wiki",
+      "sha256": "96a1020b71c603ebd83bf301e25ac9c2a8ca22f763c4278798994abdf72ba605"
+    },
+    "lux": {
+      "wikiName": "Lux",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lux_OriginalSquare.png?285c1",
+      "provider": "League of Legends Wiki",
+      "sha256": "453f1abd861dbdbf4878012ebe0cebee85be071748f1f6ec4497b2d479853b8c"
+    },
+    "malphite": {
+      "wikiName": "Malphite",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Malphite_OriginalSquare.png?e38f9",
+      "provider": "League of Legends Wiki",
+      "sha256": "c0992388ba9b05472c3919f028e69b45e38d423aab7f9c1fd0941b6bbc97e222"
+    },
+    "malzahar": {
+      "wikiName": "Malzahar",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Malzahar_OriginalSquare.png?0d05f",
+      "provider": "League of Legends Wiki",
+      "sha256": "66c5fad02afa20afc1bff44dbcc1990cee07eef4f14b357e085d153de5412abe"
+    },
+    "maokai": {
+      "wikiName": "Maokai",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Maokai_OriginalSquare.png?5d15e",
+      "provider": "League of Legends Wiki",
+      "sha256": "1245593e31a4ffb43273bef0583389e165ca6b2a09451f6e8b93923a50032284"
+    },
+    "masteryi": {
+      "wikiName": "Master Yi",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Master_Yi_OriginalSquare.png?3d56a",
+      "provider": "League of Legends Wiki",
+      "sha256": "57f7fe58160c8afab036c1377f9aeae808a7d7c0d6fa8aff80ca7ee06884981a"
+    },
+    "mel": {
+      "wikiName": "Mel",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mel_OriginalSquare.png?dbac6",
+      "provider": "League of Legends Wiki",
+      "sha256": "9acc122a0e70cf568ad09c366a3fe4d3f6506bf64c2f179356e34bec53d23c91"
+    },
+    "milio": {
+      "wikiName": "Milio",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Milio_OriginalSquare.png?b81c0",
+      "provider": "League of Legends Wiki",
+      "sha256": "981e91f4a1ce31d51b0326dcff85fe5c7960083424068a794cd2e8c6a30a4ffb"
+    },
+    "missfortune": {
+      "wikiName": "Miss Fortune",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Miss_Fortune_OriginalSquare.png?47a40",
+      "provider": "League of Legends Wiki",
+      "sha256": "2e1b8bd626740229f7c35e721e7b67ff5a85025027c7923cd53834d32d25b195"
+    },
+    "mordekaiser": {
+      "wikiName": "Mordekaiser",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Mordekaiser_OriginalSquare.png?76c25",
+      "provider": "League of Legends Wiki",
+      "sha256": "c30cffaac91efc1a810dd9395f748dcafe3879259d76f0b626ffe889d7c5e560"
+    },
+    "morgana": {
+      "wikiName": "Morgana",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Morgana_OriginalSquare.png?03afb",
+      "provider": "League of Legends Wiki",
+      "sha256": "c59a7f0292e2d55980c69cda0de6c74c20990f2bfd9856b2c10714e1b7ca2ddc"
+    },
+    "naafiri": {
+      "wikiName": "Naafiri",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Naafiri_OriginalSquare.png?ccf30",
+      "provider": "League of Legends Wiki",
+      "sha256": "d99bc04901c127ee34fd3bd4fba77bdba3ab7a8e2a510cd961166de46f12a3bd"
+    },
+    "nami": {
+      "wikiName": "Nami",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nami_OriginalSquare.png?b8c44",
+      "provider": "League of Legends Wiki",
+      "sha256": "ac3e811cbd3c5404669251f02af0fd25f067ae78a3e16ab670279aca402bfe34"
+    },
+    "nasus": {
+      "wikiName": "Nasus",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nasus_OriginalSquare.png?9a2f8",
+      "provider": "League of Legends Wiki",
+      "sha256": "c13679a1b03e905489cdec4ab178a4a209394e98d27aaf2dc3e1a9c1fafbe60f"
+    },
+    "nautilus": {
+      "wikiName": "Nautilus",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nautilus_OriginalSquare.png?8b72f",
+      "provider": "League of Legends Wiki",
+      "sha256": "20bd71417a5e84c443a5c78b4b6ac594104c077c7ed3e64055001d9df6dcebb7"
+    },
+    "neeko": {
+      "wikiName": "Neeko",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Neeko_OriginalSquare.png?7667b",
+      "provider": "League of Legends Wiki",
+      "sha256": "fcced3e83aab22bf48bd12c1bd4bea6978e57e33b606e963a6da8ff2376eaf66"
+    },
+    "nidalee": {
+      "wikiName": "Nidalee",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nidalee_OriginalSquare.png?c6101",
+      "provider": "League of Legends Wiki",
+      "sha256": "d76d6e1ab8c13c32df7afa62a73c0b5947145ac9ee86cf802091c068dfa941bd"
+    },
+    "nilah": {
+      "wikiName": "Nilah",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nilah_OriginalSquare.png?573d3",
+      "provider": "League of Legends Wiki",
+      "sha256": "0dd39a30eed176be71353fb7e0f60184acd0b878e23368aa86b6c568d93436af"
+    },
+    "nocturne": {
+      "wikiName": "Nocturne",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nocturne_OriginalSquare.png?3ed03",
+      "provider": "League of Legends Wiki",
+      "sha256": "24a5d6e44951589868814b984fbe5a81c5d3e207d20c6f160dd0d2753dd75eaf"
+    },
+    "nunuwillump": {
+      "wikiName": "Nunu & Willump",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nunu_OriginalSquare.png?ef0fa",
+      "provider": "League of Legends Wiki",
+      "sha256": "6a2da34028123428a36dff9964b39abca41210554bbaec6fb29cb713990c4a00"
+    },
+    "olaf": {
+      "wikiName": "Olaf",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Olaf_OriginalSquare.png?4841d",
+      "provider": "League of Legends Wiki",
+      "sha256": "16823474bb21ded18bc8a4e64845cb69bd3ec6b404656eab484d238eefef59a0"
+    },
+    "orianna": {
+      "wikiName": "Orianna",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Orianna_OriginalSquare.png?ea994",
+      "provider": "League of Legends Wiki",
+      "sha256": "754fd400ec177b747565444ca6771d50ec8b71f1e38a1b818984866decc0e173"
+    },
+    "ornn": {
+      "wikiName": "Ornn",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ornn_OriginalSquare.png?ab1d6",
+      "provider": "League of Legends Wiki",
+      "sha256": "81cbc17f8a729a6523e29765dee1f19071eae54a1b516da0c3388512b1a5b48b"
+    },
+    "pantheon": {
+      "wikiName": "Pantheon",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Pantheon_OriginalSquare.png?81183",
+      "provider": "League of Legends Wiki",
+      "sha256": "44b6574407e2b359d75d599a6b87a9da5237d10125cb76d0f4bc93df166c028e"
+    },
+    "poppy": {
+      "wikiName": "Poppy",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Poppy_OriginalSquare.png?fde1f",
+      "provider": "League of Legends Wiki",
+      "sha256": "73fc34db0907abe7cdec0c8ed54996bbb75e31bab9d54d80a5fde27a9e1c8743"
+    },
+    "pyke": {
+      "wikiName": "Pyke",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Pyke_OriginalSquare.png?071c0",
+      "provider": "League of Legends Wiki",
+      "sha256": "d14930384093b4786ec25d208411bb480764dde64bce3f5df68ebe70bbd1c711"
+    },
+    "qiyana": {
+      "wikiName": "Qiyana",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Qiyana_OriginalSquare.png?f2220",
+      "provider": "League of Legends Wiki",
+      "sha256": "c02be91c3965d4a2c072a519eeb7600b50a50aec636780922b5f428555033f58"
+    },
+    "quinn": {
+      "wikiName": "Quinn",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Quinn_OriginalSquare.png?098bd",
+      "provider": "League of Legends Wiki",
+      "sha256": "d723bf2882e22011cfd31b3c08022c690ad04a39fd859913fc5c2fa26c567be2"
+    },
+    "rakan": {
+      "wikiName": "Rakan",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rakan_OriginalSquare.png?5747a",
+      "provider": "League of Legends Wiki",
+      "sha256": "9672c12ece14fa66b1a0dc22e1c64c6b0015f5b24f0bb9e084e9d3e9db537f49"
+    },
+    "rammus": {
+      "wikiName": "Rammus",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rammus_OriginalSquare.png?3fbfd",
+      "provider": "League of Legends Wiki",
+      "sha256": "068ef88e44c8cdea006d457bd0a48ebb9923221bbc451151e5d8a9495f5c6c09"
+    },
+    "reksai": {
+      "wikiName": "Rek'Sai",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rek%27Sai_OriginalSquare.png?c597d",
+      "provider": "League of Legends Wiki",
+      "sha256": "970fa561e499546f092627ee4562b84f0d3470cc96d1ab5bf2ef910a61786731"
+    },
+    "rell": {
+      "wikiName": "Rell",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rell_OriginalSquare.png?d80b8",
+      "provider": "League of Legends Wiki",
+      "sha256": "53915655425508fb4e1fa0e58f269f31d57248f99c663b1423acceaabbdfa72b"
+    },
+    "renataglasc": {
+      "wikiName": "Renata Glasc",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Renata_Glasc_OriginalSquare.png?1300f",
+      "provider": "League of Legends Wiki",
+      "sha256": "2b004bde11fecd88a126bac7a752ee7344131031b40c64bc3f292b4115c9838c"
+    },
+    "renekton": {
+      "wikiName": "Renekton",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Renekton_OriginalSquare.png?0f653",
+      "provider": "League of Legends Wiki",
+      "sha256": "db7b3306e5b92bb10e1c142f8061d7dc66d8b19ee2b47c27fd6d8851683dde3a"
+    },
+    "rengar": {
+      "wikiName": "Rengar",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rengar_OriginalSquare.png?53142",
+      "provider": "League of Legends Wiki",
+      "sha256": "4d5f1d8526fcc84dc606b4d9776dff2735fdd97df813e0bbff6f89c8be99eadc"
+    },
+    "riven": {
+      "wikiName": "Riven",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Riven_OriginalSquare.png?6e136",
+      "provider": "League of Legends Wiki",
+      "sha256": "5f6b44526a6c3287bd995dde316799295e6e822bbb6683d4837838deef508f79"
+    },
+    "rumble": {
+      "wikiName": "Rumble",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rumble_OriginalSquare.png?26721",
+      "provider": "League of Legends Wiki",
+      "sha256": "60d92a098a6fcebf502a22137e6c3f2825766e8962b60f7cc8cf669da9244e11"
+    },
+    "ryze": {
+      "wikiName": "Ryze",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ryze_OriginalSquare.png?716a1",
+      "provider": "League of Legends Wiki",
+      "sha256": "e9d0f8bd6a026638896c07e8882e9e4f9f62f562a90423073f1e62b24b319302"
+    },
+    "samira": {
+      "wikiName": "Samira",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Samira_OriginalSquare.png?b57dc",
+      "provider": "League of Legends Wiki",
+      "sha256": "409c33e43fb37ef1ef623e4f6fbc291dadd5ff3ea84c0c9c1870dbad071c3da9"
+    },
+    "sejuani": {
+      "wikiName": "Sejuani",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sejuani_OriginalSquare.png?d585c",
+      "provider": "League of Legends Wiki",
+      "sha256": "43e2e8a00445c217966cfd507a1591e49d64cf570221b1e599fc06827436bb4c"
+    },
+    "senna": {
+      "wikiName": "Senna",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Senna_OriginalSquare.png?98201",
+      "provider": "League of Legends Wiki",
+      "sha256": "0db172cc0427e96ce500deddaf063abc56494dc83a01da9b7cd629caf6b38789"
+    },
+    "seraphine": {
+      "wikiName": "Seraphine",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Seraphine_OriginalSquare.png?a7e01",
+      "provider": "League of Legends Wiki",
+      "sha256": "2bc242bcc06831ed33949eae16c062a9e3f124ab18c33bb29e6be5363fb219c3"
+    },
+    "sett": {
+      "wikiName": "Sett",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sett_OriginalSquare.png?a9ec3",
+      "provider": "League of Legends Wiki",
+      "sha256": "a698820a52dcacfc956556908bb4da4db0f9349db160f193b43cab8e9b37425c"
+    },
+    "shaco": {
+      "wikiName": "Shaco",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shaco_OriginalSquare.png?dd925",
+      "provider": "League of Legends Wiki",
+      "sha256": "289b8e15514d03b66e6c1db07246c7dad6b6af36ee4b67e7e428e9d350949852"
+    },
+    "shen": {
+      "wikiName": "Shen",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shen_OriginalSquare.png?7795f",
+      "provider": "League of Legends Wiki",
+      "sha256": "b5be82ee2975a76771cc0dfcba0449a60e35c9f573bb6113995710f2f1ee707b"
+    },
+    "shyvana": {
+      "wikiName": "Shyvana",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shyvana_OriginalSquare.png?95332",
+      "provider": "League of Legends Wiki",
+      "sha256": "3a136718b056d58636f4333e962ec9500624148bae03e4ce72e29d5e20743377"
+    },
+    "singed": {
+      "wikiName": "Singed",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Singed_OriginalSquare.png?e9e6e",
+      "provider": "League of Legends Wiki",
+      "sha256": "ef3d676a150f200b07cd3b575254918e6cbceefb8d951485dc86e138fed96ecb"
+    },
+    "sion": {
+      "wikiName": "Sion",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sion_OriginalSquare.png?33ac7",
+      "provider": "League of Legends Wiki",
+      "sha256": "e467110b2ef4c3f0c1df4bcdb5459ca161cf146b23c679188ed29778cca378cd"
+    },
+    "sivir": {
+      "wikiName": "Sivir",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sivir_OriginalSquare.png?2852b",
+      "provider": "League of Legends Wiki",
+      "sha256": "2a91486f4cfbd8478b8688abb2b60bc1fea7cb5fa796a563ac4ee267380e06ea"
+    },
+    "skarner": {
+      "wikiName": "Skarner",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Skarner_OriginalSquare.png?76e44",
+      "provider": "League of Legends Wiki",
+      "sha256": "e8f1cac01d84a07c60d366a57a97e6ea0988882617e228a95074f19e19b10c44"
+    },
+    "smolder": {
+      "wikiName": "Smolder",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Smolder_OriginalSquare.png?d6866",
+      "provider": "League of Legends Wiki",
+      "sha256": "6c102b555c2b38e6b3568a5e171453bfca68a7e25db07dc2bf63f3b83afa49f3"
+    },
+    "sona": {
+      "wikiName": "Sona",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sona_OriginalSquare.png?72d48",
+      "provider": "League of Legends Wiki",
+      "sha256": "1c8fbfe3009b0e01d79582dbd302047b9625d2117567b18c694ef3403737b2fa"
+    },
+    "soraka": {
+      "wikiName": "Soraka",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Soraka_OriginalSquare.png?0c2df",
+      "provider": "League of Legends Wiki",
+      "sha256": "d51eb78270df45f868cfd18e79bc72c6fdf1e2177199b320eaf454389fd20478"
+    },
+    "swain": {
+      "wikiName": "Swain",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Swain_OriginalSquare.png?b7cdb",
+      "provider": "League of Legends Wiki",
+      "sha256": "125ddae411f2b32fdfe57b4129c85673a0bb387b930b04c168b5089674d26797"
+    },
+    "sylas": {
+      "wikiName": "Sylas",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sylas_OriginalSquare.png?5939c",
+      "provider": "League of Legends Wiki",
+      "sha256": "28f946398fa0380510b10ab0af66fe50f80e91c85349c23131439453bd50e44d"
+    },
+    "syndra": {
+      "wikiName": "Syndra",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Syndra_OriginalSquare.png?f6b95",
+      "provider": "League of Legends Wiki",
+      "sha256": "d43dd909ce55df4de294964efe83b4fefdf784518365bba8284a6439f9b65663"
+    },
+    "tahmkench": {
+      "wikiName": "Tahm Kench",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Tahm_Kench_OriginalSquare.png?c177a",
+      "provider": "League of Legends Wiki",
+      "sha256": "76560e8859c6b708f4cb94047ee9cdeab49f19d1f266cb434167b34a18961e5a"
+    },
+    "taliyah": {
+      "wikiName": "Taliyah",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Taliyah_OriginalSquare.png?c757b",
+      "provider": "League of Legends Wiki",
+      "sha256": "b34d360a407e54c52ecf265b7a59d32191e5023569b9b32b3fc481f698a0a3e8"
+    },
+    "talon": {
+      "wikiName": "Talon",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Talon_OriginalSquare.png?eb66c",
+      "provider": "League of Legends Wiki",
+      "sha256": "9385f48e0e52d7825225352a299cd7fa14c74e61b85acfa900b1af28c80668d4"
+    },
+    "taric": {
+      "wikiName": "Taric",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Taric_OriginalSquare.png?df987",
+      "provider": "League of Legends Wiki",
+      "sha256": "17b56ff86aadb389b4d1f1017429d123ca530313fbe04916741e47fe9aee46e0"
+    },
+    "teemo": {
+      "wikiName": "Teemo",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Teemo_OriginalSquare.png?783d6",
+      "provider": "League of Legends Wiki",
+      "sha256": "03de2b420118b8eaf84af8b475128095e8e016c6b0f806ebc3d726c5b9d9a60f"
+    },
+    "thresh": {
+      "wikiName": "Thresh",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Thresh_OriginalSquare.png?9ef1d",
+      "provider": "League of Legends Wiki",
+      "sha256": "6f9291f1a3c687cc0faa48f6f1228257642d2d1f39449e828349c6e5745d3212"
+    },
+    "tristana": {
+      "wikiName": "Tristana",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Tristana_OriginalSquare.png?b2200",
+      "provider": "League of Legends Wiki",
+      "sha256": "6ff6710ef0e86c362d3684c03e2005ca90679f321fff78b57066b01f0ea49ad2"
+    },
+    "trundle": {
+      "wikiName": "Trundle",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Trundle_OriginalSquare.png?4bae6",
+      "provider": "League of Legends Wiki",
+      "sha256": "a894e26d384e493c3576eac3159dc77172a6a0088bed23a1f81dfd27f2131160"
+    },
+    "tryndamere": {
+      "wikiName": "Tryndamere",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Tryndamere_OriginalSquare.png?3eb36",
+      "provider": "League of Legends Wiki",
+      "sha256": "a5097e9a1704f8e37c68a4c59a249deb07ab509a4a94e87c5a53b439b7538795"
+    },
+    "twistedfate": {
+      "wikiName": "Twisted Fate",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Twisted_Fate_OriginalSquare.png?72748",
+      "provider": "League of Legends Wiki",
+      "sha256": "2f65f195a24da020a9caa941b233b6e1d66888f88f1df61551797b01f3a42f6e"
+    },
+    "twitch": {
+      "wikiName": "Twitch",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Twitch_OriginalSquare.png?143e2",
+      "provider": "League of Legends Wiki",
+      "sha256": "5ecae2df824f6b044d9d3ce6639d81201a0dd6aa4089d4d3cff8d26c4ec4ccf5"
+    },
+    "udyr": {
+      "wikiName": "Udyr",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Udyr_OriginalSquare.png?fe8df",
+      "provider": "League of Legends Wiki",
+      "sha256": "73218516ad41061a560a7cb0b6aafa8fa6c159402ce20fa5a7e6ab444b855379"
+    },
+    "urgot": {
+      "wikiName": "Urgot",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Urgot_OriginalSquare.png?1c3ee",
+      "provider": "League of Legends Wiki",
+      "sha256": "2371a2c575018a9b4ad2e9c413677d47a9ee0ccea61e883ce416e731d096f134"
+    },
+    "varus": {
+      "wikiName": "Varus",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Varus_OriginalSquare.png?1f1e0",
+      "provider": "League of Legends Wiki",
+      "sha256": "585e84015a45bbd474b74d045785120fddf4be3e31a36851b3ff89fd537fc8af"
+    },
+    "vayne": {
+      "wikiName": "Vayne",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Vayne_OriginalSquare.png?78bd3",
+      "provider": "League of Legends Wiki",
+      "sha256": "c84ab8439841e0067914bbafebb342b6fd1b2882c676f9a04eec0329911e9746"
+    },
+    "veigar": {
+      "wikiName": "Veigar",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Veigar_OriginalSquare.png?2add0",
+      "provider": "League of Legends Wiki",
+      "sha256": "f0baa374089c5a3906ece9018d1826697a72116708f200b0a9975564b0cde3c7"
+    },
+    "velkoz": {
+      "wikiName": "Vel'Koz",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Vel%27Koz_OriginalSquare.png?0c64b",
+      "provider": "League of Legends Wiki",
+      "sha256": "8b7fc61dae3d0505b04dc86e4715b8319917b69a1394c74c67f7298a9b8459fb"
+    },
+    "vex": {
+      "wikiName": "Vex",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Vex_OriginalSquare.png?f6345",
+      "provider": "League of Legends Wiki",
+      "sha256": "73b5542353d05d898ff444a59a6cc75fec4a4d1d6e4e4d24a6a513d2ac59f15b"
+    },
+    "vi": {
+      "wikiName": "Vi",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Vi_OriginalSquare.png?78709",
+      "provider": "League of Legends Wiki",
+      "sha256": "806c16279e430929047c5d1f2ef23f6c027cbdb84a26a0a7105047d4c001e9b1"
+    },
+    "viego": {
+      "wikiName": "Viego",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Viego_OriginalSquare.png?5f898",
+      "provider": "League of Legends Wiki",
+      "sha256": "ef1a67c6267a4a18458b618e449f138279e904baffa7eeafa8f56b70f41ebc0f"
+    },
+    "viktor": {
+      "wikiName": "Viktor",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Viktor_OriginalSquare.png?84e3d",
+      "provider": "League of Legends Wiki",
+      "sha256": "8b096d6f438a879f95e3a685c144caba433ede89db85e2f57d14d4e1ceb485fe"
+    },
+    "vladimir": {
+      "wikiName": "Vladimir",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Vladimir_OriginalSquare.png?41820",
+      "provider": "League of Legends Wiki",
+      "sha256": "bba1385f32d9f314449d557474d0db684f7b0d0dd24888030b48d229e62a2e91"
+    },
+    "volibear": {
+      "wikiName": "Volibear",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Volibear_OriginalSquare.png?b4f76",
+      "provider": "League of Legends Wiki",
+      "sha256": "913601249bd6b87fa138c34b6070b3229fc1d8e00ad6ee9e4ea5342ac2b42dce"
+    },
+    "warwick": {
+      "wikiName": "Warwick",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Warwick_OriginalSquare.png?cc8c7",
+      "provider": "League of Legends Wiki",
+      "sha256": "0f10e714665cfc9b88589216850873ed39288fd5f7bd0a620713ff1e6045857f"
+    },
+    "wukong": {
+      "wikiName": "Wukong",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Wukong_OriginalSquare.png?bac3b",
+      "provider": "League of Legends Wiki",
+      "sha256": "52034e3e4237631a3fef4437c807a277c346a5b281403b126770230fbc3c3d42"
+    },
+    "xayah": {
+      "wikiName": "Xayah",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Xayah_OriginalSquare.png?17473",
+      "provider": "League of Legends Wiki",
+      "sha256": "7a43d1d465e09be50f96d34fe2ed06a6d7347a7059e244f5d0a25531594d2b25"
+    },
+    "xerath": {
+      "wikiName": "Xerath",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Xerath_OriginalSquare.png?ae665",
+      "provider": "League of Legends Wiki",
+      "sha256": "7391035bca0c8a8b989bf57a29abe040b54a7eee1e4d5bbe97fbbafce06285b3"
+    },
+    "xinzhao": {
+      "wikiName": "Xin Zhao",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Xin_Zhao_OriginalSquare.png?c48eb",
+      "provider": "League of Legends Wiki",
+      "sha256": "e0e8550768a44efad4c6a096643df3b292e6a9cbbb52ba854d7cc2164973e762"
+    },
+    "yasuo": {
+      "wikiName": "Yasuo",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Yasuo_OriginalSquare.png?efb3b",
+      "provider": "League of Legends Wiki",
+      "sha256": "25e9400c8c9b9ff1c80774aae71128fae4a902e955fd3e3de2460f9c05d48158"
+    },
+    "yone": {
+      "wikiName": "Yone",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Yone_OriginalSquare.png?4b7e6",
+      "provider": "League of Legends Wiki",
+      "sha256": "d3a76175d3f89dd4b097a5117058670535ec1fdc39968d1c814092b6962f6c27"
+    },
+    "yorick": {
+      "wikiName": "Yorick",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Yorick_OriginalSquare.png?13f0f",
+      "provider": "League of Legends Wiki",
+      "sha256": "c4c24fe4083e012cb85eadf0e44a3b54887ae383d13a299f595b151afa315925"
+    },
+    "yunara": {
+      "wikiName": "Yunara",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Yunara_OriginalSquare.png?7b5b6",
+      "provider": "League of Legends Wiki",
+      "sha256": "5cd38e51656b467ff19cdbe5084592d9c744b1173b47ae03842e74a185d848ed"
+    },
+    "yuumi": {
+      "wikiName": "Yuumi",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Yuumi_OriginalSquare.png?c851e",
+      "provider": "League of Legends Wiki",
+      "sha256": "ed50d5c2837bcceabf65a79da3b77a4d72e5c03e761f12cdac2eb33e8d55a35b"
+    },
+    "zaahen": {
+      "wikiName": "Zaahen",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zaahen_OriginalSquare.png?aabf2",
+      "provider": "League of Legends Wiki",
+      "sha256": "7752d4a2544217aeebb49d63ce38f3497df374a2be03fae37b243058fa00b81e"
+    },
+    "zac": {
+      "wikiName": "Zac",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zac_OriginalSquare.png?01e68",
+      "provider": "League of Legends Wiki",
+      "sha256": "48a6cba8accfbd829f4976883eb0d2c21427b1ef29cf87566b8988f47571ffb6"
+    },
+    "zed": {
+      "wikiName": "Zed",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zed_OriginalSquare.png?b08cd",
+      "provider": "League of Legends Wiki",
+      "sha256": "ec9326668139f278dad6a1710992d3646842289feb35e5ebdb3b09bbaa1c0865"
+    },
+    "zeri": {
+      "wikiName": "Zeri",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zeri_OriginalSquare.png?3b11a",
+      "provider": "League of Legends Wiki",
+      "sha256": "810ff7bec546c60974274211512325d5f31397ba76f660459a73dcbc2903b764"
+    },
+    "ziggs": {
+      "wikiName": "Ziggs",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ziggs_OriginalSquare.png?d44a6",
+      "provider": "League of Legends Wiki",
+      "sha256": "398ec00ab5e8d0d46264bf51e1058fa296be03620dec7be292c1adaf096dda7e"
+    },
+    "zilean": {
+      "wikiName": "Zilean",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zilean_OriginalSquare.png?f0cc9",
+      "provider": "League of Legends Wiki",
+      "sha256": "728d58c9885977eb89ea867eafa5856b77ba20fcd52ac6a7c49e33fcac6ab882"
+    },
+    "zoe": {
+      "wikiName": "Zoe",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zoe_OriginalSquare.png?c2d6a",
+      "provider": "League of Legends Wiki",
+      "sha256": "0df7a43ad829cb43818d2d1caca2046b6b11be3bd87a55764dd341c2321c350f"
+    },
+    "zyra": {
+      "wikiName": "Zyra",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Zyra_OriginalSquare.png?e97f0",
+      "provider": "League of Legends Wiki",
+      "sha256": "2eecfae8fe84f8fa1f8d4ce48d56b2d61f768a8b44579b4654943956bc75ab21"
+    }
+  }
+}

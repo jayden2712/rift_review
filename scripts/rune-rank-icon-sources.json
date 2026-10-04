@@ -1,0 +1,696 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-30T05:50:15.243921+00:00",
+  "runes": {
+    "8100": {
+      "id": "8100",
+      "name": "Domination",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Domination_icon.png?87577",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "7db792b2a91c1fe369b49e3929ac8102577463be0193928e78470311da4737c6"
+    },
+    "8112": {
+      "id": "8112",
+      "name": "Electrocute",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Electrocute_rune.png?cf324",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "0076d182058af62084545438df95e38670354649d373815122185c856afd1a48"
+    },
+    "8128": {
+      "id": "8128",
+      "name": "Dark Harvest",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Dark_Harvest_rune.png?2d108",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "bbd42375206e9d3aea40487d91a20aa1e975bb10e41cdadafd44dbad15432364"
+    },
+    "9923": {
+      "id": "9923",
+      "name": "Hail of Blades",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hail_of_Blades_rune.png?9b79e",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "450076d1dd1b6579ced9a7863ea6fc678f2a04caa4dc372f9f0d129843e8831c"
+    },
+    "8126": {
+      "id": "8126",
+      "name": "Cheap Shot",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cheap_Shot_rune.png?49513",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "fb6bfa415986969094c808194eedadd83f7c4bbef76b5b756a1f6dc0c836a7f8"
+    },
+    "8139": {
+      "id": "8139",
+      "name": "Taste of Blood",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Taste_of_Blood_rune.png?12630",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "cf09d447197d3f739629cc7748981666ee1f8655bc06383ef140b8217c32801c"
+    },
+    "8143": {
+      "id": "8143",
+      "name": "Sudden Impact",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sudden_Impact_rune.png?b910d",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "583dea0567673e25a323e4d87879741bf58070a246683406d9f04fede886df95"
+    },
+    "8137": {
+      "id": "8137",
+      "name": "Sixth Sense",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sixth_Sense_rune.png?633dd",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "dc8b0bbe34027a1196bbbff089ef49e6f7e4da40532c6c2726194b711a77e520"
+    },
+    "8140": {
+      "id": "8140",
+      "name": "Grisly Mementos",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Grisly_Mementos_rune.png?e5c55",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "32338606ca0fd22e76499140378e36d8037b10a1be1041aeb42c468f86c24db9"
+    },
+    "8141": {
+      "id": "8141",
+      "name": "Deep Ward",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Deep_Ward_rune.png?adf57",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "cfd6b3c7ec5a9ff243f676f3fa19c5b0edd2f95e116d12f681a7e4e2fea07111"
+    },
+    "8135": {
+      "id": "8135",
+      "name": "Treasure Hunter",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Treasure_Hunter_rune.png?1c456",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "0e8df76c566cd80c84685851575954a6db8866704b33ee2a5102acf188e9c61a"
+    },
+    "8105": {
+      "id": "8105",
+      "name": "Relentless Hunter",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Relentless_Hunter_rune.png?2ba86",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "0f0f15e8b7e96b6621e3499270707c88c42bd1bb8f17846a656200058f5f46a2"
+    },
+    "8106": {
+      "id": "8106",
+      "name": "Ultimate Hunter",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Ultimate_Hunter_rune.png?0adca",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "5d85fa48ac596bf9d343b6aa1802bdc3f1932882eb18f23059e5291b65963b0e"
+    },
+    "8300": {
+      "id": "8300",
+      "name": "Inspiration",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Inspiration_icon.png?1d299",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "9087860d0e4718ff67da4082f9fce058f26c9081aaeeded6f87e48403a1c34b9"
+    },
+    "8351": {
+      "id": "8351",
+      "name": "Glacial Augment",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Glacial_Augment_rune.png?10b19",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "186715e2acbefef4bd3a7e791728c27afe37940278517e0374f4c4c30d6abd08"
+    },
+    "8360": {
+      "id": "8360",
+      "name": "Unsealed Spellbook",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Unsealed_Spellbook_rune.png?905cc",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "d25f265528d9260bb34c33581ba7004bea3f377d5e89d4ec82edc47c23128720"
+    },
+    "8369": {
+      "id": "8369",
+      "name": "First Strike",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/First_Strike_rune.png?705c4",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "bedf6223c679999d68bfbd1076a4c6fcff58beec936875b89c15dfcc11cc81e9"
+    },
+    "8306": {
+      "id": "8306",
+      "name": "Hextech Flashtraption",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Hextech_Flashtraption_rune.png?789a8",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "708b2ab1c64b540cd463487b74515d6bd7804d09c985aef710cd922a5457adc3"
+    },
+    "8304": {
+      "id": "8304",
+      "name": "Magical Footwear",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Magical_Footwear_rune.png?778e9",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "c8f816b3f6f5f6b8e4dee6343cadb6f59a30536bc354a22eab702692c367ac97"
+    },
+    "8321": {
+      "id": "8321",
+      "name": "Cash Back",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cash_Back_rune.png?f435b",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "236d4772375fb37152966129cdc3ff7952fb785dc43062bf0045b51300286d53"
+    },
+    "8313": {
+      "id": "8313",
+      "name": "Triple Tonic",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Triple_Tonic_rune.png?42e4d",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "8a3b8b21cd607d94ea9caecd5482dd34e9d14dbdd1b225d697943b1bc060b5f1"
+    },
+    "8352": {
+      "id": "8352",
+      "name": "Time Warp Tonic",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Time_Warp_Tonic_rune.png?56ad7",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "eccc55f94221c52860590c5bee97085c638d6164376086bc5420e15f68c7e49e"
+    },
+    "8345": {
+      "id": "8345",
+      "name": "Biscuit Delivery",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Biscuit_Delivery_rune.png?22f48",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "a38575e1f7d75fd58c7d11278b565a2c6bab390c2016c75fd10a355fac5ed83b"
+    },
+    "8347": {
+      "id": "8347",
+      "name": "Cosmic Insight",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cosmic_Insight_rune.png?004b5",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "1d6d305a73e5ccb6241742f541463a036e2e7303b91c734fa3ec8cc47f170bbe"
+    },
+    "8410": {
+      "id": "8410",
+      "name": "Approach Velocity",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Approach_Velocity_rune.png?eef19",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "6f88228818348f1b461259d94efa01a8222e386c6a0171226d678de94fb0aa69"
+    },
+    "8316": {
+      "id": "8316",
+      "name": "Jack of All Trades",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Jack_of_All_Trades_rune.png?c9838",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "c756ffdb1f38e3caa5139512b5e8535b618f1ddd89ea08ac3c53b12f041f5f87"
+    },
+    "8000": {
+      "id": "8000",
+      "name": "Precision",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Precision_icon.png?a120e",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "57109ba22910920d87a143eda091c2fd7fb54125f918299f74ae1be08f7a9322"
+    },
+    "8005": {
+      "id": "8005",
+      "name": "Press the Attack",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Press_the_Attack_rune.png?27055",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "bcf4f73f77455ad3704322b408fc2d1016eef3609800302247c99eb83a98997b"
+    },
+    "8008": {
+      "id": "8008",
+      "name": "Lethal Tempo",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Lethal_Tempo_rune.png?18aa4",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "8cb6a5da2b1fc586990c597cad238e592f9f426e380e3a08ef83c34b7291788d"
+    },
+    "8021": {
+      "id": "8021",
+      "name": "Fleet Footwork",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Fleet_Footwork_rune.png?9b85a",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "785696643dcc091f1ca5fc6b554659a52399eae9a78926e208703f018e46b296"
+    },
+    "8010": {
+      "id": "8010",
+      "name": "Conqueror",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Conqueror_rune.png?da75b",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "93078af44dafa46efb98821151e66e234e12413e1b209ca2d244dc58a5a15bcb"
+    },
+    "9101": {
+      "id": "9101",
+      "name": "Absorb Life",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Absorb_Life_rune.png?f435b",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "a315e75dde8b013ebc211d4ab1d7e2d6ba394f353509b8cb148a8f44ab24d98b"
+    },
+    "9111": {
+      "id": "9111",
+      "name": "Triumph",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Triumph_rune.png?bb13b",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "7a7537353675db91c8fa915ca877e23bbbd526c73513efd98f4b652c4329b9fe"
+    },
+    "8009": {
+      "id": "8009",
+      "name": "Presence of Mind",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Presence_of_Mind_rune.png?e7596",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "33881a26f965f20068af974a4665c758739938cb0976c7cdd17b0066ff1aaf0c"
+    },
+    "9104": {
+      "id": "9104",
+      "name": "Legend: Alacrity",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Legend-_Alacrity_rune.png?4afd0",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "cb02c48d6ffa7cb022208384caeb0b4d18cd115407cac824c50dff014882f424"
+    },
+    "9105": {
+      "id": "9105",
+      "name": "Legend: Haste",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Legend-_Haste_rune.png?81ddf",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "c6333801798ee7b2ceafd88334e6df1bd63750fa90f549b18bcd9ffa5af8aac0"
+    },
+    "9103": {
+      "id": "9103",
+      "name": "Legend: Bloodline",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Legend-_Bloodline_rune.png?a7de0",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "34c87739d0112b8857bc1e5f6268063e5bec139080c4be486eed3e780b09802a"
+    },
+    "8014": {
+      "id": "8014",
+      "name": "Coup de Grace",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Coup_de_Grace_rune.png?7cede",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "c568cd812cf023d04f5658346e715eb6c364d93eb57185cfce92800f3ad48cc7"
+    },
+    "8017": {
+      "id": "8017",
+      "name": "Cut Down",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Cut_Down_rune.png?ecfb4",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "1a1d3dedf6c46f3a105bc6733623f9f52d92ad48d4fc0e38b8ca95d2a6c4177c"
+    },
+    "8299": {
+      "id": "8299",
+      "name": "Last Stand",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Last_Stand_rune.png?e94e6",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "7a4f9421b5dd082407cd536839adb5ac6b9fa95df18d102ddb306b7cb8d9b705"
+    },
+    "8400": {
+      "id": "8400",
+      "name": "Resolve",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Resolve_icon.png?a8cd6",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "0e3b0abe8469262f74ccefe7d394f637e82e2a354ea83c59f1c13742b4b1b89d"
+    },
+    "8437": {
+      "id": "8437",
+      "name": "Grasp of the Undying",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Grasp_of_the_Undying_rune.png?58221",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "fe4d7da80c5d8cf8e9cde40a04fc4ff2cf76ae733e2615d4c9f4971dbca7140d"
+    },
+    "8439": {
+      "id": "8439",
+      "name": "Aftershock",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Aftershock_rune.png?39381",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "f88239da8aa067f495cee2152ef64c0df9b823717539a816c56e177b9d20cfa5"
+    },
+    "8465": {
+      "id": "8465",
+      "name": "Guardian",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Guardian_rune.png?6eaa5",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "55a7c05948f51a9ebbd19f4c206430a78511680fac92b1310021a88ddb8d4778"
+    },
+    "8446": {
+      "id": "8446",
+      "name": "Demolish",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Demolish_rune.png?799e1",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "5a8e327b38e4604ffae51396cfb9d554cf97dd5d4ebd9e084ea9e9050c150e6c"
+    },
+    "8463": {
+      "id": "8463",
+      "name": "Font of Life",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Font_of_Life_rune.png?5a351",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "52b4c19fb252e15ed6c5c0db806bd956b1bc53c0fbb3593783038f019d208fdc"
+    },
+    "8401": {
+      "id": "8401",
+      "name": "Shield Bash",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Shield_Bash_rune.png?18079",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "23c2dc81a2a6cdd8a7861b5b589824e9a0abe2d3939837cd7cd4e2fadd1882c3"
+    },
+    "8429": {
+      "id": "8429",
+      "name": "Conditioning",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Conditioning_rune.png?cf5ad",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "0795057985109af4d2fad8a60c83e5156a62e5ade95efb1b0392e48eb20766c7"
+    },
+    "8444": {
+      "id": "8444",
+      "name": "Second Wind",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Second_Wind_rune.png?ddbd2",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "080dc4ef72728b6361de071b7cbb26988cc41b436ec94dfc7aac5d7979850fc8"
+    },
+    "8473": {
+      "id": "8473",
+      "name": "Bone Plating",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Bone_Plating_rune.png?a2255",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "72b59aa918432123604caca2728992393d3d533d91277fc36b51937b50474a96"
+    },
+    "8451": {
+      "id": "8451",
+      "name": "Overgrowth",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Overgrowth_rune.png?21b3d",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "eced2c3afb8365c27ef5abd74eb31637dacf1bd61d55e4e305a583ff5950f985"
+    },
+    "8453": {
+      "id": "8453",
+      "name": "Revitalize",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Revitalize_rune.png?07dd7",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "497fdefd2719525f79284c8701a2d050d1d3406a4cec607118a2f064412231d1"
+    },
+    "8242": {
+      "id": "8242",
+      "name": "Unflinching",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Unflinching_rune.png?36053",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "df2be82d05c7c4d640df95c2607340c990d9259c86b85137141cc237fa4fe259"
+    },
+    "8200": {
+      "id": "8200",
+      "name": "Sorcery",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Sorcery_icon.png?a8cd6",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "69601e50437b925bf97cf98bf90f1319f129d41cc370c071bf02582309fc75aa"
+    },
+    "8214": {
+      "id": "8214",
+      "name": "Summon Aery",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Summon_Aery_rune.png?73fae",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "dbf7ffded8de0436207c40873d4e2817dda851f050f324ae8fb24985deda95a8"
+    },
+    "8229": {
+      "id": "8229",
+      "name": "Arcane Comet",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Arcane_Comet_rune.png?cffe0",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "1153dc1fe6e6e78f022c5accb1fe696b2206e08721181bc6c2a43f4498c86b70"
+    },
+    "8230": {
+      "id": "8230",
+      "name": "Stormraider's Surge",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Stormraider%27s_Surge_rune.png?3e7e5",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "362521e9d12cd483b766889d7a79a42d18efa25939fb9429f04b16160ece7774"
+    },
+    "8992": {
+      "id": "8992",
+      "name": "Deathfire Touch",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Deathfire_Touch_rune.png?bbcdf",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "b7df1213d652e0da954d11f302620f0c4b97e00a7223ca7ea14b4f959f138ce6"
+    },
+    "8224": {
+      "id": "8224",
+      "name": "Axiom Arcanist",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Axiom_Arcanist_rune.png?f0a6e",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "8f1d32615c02b8f08749685a37b9898c839c698fe33bad6be0ed7a330df7a472"
+    },
+    "8226": {
+      "id": "8226",
+      "name": "Manaflow Band",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Manaflow_Band_rune.png?79dc0",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "3a07c6ebedcf0e614d98c2eef18be2d587c3d5abf2610ec1998e9a556adb950b"
+    },
+    "8275": {
+      "id": "8275",
+      "name": "Nimbus Cloak",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Nimbus_Cloak_rune.png?2e9aa",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "99b6093edb0f90677432356b454e96527712907c81fbb5ec297c54ed6551ae8a"
+    },
+    "8210": {
+      "id": "8210",
+      "name": "Transcendence",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Transcendence_rune.png?e4ae7",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "8f91bb0cb989eec68b67568c7a6528fbbe81b9889b034b18761ff99fc29268d6"
+    },
+    "8234": {
+      "id": "8234",
+      "name": "Celerity",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Celerity_rune.png?088d9",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "e5a0ff83ffc66a92861a0076a6b3b6356d1639a40006d3a48adfb93481a30632"
+    },
+    "8233": {
+      "id": "8233",
+      "name": "Absolute Focus",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Absolute_Focus_rune.png?19b2e",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "c4ad5716ed48a2cf32b214084043b45ddedeed67370b50e3f0fb47e73e4d792b"
+    },
+    "8237": {
+      "id": "8237",
+      "name": "Scorch",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Scorch_rune.png?bcb02",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "f6c8ccc5fb6bc04969270f21561094b7c6cf46456af0c815cf4c28651a324195"
+    },
+    "8232": {
+      "id": "8232",
+      "name": "Waterwalking",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Waterwalking_rune.png?f0067",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "794dda3aa1d95ac8236c5c43444884b4dcbfe27fd8cc5c7fa04b67121f6b2a89"
+    },
+    "8236": {
+      "id": "8236",
+      "name": "Gathering Storm",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Gathering_Storm_rune.png?10355",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "b838be5607eafbe1984d5c17651d7c198d24b1277f659979c149d5062f665bd0"
+    },
+    "5001": {
+      "id": "5001",
+      "name": "Health Scaling",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Health_Scaling.png?85fc9",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "619aa1e895b1abf03b61dbac01ccf9bd13e2885e5213971bbdb8692295b1f234"
+    },
+    "5002": {
+      "id": "5002",
+      "name": "Armor",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Armor.png?11b00",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "f1b0ed793064eb9deee06aec1398f824e241922a1bb036648c3f9570ef1378b8"
+    },
+    "5003": {
+      "id": "5003",
+      "name": "Magic Resistance",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Magic_Resistance.png?fc509",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "6095944c0194a8a7d9706c79f694cc6a412fbd4af34697f41a90b01efe2eb49a"
+    },
+    "5005": {
+      "id": "5005",
+      "name": "Attack Speed",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Attack_Speed.png?5ed0d",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "3b8942d3105cf832e45c56f1fa00a88b63b7d2ade702636f5fcffd4d7d7d2376"
+    },
+    "5007": {
+      "id": "5007",
+      "name": "Ability Haste",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Ability_Haste.png?5ed0d",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "f9b4099596910fd6ce7502aa9d2633c507922d68e2acbfbb3a24dd293882e0b1"
+    },
+    "5008": {
+      "id": "5008",
+      "name": "Adaptive Force",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Adaptive_Force.png?fb324",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "965657d4e84e0a10f60cab4d7c6bcb31d4fed5cf06e5670fecaffadd53180e19"
+    },
+    "5010": {
+      "id": "5010",
+      "name": "Movement Speed",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Movement_Speed.png?c0069",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "ddb334b8ee82b50b57ee237eebd12b05e0a4a4070f3ed97b331f403a91560369"
+    },
+    "5011": {
+      "id": "5011",
+      "name": "Health",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Health.png?69468",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "d04cb9ff2d512cba3be07f45bd9a867483c5b349a90e241e18a138bdf7c7be37"
+    },
+    "5013": {
+      "id": "5013",
+      "name": "Tenacity and Slow Resist",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Rune_shard_Tenacity_and_Slow_Resist.png?517b6",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rune",
+      "sha256": "e1a568dcc942ed403b47fab79251ea5d0c004654c5b6c4716b493437d1eceb6a"
+    }
+  },
+  "ranks": {
+    "IRON": {
+      "id": "IRON",
+      "name": "Iron",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Iron.png?38066",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "ae9c262773b4f58cea8d45284105da717aa5883a22c4e5a7d95fba0e3973cd01"
+    },
+    "BRONZE": {
+      "id": "BRONZE",
+      "name": "Bronze",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Bronze.png?07f07",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "5a460e7a65bc705ec3c053b997a149e7ceee7c0384d06960bf0989a4de8d7b2e"
+    },
+    "SILVER": {
+      "id": "SILVER",
+      "name": "Silver",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Silver.png?0edf7",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "4f1288b1c7ef737c6ae85dc4e3b6e7082ed46ce3c20ee12e1010e92d8caec965"
+    },
+    "GOLD": {
+      "id": "GOLD",
+      "name": "Gold",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Gold.png?75407",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "12b172e8a4e6ba09824c51ec6a3c5fdf16b22fc45e9c4d379d7b9f991eb295a9"
+    },
+    "PLATINUM": {
+      "id": "PLATINUM",
+      "name": "Platinum",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Platinum.png?f26da",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "c8b3f255ab7cf481080ec4cf0f2f4e6954d237975f8ff317f9db34a53669211a"
+    },
+    "EMERALD": {
+      "id": "EMERALD",
+      "name": "Emerald",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Emerald.png?3c53f",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "739ce225b3da7c4c469f47102c69ffb710162fabb33bcb9f0e9ca899e7494aee"
+    },
+    "DIAMOND": {
+      "id": "DIAMOND",
+      "name": "Diamond",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Diamond.png?15658",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "0568683ba2e1aca308bfdb481179f8ce07f98a0b77d7c8c2a8a6610773ecffb7"
+    },
+    "MASTER": {
+      "id": "MASTER",
+      "name": "Master",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Master.png?470b8",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "cb5c25e35a0c9489bdbc476350ad4c007efbbd2af6d0b37061ce3cd09c32a770"
+    },
+    "GRANDMASTER": {
+      "id": "GRANDMASTER",
+      "name": "Grandmaster",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Grandmaster.png?87870",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "7ef3a23f7d6ff6b92434c921bbf86c5178975f18bb38341038f24b5efff23a92"
+    },
+    "CHALLENGER": {
+      "id": "CHALLENGER",
+      "name": "Challenger",
+      "url": "https://wiki.leagueoflegends.com/en-us/images/Season_2023_-_Challenger.png?40b78",
+      "provider": "League of Legends Wiki",
+      "pageUrl": "https://wiki.leagueoflegends.com/en-us/Rank_(League_of_Legends)",
+      "sha256": "49b63f819e095da77f811e6779be03a74773e5c4679fdfdec2a653011bdce24f"
+    }
+  }
+}
