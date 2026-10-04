@@ -24,3 +24,9 @@ test('EN original detail is labeled accurately without a refetch action or claim
  assert.ok(!detail.includes('data-lab-enrich='));assert.match(detail,/Imported/);
  setLanguage('vi');
 });
+test('aggregate presents pooled deathless and finite-mean sample policies separately',async()=>{
+ const {renderLabAggregate}=await import('../public/data-lab-view.js');setLanguage('en');const html=renderLabAggregate({metrics:{kda:{pooledValue:null,meanValue:null,pooledStatus:'deathless',meanStatus:'unavailable',sampleSize:2,pooledSampleSize:2,meanSampleSize:0,formula:'sum(kills + assists) / sum(deaths)',unit:'ratio'}}});assert.match(html,/Deathless/);assert.match(html,/2 \/ 0/);assert.match(html,/mean includes only deaths &gt; 0|mean includes only deaths > 0/);setLanguage('vi');
+});
+test('timeline evidence displays timestamp, participant, source, formula and stable ID',async()=>{
+ const {renderLabFindings}=await import('../public/data-lab-view.js');setLanguage('en');const html=renderLabFindings({findings:[{topic:'timeline',type:'observed',id:'finding-1',statement:'Measured delta',limitations:['No causal inference'],evidence:[{id:'OC1_1:timeline:cs_delta:0:1',matchId:'OC1_1',participantId:7,kind:'cs_delta',value:25,fromTimestamp:60000,toTimestamp:120000,sourceFields:['info.frames[0].participantFrames[7].minionsKilled'],formula:'end.cs - start.cs'}]}],limitations:[],missingData:[]});assert.match(html,/01m00s → 02m00s/);assert.match(html,/participantId: 7/);assert.match(html,/end.cs - start.cs/);assert.match(html,/OC1_1:timeline:cs_delta:0:1/);assert.match(html,/participantFrames\[7\]/);assert.ok(!html.includes('undefined'));setLanguage('vi');
+});

@@ -5,13 +5,13 @@ const dto=(id='OC1_123')=>({metadata:{matchId:id,dataVersion:'2',participants:Ar
 const live=(raw=dto())=>createLabSnapshot({rawMatches:[raw],playerPuuid:'p0'},{source:'riot',collectedAt:'2026-10-01T00:00:00Z'});
 const oldProjection=()=>{const current=live();return {...current,schemaVersion:1,records:current.records.map(r=>({...r,raw:{kind:'riot',projection:true,data:{metadata:r.raw.data.metadata,info:{...r.raw.data.info,teams:undefined,futureInfo:undefined}}}}))};};
 test('original Riot body survives normalization and export/import exactly, detached and never trusted from normalized metrics',()=>{
- const raw=dto(),before=structuredClone(raw),snapshot=live(raw);assert.equal(snapshot.schemaVersion,2);assert.equal(snapshot.records[0].raw.projection,false);assert.equal(snapshot.records[0].raw.provenance,'riot_original');assert.deepEqual(raw,before);assert.deepEqual(snapshot.records[0].raw.data,before);assert.notEqual(snapshot.records[0].raw.data,raw);
+ const raw=dto(),before=structuredClone(raw),snapshot=live(raw);assert.equal(snapshot.schemaVersion,3);assert.equal(snapshot.records[0].raw.projection,false);assert.equal(snapshot.records[0].raw.provenance,'riot_original');assert.deepEqual(raw,before);assert.deepEqual(snapshot.records[0].raw.data,before);assert.notEqual(snapshot.records[0].raw.data,raw);
  snapshot.records[0].normalized.cs=999;snapshot.records[0].metrics.csPerMinute.value=999;
  const reopened=createLabSnapshot(JSON.stringify(exportLabSnapshot(snapshot)));assert.equal(reopened.source,'imported');assert.equal(reopened.records[0].metrics.csPerMinute.value,6);assert.equal(reopened.records[0].raw.provenance,'riot_original');assert.deepEqual(reopened.records[0].raw.data,before);
 });
 test('schema 1 projections migrate without upgrading or recreating lost raw fields',()=>{
  const old=JSON.parse(JSON.stringify(oldProjection())),before=structuredClone(old);
- const migrated=createLabSnapshot(old);assert.equal(migrated.schemaVersion,2);assert.deepEqual(old,before);assert.equal(migrated.records[0].raw.projection,true);assert.equal(migrated.records[0].raw.provenance,'riot_projection');assert.deepEqual(migrated.records[0].raw.data,old.records[0].raw.data);assert.equal(migrated.records[0].raw.data.info.teams,undefined);
+ const migrated=createLabSnapshot(old);assert.equal(migrated.schemaVersion,3);assert.deepEqual(old,before);assert.equal(migrated.records[0].raw.projection,true);assert.equal(migrated.records[0].raw.provenance,'riot_projection');assert.deepEqual(migrated.records[0].raw.data,old.records[0].raw.data);assert.equal(migrated.records[0].raw.data.info.teams,undefined);
  assert.equal(createLabSnapshot(exportLabSnapshot(migrated)).records[0].raw.provenance,'riot_projection');
  const dishonest={...old,records:old.records.map(r=>({...r,raw:{...r.raw,projection:false,provenance:'riot_original'}}))};assert.equal(createLabSnapshot(dishonest).records[0].raw.projection,true);
 });

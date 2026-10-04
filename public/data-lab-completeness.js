@@ -92,12 +92,12 @@ function fieldStatus(n,raw,metrics,field){
 }
 
 /** Completeness describes independent dimensions, never a claim that the entire Riot API was collected. */
-export function calculateLabCompleteness(normalized,raw={},metrics={}){
- const fields=[...BASIC,...SUPPLEMENTARY,'isRemake','timeline'].map(field=>({field,status:fieldStatus(normalized,raw,metrics,field),affects:[...(AFFECTS[field]??[])]}));
+export function calculateLabCompleteness(normalized,raw={},metrics={},timeline={status:'not_loaded'}){
+ const fields=[...BASIC,...SUPPLEMENTARY,'isRemake','timeline'].map(field=>({field,status:field==='timeline'&&timeline.raw?'available':fieldStatus(normalized,raw,metrics,field),affects:[...(AFFECTS[field]??[])]}));
  const group=names=>{const missingFields=fields.filter(entry=>names.includes(entry.field)&&entry.status!=='available').map(entry=>entry.field);return {status:missingFields.length?'partial':'complete',missingFields};};
  const projectedRemake=raw.kind==='history'&&raw.provenance==='riot_projection';
  const explicit=!projectedRemake&&typeof normalized.isRemake==='boolean';
  return {basic:group(BASIC),supplementary:group(SUPPLEMENTARY),
   remake:{status:explicit?normalized.isRemake?'yes':'no':'unknown',basis:explicit?'explicit':projectedRemake?'unsupported_projection_inference':'unavailable',unknownPolicy:'allow_if_other_criteria_pass'},
-  timeline:{status:'not_loaded'},fields};
+  timeline:{status:timeline.status??'not_loaded'},fields};
 }

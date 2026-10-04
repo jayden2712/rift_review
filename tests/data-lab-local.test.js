@@ -28,7 +28,7 @@ test('Data Lab defaults off and rejects encoded static paths unless explicitly e
   await writeFile(join(dir, 'data-lab.js'), 'local-only-fixture');
   for (const flag of [undefined, '0', 'true', 1]) {
     const app = await start(t, {publicDirectory: dir, env: {DATA_LAB_ENABLED: flag}});
-    for (const path of ['/api/lab/status', '/api/lab/snapshots', '/api/lab/enrich', '/data-lab.js', '/%64ata-lab.js', '/data%2dlab.js']) {
+    for (const path of ['/api/lab/status', '/api/lab/snapshots', '/api/lab/enrich', '/api/lab/timeline', '/api/lab/retry', '/data-lab.js', '/%64ata-lab.js', '/data%2dlab.js']) {
       assert.equal((await app.get(path)).status, 404, `${flag} ${path}`);
     }
   }
@@ -102,7 +102,7 @@ test('hosted API and generated Worker never expose Data Lab despite enabled env'
   const built = await readFile('dist/server/index.js', 'utf8');
   assert.ok(!built.includes('"/data-lab'));
   const worker = (await import(new URL('../dist/server/index.js', import.meta.url).href + '?lab-test')).default;
-  for (const path of ['/api/lab/status', '/api/lab/snapshots', '/api/lab/enrich', '/data-lab.html', '/data-lab.js', '/data-lab-model.js', '/data-lab.css', '/%64ata-lab.js']) {
+  for (const path of ['/api/lab/status', '/api/lab/snapshots', '/api/lab/enrich', '/api/lab/timeline', '/api/lab/retry', '/data-lab.html', '/data-lab.js', '/data-lab-model.js', '/data-lab-timeline.js', '/data-lab-timeline-metrics.js', '/data-lab-collection.js', '/data-lab.css', '/%64ata-lab.js']) {
     assert.equal((await worker.fetch(new Request('https://fixture.test' + path, {headers}), env)).status, 404);
   }
 });

@@ -4,7 +4,9 @@ import {constants} from 'node:fs';
 import {lstat, mkdir, open, readdir, realpath, unlink} from 'node:fs/promises';
 import {join, parse, resolve, sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {RiotError, RIOT_REGIONS, parseLookup, createRiotClient, createMemoryRiotCache} from './riot.js';
+import {RiotError, RIOT_REGIONS, createRiotClient, createMemoryRiotCache} from './riot.js';
+import {collectLab, retryLab} from './data-lab-collection.js';
+import {loadLabTimeline} from './data-lab-timeline.js';
 import {jsonResponse} from './worker.js';
 import {createLabSnapshot, createDemoLabSnapshot, exportLabSnapshot, replaceLabRecordRaw, getLabRecordPlayerPuuid, LAB_MAX_BYTES} from '../public/data-lab-model.js';
 
@@ -100,7 +102,7 @@ export function createDataLab({directory = defaultLabDirectory, env = {}, fetchI
     const id = path.startsWith('/api/lab/snapshots/') ? path.slice('/api/lab/snapshots/'.length) : null;
     const methods = path === '/api/lab/status' || id !== null ? ['GET']
       : path === '/api/lab/snapshots' ? ['GET', 'POST']
-      : ['/api/lab/demo', '/api/lab/collect', '/api/lab/enrich'].includes(path) ? ['POST'] : null;
+      : ['/api/lab/demo', '/api/lab/collect', '/api/lab/enrich', '/api/lab/retry', '/api/lab/timeline'].includes(path) ? ['POST'] : null;
     if (!methods || id !== null && !idPattern.test(id)) return jsonResponse({error: {code: 'NOT_FOUND', message: 'Không tìm thấy chức năng Data Lab.'}}, 404);
     if (!methods.includes(request.method)) return jsonResponse({error: {code: 'METHOD_NOT_ALLOWED', message: 'Phương thức Data Lab không hợp lệ.'}}, 405, {Allow: methods.join(', ')});
     try {
@@ -111,7 +113,11 @@ export function createDataLab({directory = defaultLabDirectory, env = {}, fetchI
         if (![10, 20].includes(input?.count)) throw new RiotError('INVALID_COUNT', 'Chọn 10 hoặc 20 trận mẫu.', 400);
         return jsonResponse({snapshot: createDemoLabSnapshot(input.count)});
       }
-      if (path === '/api/lab/collect') return jsonResponse(await save(await collect(input, request.url, env, cache, fetchImpl)), 201);
+      if (path === '/api/lab/collect' || path === '/api/lab/retry') {
+        const snapshot = await (path.endsWith('/retry') ? retryLab : collectLab)(input, request.url, env, cache, fetchImpl);
+        return jsonResponse({...await save(snapshot), collection: snapshot.collection}, 201);
+      }
+      if (path === '/api/lab/timeline') return jsonResponse(await save(await loadLabTimeline(input, request.url, env, cache, fetchImpl)), 201);
       if (path === '/api/lab/enrich') return jsonResponse(await save(await enrich(input, request.url, env, cache, fetchImpl)), 201);
       const payload = input?.snapshot ?? input?.history ?? input;
       return jsonResponse(await save(createLabSnapshot(payload, {source: payload?.source === 'demo' ? 'demo' : 'imported'})), 201);
@@ -120,7 +126,9 @@ export function createDataLab({directory = defaultLabDirectory, env = {}, fetchI
       const invalid = error?.code === 'INVALID_LAB_DATA';
       return jsonResponse({error: {code: known ? error.code : invalid ? 'INVALID_LAB_DATA' : 'LAB_STORAGE_ERROR',
         message: known ? error.message : invalid ? 'Dữ liệu Data Lab không hợp lệ hoặc vượt giới hạn 20 trận.' : 'Không thể xử lý dữ liệu Data Lab local.',
-        ...(known && error.retryAfter ? {retryAfter: error.retryAfter} : {})}}, known ? error.status : invalid ? 400 : 500,
+        ...(known && error.retryAfter ? {retryAfter: error.retryAfter} : {})},
+        ...(known && error.collection ? {collection: error.collection} : {}),
+        ...(known && error.snapshot ? {snapshot: error.snapshot} : {})}, known ? error.status : invalid ? 400 : 500,
       known && error.retryAfter ? {'Retry-After': String(error.retryAfter)} : {});
     }
   };
@@ -135,30 +143,6 @@ async function parseBody(request) {
   try { return JSON.parse(text); }
   catch { throw new RiotError('INVALID_JSON', 'JSON Data Lab không hợp lệ.', 400); }
 }
-
-async function collect(input, url, env, cache, fetchImpl) {
-  const query = parseLookup(input);
-  if (query.mode !== 'sr' || query.start !== 0) throw new RiotError('INVALID_INPUT', 'Data Lab thu thập 10 hoặc 20 trận gần nhất, không lọc Mayhem.', 400);
-  const client = createRiotClient({key: env.RIOT_API_KEY, origin: new URL(url).origin, cache, fetchImpl});
-  const region = RIOT_REGIONS[query.region];
-  const account = await client.get('asia', `/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(query.gameName)}/${encodeURIComponent(query.tagLine)}`, 600);
-  if (typeof account?.puuid !== 'string' || !account.puuid || account.puuid.length > 128) throw new RiotError('RIOT_BAD_ACCOUNT', 'Riot chưa trả định danh tài khoản hợp lệ.', 502);
-  try { await client.get(region.platform, `/lol/summoner/v4/summoners/by-puuid/${encodeURIComponent(account.puuid)}`, 600); }
-  catch (error) { if (error.code === 'RIOT_NOT_FOUND') throw new RiotError('WRONG_SERVER', 'Riot ID chưa có hồ sơ LoL trên server đã chọn.', 404); throw error; }
-  const ids = await client.get(region.routing, `/lol/match/v5/matches/by-puuid/${encodeURIComponent(account.puuid)}/ids?start=0&count=${query.count}`, 120);
-  if (!Array.isArray(ids) || ids.length > query.count || ids.some(id => typeof id !== 'string' || !/^[A-Z0-9]+_\d{1,20}$/.test(id))) throw new RiotError('RIOT_BAD_LIST', 'Danh sách trận từ Riot không hợp lệ.', 502);
-  if (!ids.length) throw new RiotError('NO_MATCHES', 'Riot chưa trả lịch sử trận cho truy vấn này. Data Lab không tạo dữ liệu thay thế.', 404);
-  const rawMatches = [];
-  for (const id of [...new Set(ids)]) {
-    const raw = await client.get(region.routing, `/lol/match/v5/matches/${encodeURIComponent(id)}`, 86400);
-    if (raw?.metadata?.matchId !== id) throw new RiotError('RIOT_BAD_DATA', 'Riot trả định danh trận không khớp.', 502);
-    rawMatches.push(raw);
-  }
-  return createLabSnapshot({rawMatches, playerPuuid: account.puuid, profile: {
-    riotId: `${account.gameName || query.gameName}#${account.tagLine || query.tagLine}`, region: region.label,
-  }}, {source: 'riot'});
-}
-
 
 async function enrich(input, url, env, cache, fetchImpl) {
   const matchId = input?.matchId;

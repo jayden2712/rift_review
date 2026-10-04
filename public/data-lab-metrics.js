@@ -43,15 +43,27 @@ export function calculateLabMetrics(match) {
   deathsPer30:ratio(number(match.deaths)===null?null:match.deaths*30,minutes,'deaths/30min','(deaths * 30) / (durationSeconds / 60)'),
  };
 }
-// Cohort scope: only coaching-eligible standard SR records. Each metric then has
-// its own valid sample. Pooled=sum(numerator)/sum(denominator); mean=mean(ratios).
+// Only coaching-eligible records contribute. KDA pools every valid K/A/D tuple,
+// including zero deaths; the mean uses finite per-match ratios independently.
+function aggregateMetric(metrics,template,name) {
+ const pooled=metrics.filter(metric=>name==='kda'
+  ?number(metric.numerator)!==null&&number(metric.denominator)!==null
+  :metric.status==='ok');
+ const mean=metrics.filter(metric=>metric.status==='ok');
+ const sum=field=>pooled.length?number(pooled.reduce((total,metric)=>total+metric[field],0)):null;
+ const numerator=sum('numerator'),denominator=sum('denominator');
+ const result=ratio(numerator,denominator,template.unit,template.formula);
+ const pooledStatus=name==='kda'&&result.status==='zero_denominator'&&numerator>0?'deathless':result.status;
+ // Divide before adding to avoid overflowing a sum of otherwise finite ratios.
+ const meanValue=mean.length?number(mean.reduce((total,metric)=>total+metric.value/mean.length,0)):null;
+ return {pooledValue:result.value,pooledStatus,meanValue,meanStatus:meanValue===null?'unavailable':'ok',
+  sampleSize:pooled.length,pooledSampleSize:pooled.length,meanSampleSize:mean.length,
+  meanExcludedCount:pooled.length-mean.length,meanPolicy:'finite_per_match_ratios_only',
+  pooledPolicy:name==='kda'?'all_valid_kills_assists_deaths_including_zero_deaths':'valid_per_match_ratios',
+  numerator,denominator,unit:template.unit,formula:template.formula,scope:'coaching_eligible_standard_sr'};
+}
 export function calculateLabAggregate(records) {
- const names=Object.keys(calculateLabMetrics({}));
- return Object.fromEntries(names.map(name=>{
-  const template=calculateLabMetrics({})[name];
-  const metrics=records.filter(record=>record.coaching?.eligible===true).map(record=>calculateLabMetrics(record.normalized)[name]).filter(metric=>metric.status==='ok');
-  const numerator=metrics.reduce((sum,metric)=>sum+metric.numerator,0);
-  const denominator=metrics.reduce((sum,metric)=>sum+metric.denominator,0);
-  return [name,{pooledValue:metrics.length&&denominator>0?numerator/denominator:null,meanValue:metrics.length?metrics.reduce((sum,metric)=>sum+metric.value,0)/metrics.length:null,sampleSize:metrics.length,numerator,denominator,unit:template.unit,formula:template.formula,scope:'coaching_eligible_standard_sr'}];
- }));
+ const templates=calculateLabMetrics({});
+ const metrics=records.filter(record=>record.coaching?.eligible===true).map(record=>calculateLabMetrics(record.normalized));
+ return Object.fromEntries(Object.entries(templates).map(([name,template])=>[name,aggregateMetric(metrics.map(metric=>metric[name]),template,name)]));
 }

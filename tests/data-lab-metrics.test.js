@@ -42,3 +42,18 @@ test('repeated known participant identities invalidate team totals without guess
  }
  assert.equal(calculateLabMetrics(match({participants:team()})).damageShare.value,.2);
 });
+
+test('pooled KDA includes deathless games while the mean declares its finite-ratio sample',()=>{
+ const records=[{kills:10,deaths:0,assists:0},{kills:0,deaths:5,assists:5},{kills:null,deaths:3,assists:2}].map(stats=>({normalized:match(stats),coaching:{eligible:true}}));
+ const kda=calculateLabAggregate(records).kda;
+ assert.equal(kda.pooledValue,3);assert.equal(kda.pooledStatus,'ok');assert.equal(kda.numerator,15);assert.equal(kda.denominator,5);
+ assert.equal(kda.pooledSampleSize,2);assert.equal(kda.meanValue,1);assert.equal(kda.meanSampleSize,1);assert.equal(kda.meanExcludedCount,1);assert.equal(kda.meanPolicy,'finite_per_match_ratios_only');
+});
+
+test('pooled zero deaths have an explicit status and absent data never becomes zero',()=>{
+ const records=stats=>stats.map(s=>({normalized:match(s),coaching:{eligible:true}}));
+ const deathless=calculateLabAggregate(records([{kills:10,assists:0,deaths:0},{kills:0,assists:0,deaths:0}])).kda;
+ assert.equal(deathless.pooledValue,null);assert.equal(deathless.pooledStatus,'deathless');assert.equal(deathless.pooledSampleSize,2);assert.equal(deathless.meanSampleSize,0);assert.equal(deathless.meanValue,null);assert.equal(deathless.meanStatus,'unavailable');
+ const zero=calculateLabAggregate(records([{kills:0,assists:0,deaths:0}])).kda;assert.equal(zero.pooledStatus,'zero_denominator');assert.equal(zero.pooledValue,null);
+ const absent=calculateLabAggregate(records([{kills:null,deaths:null,assists:null}])).kda;assert.equal(absent.numerator,null);assert.equal(absent.denominator,null);assert.equal(absent.pooledStatus,'unavailable');
+});

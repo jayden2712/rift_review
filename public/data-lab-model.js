@@ -1,8 +1,10 @@
 import {calculateLabMetrics} from './data-lab-metrics.js';
 import {LAB_MAX_BYTES,DataLabInputError,assertLabSize,cloneLabRawBody} from './data-lab-raw.js';
 import {calculateLabCompleteness} from './data-lab-completeness.js';
+import {emptyLabTimeline,readLabTimeline} from './data-lab-timeline.js';
+import {readLabCollection} from './data-lab-collection.js';
 export {LAB_MAX_BYTES,DataLabInputError};
-export const LAB_SCHEMA_VERSION=2;
+export const LAB_SCHEMA_VERSION=3;
 export const LAB_MAX_RECORDS=20;
 const KIND='rift-review-data-lab';
 const ROLES=['Top','Jungle','Mid','ADC','Support'];
@@ -103,14 +105,14 @@ export function getLabRecordPlayerPuuid(entry) {
  if(!puuid||rawRows.filter(p=>p.puuid===puuid).length!==1)fail('Snapshot player identity is missing or ambiguous.');
  return puuid;
 }
-function importedRecord(entry,source,collectedAt,index,schemaVersion) {
+function importedRecord(entry,source,collectedAt,index,schemaVersion,trustedTimeline=false) {
  if(!object(entry)||!object(entry.normalized))fail('Invalid Data Lab record.');
  const raw=readRaw(entry.raw,source,schemaVersion);
  const base=normalized(entry.normalized);
- if(raw.provenance!=='riot_original')return record(base,raw,source,date(entry.collectedAt)??collectedAt,index);
+ if(raw.provenance!=='riot_original')return withTimeline(record(base,raw,source,date(entry.collectedAt)??collectedAt,index),entry.timeline,trustedTimeline);
  if(raw.data.metadata?.matchId!==entry.matchId||entry.matchId!==base.id)fail('Raw match identity does not match the snapshot record.');
  const playerPuuid=getLabRecordPlayerPuuid({...entry,normalized:base,raw});
- return record(fromRiot(raw.data,playerPuuid),raw,source,date(entry.collectedAt)??collectedAt,index);
+ return withTimeline(record(fromRiot(raw.data,playerPuuid),raw,source,date(entry.collectedAt)??collectedAt,index),entry.timeline,trustedTimeline);
 }
 function eligibility(match) {
  const reasons=[...(!['Ranked Solo','Ranked Flex','Normal','Standard'].includes(match.queue)||match.queueId!==null&&![420,440,400,430,490].includes(match.queueId)||match.mapId!==null&&match.mapId!==11?['unsupported_queue']:[]),...(match.isRemake===true?['remake']:[]),...(match.durationMinutes===null||match.durationMinutes<5||match.durationMinutes>90?['invalid_duration']:[]),...(!role(match.role)?['unknown_role']:[]),...(['champion','result','kills','deaths','assists'].some(key=>match[key]===null)?['missing_coaching_fields']:[])];
@@ -122,7 +124,7 @@ function record(match,raw,source,collectedAt,index) {
  const mappedRiotHistory=raw.kind==='history'&&raw.provenance==='riot_projection';
  const normalizedMatch={...match,id:match.id??`import-${index+1}`,isRemake:mappedRiotHistory?null:match.isRemake};
  const metrics=calculateLabMetrics(normalizedMatch);
- return {matchId:normalizedMatch.id,source,collectedAt,raw,normalized:normalizedMatch,metrics,completeness:calculateLabCompleteness(normalizedMatch,raw,metrics),coaching:eligibility(normalizedMatch)};
+ return {matchId:normalizedMatch.id,source,collectedAt,raw,normalized:normalizedMatch,metrics,timeline:emptyLabTimeline(),completeness:calculateLabCompleteness(normalizedMatch,raw,metrics),coaching:eligibility(normalizedMatch)};
 }
 export function createLabSnapshot(input,options={}) {
  assertLabSize(input);
@@ -138,9 +140,9 @@ export function createLabSnapshot(input,options={}) {
  const profile={riotId:text(profileInput.riotId,100),region:text(profileInput.region,30)};
  let records;
  if(input.kind===KIND){
-  if(![1,LAB_SCHEMA_VERSION].includes(input.schemaVersion))fail('Unsupported Data Lab schema version.');
+  if(![1,2,LAB_SCHEMA_VERSION].includes(input.schemaVersion))fail('Unsupported Data Lab schema version.');
   if(!Array.isArray(input.records))fail('Missing Data Lab records.');
-  records=input.records.map((entry,index)=>importedRecord(entry,options.preserveRecordSources&&['riot','imported','demo'].includes(entry?.source)?entry.source:source,collectedAt,index,input.schemaVersion));
+  records=input.records.map((entry,index)=>importedRecord(entry,options.preserveRecordSources&&['riot','imported','demo'].includes(entry?.source)?entry.source:source,collectedAt,index,input.schemaVersion,options.preserveRecordSources===true));
  }else if(Array.isArray(input.rawMatches)){
   const puuid=text(options.playerPuuid??input.playerPuuid,200);
   records=input.rawMatches.map((raw,index)=>{const data=cloneLabRawBody(raw);return record(fromRiot(data,puuid),{kind:'riot',data,projection:false,provenance:source==='demo'?'demo':'riot_original'},source,collectedAt,index);});
@@ -152,7 +154,7 @@ export function createLabSnapshot(input,options={}) {
  }
  if(records.length<1||records.length>LAB_MAX_RECORDS)fail('Data Lab requires 1 to 20 matches. Select a smaller group before importing.');
  if(new Set(records.map(r=>r.matchId)).size!==records.length)fail('Duplicate match IDs in Data Lab snapshot.');
- const snapshot={kind:KIND,schemaVersion:LAB_SCHEMA_VERSION,source,collectedAt,profile,records};
+ const snapshot={kind:KIND,schemaVersion:LAB_SCHEMA_VERSION,source,collectedAt,profile,records,collection:readLabCollection(input.collection)};
  assertLabSize(snapshot);
  return snapshot;
 }
@@ -166,7 +168,7 @@ export function replaceLabRecordRaw(snapshot,matchId,raw) {
  const data=cloneLabRawBody(raw);
  if(data?.metadata?.matchId!==matchId)fail('Riot response match ID does not match the requested record.');
  const playerPuuid=getLabRecordPlayerPuuid(previous);
- const replacement=record(fromRiot(data,playerPuuid),{kind:'riot',data,projection:false,provenance:'riot_original'},'riot',new Date().toISOString(),index);
+ const replacement=withTimeline(record(fromRiot(data,playerPuuid),{kind:'riot',data,projection:false,provenance:'riot_original'},'riot',new Date().toISOString(),index),previous.timeline,true);
  const updated={...current,records:current.records.map((entry,i)=>i===index?replacement:entry)};
  assertLabSize(updated);
  return updated;
@@ -180,4 +182,23 @@ export function createDemoLabSnapshot(count=10) {
  return {...player,id:`LAB_DEMO_${i+1}`,playedAt:new Date(Date.UTC(2026,8,20,12)-i*3600000).toISOString(),gameVersion:'16.18.1',queueId:420,mapId:11,queue:'Ranked Solo',result:i%3===0?'Defeat':'Victory',durationMinutes,isRemake:false,cs:player.laneMinions+player.neutralMinions,participants:rows};
  });
  return createLabSnapshot({profile:{riotId:'Data Lab#DEMO',region:'DEMO'},matches},{source:'demo',collectedAt:'2026-09-27T00:00:00.000Z'});
+}
+
+function withTimeline(entry,value,trusted=false) {
+ const timeline=readLabTimeline(value,entry,{trusted});
+ return {...entry,timeline,completeness:calculateLabCompleteness(entry.normalized,entry.raw,entry.metrics,timeline)};
+}
+function updateTimeline(snapshot,matchId,build) {
+ const current=exportLabSnapshot(snapshot),entry=current.records.find(r=>r.matchId===matchId);
+ if(!entry)fail('Match not found in this snapshot.');
+ const replacement=withTimeline(entry,build(entry.timeline),true);
+ const result={...current,records:current.records.map(r=>r.matchId===matchId?replacement:r)};
+ assertLabSize(result);return result;
+}
+export function attachLabTimeline(snapshot,matchId,raw,{collectedAt=new Date().toISOString()}={}) {
+ return updateTimeline(snapshot,matchId,()=>({status:'loaded',raw,normalized:null,collectedAt,lastAttemptAt:collectedAt,lastError:null,provenance:'riot_original'}));
+}
+export function updateLabTimelineState(snapshot,matchId,{status,lastError=null,lastAttemptAt=new Date().toISOString()}={}) {
+ if(!['not_loaded','loading','unavailable','error'].includes(status))fail('Invalid timeline update state.');
+ return updateTimeline(snapshot,matchId,previous=>({...previous,status,lastError,lastAttemptAt}));
 }

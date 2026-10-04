@@ -1,5 +1,6 @@
 import {generateReport,RULES} from './coach.js';
 import {calculateLabAggregate} from './data-lab-metrics.js';
+import {timelineEvidence} from './data-lab-timeline.js';
 import {labFindingText as text} from './data-lab-i18n-findings.js';
 
 const normalizedSortKeys=['playedAt','champion','role','queue','result','durationSeconds','visionScore'];
@@ -77,6 +78,24 @@ function topicFindings(topic,entries,scope){
   make('recommendation',flagged,text(`${topic}Action`),text(`${topic}Action`))];
 }
 
+function timelineFindings(record) {
+ const evidence=timelineEvidence(record);
+ return ['cs_delta','gold_delta','player_death'].flatMap(kind=>{
+  const measured=evidence.filter(entry=>entry.kind===kind);
+  if(!measured.length)return [];
+  return [{id:`timeline-v1:${record.matchId}:${kind}`,topic:'timeline',type:'observed',
+   statement:text(`timeline_${kind}`,{count:measured.length,matchId:record.matchId}),matchIds:[record.matchId],
+   evidence:measured,limitations:[text('timelineMeasuredLimit'),...(record.timeline?.provenance==='imported'?[text('timelineImported')]:[])]}];
+ });
+}
+
+function compactTimeline(record) {
+ const timeline=record.timeline;
+ return {status:timeline?.status??'not_loaded',provenance:timeline?.provenance??null,
+  collectedAt:timeline?.collectedAt??null,participantId:timeline?.normalized?.participantId??null,
+  checkpoints:timeline?.normalized?.checkpoints??[],sourceRef:`records[${record.matchId}].timeline.raw`};
+}
+
 function missingFor(record){
  const completeness=record.completeness;
  return [
@@ -84,29 +103,32 @@ function missingFor(record){
    category:completeness.basic.missingFields.includes(entry.field)?'basic':'supplementary'})),
   ...Object.entries(record.metrics).filter(([,metric])=>!['ok','deathless'].includes(metric.status)).map(([metricId,metric])=>({matchId:record.matchId,metricId,status:metric.status,category:'metric'})),
   ...(completeness.remake.status==='unknown'?[{matchId:record.matchId,field:'isRemake',status:'unknown',category:'remake',basis:completeness.remake.basis,unknownPolicy:completeness.remake.unknownPolicy,affects:[]}]:[]),
-  {matchId:record.matchId,field:'timeline',status:completeness.timeline.status,category:'timeline',affects:[]},
+  ...(!record.timeline?.normalized?[{matchId:record.matchId,field:'timeline',status:completeness.timeline.status,category:'timeline',affects:[]}]:[]),
  ];
 }
 
-/** A pure view of exactly the filtered, sorted and limited records used by every Data Lab tab. */
+/** Selection is independent of display sorting; all analytical outputs use selectedRecords. */
 export function analyzeLabSnapshot(snapshot,filters={}){
  const applied=cleanFilters(filters);
  const filtered=snapshot.records.filter(record=>['role','champion','queue','result'].every(key=>!applied[key]||record.normalized[key]===applied[key]));
- const records=[...filtered].sort((a,b)=>compareRecords(a,b,applied)).slice(0,applied.limit);
- const eligibleRecords=records.filter(eligible);
- const scope={...applied,inputCount:snapshot.records.length,filteredCount:filtered.length,selectedCount:records.length,
-  eligibleCount:eligibleRecords.length,excludedCount:records.length-eligibleRecords.length,matchIds:records.map(record=>record.matchId)};
+ const selectedRecords=[...filtered].sort((a,b)=>compareRecords(a,b,{sortBy:'playedAt',direction:'desc'})).slice(0,applied.limit);
+ const records=[...selectedRecords].sort((a,b)=>compareRecords(a,b,applied));
+ const eligibleRecords=selectedRecords.filter(eligible);
+ const {sortBy,direction,...selectionFilters}=applied;
+ const scope={...selectionFilters,inputCount:snapshot.records.length,filteredCount:filtered.length,selectedCount:selectedRecords.length,
+  eligibleCount:eligibleRecords.length,excludedCount:selectedRecords.length-eligibleRecords.length,matchIds:selectedRecords.map(record=>record.matchId),
+  timelineLoadedCount:selectedRecords.filter(record=>record.timeline?.normalized).length,selectionPolicy:'latest_dated_then_match_id',missingTimestampCount:filtered.filter(record=>sortValue(record,'playedAt')===null).length};
  const entries=eligibleRecords.map(record=>({record,report:ruleReport(record)}));
- return {source:snapshot.source,collectedAt:snapshot.collectedAt,scope,records,
-  aggregate:calculateLabAggregate(eligibleRecords),findings:Object.keys(topics).flatMap(topic=>topicFindings(topic,entries,scope)),
-  missingData:records.flatMap(missingFor),limitations:['heuristic','causal','timeline','scope','missing','rules',...(records.some(record=>record.completeness.remake.status==='unknown')?['unknownRemake']:[]),...(records.some(record=>record.raw?.provenance==='riot_projection')?['projection']:[])].map(key=>text(key))};
+ return {source:snapshot.source,collectedAt:snapshot.collectedAt,scope,records,selectedRecords,display:{sortBy,direction},
+  aggregate:calculateLabAggregate(eligibleRecords),findings:[...Object.keys(topics).flatMap(topic=>topicFindings(topic,entries,scope)),...eligibleRecords.flatMap(timelineFindings)],
+  missingData:selectedRecords.flatMap(missingFor),limitations:['heuristic','causal',selectedRecords.some(record=>record.timeline?.normalized)?'timelineMeasuredLimit':'timeline','scope','missing','rules',...(scope.missingTimestampCount?['missingMatchTimes']:[]),...(records.some(record=>record.completeness.remake.status==='unknown')?['unknownRemake']:[]),...(records.some(record=>record.raw?.provenance==='riot_projection')?['projection']:[])].map(key=>text(key)).concat(text('timelineCoverage',{loaded:scope.timelineLoadedCount,selected:scope.selectedCount}))};
 }
 
 /** Export from the data layer; no HTML is read and no provider is called. Raw payloads are omitted. */
 export function exportCoachingInput(analysis){
  return structuredClone({schemaVersion:2,kind:'rift-review-coaching-input',source:analysis.source,collectedAt:analysis.collectedAt,
   engine:{type:'rules',version:RULES.version,llmUsed:false,heuristic:true},scope:analysis.scope,
-  matches:analysis.records.map(record=>({matchId:record.matchId,source:record.source,collectedAt:record.collectedAt,
-   normalized:record.normalized,metrics:record.metrics,coaching:record.coaching,completeness:record.completeness})),
+  matches:analysis.selectedRecords.map(record=>({matchId:record.matchId,source:record.source,collectedAt:record.collectedAt,
+   normalized:record.normalized,metrics:record.metrics,coaching:record.coaching,completeness:record.completeness,timeline:compactTimeline(record)})),
   aggregate:analysis.aggregate,findings:analysis.findings,missingData:analysis.missingData,limitations:analysis.limitations});
 }

@@ -18,7 +18,7 @@ try{
  assert.equal(await page.locator('#lab-data-table > tbody > tr[data-lab-row]').count(),10);
  assert.match(await page.locator('#lab-dataset-status').innerText(),/Demo/);
  await page.locator('[data-lab-match]').first().click();
- assert.match(await page.locator('#lab-detail').innerText(),/Chưa có timeline/);
+ assert.match(await page.locator('#lab-detail').innerText(),/Chưa (có|tải) timeline|chưa thu thập/i);
  assert.equal(await page.locator('[data-lab-match]').first().getAttribute('aria-expanded'),'true');
  assert.equal(await page.locator('[data-lab-detail-row]').evaluate(el=>el.previousElementSibling.dataset.labRow),await page.locator('[data-lab-match]').first().getAttribute('data-lab-match'));
  await page.locator('[data-lab-match]').first().press('Enter');assert.equal(await page.locator('#lab-detail').count(),0);
@@ -56,7 +56,7 @@ try{
  assert.match(await page.locator('#lab-data-panel').innerText(),/Damage share/);
  const exportEvent=page.waitForEvent('download');await page.locator('#lab-export').click();
  const download=await exportEvent;const exported=JSON.parse(await readFile(await download.path(),'utf8'));
- assert.equal(exported.records.length,10);assert.equal(exported.schemaVersion,2);
+ assert.equal(exported.records.length,10);assert.equal(exported.schemaVersion,3);
  await page.locator('#lab-load').click();await page.waitForFunction(()=>document.querySelector('#lab-status').textContent==='Done.');
  assert.equal(await page.locator('#lab-data-table > tbody > tr[data-lab-row]').count(),10);
  await page.locator('#lab-import-box summary').click();

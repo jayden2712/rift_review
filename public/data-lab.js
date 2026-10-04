@@ -1,20 +1,28 @@
 import {onLanguageChange,getLanguage} from './i18n.js';
-import {createLabSnapshot,exportLabSnapshot,LAB_MAX_BYTES} from './data-lab-model.js';
+import {createLabSnapshot,exportLabSnapshot,updateLabTimelineState,LAB_MAX_BYTES} from './data-lab-model.js';
 import {analyzeLabSnapshot,exportCoachingInput} from './data-lab-findings.js';
 import {labText as tr,escapeLab as e,sourceLabel,labColumns,renderLabRows,renderLabAggregate,renderLabFindings} from './data-lab-view.js';
+import {LAB_COLLECTION_CODES} from './data-lab-collection.js';
+import {renderLabCollection} from './data-lab-timeline-view.js';
 import {localizeLiveError} from './riot-source.js';
 const label=(vi,en)=>`<span data-lab-vi="${e(vi)}" data-lab-en="${e(en)}">${tr(vi,en)}</span>`;
 const button=(id,vi,en,kind='secondary-btn')=>`<button id="${id}" type="button" class="${kind}">${label(vi,en)}</button>`;
 function download(value,name){const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+export function preserveTimelineFailure(snapshot,matchId,error,lastAttemptAt=new Date().toISOString()){
+ const code=[...LAB_COLLECTION_CODES,'RIOT_NOT_CONFIGURED'].includes(error?.code)?error.code:'TIMELINE_ERROR';
+ const status=Number.isInteger(error?.status)&&error.status>=400&&error.status<=599?error.status:null;
+ return updateLabTimelineState(snapshot,matchId,{status:status===404?'unavailable':'error',lastAttemptAt,lastError:{code,status,retryable:status===null||status>=500||status===429}});
+}
 async function api(path,body){
  const response=await fetch('/api/lab/'+path,{method:body===undefined?'GET':'POST',credentials:'same-origin',headers:body===undefined?{}:{'Content-Type':'application/json'},...(body===undefined?{}:{body:JSON.stringify(body)})});
- let data;try{data=await response.json();}catch{throw new Error(tr('Không đọc được phản hồi Data Lab.','Cannot read the Data Lab response.'));}
+ let data;try{data=await response.json();}catch{const error=new Error(tr('Không đọc được phản hồi Data Lab.','Cannot read the Data Lab response.'));error.status=response.status;throw error;}
  if(!response.ok){
   const code=data.error?.code;
   const errors={
    LAB_STORAGE_ERROR:tr('Không thể truy cập dữ liệu Data Lab local.','Cannot access local Data Lab storage.'),
    LAB_STORAGE_FULL:tr('Đã đạt 100 snapshot. Sao lưu và dọn thư mục .local/data-lab/ trước khi lưu thêm.','The 100-snapshot limit was reached. Back up and clean .local/data-lab/ before saving more.'),
-   INVALID_LAB_DATA:tr('Snapshot không hợp lệ hoặc vượt giới hạn 20 trận.','The snapshot is invalid or exceeds 20 matches.'),
+   INVALID_LAB_DATA:tr('Dữ liệu không hợp lệ hoặc vượt giới hạn: 20 trận, 8 MiB mỗi snapshot, 2 MiB JSON timeline mỗi trận.','Invalid data or limits exceeded: 20 matches, 8 MiB per snapshot, 2 MiB raw timeline per match.'),
+   INPUT_TOO_LARGE:tr('Yêu cầu vượt giới hạn 8 MiB. Chọn ít trận hơn để giữ nguyên dữ liệu timeline.','Request exceeds 8 MiB. Select fewer matches to retain complete timelines.'),
    INVALID_CONTENT:tr('Dữ liệu cần có định dạng JSON.','Data must use JSON format.'),
    INVALID_JSON:tr('JSON không hợp lệ. Kiểm tra lại nội dung.','Invalid JSON. Check the input.'),
    LAB_PLAYER_UNKNOWN:tr('Snapshot chưa đủ định danh người chơi để bổ sung an toàn. Hãy tra cứu lại Riot ID trong Data Lab.','The snapshot lacks a reliable player identity. Fetch the Riot ID again in Data Lab.'),
@@ -22,7 +30,8 @@ async function api(path,body){
    PLAYER_MISMATCH:tr('Chi tiết Riot không khớp người chơi của snapshot. Dữ liệu cũ được giữ nguyên.','Riot detail does not match the snapshot player. Existing data is preserved.'),
    NOT_FOUND:tr('Không tìm thấy snapshot hoặc Data Lab chưa được bật.','Snapshot not found or Data Lab is disabled.')
   };
-  throw new Error(errors[code]||localizeLiveError(data.error?.message||tr('Yêu cầu Data Lab thất bại.','Data Lab request failed.'),code));
+  const error=new Error(errors[code]||localizeLiveError(data.error?.message||tr('Yêu cầu Data Lab thất bại.','Data Lab request failed.'),code));
+  error.code=code;error.status=response.status;error.snapshot=data.snapshot;error.collection=data.collection;throw error;
  }
  return data;
 }
@@ -33,10 +42,10 @@ function shell(){return `
 <div class="lab-actions">${button('lab-demo','Dùng Demo SR','Use SR demo')}${button('lab-current','Dùng lịch sử đang xem','Use current history')}${button('lab-save','Lưu snapshot','Save snapshot')}${button('lab-export','Xuất snapshot JSON','Export snapshot JSON')}${button('lab-export-coaching','Xuất Coaching input JSON','Export Coaching input JSON')}</div>
 <details id="lab-import-box"><summary>${label('Nhập History JSON hoặc snapshot','Import History JSON or snapshot')}</summary><p class="small muted">${label('Tối đa 20 trận / 8 MiB. Dữ liệu nhập không được coi là Riot đã xác minh.','Up to 20 matches / 8 MiB. Imported data is not treated as verified Riot data.')}</p><label class="file-label">${label('Chọn file JSON','Choose JSON file')}<input id="lab-import-file" type="file" accept=".json,application/json"></label><label for="lab-import-json">JSON</label><textarea id="lab-import-json" rows="6" maxlength="${LAB_MAX_BYTES}" spellcheck="false"></textarea>${button('lab-import','Kiểm tra & nhập','Validate & import')}</details>
 <div class="lab-saved"><label>${label('Snapshot trên máy','Saved snapshots')}<select id="lab-saved-list"><option value="">—</option></select></label>${button('lab-load','Mở bản lưu','Open saved snapshot')}${button('lab-refresh-list','Làm mới danh sách','Refresh list')}</div></section>
-<p id="lab-error" class="error-box" role="alert" hidden></p><p id="lab-status" role="status" aria-live="polite"></p><p id="lab-dataset-status" class="small muted"></p>
+<p id="lab-error" class="error-box" role="alert" hidden></p><p id="lab-status" role="status" aria-live="polite"></p><p id="lab-dataset-status" class="small muted"></p><div id="lab-collection-status"></div>
 <div class="lab-tab-list" role="tablist" aria-label="Data Lab"><button type="button" id="lab-data-tab" role="tab" aria-controls="lab-data-panel" aria-selected="true">${label('Dữ liệu','Data')}</button><button type="button" id="lab-coaching-tab" role="tab" aria-controls="lab-coaching-panel" aria-selected="false" tabindex="-1">${label('Coaching / Bằng chứng','Coaching / Evidence')}</button></div>
 <form id="lab-filters" class="lab-filters"><label>${label('Vị trí','Role')}<select name="role"><option value="">${tr('Tất cả','All')}</option></select></label><label>${label('Tướng','Champion')}<select name="champion"><option value="">${tr('Tất cả','All')}</option></select></label><label>${label('Chế độ','Queue')}<select name="queue"><option value="">${tr('Tất cả','All')}</option></select></label><label>${label('Kết quả','Result')}<select name="result"><option value="">${tr('Tất cả','All')}</option><option value="Victory">${tr('Thắng','Victory')}</option><option value="Defeat">${tr('Thua','Defeat')}</option></select></label><label>${label('Giới hạn nhóm','Cohort limit')}<select name="limit"><option value="10">10</option><option value="20" selected>20</option></select></label>${button('lab-reset','Đặt lại bộ lọc','Reset filters','text-btn')}</form><p id="lab-scope" class="scope" role="status"></p>
-<section id="lab-data-panel" role="tabpanel" aria-labelledby="lab-data-tab"><div class="lab-table-scroll lab-match-table-scroll" tabindex="0"><table id="lab-data-table"><thead></thead><tbody></tbody></table></div><p class="small muted">${label('Bấm một hàng hoặc nút Chi tiết để mở/đóng thống kê ngay dưới trận. Bấm tiêu đề cột để sắp xếp.','Select a row or Details to expand/collapse its statistics below the match. Select a column heading to sort.')}</p><details class="lab-summary" open><summary>${label('Thống kê nhóm đủ điều kiện','Eligible cohort statistics')}</summary><p class="small muted">${label('Mỗi chỉ số chỉ dùng các trận đủ điều kiện có đầy đủ tử số và mẫu số dương. Tỷ lệ từ tổng khác trung bình tỷ lệ từng trận.','Each metric uses eligible matches with known numerators and positive denominators. A pooled ratio differs from the mean of per-match ratios.')}</p><div id="lab-aggregate"></div></details></section>
+<section id="lab-data-panel" role="tabpanel" aria-labelledby="lab-data-tab"><div class="lab-table-scroll lab-match-table-scroll" tabindex="0"><table id="lab-data-table"><thead></thead><tbody></tbody></table></div><p class="small muted">${label('Bấm một hàng hoặc nút Chi tiết để mở/đóng thống kê ngay dưới trận. Bấm tiêu đề cột để sắp xếp.','Select a row or Details to expand/collapse its statistics below the match. Select a column heading to sort.')}</p><details class="lab-summary" open><summary>${label('Thống kê nhóm đủ điều kiện','Eligible cohort statistics')}</summary><p class="small muted">${label('Mẫu tổng và trung bình được ghi riêng. KDA từ tổng tính cả trận không chết; trung bình KDA chỉ dùng trận có deaths > 0.','Pooled and mean samples are reported separately. Pooled KDA includes deathless games; mean KDA uses only games with deaths > 0.')}</p><div id="lab-aggregate"></div></details></section>
 <section id="lab-coaching-panel" role="tabpanel" aria-labelledby="lab-coaching-tab" hidden></section>`;}
 export function mountDataLab({getCurrent}){
  if(document.querySelector('#open-data-lab'))return;
@@ -44,24 +53,26 @@ export function mountDataLab({getCurrent}){
  const root=document.createElement('section');root.id='data-lab';root.hidden=true;root.innerHTML=shell();document.querySelector('main').append(root);
  const launch=document.createElement('button');launch.id='open-data-lab';launch.type='button';launch.className='text-btn';launch.textContent='Data Lab';document.querySelector('.site-header nav').append(launch);
  const $=selector=>root.querySelector(selector);
+ let timelineLoading=null,playerOnly=true,collectionReport=null,collectionRetryAllowed=false;
  let snapshot=null,analysis=null,selected=null,currentTab='data',sortBy='playedAt',direction='desc',busy=false,savedID=null,savedList=[],previousVisibility=[];
  const inputForm=$('#lab-riot-form');for(const key of ['riotId','region'])inputForm.elements[key].value=document.querySelector('#riot-lookup')?.elements[key]?.value||'';
- function showError(error){$('#lab-error').textContent=(error?.code==='INVALID_LAB_DATA'?tr('Dữ liệu nhập không hợp lệ. Cần History JSON hoặc snapshot hỗ trợ, từ 1 đến 20 trận có ID duy nhất.','Invalid input. Use supported History JSON or a snapshot with 1–20 matches and unique IDs.'):error instanceof SyntaxError?tr('JSON không hợp lệ. Kiểm tra dấu ngoặc, dấu phẩy và dấu nháy.','Invalid JSON. Check brackets, commas and quotes.'):error?.messages?.join(' ')||error.message)||tr('Không đọc được dữ liệu.','Cannot read the data.');$('#lab-error').hidden=false;}
+ function showError(error){$('#lab-error').textContent=(error?.code==='INVALID_LAB_DATA'?tr('Dữ liệu không hợp lệ. Cần JSON hỗ trợ, 1–20 trận có ID duy nhất, tối đa 8 MiB mỗi snapshot và 2 MiB JSON timeline mỗi trận.','Invalid data. Use supported JSON with 1–20 unique match IDs, up to 8 MiB per snapshot and 2 MiB raw timeline per match.'):error instanceof SyntaxError?tr('JSON không hợp lệ. Kiểm tra dấu ngoặc, dấu phẩy và dấu nháy.','Invalid JSON. Check brackets, commas and quotes.'):error?.messages?.join(' ')||error.message)||tr('Không đọc được dữ liệu.','Cannot read the data.');$('#lab-error').hidden=false;}
  async function run(action){if(busy)return;const previousSnapshot=snapshot;busy=true;$('#lab-error').hidden=true;$('#lab-status').textContent=tr('Đang xử lý…','Working…');root.setAttribute('aria-busy','true');for(const el of root.querySelectorAll('button,input,select,textarea'))el.disabled=true;
-  try{await action();$('#lab-status').textContent=tr('Đã hoàn tất.','Done.');}catch(error){showError(error);$('#lab-status').textContent=snapshot===previousSnapshot?tr('Dữ liệu đang xem được giữ nguyên.','The current dataset is preserved.'):tr('Dữ liệu đã cập nhật, nhưng không thể hoàn tất thao tác tiếp theo.','The dataset was updated, but the follow-up operation could not be completed.');}
+  try{await action();$('#lab-status').textContent=tr('Đã hoàn tất.','Done.');}catch(error){if(error.collection){collectionReport=error.collection;collectionRetryAllowed=error.retryAvailable===true;$('#lab-collection-status').innerHTML=renderLabCollection(collectionReport,{canRetry:collectionRetryAllowed&&Boolean(snapshot)});}showError(error);$('#lab-status').textContent=snapshot===previousSnapshot||error.preservedTimeline?tr('Dữ liệu đang xem được giữ nguyên.','The current dataset is preserved.'):tr('Dữ liệu đã cập nhật, nhưng không thể hoàn tất thao tác tiếp theo.','The dataset was updated, but the follow-up operation could not be completed.');}
   finally{busy=false;root.removeAttribute('aria-busy');for(const el of root.querySelectorAll('button,input,select,textarea'))el.disabled=false;updateButtons();}
  }
  function updateButtons(){for(const id of ['lab-save','lab-export','lab-export-coaching'])$('#'+id).disabled=busy||!snapshot;$('#lab-load').disabled=busy||!$('#lab-saved-list').value;}
  function filterOptions(){const form=$('#lab-filters');for(const field of ['role','champion','queue']){const current=form.elements[field].value,values=[...new Set(snapshot?.records.map(r=>r.normalized[field]).filter(Boolean)||[])].sort();form.elements[field].innerHTML=`<option value="">${tr('Tất cả','All')}</option>`+values.map(value=>`<option value="${e(value)}">${e(value)}</option>`).join('');if(values.includes(current))form.elements[field].value=current;}form.elements.result.options[0].textContent=tr('Tất cả','All');form.elements.result.options[1].textContent=tr('Thắng','Victory');form.elements.result.options[2].textContent=tr('Thua','Defeat');}
- function setSnapshot(next,id=null,preserveView=false){snapshot=next;savedID=id;if(!preserveView){selected=null;sortBy='playedAt';direction='desc';$('#lab-filters').reset();}filterOptions();render();}
+ function setSnapshot(next,id=null,preserveView=false){snapshot=next;savedID=id;collectionReport=next.collection||null;collectionRetryAllowed=Boolean(next.collection);if(!preserveView){selected=null;playerOnly=true;sortBy='playedAt';direction='desc';$('#lab-filters').reset();}filterOptions();render();}
  function render(){
   const headers=labColumns().map(([key,name])=>`<th scope="col"${sortBy===key?` aria-sort="${direction==='asc'?'ascending':'descending'}"`:''}>${key==='source'?e(name):`<button type="button" data-lab-sort="${key}">${e(name)}${sortBy===key?(direction==='asc'?' ↑':' ↓'):''}</button>`}</th>`).join('');$('#lab-data-table thead').innerHTML=`<tr>${headers}</tr>`;
-  updateButtons();if(!snapshot){$('#lab-dataset-status').textContent=tr('Chưa có dữ liệu. Chọn Demo, dùng lịch sử hiện tại hoặc tra cứu Riot.','No dataset yet. Choose Demo, use current history, or fetch Riot.');return;}
+  updateButtons();$('#lab-collection-status').innerHTML=renderLabCollection(collectionReport,{canRetry:collectionRetryAllowed&&Boolean(snapshot)});if(!snapshot){$('#lab-dataset-status').textContent=tr('Chưa có dữ liệu. Chọn Demo, dùng lịch sử hiện tại hoặc tra cứu Riot.','No dataset yet. Choose Demo, use current history, or fetch Riot.');return;}
   const filters={...Object.fromEntries([...$('#lab-filters').elements].filter(el=>el.name).map(el=>[el.name,el.value])),sortBy,direction};analysis=analyzeLabSnapshot(snapshot,filters);
   const s=analysis.scope;$('#lab-dataset-status').textContent=`${sourceLabel(snapshot.source)} · ${snapshot.records.length} ${tr('trận','matches')} · ${snapshot.collectedAt}${savedID?` · ${tr('Đã lưu','Saved')}: ${savedID}`:''}`;
   $('#lab-scope').textContent=`${s.filteredCount}/${s.inputCount} ${tr('trận khớp bộ lọc','matches match filters')} · ${s.selectedCount} ${tr('trận trong nhóm','selected')} · ${s.eligibleCount} ${tr('đủ điều kiện coaching','eligible for coaching')} · ${s.excludedCount} ${tr('bị loại khỏi coaching','excluded from coaching')}. ${tr('Bộ lọc','Filters')}: ${[s.role,s.champion,s.queue,s.result].filter(Boolean).join(' / ')||tr('Tất cả','All')}`;
+  if(s.missingTimestampCount)$('#lab-scope').textContent+=` · ${s.missingTimestampCount} ${tr('trận thiếu thời gian: xếp sau các trận có thời gian, thứ tự ID ổn định.','matches lack timestamps: placed after dated matches in stable ID order.')}`;
   if(!analysis.records.some(record=>record.matchId===selected))selected=null;
-  $('#lab-data-table tbody').innerHTML=renderLabRows(analysis,selected);$('#lab-aggregate').innerHTML=renderLabAggregate(analysis.aggregate);$('#lab-coaching-panel').innerHTML=renderLabFindings(analysis);
+  $('#lab-data-table tbody').innerHTML=renderLabRows(analysis,selected,{loading:timelineLoading===selected,playerOnly});$('#lab-aggregate').innerHTML=renderLabAggregate(analysis.aggregate);$('#lab-coaching-panel').innerHTML=renderLabFindings(analysis);
   if(busy)for(const el of root.querySelectorAll('button,input,select,textarea'))el.disabled=true;
  }
  function tab(name){currentTab=name;for(const key of ['data','coaching']){const active=key===name;$('#lab-'+key+'-tab').setAttribute('aria-selected',String(active));$('#lab-'+key+'-tab').tabIndex=active?0:-1;$('#lab-'+key+'-panel').hidden=!active;}}
@@ -91,9 +102,12 @@ export function mountDataLab({getCurrent}){
   if(fromEvidence){const detail=$('#lab-detail');detail?.scrollIntoView({block:'start',behavior:'smooth'});detail?.focus({preventScroll:true});}
   else toggle?.focus({preventScroll:true});
  }
+ root.addEventListener('change',event=>{if(event.target.matches('[data-lab-player-events]')){playerOnly=event.target.checked;render();root.querySelector('[data-lab-player-events]')?.focus({preventScroll:true});}});
  root.addEventListener('click',event=>{
   if(busy)return;
   const target=event.target.closest('button');
+  if(target?.hasAttribute('data-lab-retry')){run(async()=>{let result;try{result=await api('retry',{snapshot:exportLabSnapshot(snapshot)});}catch(error){error.retryAvailable=true;throw error;}setSnapshot(result.snapshot,result.id,true);await refreshSaved();});return;}
+  if(target?.dataset.labTimeline){const matchId=target.dataset.labTimeline;run(async()=>{timelineLoading=matchId;render();try{const result=await api('timeline',{snapshot:exportLabSnapshot(snapshot),matchId});setSnapshot(result.snapshot,result.id,true);}catch(error){setSnapshot(error.snapshot||preserveTimelineFailure(snapshot,matchId,error),savedID,true);error.preservedTimeline=true;throw error;}finally{timelineLoading=null;render();}await refreshSaved();});return;}
   if(target?.dataset.labEnrich){const matchId=target.dataset.labEnrich;run(async()=>{const result=await api('enrich',{snapshot:exportLabSnapshot(snapshot),matchId});setSnapshot(result.snapshot,result.id,true);await refreshSaved();});return;}
   if(target?.dataset.labSort){direction=sortBy===target.dataset.labSort&&direction==='desc'?'asc':'desc';sortBy=target.dataset.labSort;render();return;}
   if(target?.dataset.labEvidence){openMatch(target.dataset.labEvidence,true);return;}

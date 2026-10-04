@@ -36,7 +36,7 @@ test('sorting is deterministic, missing values always last, and unsafe sort keys
  const data=snapshot([match('b',{cs:0}),match('c',{cs:null}),match('a',{cs:0})]);
  assert.deepEqual(analyzeLabSnapshot(data,{sortBy:'csPerMinute',direction:'asc'}).scope.matchIds,['a','b','c']);
  assert.deepEqual(analyzeLabSnapshot(data,{sortBy:'csPerMinute',direction:'desc'}).scope.matchIds,['a','b','c']);
- const unsafe=analyzeLabSnapshot(data,{sortBy:'__proto__',direction:'other',limit:500});assert.equal(unsafe.scope.sortBy,'playedAt');assert.equal(unsafe.scope.direction,'desc');assert.equal(unsafe.scope.limit,20);
+ const unsafe=analyzeLabSnapshot(data,{sortBy:'__proto__',direction:'other',limit:500});assert.equal(unsafe.display.sortBy,'playedAt');assert.equal(unsafe.display.direction,'desc');assert.equal(unsafe.scope.limit,20);
 });
 
 test('zero denominators and absent fields are missing evidence, not fabricated zero measurements',()=>{
@@ -62,8 +62,8 @@ test('an empty filtered cohort has no invented findings or aggregate values',()=
 
 test('numeric and text columns sort within the selected cohort with stable evidence IDs',()=>{
  const data=snapshot([match('low',{champion:'Ahri',cs:60}),match('high',{champion:'Jinx',cs:240}),match('unknown',{champion:'Zed',cs:null})]);
- assert.deepEqual(analyzeLabSnapshot(data,{sortBy:'csPerMinute',direction:'desc'}).scope.matchIds,['high','low','unknown']);
- assert.deepEqual(analyzeLabSnapshot(data,{sortBy:'champion',direction:'asc'}).scope.matchIds,['low','high','unknown']);
+ assert.deepEqual(analyzeLabSnapshot(data,{sortBy:'csPerMinute',direction:'desc'}).records.map(r=>r.matchId),['high','low','unknown']);
+ assert.deepEqual(analyzeLabSnapshot(data,{sortBy:'champion',direction:'asc'}).records.map(r=>r.matchId),['low','high','unknown']);
  const first=analyzeLabSnapshot(data,{sortBy:'csPerMinute',direction:'asc'}).findings.find(f=>f.topic==='farm'&&f.type==='observed');
  const second=analyzeLabSnapshot(data,{sortBy:'csPerMinute',direction:'desc'}).findings.find(f=>f.topic==='farm'&&f.type==='observed');
  assert.deepEqual(first.evidence.map(e=>e.id).sort(),second.evidence.map(e=>e.id).sort());
@@ -81,4 +81,38 @@ test('missing-data export distinguishes unknown remake, not-loaded timeline and 
 
 test('deathless KDA is a known edge case, not a missing-data field',()=>{
  const analysis=analyzeLabSnapshot(snapshot([match('deathless',{deaths:0})]));assert.equal(analysis.records[0].metrics.kda.status,'deathless');assert.ok(!analysis.missingData.some(entry=>entry.metricId==='kda'));
+});
+
+test('display sorting cannot change the latest filtered cohort, aggregate, findings or full coaching JSON',()=>{
+ const data=snapshot(Array.from({length:20},(_,i)=>match(`m${String(i).padStart(2,'0')}`,{playedAt:new Date(Date.UTC(2026,8,i+1)).toISOString(),cs:300-i*5,kills:30-i,deaths:i+1,goldEarned:30000-i*100,champion:i===19?'Jinx':'Ahri'})));
+ const baseline=analyzeLabSnapshot(data,{champion:'Ahri',limit:10});
+ assert.deepEqual(baseline.scope.matchIds,Array.from({length:10},(_,i)=>`m${String(18-i).padStart(2,'0')}`));
+ for(const sortBy of ['kda','csPerMinute','goldPerMinute','champion','playedAt'])for(const direction of ['asc','desc']){
+  const sorted=analyzeLabSnapshot(data,{champion:'Ahri',limit:10,sortBy,direction});
+  assert.deepEqual(sorted.scope,baseline.scope);assert.deepEqual(sorted.aggregate,baseline.aggregate);assert.deepEqual(sorted.findings,baseline.findings);assert.deepEqual(exportCoachingInput(sorted),exportCoachingInput(baseline));
+ }
+ assert.notDeepEqual(analyzeLabSnapshot(data,{limit:10,sortBy:'playedAt',direction:'asc'}).records.map(r=>r.matchId),analyzeLabSnapshot(data,{limit:10}).records.map(r=>r.matchId));
+});
+
+test('missing timestamps follow dated matches with deterministic ID fallback and explicit limits',()=>{
+ const rows=[match('unknown-b',{playedAt:null}),match('dated',{playedAt:'2026-09-01T00:00:00Z'}),match('unknown-a',{playedAt:null})];
+ const first=analyzeLabSnapshot(snapshot(rows));const reversed=analyzeLabSnapshot(snapshot([...rows].reverse()));
+ assert.deepEqual(first.scope.matchIds,['dated','unknown-a','unknown-b']);assert.deepEqual(reversed.scope.matchIds,first.scope.matchIds);assert.equal(first.scope.missingTimestampCount,2);assert.equal(first.scope.selectionPolicy,'latest_dated_then_match_id');
+ assert.equal(first.selectedRecords[1].normalized.playedAt,null);
+ try{setLanguage('en');assert.ok(analyzeLabSnapshot(snapshot(rows)).limitations.some(value=>value.includes('Missing match times')));}finally{setLanguage('vi');}
+});
+
+test('timeline produces only traceable observations and compact coaching exports, stable across display sorting',async()=>{
+ const {attachLabTimeline}=await import('../public/data-lab-model.js');
+ const {timelineFixture,matchFixture}=await import('./fixtures/lab-timeline.js');
+ const raw={...timelineFixture(),privateUnusedBody:'raw-sentinel-never-in-coaching'};
+ const data=attachLabTimeline(createLabSnapshot({rawMatches:[matchFixture()],playerPuuid:'player'},{source:'riot'}),'OC1_99',raw);
+ const analysis=analyzeLabSnapshot(data),observations=analysis.findings.filter(f=>f.topic==='timeline');
+ assert.equal(observations.length,3);assert.ok(observations.every(f=>f.type==='observed'));
+ const evidence=observations.flatMap(f=>f.evidence);assert.ok(evidence.some(e=>e.kind==='cs_delta'&&e.value===60));assert.ok(evidence.some(e=>e.kind==='player_death'&&e.timestamp===600001));
+ assert.ok(evidence.every(e=>e.id&&e.matchId==='OC1_99'&&e.participantId===7&&e.formula&&e.sourceFields.length&&e.limitations.length));
+ const output=exportCoachingInput(analysis);assert.equal(output.matches[0].timeline.checkpoints[0].actualTimestamp,570000);
+ assert.equal(output.matches[0].timeline.raw,undefined);assert.equal(output.matches[0].timeline.frames,undefined);assert.ok(!JSON.stringify(output).includes('raw-sentinel'));
+ assert.deepEqual(output,exportCoachingInput(analyzeLabSnapshot(data,{sortBy:'kda',direction:'asc'})));
+ try{setLanguage('en');const en=analyzeLabSnapshot(data);assert.ok(!en.limitations.some(l=>l.includes('No timeline has been loaded')));assert.deepEqual(en.findings.filter(f=>f.topic==='timeline').flatMap(f=>f.evidence),evidence);}finally{setLanguage('vi');}
 });
