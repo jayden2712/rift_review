@@ -11,3 +11,6 @@ __pycache__/
 
 # Local private Data Lab snapshots
 .local/
+
+# Editor settings
+.vscode/
