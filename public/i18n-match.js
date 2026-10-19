@@ -77,6 +77,10 @@ export default {
   'Dữ liệu phản hồi không hợp lệ. Vui lòng thử lại.': 'The response data is invalid. Please retry.',
   'Yêu cầu không đến từ web này.': 'The request did not originate from this website.',
   'Dữ liệu yêu cầu quá lớn.': 'The request is too large.',
+  'Backend local chỉ nhận yêu cầu khi mở web bằng địa chỉ in ra lúc chạy npm start (http://localhost:<cổng>), không qua proxy, tunnel hay tên miền khác.':
+    'The local backend only accepts requests when the app is opened at the address printed by npm start (http://localhost:<port>), not through a proxy, tunnel or another host name.',
+  'Không tìm thấy API của Rift Review. Hãy mở web bằng địa chỉ in ra lúc chạy npm start (mặc định http://localhost:4173), không dùng Live Server hay file tĩnh.':
+    'The Rift Review API was not found. Open the app at the address printed by npm start (default http://localhost:4173), not with Live Server or as static files.',
   'Máy chủ gặp lỗi. Dữ liệu đang xem được giữ nguyên.':
     'The server encountered an error. Your current history is preserved.',
 };

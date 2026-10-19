@@ -26,7 +26,11 @@ function validateLocalRequest(incoming) {
       : ['localhost:' + port, '127.0.0.1:' + port];
   const peer = incoming.socket.remoteAddress;
   if (!['127.0.0.1', '::ffff:127.0.0.1', '::1'].includes(peer) || !hosts.includes(host)) {
-    throw new RiotError('LOCAL_ONLY', 'Backend này chỉ nhận yêu cầu trên máy local.', 403);
+    throw new RiotError(
+      'LOCAL_ONLY',
+      'Backend local chỉ nhận yêu cầu khi mở web bằng địa chỉ in ra lúc chạy npm start (http://localhost:<cổng>), không qua proxy, tunnel hay tên miền khác.',
+      403,
+    );
   }
   const origin = new URL('http://' + host).origin;
   if (

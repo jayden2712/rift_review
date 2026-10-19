@@ -2,6 +2,10 @@ import {t, getLanguage} from './i18n.js';
 import {InputError} from './data.js';
 import {normalizeHistory} from './history-data.js';
 
+const LOCAL_ONLY_MESSAGE =
+  'Backend local chỉ nhận yêu cầu khi mở web bằng địa chỉ in ra lúc chạy npm start (http://localhost:<cổng>), không qua proxy, tunnel hay tên miền khác.';
+const API_UNAVAILABLE_MESSAGE =
+  'Không tìm thấy API của Rift Review. Hãy mở web bằng địa chỉ in ra lúc chạy npm start (mặc định http://localhost:4173), không dùng Live Server hay file tĩnh.';
 const liveErrorMessages = Object.freeze({
   RIOT_AUTH_FAILED: 'Riot không xác thực được yêu cầu. Kiểm tra cấu hình API key trên máy chủ.',
   RIOT_ACCESS_DENIED:
@@ -30,6 +34,8 @@ const liveErrorMessages = Object.freeze({
   RIOT_BAD_ACCOUNT: 'Dữ liệu phản hồi không hợp lệ. Vui lòng thử lại.',
   RIOT_BAD_LIST: 'Dữ liệu phản hồi không hợp lệ. Vui lòng thử lại.',
   ORIGIN_REJECTED: 'Yêu cầu không đến từ web này.',
+  LOCAL_ONLY: LOCAL_ONLY_MESSAGE,
+  API_UNAVAILABLE: API_UNAVAILABLE_MESSAGE,
   INPUT_TOO_LARGE: 'Dữ liệu yêu cầu quá lớn.',
   SERVER_ERROR: 'Máy chủ gặp lỗi. Dữ liệu đang xem được giữ nguyên.',
 });
@@ -68,6 +74,9 @@ export const riotDataSource = {
     try {
       payload = await response.json();
     } catch {
+      // Another static server (Live Server, file hosting) answers /api with an HTML 404/405.
+      if ([404, 405].includes(response.status))
+        throw new LiveDataError(API_UNAVAILABLE_MESSAGE, 'API_UNAVAILABLE');
       throw new LiveDataError(
         'Không đọc được phản hồi. Hãy tải lại trang và kiểm tra đăng nhập.',
         'BAD_RESPONSE',

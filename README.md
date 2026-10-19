@@ -57,7 +57,8 @@ Navigation, forms, accessible labels, dynamic statistics/coaching, loadout names
 
 ## Troubleshooting
 
-- **HTTP 403 in the browser Network tab for `/api/...`:** the local server rejected the request because the page was not opened from `http://localhost:<PORT>` or `http://127.0.0.1:<PORT>` (for example Live Server on port 5500, a LAN IP or `[::1]`). Open the URL printed by `npm start`.
+- **HTTP 403 in the browser Network tab for `/api/...`:** the local server rejected the request because its Host or Origin was not `localhost:<PORT>` / `127.0.0.1:<PORT>`, typically when it is reached through a proxy, tunnel, port forward or another host name. Open the URL printed by `npm start`.
+- **"Rift Review API was not found" (`API_UNAVAILABLE`):** the page is served by another static server (Live Server, `npx serve`, opening the file directly), which has no `/api`. Open the URL printed by `npm start` instead.
 - **HTTP 502 with "Riot từ chối quyền truy cập" / access denied:** Riot answered 403. Common causes are an expired or regenerated development key (they last 24 hours), a key without access to the endpoint, or a wrong route. Replace `RIOT_API_KEY` in `.env` and restart. See the [Riot portal documentation](https://developer.riotgames.com/docs/portal).
 - **`NO_MATCHES` in ARAM Mayhem mode:** the account has no queue 2400 matches in the requested page. Mayhem is a rotating mode, so this is expected outside its rotation.
 

@@ -69,3 +69,28 @@ test('upstream failure never becomes a successful empty Mayhem page', async () =
     setLanguage('vi');
   }
 });
+
+test('a static server without the backend API reports how to open the app instead of a sign-in hint', async () => {
+  for (const status of [404, 405]) {
+    await assert.rejects(
+      riotDataSource.load(query, {
+        fetchImpl: async () =>
+          new Response('<h1>Not found</h1>', {status, headers: {'Content-Type': 'text/html'}}),
+      }),
+      e => e.code === 'API_UNAVAILABLE' && /npm start/.test(e.message),
+    );
+  }
+  await assert.rejects(
+    riotDataSource.load(query, {fetchImpl: async () => new Response('oops', {status: 200})}),
+    e => e.code === 'BAD_RESPONSE',
+  );
+});
+
+test('local-only rejections explain which address to open in English', () => {
+  setLanguage('en');
+  try {
+    assert.match(localizeLiveError('', 'LOCAL_ONLY'), /npm start/);
+  } finally {
+    setLanguage('vi');
+  }
+});
