@@ -14,7 +14,6 @@ const fmt=(value,digits=1)=>value===null||value===undefined?'—':new Intl.Numbe
 const pct=value=>value===null||value===undefined?'—':Math.round(value*100)+'%';
 const num=value=>value===null||value===undefined?'—':new Intl.NumberFormat(getLocale()).format(value);
 const kda=stats=>stats.perfect?t("Không chết"):fmt(stats.kda,2);
-const queueName=value=>value==='Standard'?t("SR · chưa rõ chế độ"):value;
 const titleFor=()=>({survival:t("Số lần chết cần xem lại"),farm:t("Nhịp farm dưới mục tiêu"),vision:t("Vision dưới mục tiêu"),involvement:t("KP dưới ngưỡng xem lại")});
 let history=sampleHistory(),source='sample',report=null,view='history',page=1,evidence=null,backup=null,busy=false,toastTimer,lookupBusy=false,liveDetails={},liveMeta=null;
 let rankStates={},rankRequestBusy=false;

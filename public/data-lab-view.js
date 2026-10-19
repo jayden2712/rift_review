@@ -1,4 +1,4 @@
-import {getLanguage,getLocale} from './i18n.js';
+import {getLocale} from './i18n.js';
 import {championAvatar} from './champion-icons.js';
 import {renderItemSlots,formatDuration} from './match-view.js';
 import {labText,escapeLab,numeric,metricLabel,metricValue,sourceLabel,exclusionLabel} from './data-lab-format.js';

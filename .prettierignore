@@ -1,0 +1,10 @@
+dist/
+node_modules/
+.local/
+package-lock.json
+public/champions/
+public/items/
+public/spells/
+public/runes/
+public/ranks/
+*.md

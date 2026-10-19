@@ -1,7 +1,7 @@
 import {getLanguage,getLocale} from './i18n.js';
 export const labText=(vi,en)=>getLanguage()==='en'?en:vi;
 export const escapeLab=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-const e=escapeLab,tr=labText;
+const tr=labText;
 export const numeric=value=>Number.isFinite(value)?new Intl.NumberFormat(getLocale(),{maximumFractionDigits:2}).format(value):'—';
 const percentKeys=new Set(['killParticipation','damageShare','goldShare']);
 export function metricLabel(key){return ({csPerMinute:tr('CS/phút','CS/min'),goldPerMinute:tr('Vàng/phút','Gold/min'),killParticipation:tr('Tham gia hạ gục','Kill participation'),damageShare:tr('Tỷ trọng sát thương','Damage share'),goldShare:tr('Tỷ trọng vàng','Gold share'),kda:'KDA',visionPerMinute:tr('Tầm nhìn/phút','Vision/min'),deathsPer30:tr('Chết/30 phút','Deaths/30 min')})[key]||key;}
