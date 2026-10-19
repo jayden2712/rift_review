@@ -22,6 +22,8 @@ export function loadLocalConfig(envFile = defaultEnvFile) {
     env: {
       RIOT_API_KEY: (process.env.RIOT_API_KEY ?? '').trim(),
       DATA_LAB_ENABLED: process.env.DATA_LAB_ENABLED === '1' ? '1' : '0',
+      LCU_ENABLED: process.env.LCU_ENABLED === '1' ? '1' : '0',
+      LCU_INSTALL_DIR: (process.env.LCU_INSTALL_DIR ?? '').trim(),
     },
   };
 }

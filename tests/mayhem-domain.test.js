@@ -142,7 +142,12 @@ test('detail validator rejects unmatched IDs, malicious keys, oversized arrays a
     {summonerSpells: [4, Infinity]},
     {champion: 'x'.repeat(41)},
     {isPlayer: 'true'},
-    {augments: [{id: 123}]},
+    {augments: [{id: -1}]},
+    {augments: [{id: 1.5}]},
+    {augments: [{id: '123'}]},
+    {augments: 'x'},
+    {augments: [123]},
+    {augments: Array.from({length: 7}, (_, i) => ({id: i + 1}))},
   ])
     rejects({m1: {...detail, participants: [{...detail.participants[0], ...patch}]}});
   rejects(JSON.parse('{"__proto__":{}}'));
@@ -261,4 +266,36 @@ test('Mayhem has explicit higher score and duration bounds without loosening SR 
       () => normalizeHistory({matches: [sr('bad')], details: {bad: {...detail, ...patch}}}),
       InputError,
     );
+});
+
+test('Mayhem augments from the League client survive validation and export as plain IDs', async () => {
+  const augments = [{id: 1386}, {id: 1071, name: '<img src=x onerror=alert(1)>'}, {id: 1349}];
+  const h = normalizeHistory({
+    schemaVersion: 3,
+    matches: [mayhem('m1')],
+    details: {m1: {...detail, participants: [{...detail.participants[0], augments}]}},
+  });
+  assert.deepEqual(h.details.m1.participants[0].augments, [{id: 1386}, {id: 1071}, {id: 1349}]);
+  const exported = exportHistory(h);
+  assert.deepEqual(exported.details.m1.participants[0].augments, [{id: 1386}, {id: 1071}, {id: 1349}]);
+  assert.deepEqual(await historyJsonSource.load(JSON.stringify(exported)), h);
+  assert.deepEqual(
+    normalizeHistory({
+      matches: [mayhem('m2')],
+      details: {m2: {...detail, participants: [{...detail.participants[0], augments: []}]}},
+    }).details.m2.participants[0].augments,
+    [],
+  );
+});
+test('Summoner’s Rift details never carry augments', () => {
+  assert.throws(
+    () =>
+      normalizeHistory({
+        matches: [sr('s1')],
+        details: {
+          s1: {...detail, participants: [{...detail.participants[0], role: 'Mid', augments: [{id: 1}]}]},
+        },
+      }),
+    InputError,
+  );
 });

@@ -30,12 +30,21 @@ function runes(value) {
     shards: slots(value.shards, 3),
   };
 }
+// Mayhem augments come from the League client as IDs only; names and icons are looked up
+// locally, so any other keys are dropped. Summoner's Rift has no augments.
+const AUGMENT_SLOTS = 6;
+function augments(value, mayhem) {
+  if (value === undefined || value === null) return null;
+  if (!mayhem || !Array.isArray(value) || value.length > AUGMENT_SLOTS) invalid();
+  return value.map(augment => {
+    if (!object(augment) || typeof augment.id !== 'number' || augment.id <= 0) invalid();
+    return {id: number(augment.id)};
+  });
+}
 function participant(value, mayhem) {
   if (!object(value)) invalid();
   if (value.teamId !== undefined && value.teamId !== null && ![100, 200].includes(value.teamId)) invalid();
   if (value.isPlayer !== undefined && typeof value.isPlayer !== 'boolean') invalid();
-  // No verified Riot augment payload is available. Reject unsupported data rather than silently losing it.
-  if (value.augments !== undefined && value.augments !== null) invalid();
   const role = text(value.role, 40);
   if (role !== null && !ROLES.includes(role) && role !== 'Chưa rõ') invalid();
   return {
@@ -55,7 +64,7 @@ function participant(value, mayhem) {
     items: slots(value.items, 7),
     summonerSpells: slots(value.summonerSpells, 2),
     runes: runes(value.runes),
-    augments: null,
+    augments: augments(value.augments, mayhem),
   };
 }
 function detail(value, match) {

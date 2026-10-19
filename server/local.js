@@ -6,6 +6,7 @@ import {handleApi, jsonResponse} from './worker.js';
 import {RiotError} from './riot.js';
 import {loadLocalConfig} from './local-config.js';
 import {createDataLab, LAB_BODY_LIMIT, defaultLabDirectory} from './data-lab.js';
+import {createLcuApi} from './lcu-api.js';
 
 const publicRoot = fileURLToPath(new URL('../public/', import.meta.url));
 const bodyLimit = 2048;
@@ -69,9 +70,10 @@ function drainRequest(incoming) {
   });
 }
 
-async function serveApi(incoming, url, env, fetchImpl, lab) {
+async function serveApi(incoming, url, env, fetchImpl, {lab, lcu}) {
   const isLab = url.pathname.startsWith('/api/lab/');
-  if (isLab && !lab)
+  const isLcu = url.pathname.startsWith('/api/lcu/');
+  if ((isLab && !lab) || (isLcu && !lcu))
     return jsonResponse({error: {code: 'NOT_FOUND', message: 'Không tìm thấy chức năng này.'}}, 404);
   const headers = new Headers(
     Object.entries(incoming.headers).filter(([name]) =>
@@ -84,7 +86,8 @@ async function serveApi(incoming, url, env, fetchImpl, lab) {
     ? undefined
     : await readBody(incoming, isLab ? LAB_BODY_LIMIT : bodyLimit);
   const request = new Request(url, {method: incoming.method, headers, body});
-  return isLab ? lab(request) : handleApi(request, env, {fetchImpl});
+  if (isLab) return lab(request);
+  return isLcu ? lcu(request) : handleApi(request, env, {fetchImpl});
 }
 
 async function serveStatic(incoming, url, directory, dataLabEnabled) {
@@ -134,15 +137,21 @@ export function createLocalServer({
   publicDirectory = publicRoot,
   fetchImpl = fetch,
   labDirectory = defaultLabDirectory,
+  lcuConnect,
 } = {}) {
   const localEnv = {RIOT_API_KEY: typeof env.RIOT_API_KEY === 'string' ? env.RIOT_API_KEY.trim() : ''};
   const dataLabEnabled = env.DATA_LAB_ENABLED === '1';
   const lab = dataLabEnabled ? createDataLab({directory: labDirectory, env: localEnv, fetchImpl}) : null;
+  const lcuEnv = {LCU_INSTALL_DIR: typeof env.LCU_INSTALL_DIR === 'string' ? env.LCU_INSTALL_DIR : ''};
+  const lcu =
+    env.LCU_ENABLED === '1'
+      ? createLcuApi({env: lcuEnv, ...(lcuConnect ? {connect: lcuConnect} : {})})
+      : null;
   return createServer({requestTimeout: 15000, headersTimeout: 10000}, async (incoming, outgoing) => {
     try {
       const url = validateLocalRequest(incoming);
       const response = url.pathname.startsWith('/api/')
-        ? await serveApi(incoming, url, localEnv, fetchImpl, lab)
+        ? await serveApi(incoming, url, localEnv, fetchImpl, {lab, lcu})
         : await serveStatic(incoming, url, publicDirectory, dataLabEnabled);
       const body = Buffer.from(await response.arrayBuffer());
       outgoing.writeHead(response.status, Object.fromEntries(response.headers));
