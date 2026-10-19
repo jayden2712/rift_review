@@ -1,6 +1,7 @@
 import {t, getLocale} from './i18n.js';
 import {generateReport, RULES} from './coach.js';
 import {exclusionReason} from './history-data.js';
+import {augmentStats} from './augment-stats.js';
 
 const sum = (list, field) => list.reduce((total, item) => total + item[field], 0);
 const ratio = (a, b) => (b > 0 ? a / b : null);
@@ -303,6 +304,7 @@ export function analyzeHistory(history, filters = {}) {
 function analyzeMayhem(history, filters, selected) {
   const counted = selected.matches.filter(match => match.isRemake !== true);
   const stats = aggregate(counted);
+  const augments = augmentStats(counted, history.details);
   return {
     engine: t('Thống kê ARAM Mayhem'),
     coachingAvailable: false,
@@ -311,6 +313,7 @@ function analyzeMayhem(history, filters, selected) {
     ...selected,
     stats,
     champions: groups(counted, 'champion'),
+    augments,
     roles: [],
     entries: selected.matches.map(match => ({match, ...generateReport(match)})),
     findings: [],
@@ -332,7 +335,11 @@ function analyzeMayhem(history, filters, selected) {
       ),
       t('Dữ liệu thiếu giữ nguyên là chưa biết. Trận ngắn không tự động được coi là remake.'),
       t('Không áp dụng ngưỡng farm, tầm nhìn, số lần chết hoặc KP của Summoner’s Rift cho Mayhem.'),
-      t('Chưa xác minh dữ liệu augment từ Riot; không suy luận augment, rank hoặc MMR Mayhem.'),
+      augments.lobby.games
+        ? t('Augment chỉ có ở trận nhập từ client LoL ({games} trận); không suy luận rank hoặc MMR Mayhem.', {
+            games: augments.lobby.games,
+          })
+        : t('Chưa xác minh dữ liệu augment từ Riot; không suy luận augment, rank hoặc MMR Mayhem.'),
     ],
   };
 }

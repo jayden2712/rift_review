@@ -20,6 +20,7 @@ import {
   MAX_MATCHES,
 } from './history-data.js';
 import {analyzeHistory, historyReportToMarkdown} from './history-coach.js';
+import {renderAugmentPanel} from './augment-view.js';
 
 const $ = selector => document.querySelector(selector);
 const escape = value =>
@@ -324,6 +325,12 @@ function renderTrend() {
         '',
       )}</div><p class="small muted trend-note">${t('So cùng vị trí để giảm khác biệt vai trò. Chỉ số thay đổi chưa chứng minh chất lượng quyết định tăng hay giảm.')}</p>`;
 }
+let augmentScope = 'self';
+function renderAugmentStats() {
+  const panel = $('#augment-stats');
+  panel.hidden = report.coachingAvailable !== false;
+  if (!panel.hidden) panel.innerHTML = renderAugmentPanel(report.augments, augmentScope);
+}
 function dateText(value) {
   if (!value) return t('Chưa có ngày giờ');
   return new Intl.DateTimeFormat(getLocale(), {
@@ -501,6 +508,7 @@ function render() {
   renderSidebar();
   renderFocus();
   renderTrend();
+  renderAugmentStats();
   renderHistory();
   renderCoaching();
   renderStorage();
@@ -683,6 +691,11 @@ document.addEventListener('click', async e => {
   if (button.hasAttribute('data-load-rank')) {
     e.preventDefault();
     await fetchMatchRank(button.dataset.loadRank);
+    return;
+  }
+  if (button.dataset.augmentScope) {
+    augmentScope = button.dataset.augmentScope === 'lobby' ? 'lobby' : 'self';
+    renderAugmentStats();
     return;
   }
   if (button.dataset.view) {
