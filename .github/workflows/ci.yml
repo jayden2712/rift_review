@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # Ubuntu runs the symlink checks; Windows catches platform-specific socket and path bugs.
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.12
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Node tests
+        run: npm test
+      - name: Build Worker
+        run: npm run build
+      - name: Python importer tests
+        shell: bash
+        run: for test in tests/wiki-*.test.py; do python "$test" || exit 1; done
