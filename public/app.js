@@ -21,6 +21,7 @@ import {
 } from './history-data.js';
 import {analyzeHistory, historyReportToMarkdown} from './history-coach.js';
 import {renderAugmentPanel} from './augment-view.js';
+import {initTooltips} from './tooltip.js';
 
 const $ = selector => document.querySelector(selector);
 const escape = value =>
@@ -1036,6 +1037,7 @@ if (restored) {
   }
 }
 initLanguageUI();
+initTooltips();
 refreshChampionOptions();
 render();
 renderLookupStatus();

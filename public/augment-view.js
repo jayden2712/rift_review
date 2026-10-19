@@ -17,7 +17,7 @@ function row(entry, max) {
   const image = asset
     ? `<img src="${escape(asset.src)}" alt="" width="32" height="32" loading="lazy" decoding="async">`
     : '';
-  return `<li class="augment-stat${asset?.rarity ? ' augment-' + asset.rarity : ''}${entry.picks < SMALL_SAMPLE ? ' is-small-sample' : ''}" data-augment-id="${entry.id}"><span class="game-icon augment-icon" aria-hidden="true"><span class="game-icon-fallback">·</span>${image}</span><span class="augment-stat-name">${escape(name)}</span><span class="augment-stat-picks" title="${escape(t('{picks} lần chọn', {picks: entry.picks}))}"><svg class="augment-pick-bar" viewBox="0 0 100 6" preserveAspectRatio="none" aria-hidden="true"><rect width="${Math.max(4, Math.round((entry.picks / max) * 100))}" height="6" rx="3"/></svg>${entry.picks}</span><span class="augment-stat-rate ${rate >= 50 ? 'win-text' : 'loss-text'}">${rate}%</span></li>`;
+  return `<li class="augment-stat${asset?.rarity ? ' augment-' + asset.rarity : ''}${entry.picks < SMALL_SAMPLE ? ' is-small-sample' : ''}" data-tip-kind="augment" data-tip-id="${entry.id}" tabindex="0"><span class="game-icon augment-icon" aria-hidden="true"><span class="game-icon-fallback">·</span>${image}</span><span class="augment-stat-name">${escape(name)}</span><span class="augment-stat-picks" title="${escape(t('{picks} lần chọn', {picks: entry.picks}))}"><svg class="augment-pick-bar" viewBox="0 0 100 6" preserveAspectRatio="none" aria-hidden="true"><rect width="${Math.max(4, Math.round((entry.picks / max) * 100))}" height="6" rx="3"/></svg>${entry.picks}</span><span class="augment-stat-rate ${rate >= 50 ? 'win-text' : 'loss-text'}">${rate}%</span></li>`;
 }
 
 export function renderAugmentPanel(stats, scope = 'self') {

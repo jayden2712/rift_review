@@ -44,7 +44,10 @@ function icon(kind, id, className = 'game-icon') {
   const image = asset
     ? `<img data-game-icon src="${escape(asset.src)}" alt="" width="32" height="32" loading="lazy" decoding="async">`
     : '';
-  return `<span class="${className}${empty ? ' is-empty' : ''}" title="${escape(title)}" role="img" aria-label="${escape(title)}"><span class="game-icon-fallback" aria-hidden="true">${empty ? '' : valid ? '·' : '?'}</span>${image}</span>`;
+  // Items get a rich hover tooltip (public/tooltip.js) instead of the native title.
+  const tip =
+    kind === 'item' && valid ? ` data-tip-kind="item" data-tip-id="${id}"` : ` title="${escape(title)}"`;
+  return `<span class="${className}${empty ? ' is-empty' : ''}"${tip} role="img" aria-label="${escape(title)}"><span class="game-icon-fallback" aria-hidden="true">${empty ? '' : valid ? '·' : '?'}</span>${image}</span>`;
 }
 
 export function renderItemSlots(player) {
@@ -105,7 +108,7 @@ function augmentEntry(id) {
   const image = asset
     ? `<img data-game-icon src="${escape(asset.src)}" alt="" width="32" height="32" loading="lazy" decoding="async">`
     : '';
-  return `<li class="augment-entry${asset?.rarity ? ' augment-' + asset.rarity : ''}" title="${escape(name)}"><span class="game-icon augment-icon" aria-hidden="true"><span class="game-icon-fallback">·</span>${image}</span><span>${escape(name)}</span></li>`;
+  return `<li class="augment-entry${asset?.rarity ? ' augment-' + asset.rarity : ''}" data-tip-kind="augment" data-tip-id="${id}" tabindex="0"><span class="game-icon augment-icon" aria-hidden="true"><span class="game-icon-fallback">·</span>${image}</span><span>${escape(name)}</span></li>`;
 }
 
 // Augment IDs come from the League client; only validated positive IDs are rendered.

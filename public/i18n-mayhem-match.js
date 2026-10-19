@@ -17,6 +17,12 @@ export default {
   '{picks} lần chọn': '{picks} picks',
   'Lượt chọn': 'Picks',
   'Tỉ lệ thắng': 'Win rate',
+  vàng: 'gold',
+  Bạc: 'Silver',
+  'Lăng Kính': 'Prismatic',
+  'Chưa có mô tả cho augment này.': 'No description is available for this augment yet.',
+  'X: giá trị thay đổi theo cấp hoặc trận, client không cung cấp số liệu.':
+    'X: the value scales with level or game state; the client does not provide the number.',
   'Chỉ mô tả kết quả. Augment dưới {n} lượt chọn được làm mờ vì mẫu quá nhỏ.':
     'Descriptive only. Augments with fewer than {n} picks are dimmed because the sample is too small.',
   'Augment chỉ có ở trận nhập từ client LoL ({games} trận); không suy luận rank hoặc MMR Mayhem.':
