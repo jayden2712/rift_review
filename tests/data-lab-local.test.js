@@ -462,3 +462,35 @@ test('full raw snapshots above the former 2 MiB bound round-trip within the shar
   const loaded = await (await app.get('/api/lab/snapshots/' + saved.id)).json();
   assert.deepEqual(loaded.snapshot.records[0].raw.data, expanded);
 });
+
+// Windows realpath expands 8.3 short names (C:\Users\RUNNER~1) and fixes letter case;
+// neither is a symlink, so Data Lab storage must still work on such paths.
+function shortPath(path) {
+  const script = `(New-Object -ComObject Scripting.FileSystemObject).GetFolder('${path.replace(/'/g, "''")}').ShortPath`;
+  try {
+    return execFileSync('powershell.exe', ['-NoProfile', '-Command', script], {encoding: 'utf8'}).trim();
+  } catch {
+    return null;
+  }
+}
+
+test(
+  'Data Lab stores snapshots under Windows short-name and case-variant paths',
+  {skip: process.platform !== 'win32' && 'Windows path canonicalization only'},
+  async t => {
+    const base = await mkdtemp(join(tmpdir(), 'rift-lab-long-name-'));
+    t.after(() => rm(base, {recursive: true, force: true}));
+    const variants = [base.toUpperCase()];
+    const short = shortPath(base);
+    if (short && short !== base) variants.push(short);
+    for (const variant of variants) {
+      const app = await start(t, {labDirectory: join(variant, 'snapshots-' + variants.indexOf(variant))});
+      const {snapshot} = await (await app.post('/api/lab/demo', {count: 10})).json();
+      const save = await app.post('/api/lab/snapshots', {snapshot});
+      assert.equal(save.status, 201, variant);
+      const {id} = await save.json();
+      assert.equal((await app.get('/api/lab/snapshots/' + id)).status, 200, variant);
+      assert.equal((await (await app.get('/api/lab/snapshots')).json()).snapshots.length, 1, variant);
+    }
+  },
+);

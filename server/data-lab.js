@@ -30,6 +30,22 @@ const storageError = () =>
 // O_NOFOLLOW and exclusive creation as a second boundary.
 async function safeDirectory(directory, create = false) {
   const absolute = resolve(directory);
+  if (!(await checkAncestors(absolute, create))) return null;
+  let canonical;
+  try {
+    canonical = await realpath(absolute);
+  } catch {
+    throw storageError();
+  }
+  if (canonical === absolute) return absolute;
+  // Windows realpath expands 8.3 short names and fixes letter case without any symlink.
+  // Accept that only if the canonical path passes the same symlink checks and is stable.
+  if (process.platform !== 'win32' || !(await checkAncestors(canonical, false))) throw storageError();
+  if ((await realpath(canonical)) !== canonical) throw storageError();
+  return canonical;
+}
+
+async function checkAncestors(absolute, create) {
   let current = parse(absolute).root;
   for (const part of absolute.slice(current.length).split(sep).filter(Boolean)) {
     current = join(current, part);
@@ -48,8 +64,7 @@ async function safeDirectory(directory, create = false) {
       if (entry.isSymbolicLink() || !entry.isDirectory()) throw storageError();
     }
   }
-  if ((await realpath(absolute)) !== absolute) throw storageError();
-  return absolute;
+  return true;
 }
 
 async function readSaved(directory, id) {
