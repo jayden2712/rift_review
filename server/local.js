@@ -51,6 +51,15 @@ async function readBody(incoming, limit = bodyLimit) {
   return body;
 }
 
+function drainRequest(incoming) {
+  if (incoming.complete || incoming.destroyed) return Promise.resolve();
+  return new Promise(done => {
+    incoming.once('end', done);
+    incoming.once('close', done);
+    incoming.resume();
+  });
+}
+
 async function serveApi(incoming, url, env, fetchImpl, lab) {
   const isLab = url.pathname.startsWith('/api/lab/');
   if (isLab && !lab) return jsonResponse({error: {code: 'NOT_FOUND', message: 'Không tìm thấy chức năng này.'}}, 404);
@@ -113,6 +122,10 @@ export function createLocalServer({env = {}, publicDirectory = publicRoot, fetch
         code: known ? error.code : 'SERVER_ERROR',
         message: known ? error.message : 'Máy chủ local gặp lỗi. Hãy thử lại.',
       }}, known ? error.status : 500, {Connection: 'close'});
+      // Discard any unread body before closing; otherwise Windows resets the socket and
+      // the client sees ECONNRESET instead of this error. requestTimeout bounds the wait.
+      await drainRequest(incoming);
+      if (outgoing.destroyed) return;
       outgoing.writeHead(response.status, Object.fromEntries(response.headers));
       outgoing.end(await response.text());
     }

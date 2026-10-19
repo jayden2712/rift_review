@@ -8,6 +8,7 @@ import {createLocalServer} from '../server/local.js';
 import {handleApi} from '../server/worker.js';
 import {createLabSnapshot} from '../public/data-lab-model.js';
 import {LAB_BODY_LIMIT} from '../server/data-lab.js';
+import {symlinkSkip} from './symlink-support.js';
 
 async function start(t, extra = {}) {
   const root = await mkdtemp(join(tmpdir(), 'rift-lab-'));
@@ -56,7 +57,8 @@ test('Data Lab demo/import storage round trips safely, downgrades imported prove
   assert.equal(list.snapshots[0].source, 'demo');
   const forged = await app.post('/api/lab/snapshots', {snapshot: {...snapshot, source: 'riot'}});
   assert.equal((await forged.json()).snapshot.source, 'imported');
-  assert.equal((await stat(join(app.options.labDirectory, stored.id + '.json'))).mode & 0o777, 0o600);
+  // Windows does not apply POSIX permission bits, so 0o600 is only observable elsewhere.
+  if (process.platform !== 'win32') assert.equal((await stat(join(app.options.labDirectory, stored.id + '.json'))).mode & 0o777, 0o600);
   for (const path of ['/api/lab/snapshots/not-an-id', '/api/lab/snapshots/%2e%2e%2fsecret', '/.local/data-lab/' + stored.id + '.json']) {
     assert.equal((await app.get(path)).status, 404);
   }
@@ -78,7 +80,7 @@ test('Data Lab validates methods, origins, body limits and malformed imports', a
   assert.equal((await missing.json()).error.code, 'RIOT_NOT_CONFIGURED');
 });
 
-test('Data Lab rejects storage directory and snapshot symlinks without exposing files', async t => {
+test('Data Lab rejects storage directory and snapshot symlinks without exposing files', {skip: symlinkSkip}, async t => {
   const app = await start(t);
   const privateDir = join(app.root, 'private');
   await mkdir(privateDir);

@@ -7,6 +7,7 @@ import {pathToFileURL} from 'node:url';
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 import {createLocalServer} from '../server/local.js';
+import {canSymlink, symlinkSkip} from './symlink-support.js';
 
 const exec = promisify(execFile);
 const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j5eUAAAAASUVORK5CYII=', 'base64');
@@ -34,9 +35,11 @@ async function assertPng(response, method) {
 
 test('local serves exact champion PNG bytes and HEAD while rejecting nested private files and symlinks', async t => {
   const root = await fixture(t);
-  await symlink(join(root, '.env'), join(root, 'public/champions/Linked.png'));
   await writeFile(join(root, 'public/.env'), 'private-fixture');
-  await symlink(join(root, 'public/.env'), join(root, 'public/champions/Internal.png'));
+  if (canSymlink) {
+    await symlink(join(root, '.env'), join(root, 'public/champions/Linked.png'));
+    await symlink(join(root, 'public/.env'), join(root, 'public/champions/Internal.png'));
+  }
   const server = createLocalServer({publicDirectory: join(root, 'public')});
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   t.after(() => new Promise(resolve => { server.close(resolve); server.closeAllConnections(); }));
@@ -79,7 +82,7 @@ test('built Worker returns exact champion PNG bytes and HEAD without weakening A
   assert.ok(!(await readFile(join(root, 'dist/server/index.js'), 'utf8')).includes('private-fixture'));
 });
 
-test('build rejects symlinked champion assets rather than embedding files outside public', async t => {
+test('build rejects symlinked champion assets rather than embedding files outside public', {skip: symlinkSkip}, async t => {
   const root = await fixture(t);
   await symlink(join(root, '.env'), join(root, 'public/champions/Linked.png'));
   await assert.rejects(buildFixture(root), /Unsupported public asset/);
@@ -94,7 +97,7 @@ test('local serves all game icon categories and rejects nested paths and symlink
   const origin = `http://127.0.0.1:${server.address().port}`;
   for (const folder of ['items', 'spells', 'runes', 'ranks']) {
     for (const method of ['GET', 'HEAD']) await assertPng(await fetch(`${origin}/${folder}/1001.png`, {method}), method);
-    await symlink(join(root, '.env'), join(root, 'public', folder, 'Linked.png'));
+    if (canSymlink) await symlink(join(root, '.env'), join(root, 'public', folder, 'Linked.png'));
     for (const path of ['Linked.png', 'sub/1001.png', '%2e%2e%2f.env']) {
       assert.equal((await fetch(`${origin}/${folder}/${path}`)).status, 404);
     }
@@ -107,6 +110,7 @@ test('build preserves game icon bytes and rejects symlinked game icons', async t
   const {default: worker} = await import(pathToFileURL(join(root, 'dist/server/index.js')).href);
   for (const folder of ['items', 'spells', 'runes', 'ranks']) {
     for (const method of ['GET', 'HEAD']) await assertPng(await worker.fetch(new Request(`https://fixture.test/${folder}/1001.png`, {method}), {}), method);
+    if (!canSymlink) continue;
     await symlink(join(root, '.env'), join(root, 'public', folder, 'Linked.png'));
     await assert.rejects(buildFixture(root), /Unsupported public asset/);
     await rm(join(root, 'public', folder, 'Linked.png'));

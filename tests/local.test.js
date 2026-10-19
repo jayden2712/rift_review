@@ -6,6 +6,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createLocalServer} from '../server/local.js';
 import {riotDataSource} from '../public/riot-source.js';
+import {canSymlink} from './symlink-support.js';
 
 async function start(t, options = {}) {
   const server = createLocalServer(options);
@@ -104,7 +105,7 @@ test('local never exposes project files, traversal paths or symlink targets', as
   await mkdir(publicDirectory);
   await writeFile(join(root, 'private.js'), 'private-value');
   await writeFile(join(publicDirectory, 'index.html'), '<h1>Fixture</h1>');
-  await symlink(join(root, 'private.js'), join(publicDirectory, 'linked.js'));
+  if (canSymlink) await symlink(join(root, 'private.js'), join(publicDirectory, 'linked.js'));
   const origin = await start(t, {publicDirectory});
   for (const path of ['/.env', '/.env.example', '/server/riot.js', '/../private.js', '/%2e%2e/private.js', '/%2f..%2fprivate.js', '/linked.js', '/missing.js', '/%ZZ']) {
     const response = await rawRequest(origin, {path});
