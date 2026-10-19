@@ -27,7 +27,7 @@ const storageError = () =>
 
 // Check every existing ancestor before creating directories: a .local symlink must
 // never redirect stored snapshots into another directory. File descriptors use
-// O_NOFOLLOW and exclusive creation as a second boundary.
+// O_NOFOLLOW (where the platform has it), lstat and exclusive creation as a second boundary.
 async function safeDirectory(directory, create = false) {
   const absolute = resolve(directory);
   if (!(await checkAncestors(absolute, create))) return null;
@@ -73,8 +73,14 @@ async function readSaved(directory, id) {
   if (!root) throw missing();
   let file;
   try {
-    file = await open(join(root, id + '.json'), constants.O_RDONLY | constants.O_NOFOLLOW);
+    const path = join(root, id + '.json');
+    // O_NOFOLLOW is undefined on Windows, so reject symlinks explicitly and make sure
+    // the opened descriptor is the same file that was checked.
+    const entry = await lstat(path);
+    if (entry.isSymbolicLink()) throw missing();
+    file = await open(path, constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0));
     const info = await file.stat();
+    if (info.dev !== entry.dev || info.ino !== entry.ino) throw missing();
     if (!info.isFile() || info.nlink !== 1 || info.size > LAB_BODY_LIMIT) throw missing();
     const payload = JSON.parse(await file.readFile('utf8'));
     return {id, snapshot: exportLabSnapshot(payload)};
@@ -130,7 +136,7 @@ export function createDataLab({directory = defaultLabDirectory, env = {}, fetchI
       const id = randomUUID();
       const file = await open(
         join(root, id + '.json'),
-        constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW,
+        constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | (constants.O_NOFOLLOW ?? 0),
         0o600,
       );
       try {
