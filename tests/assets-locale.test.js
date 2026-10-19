@@ -5,7 +5,13 @@ import {createHash} from 'node:crypto';
 import {gameAsset} from '../public/game-assets.js';
 
 test('asset names follow the selected locale without changing icon URLs', () => {
-  for (const [kind, id, english] of [['item', 1001, 'Boots'], ['spell', 4, 'Flash'], ['rune', 8010, 'Conqueror'], ['rune', 5008, 'Adaptive Force'], ['rank', 'GOLD', 'Gold']]) {
+  for (const [kind, id, english] of [
+    ['item', 1001, 'Boots'],
+    ['spell', 4, 'Flash'],
+    ['rune', 8010, 'Conqueror'],
+    ['rune', 5008, 'Adaptive Force'],
+    ['rank', 'GOLD', 'Gold'],
+  ]) {
     const vi = gameAsset(kind, id, 'vi');
     const en = gameAsset(kind, id, 'en');
     assert.equal(en.name, english);
@@ -18,12 +24,17 @@ test('asset names follow the selected locale without changing icon URLs', () => 
 });
 
 test('vendored item images have exact source URLs and hashes, including current wiki icons', async () => {
-  const manifest = JSON.parse(await readFile(new URL('../scripts/item-icon-sources.json', import.meta.url), 'utf8'));
+  const manifest = JSON.parse(
+    await readFile(new URL('../scripts/item-icon-sources.json', import.meta.url), 'utf8'),
+  );
   assert.equal(manifest.metadataVersion, '16.19.1');
   assert.equal(manifest.page, 'https://wiki.leagueoflegends.com/en-us/Item');
   for (const id of ['1001', '3031', '3153', '2422']) {
     assert.equal(manifest.items[id].provider, 'League of Legends Wiki');
-    assert.match(manifest.items[id].url, /^https:\/\/wiki\.leagueoflegends\.com\/en-us\/images\/[^/]+\.png\?/);
+    assert.match(
+      manifest.items[id].url,
+      /^https:\/\/wiki\.leagueoflegends\.com\/en-us\/images\/[^/]+\.png\?/,
+    );
   }
   for (const [id, record] of Object.entries(manifest.items)) {
     const data = await readFile(new URL(`../public/items/${id}.png`, import.meta.url));
@@ -33,16 +44,30 @@ test('vendored item images have exact source URLs and hashes, including current 
   }
 });
 
-
 test('all champion, spell, rune and rank files match their documented sources', async () => {
-  const manifests = await Promise.all(['champion', 'spell', 'rune-rank'].map(async name =>
-    JSON.parse(await readFile(new URL(`../scripts/${name}-icon-sources.json`, import.meta.url), 'utf8'))));
-  const groups = {champions: manifests[0].champions, spells: manifests[1].spells,
-    runes: manifests[2].runes, ranks: manifests[2].ranks};
+  const manifests = await Promise.all(
+    ['champion', 'spell', 'rune-rank'].map(async name =>
+      JSON.parse(await readFile(new URL(`../scripts/${name}-icon-sources.json`, import.meta.url), 'utf8')),
+    ),
+  );
+  const groups = {
+    champions: manifests[0].champions,
+    spells: manifests[1].spells,
+    runes: manifests[2].runes,
+    ranks: manifests[2].ranks,
+  };
   assert.equal(manifests[1].metadataVersion, '16.19.1');
   for (const [group, entries] of Object.entries(groups)) {
-    const files = (await readdir(new URL(`../public/${group}/`, import.meta.url))).filter(name => name.endsWith('.png'));
-    assert.deepEqual(files.sort(), Object.keys(entries).map(id => `${id}.png`).sort(), group);
+    const files = (await readdir(new URL(`../public/${group}/`, import.meta.url))).filter(name =>
+      name.endsWith('.png'),
+    );
+    assert.deepEqual(
+      files.sort(),
+      Object.keys(entries)
+        .map(id => `${id}.png`)
+        .sort(),
+      group,
+    );
     for (const [id, record] of Object.entries(entries)) {
       const bytes = await readFile(new URL(`../public/${group}/${id}.png`, import.meta.url));
       assert.equal(createHash('sha256').update(bytes).digest('hex'), record.sha256, `${group}/${id}`);

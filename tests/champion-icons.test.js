@@ -5,19 +5,37 @@ import {championIconPath, championAvatar} from '../public/champion-icons.js';
 
 test('champion icons match Riot IDs, display names and punctuation variants', () => {
   for (const [name, slug] of [
-    ['Ahri', 'ahri'], ['  aHrI  ', 'ahri'], ['Aurelion Sol', 'aurelionsol'],
-    ["Kai'Sa", 'kaisa'], ['Kai’Sa', 'kaisa'], ['Kaisa', 'kaisa'],
-    ['Nunu', 'nunuwillump'], ['Nunu & Willump', 'nunuwillump'],
-    ['MonkeyKing', 'wukong'], ['Wukong', 'wukong'],
-    ['Renata', 'renataglasc'], ['Renata Glasc', 'renataglasc'],
-    ['Dr. Mundo', 'drmundo'], ['DrMundo', 'drmundo'],
-    ['FiddleSticks', 'fiddlesticks'], ["Cho'Gath", 'chogath'],
-    ['JarvanIV', 'jarvaniv'], ['LeBlanc', 'leblanc'],
-  ]) assert.equal(championIconPath(name), '/champions/' + slug + '.png', name);
+    ['Ahri', 'ahri'],
+    ['  aHrI  ', 'ahri'],
+    ['Aurelion Sol', 'aurelionsol'],
+    ["Kai'Sa", 'kaisa'],
+    ['Kai’Sa', 'kaisa'],
+    ['Kaisa', 'kaisa'],
+    ['Nunu', 'nunuwillump'],
+    ['Nunu & Willump', 'nunuwillump'],
+    ['MonkeyKing', 'wukong'],
+    ['Wukong', 'wukong'],
+    ['Renata', 'renataglasc'],
+    ['Renata Glasc', 'renataglasc'],
+    ['Dr. Mundo', 'drmundo'],
+    ['DrMundo', 'drmundo'],
+    ['FiddleSticks', 'fiddlesticks'],
+    ["Cho'Gath", 'chogath'],
+    ['JarvanIV', 'jarvaniv'],
+    ['LeBlanc', 'leblanc'],
+  ])
+    assert.equal(championIconPath(name), '/champions/' + slug + '.png', name);
 });
 
 test('unknown and unsafe champion names use escaped text without remote image requests', () => {
-  for (const name of ['Unknown Champion', '', null, '__proto__', 'constructor', '<img src=x onerror=alert(1)>']) {
+  for (const name of [
+    'Unknown Champion',
+    '',
+    null,
+    '__proto__',
+    'constructor',
+    '<img src=x onerror=alert(1)>',
+  ]) {
     assert.equal(championIconPath(name), null);
     assert.ok(!championAvatar(name).includes('<img'));
   }

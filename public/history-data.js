@@ -9,18 +9,23 @@ export const MAX_JSON_LENGTH = 2000000;
 
 function shortText(value, fallback, label, max = 80) {
   if (value === undefined || value === null || value === '') return fallback;
-  if (typeof value !== 'string' || value.trim().length > max) throw new InputError([()=>t("{label}: tối đa {max} ký tự.", {label:t(label), max:max})]);
+  if (typeof value !== 'string' || value.trim().length > max)
+    throw new InputError([() => t('{label}: tối đa {max} ký tự.', {label: t(label), max: max})]);
   return value.trim() || fallback;
 }
 export function normalizeHistory(input) {
   const envelope = Array.isArray(input) ? {matches: input} : input;
-  if (!envelope || typeof envelope !== 'object') throw new InputError([()=>t('Nhập đối tượng có profile và matches, hoặc một mảng trận đấu.')]);
-  if (envelope.schemaVersion !== undefined && ![1,2,3].includes(envelope.schemaVersion)) throw new InputError([()=>t('Phiên bản dữ liệu lịch sử chưa được hỗ trợ.')]);
+  if (!envelope || typeof envelope !== 'object')
+    throw new InputError([() => t('Nhập đối tượng có profile và matches, hoặc một mảng trận đấu.')]);
+  if (envelope.schemaVersion !== undefined && ![1, 2, 3].includes(envelope.schemaVersion))
+    throw new InputError([() => t('Phiên bản dữ liệu lịch sử chưa được hỗ trợ.')]);
   // Preserve the original single-match JSON input as a one-match history.
   const entries = envelope.matches ?? (envelope.champion ? [envelope] : null);
-  if (!Array.isArray(entries) || !entries.length || entries.length > MAX_MATCHES) throw new InputError([()=>t("Lịch sử cần từ 1 đến {max} trận.", {max:MAX_MATCHES})]);
+  if (!Array.isArray(entries) || !entries.length || entries.length > MAX_MATCHES)
+    throw new InputError([() => t('Lịch sử cần từ 1 đến {max} trận.', {max: MAX_MATCHES})]);
   const profile = envelope.profile ?? {};
-  if (!profile || typeof profile !== 'object' || Array.isArray(profile)) throw new InputError([()=>t('profile phải là một đối tượng.')]);
+  if (!profile || typeof profile !== 'object' || Array.isArray(profile))
+    throw new InputError([() => t('profile phải là một đối tượng.')]);
   const normalizedProfile = {
     riotId: shortText(profile.riotId, t('Hồ sơ của bạn'), 'Riot ID'),
     region: shortText(profile.region, '', 'Khu vực', 30),
@@ -30,40 +35,86 @@ export function normalizeHistory(input) {
   const errors = [];
   const matches = entries.map((entry, index) => {
     try {
-      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) throw new InputError([()=>t('Dữ liệu không hợp lệ.')]);
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry))
+        throw new InputError([() => t('Dữ liệu không hợp lệ.')]);
       const queue = entry.queue ?? 'Standard';
-      if (!QUEUES.includes(queue)) throw new InputError([()=>t("queue phải là {queues}.", {queues:QUEUES.join(', ')})]);
-      const match = normalizeMatch({...entry,queue}, {allowShort: true});
+      if (!QUEUES.includes(queue))
+        throw new InputError([() => t('queue phải là {queues}.', {queues: QUEUES.join(', ')})]);
+      const match = normalizeMatch({...entry, queue}, {allowShort: true});
       const id = shortText(entry.id, `import-${index + 1}`, 'Match ID', 200);
-      if (ids.has(id)) throw new InputError([()=>t("Match ID bị trùng: {id}. Xóa bản trùng để tránh tính hai lần.", {id:id})]);
+      if (ids.has(id))
+        throw new InputError([
+          () => t('Match ID bị trùng: {id}. Xóa bản trùng để tránh tính hai lần.', {id: id}),
+        ]);
       ids.add(id);
       let playedAt = null;
       if (entry.playedAt !== undefined && entry.playedAt !== null && entry.playedAt !== '') {
-        if (typeof entry.playedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})$/.test(entry.playedAt) || !Number.isFinite(Date.parse(entry.playedAt))) throw new InputError([()=>t('playedAt cần ngày giờ ISO có múi giờ, ví dụ 2026-09-14T10:30:00Z.')]);
+        if (
+          typeof entry.playedAt !== 'string' ||
+          !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})$/.test(entry.playedAt) ||
+          !Number.isFinite(Date.parse(entry.playedAt))
+        )
+          throw new InputError([
+            () => t('playedAt cần ngày giờ ISO có múi giờ, ví dụ 2026-09-14T10:30:00Z.'),
+          ]);
         playedAt = new Date(entry.playedAt).toISOString();
       }
-      if (entry.isRemake !== undefined && !(queue === 'ARAM Mayhem' && entry.isRemake === null) && typeof entry.isRemake !== 'boolean') throw new InputError([()=>t('isRemake phải là true hoặc false.')]);
+      if (
+        entry.isRemake !== undefined &&
+        !(queue === 'ARAM Mayhem' && entry.isRemake === null) &&
+        typeof entry.isRemake !== 'boolean'
+      )
+        throw new InputError([() => t('isRemake phải là true hoặc false.')]);
       const extra = {};
       for (const key of ['damageToChampions', 'goldEarned']) {
         const value = entry[key];
         if (value === undefined || value === null || value === '') extra[key] = null;
-        else if (!['number','string'].includes(typeof value) || !Number.isInteger(Number(value)) || Number(value) < 0 || Number(value) > 1000000) throw new InputError([()=>t("{key} cần số nguyên từ 0 đến 1.000.000, hoặc để trống.", {key:key})]);
+        else if (
+          !['number', 'string'].includes(typeof value) ||
+          !Number.isInteger(Number(value)) ||
+          Number(value) < 0 ||
+          Number(value) > 1000000
+        )
+          throw new InputError([
+            () => t('{key} cần số nguyên từ 0 đến 1.000.000, hoặc để trống.', {key: key}),
+          ]);
         else extra[key] = Number(value);
       }
-      return {...match, ...extra, id, queue, playedAt, isRemake: queue === 'ARAM Mayhem' ? (entry.isRemake ?? null) : entry.isRemake === true, inputIndex: index};
+      return {
+        ...match,
+        ...extra,
+        id,
+        queue,
+        playedAt,
+        isRemake: queue === 'ARAM Mayhem' ? (entry.isRemake ?? null) : entry.isRemake === true,
+        inputIndex: index,
+      };
     } catch (error) {
-      errors.push(()=>t("Trận {index}: {message}", {index:index+1, message:error instanceof InputError ? error.messages.join(' ') : t('Dữ liệu không hợp lệ.')}));
+      errors.push(() =>
+        t('Trận {index}: {message}', {
+          index: index + 1,
+          message: error instanceof InputError ? error.messages.join(' ') : t('Dữ liệu không hợp lệ.'),
+        }),
+      );
       return null;
     }
   });
   if (errors.length) throw new InputError(errors.slice(0, 8));
   const dated = matches.every(match => match.playedAt !== null);
-  if (dated) matches.sort((a,b) => Date.parse(b.playedAt) - Date.parse(a.playedAt) || a.inputIndex - b.inputIndex);
-  return {schemaVersion: 3, profile: normalizedProfile, matches, details:normalizeHistoryDetails(envelope.details,matches), ordering: dated ? 'date' : 'input'};
+  if (dated)
+    matches.sort((a, b) => Date.parse(b.playedAt) - Date.parse(a.playedAt) || a.inputIndex - b.inputIndex);
+  return {
+    schemaVersion: 3,
+    profile: normalizedProfile,
+    matches,
+    details: normalizeHistoryDetails(envelope.details, matches),
+    ordering: dated ? 'date' : 'input',
+  };
 }
 
 export function exclusionReason(match) {
-  if (match.queue === 'ARAM Mayhem') return match.isRemake === true ? t('Remake — không tính vào thống kê') : null;
+  if (match.queue === 'ARAM Mayhem')
+    return match.isRemake === true ? t('Remake — không tính vào thống kê') : null;
   if (match.isRemake || match.durationMinutes < 5) return t('Remake / dưới 5 phút');
   if (!SUPPORTED.has(match.queue)) return t('Chế độ ngoài Summoner’s Rift tiêu chuẩn');
   return null;
@@ -72,43 +123,109 @@ export function exclusionReason(match) {
 export const historyJsonSource = {
   id: 'history-json',
   async load(text) {
-    if (typeof text !== 'string' || text.length > MAX_JSON_LENGTH) throw new InputError([()=>t('JSON cần nhỏ hơn 2 MB.')]);
+    if (typeof text !== 'string' || text.length > MAX_JSON_LENGTH)
+      throw new InputError([() => t('JSON cần nhỏ hơn 2 MB.')]);
     let parsed;
-    try { parsed = JSON.parse(text); }
-    catch { throw new InputError([()=>t('JSON chưa hợp lệ. Kiểm tra dấu ngoặc, dấu phẩy và dấu nháy kép.')]); }
+    try {
+      parsed = JSON.parse(text);
+    } catch {
+      throw new InputError([() => t('JSON chưa hợp lệ. Kiểm tra dấu ngoặc, dấu phẩy và dấu nháy kép.')]);
+    }
     return normalizeHistory(parsed);
   },
 };
 
 // Provider boundary: an approved backend can return this same History v3 contract.
 // No API credentials or calls to an undocumented OP.GG endpoint belong in the UI.
-export const historyManualSource = {id: 'history-manual', async load(payload) {return normalizeHistory(payload);}};
+export const historyManualSource = {
+  id: 'history-manual',
+  async load(payload) {
+    return normalizeHistory(payload);
+  },
+};
 
 export function exportHistory(history) {
-  const validated=normalizeHistory(history);
-  return {schemaVersion: 3, profile: validated.profile, matches: validated.matches.map(({inputIndex, ...match}) => match), details:validated.details, ordering:validated.ordering};
+  const validated = normalizeHistory(history);
+  return {
+    schemaVersion: 3,
+    profile: validated.profile,
+    matches: validated.matches.map(({inputIndex, ...match}) => match),
+    details: validated.details,
+    ordering: validated.ordering,
+  };
 }
 
 // Fictional practice data, never tied to an actual Riot account or fetched on load.
 export function sampleHistory(kind = 'mid') {
-  if(kind==='mayhem')return sampleMayhemHistory();
+  if (kind === 'mayhem') return sampleMayhemHistory();
   const matches = [];
   const count = kind === 'support' ? 20 : 24;
-  const champions = kind === 'support' ? ['Leona','Nautilus','Thresh'] : ['Ahri','Ahri','Orianna','Ahri','Syndra','Jinx'];
-  for (let i=0; i<count; i++) {
+  const champions =
+    kind === 'support'
+      ? ['Leona', 'Nautilus', 'Thresh']
+      : ['Ahri', 'Ahri', 'Orianna', 'Ahri', 'Syndra', 'Jinx'];
+  for (let i = 0; i < count; i++) {
     const champion = champions[i % champions.length];
     const role = kind === 'support' ? 'Support' : champion === 'Jinx' ? 'ADC' : 'Mid';
-    const durationMinutes = [29,32,27,35,30,28][i % 6];
-    const result = (i < 10 ? [true,true,false,true,false,true,true,false,true,true] : [false,true,false,false,true,false,true,false,false,true])[i % 10] ? 'Victory' : 'Defeat';
-    const kills = role === 'Support' ? [1,2,0,3][i%4] : [8,6,4,9,3,7][i%6];
-    const assists = role === 'Support' ? [17,22,13,18][i%4] : [9,8,7,12,5,10][i%6];
-    const deaths = i<10 ? [3,5,7,4,8,3][i%6] : [8,6,9,7,10,5][i%6];
-    matches.push({id:`demo-${kind}-${i+1}`, playedAt:new Date(Date.UTC(2026,8,14,19)-i*16*3600000).toISOString(),champion,role,result,queue:i%7===0?'Ranked Flex':'Ranked Solo',durationMinutes,kills,deaths,assists,cs:role==='Support' ? 28+i%20 : Math.round(durationMinutes*((i<10?6.4:5.3)+[0,.3,-.7,.8,-.3,.2][i%6])),visionScore:Math.round(durationMinutes*(role==='Support' ? [1.9,1.6,1.1,2.1][i%4] : [.7,.65,.38,.9,.42,.6][i%6])),teamKills:kills+assists+[7,9,12,5,14,8][i%6],damageToChampions:role==='Support'?8500+i*140:18000+(i%6)*1900,goldEarned:role==='Support'?9200+i*110:12500+(i%6)*450,notes:''});
+    const durationMinutes = [29, 32, 27, 35, 30, 28][i % 6];
+    const result = (i < 10
+      ? [true, true, false, true, false, true, true, false, true, true]
+      : [false, true, false, false, true, false, true, false, false, true])[i % 10]
+      ? 'Victory'
+      : 'Defeat';
+    const kills = role === 'Support' ? [1, 2, 0, 3][i % 4] : [8, 6, 4, 9, 3, 7][i % 6];
+    const assists = role === 'Support' ? [17, 22, 13, 18][i % 4] : [9, 8, 7, 12, 5, 10][i % 6];
+    const deaths = i < 10 ? [3, 5, 7, 4, 8, 3][i % 6] : [8, 6, 9, 7, 10, 5][i % 6];
+    matches.push({
+      id: `demo-${kind}-${i + 1}`,
+      playedAt: new Date(Date.UTC(2026, 8, 14, 19) - i * 16 * 3600000).toISOString(),
+      champion,
+      role,
+      result,
+      queue: i % 7 === 0 ? 'Ranked Flex' : 'Ranked Solo',
+      durationMinutes,
+      kills,
+      deaths,
+      assists,
+      cs:
+        role === 'Support'
+          ? 28 + (i % 20)
+          : Math.round(durationMinutes * ((i < 10 ? 6.4 : 5.3) + [0, 0.3, -0.7, 0.8, -0.3, 0.2][i % 6])),
+      visionScore: Math.round(
+        durationMinutes *
+          (role === 'Support' ? [1.9, 1.6, 1.1, 2.1][i % 4] : [0.7, 0.65, 0.38, 0.9, 0.42, 0.6][i % 6]),
+      ),
+      teamKills: kills + assists + [7, 9, 12, 5, 14, 8][i % 6],
+      damageToChampions: role === 'Support' ? 8500 + i * 140 : 18000 + (i % 6) * 1900,
+      goldEarned: role === 'Support' ? 9200 + i * 110 : 12500 + (i % 6) * 450,
+      notes: '',
+    });
   }
-  return normalizeHistory({profile:{riotId:kind==='support'?'Support Lab#DEMO':'Jayden#DEMO',region:'OCE',rank:''},matches});
+  return normalizeHistory({
+    profile: {riotId: kind === 'support' ? 'Support Lab#DEMO' : 'Jayden#DEMO', region: 'OCE', rank: ''},
+    matches,
+  });
 }
 
-function sampleMayhemHistory(){
-  const matches=Array.from({length:12},(_,i)=>({id:`demo-mayhem-${i+1}`,queue:'ARAM Mayhem',role:null,champion:['Ahri','Jinx','Leona'][i%3],result:i%3===0?'Defeat':'Victory',playedAt:new Date(Date.UTC(2026,8,24,19)-i*3600000).toISOString(),durationMinutes:18+i%5,kills:5+i%8,deaths:6+i%6,assists:12+i%10,cs:i%4===0?null:35+i*2,visionScore:null,teamKills:i%4===0?null:50+i,damageToChampions:i%4===0?null:22000+i*1500,goldEarned:i%4===0?null:11000+i*250,isRemake:null,notes:''}));
-  return normalizeHistory({profile:{riotId:'Mayhem Lab#DEMO',region:'',rank:''},matches});
+function sampleMayhemHistory() {
+  const matches = Array.from({length: 12}, (_, i) => ({
+    id: `demo-mayhem-${i + 1}`,
+    queue: 'ARAM Mayhem',
+    role: null,
+    champion: ['Ahri', 'Jinx', 'Leona'][i % 3],
+    result: i % 3 === 0 ? 'Defeat' : 'Victory',
+    playedAt: new Date(Date.UTC(2026, 8, 24, 19) - i * 3600000).toISOString(),
+    durationMinutes: 18 + (i % 5),
+    kills: 5 + (i % 8),
+    deaths: 6 + (i % 6),
+    assists: 12 + (i % 10),
+    cs: i % 4 === 0 ? null : 35 + i * 2,
+    visionScore: null,
+    teamKills: i % 4 === 0 ? null : 50 + i,
+    damageToChampions: i % 4 === 0 ? null : 22000 + i * 1500,
+    goldEarned: i % 4 === 0 ? null : 11000 + i * 250,
+    isRemake: null,
+    notes: '',
+  }));
+  return normalizeHistory({profile: {riotId: 'Mayhem Lab#DEMO', region: '', rank: ''}, matches});
 }
