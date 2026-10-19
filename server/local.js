@@ -114,6 +114,9 @@ async function serveStatic(incoming, url, directory, dataLabEnabled) {
         'Cache-Control': 'no-store',
         'X-Content-Type-Options': 'nosniff',
         'Referrer-Policy': 'same-origin',
+        // The meta CSP in index.html cannot set frame-ancestors; block framing here.
+        'Content-Security-Policy': "frame-ancestors 'none'",
+        'X-Frame-Options': 'DENY',
       },
     });
   } catch (error) {

@@ -29,6 +29,11 @@ async function fixture(t) {
   return root;
 }
 
+function assertFramingBlocked(response) {
+  assert.equal(response.headers.get('content-security-policy'), "frame-ancestors 'none'");
+  assert.equal(response.headers.get('x-frame-options'), 'DENY');
+}
+
 async function assertPng(response, method) {
   assert.equal(response.status, 200);
   assert.equal(response.headers.get('content-type'), 'image/png');
@@ -55,6 +60,7 @@ test('local serves exact champion PNG bytes and HEAD while rejecting nested priv
   const origin = `http://127.0.0.1:${server.address().port}`;
   for (const method of ['GET', 'HEAD']) {
     const response = await fetch(origin + '/champions/Ahri.png', {method});
+    assertFramingBlocked(response);
     assert.equal(response.headers.get('content-length'), String(png.length));
     await assertPng(response, method);
   }
@@ -95,6 +101,7 @@ test('built Worker returns exact champion PNG bytes and HEAD without weakening A
     );
   }
   const html = await worker.fetch(new Request('https://fixture.test/'), {});
+  assertFramingBlocked(html);
   assert.equal(await html.text(), '<h1>Fixture</h1>');
   for (const path of ['/.env', '/champions/.env', '/champions/%2e%2e%2f.env', '/champions/sub/Ahri.png']) {
     assert.equal((await worker.fetch(new Request('https://fixture.test' + path), {})).status, 404);
