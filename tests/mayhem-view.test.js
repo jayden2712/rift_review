@@ -96,3 +96,39 @@ test('Mayhem English labels describe unavailable data without rank or coaching c
     setLanguage('vi');
   }
 });
+
+test('Mayhem loadout shows League client augments with local names and icons', () => {
+  const html = renderLoadout({items: [3020], augments: [{id: 1386}, {id: 999999}]}, {mayhem: true});
+  assert.match(html, /\/augments\/1386\.png/);
+  assert.match(html, /Đi Đu Đưa Đi/);
+  assert.match(html, /augment-silver/);
+  assert.match(html, /Augment #999999/);
+  assert.doesNotMatch(html, /Chưa xác minh dữ liệu nâng cấp/);
+  setLanguage('en');
+  try {
+    const english = renderLoadout({augments: [{id: 1386}]}, {mayhem: true});
+    assert.match(english, /Spin Me Right Round/);
+  } finally {
+    setLanguage('vi');
+  }
+  assert.match(renderLoadout({augments: []}, {mayhem: true}), /Không có nâng cấp/);
+  assert.doesNotMatch(renderLoadout({augments: [{id: 1386}]}, {mayhem: false}), /augments\//);
+});
+
+test('every vendored augment has a PNG and the real fixture augments resolve', async () => {
+  const {readdirSync, readFileSync} = await import('node:fs');
+  const {augmentAsset} = await import('../public/augment-assets.js');
+  const files = new Set(readdirSync(new URL('../public/augments/', import.meta.url)));
+  const source = readFileSync(new URL('../public/augment-assets.js', import.meta.url), 'utf8');
+  const ids = [...source.matchAll(/^ {2}(\d+): \{/gm)].map(m => Number(m[1]));
+  assert.ok(ids.length > 100);
+  for (const id of ids) assert.ok(files.has(`${id}.png`), String(id));
+  const game = JSON.parse(readFileSync(new URL('./fixtures/lcu-mayhem-game.json', import.meta.url), 'utf8'));
+  for (const p of game.participants)
+    for (let slot = 1; slot <= 6; slot++) {
+      const id = p.stats['playerAugment' + slot];
+      if (id) assert.ok(augmentAsset(id, 'en'), `augment ${id}`);
+    }
+  assert.equal(augmentAsset('1386'), null);
+  assert.equal(augmentAsset(-1), null);
+});

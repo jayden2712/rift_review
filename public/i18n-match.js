@@ -77,6 +77,14 @@ export default {
   'Dữ liệu phản hồi không hợp lệ. Vui lòng thử lại.': 'The response data is invalid. Please retry.',
   'Yêu cầu không đến từ web này.': 'The request did not originate from this website.',
   'Dữ liệu yêu cầu quá lớn.': 'The request is too large.',
+  'Không thấy client LoL đang chạy. Mở League of Legends rồi thử lại.':
+    'The League client is not running. Open League of Legends and try again.',
+  'Client LoL chưa đăng nhập xong. Đợi vào màn hình chính rồi thử lại.':
+    'The League client has not finished signing in. Wait for the home screen and try again.',
+  'Client LoL phản hồi quá lâu. Thử lại sau.': 'The League client took too long to respond. Try again later.',
+  'Không kết nối được client LoL.': 'Could not connect to the League client.',
+  'Client LoL trả dữ liệu không đọc được.': 'The League client returned unreadable data.',
+  'Trận không chứa đúng tài khoản đang đăng nhập.': 'A match did not contain the signed-in account.',
   'Backend local chỉ nhận yêu cầu khi mở web bằng địa chỉ in ra lúc chạy npm start (http://localhost:<cổng>), không qua proxy, tunnel hay tên miền khác.':
     'The local backend only accepts requests when the app is opened at the address printed by npm start (http://localhost:<port>), not through a proxy, tunnel or another host name.',
   'Không tìm thấy API của Rift Review. Hãy mở web bằng địa chỉ in ra lúc chạy npm start (mặc định http://localhost:4173), không dùng Live Server hay file tĩnh.':

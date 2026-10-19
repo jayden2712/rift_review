@@ -205,4 +205,12 @@ export default {
   B: 'L',
   'Có tín hiệu ở ': 'A signal appears in ',
   ' có dữ liệu. ': ' with data. ',
+  'Nhập Mayhem từ client LoL': 'Import Mayhem from League client',
+  'Dữ liệu từ client LoL trên máy này': 'Data from the League client on this computer',
+  'CLIENT LOL': 'LEAGUE CLIENT',
+  'Đã tải dữ liệu từ client LoL.': 'Loaded data from the League client.',
+  'Đang đăng nhập: {id}': 'Signed in: {id}',
+  'Client LoL chưa đăng nhập xong.': 'The League client has not finished signing in.',
+  'Mở client LoL trên máy này để nhập trận Mayhem.':
+    'Open the League client on this computer to import Mayhem games.',
 };

@@ -2687,6 +2687,45 @@ code {
 .rune-path-name .game-icon {
   border-color: #847394;
 }
+/* Mayhem augments from the League client, in pick order; border colour encodes rarity. */
+.augment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.augment-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: #d8dbe7;
+  line-height: 1.35;
+}
+.augment-entry .augment-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 8px;
+  background: #151621;
+}
+.augment-silver .augment-icon {
+  border-color: #aeb4c2;
+}
+.augment-gold .augment-icon {
+  border-color: #e3bd5c;
+}
+.augment-prismatic .augment-icon {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 1px rgba(138, 194, 255, 0.45);
+}
+.augment-empty {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
 .participant-loadout {
   display: flex;
   gap: 10px;

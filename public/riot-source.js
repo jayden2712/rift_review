@@ -38,6 +38,12 @@ const liveErrorMessages = Object.freeze({
   API_UNAVAILABLE: API_UNAVAILABLE_MESSAGE,
   INPUT_TOO_LARGE: 'Dữ liệu yêu cầu quá lớn.',
   SERVER_ERROR: 'Máy chủ gặp lỗi. Dữ liệu đang xem được giữ nguyên.',
+  LCU_CLIENT_CLOSED: 'Không thấy client LoL đang chạy. Mở League of Legends rồi thử lại.',
+  LCU_NOT_SIGNED_IN: 'Client LoL chưa đăng nhập xong. Đợi vào màn hình chính rồi thử lại.',
+  LCU_TIMEOUT: 'Client LoL phản hồi quá lâu. Thử lại sau.',
+  LCU_UNAVAILABLE: 'Không kết nối được client LoL.',
+  LCU_BAD_DATA: 'Client LoL trả dữ liệu không đọc được.',
+  PLAYER_MISMATCH: 'Trận không chứa đúng tài khoản đang đăng nhập.',
 });
 export function localizeLiveError(message, code) {
   if (getLanguage() === 'vi') return message;
@@ -58,13 +64,13 @@ export class LiveDataError extends InputError {
 }
 export const riotDataSource = {
   id: 'riot',
-  async load(query, {fetchImpl = fetch} = {}) {
+  async load(query, {fetchImpl = fetch, path = '/api/history'} = {}) {
     let response;
     try {
-      response = await fetchImpl('/api/history', {
+      response = await fetchImpl(path, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(query),
+        body: JSON.stringify(path === '/api/history' ? query : {}),
         credentials: 'same-origin',
       });
     } catch {
@@ -111,6 +117,14 @@ export const riotDataSource = {
     )
       throw new LiveDataError('Dữ liệu phản hồi không hợp lệ. Vui lòng thử lại.', 'BAD_RESPONSE');
     return {history, details: history.details, meta};
+  },
+};
+
+// The local server reads the signed-in League client; the response uses the same envelope.
+export const lcuDataSource = {
+  id: 'lcu',
+  load({fetchImpl = fetch} = {}) {
+    return riotDataSource.load({mode: 'mayhem', start: 0}, {fetchImpl, path: '/api/lcu/import'});
   },
 };
 

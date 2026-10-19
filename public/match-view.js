@@ -1,6 +1,7 @@
 import {t, getLanguage, getLocale} from './i18n.js';
 import {championAvatar} from './champion-icons.js';
 import {gameAsset} from './game-assets.js';
+import {augmentAsset} from './augment-assets.js';
 
 const escape = value =>
   String(value ?? '').replace(
@@ -98,12 +99,33 @@ function unavailableRunes() {
   return `<section class="rune-page"><div class="loadout-heading"><h3>${t('Bảng ngọc')}</h3><span>${t('Chưa có dữ liệu ngọc cho trận này')}</span></div></section>`;
 }
 
+function augmentEntry(id) {
+  const asset = augmentAsset(id, getLanguage());
+  const name = asset?.name || t('Augment #{id}', {id});
+  const image = asset
+    ? `<img data-game-icon src="${escape(asset.src)}" alt="" width="32" height="32" loading="lazy" decoding="async">`
+    : '';
+  return `<li class="augment-entry${asset?.rarity ? ' augment-' + asset.rarity : ''}" title="${escape(name)}"><span class="game-icon augment-icon" aria-hidden="true"><span class="game-icon-fallback">·</span>${image}</span><span>${escape(name)}</span></li>`;
+}
+
+// Augment IDs come from the League client; only validated positive IDs are rendered.
+function renderAugments(player) {
+  if (!Array.isArray(player?.augments)) return unavailableAugments();
+  const augmentIds = player.augments
+    .map(augment => augment?.id)
+    .filter(id => Number.isSafeInteger(id) && id > 0);
+  const body = augmentIds.length
+    ? `<ol class="augment-list">${augmentIds.map(augmentEntry).join('')}</ol>`
+    : `<p class="augment-empty">${t('Không có nâng cấp trong trận này')}</p>`;
+  return `<section class="mayhem-augments"><div class="loadout-heading"><h3>${t('Nâng cấp (Augments)')}</h3><span>${t('Theo thứ tự chọn trong trận')}</span></div>${body}</section>`;
+}
+
 function unavailableAugments() {
   return `<section class="mayhem-augments"><div class="loadout-heading"><h3>${t('Nâng cấp (Augments)')}</h3><span>${t('Chưa xác minh dữ liệu nâng cấp cho trận này')}</span></div></section>`;
 }
 
 export function renderLoadout(player, options = {}) {
-  return `<section class="match-loadout-detail"><div class="loadout-heading"><h3>${t('Bộ trang bị & phép bổ trợ')}</h3><span>${player ? t('Trang bị tại thời điểm kết thúc trận') : t('Chưa có dữ liệu — tra cứu Riot để xem')}</span></div><div class="loadout-inventory">${renderItemSlots(player)}${renderSpells(player)}</div>${options.mayhem && !hasRuneData(player) ? unavailableRunes() : renderRunePage(player)}${options.mayhem ? unavailableAugments() : ''}</section>`;
+  return `<section class="match-loadout-detail"><div class="loadout-heading"><h3>${t('Bộ trang bị & phép bổ trợ')}</h3><span>${player ? t('Trang bị tại thời điểm kết thúc trận') : t('Chưa có dữ liệu — tra cứu Riot để xem')}</span></div><div class="loadout-inventory">${renderItemSlots(player)}${renderSpells(player)}</div>${options.mayhem && !hasRuneData(player) ? unavailableRunes() : renderRunePage(player)}${options.mayhem ? renderAugments(player) : ''}</section>`;
 }
 
 function roster(detail) {

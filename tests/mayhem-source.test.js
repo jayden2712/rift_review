@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {riotDataSource, localizeLiveError} from '../public/riot-source.js';
+import {riotDataSource, lcuDataSource, localizeLiveError} from '../public/riot-source.js';
 import {setLanguage} from '../public/i18n.js';
 const query = {riotId: 'Mayhem#TEST', region: 'oce', mode: 'mayhem', start: 20, count: 10};
 const match = {
@@ -90,6 +90,57 @@ test('local-only rejections explain which address to open in English', () => {
   setLanguage('en');
   try {
     assert.match(localizeLiveError('', 'LOCAL_ONLY'), /npm start/);
+  } finally {
+    setLanguage('vi');
+  }
+});
+
+test('League client import posts JSON to the local route and keeps Mayhem augments', async () => {
+  let sent;
+  const detail = {
+    durationSeconds: 1140,
+    participants: [{champion: 'Ahri', teamId: 100, isPlayer: true, augments: [{id: 1386}]}],
+  };
+  const result = await lcuDataSource.load({
+    fetchImpl: async (path, options) => {
+      sent = {path, options};
+      return Response.json({
+        history: {
+          schemaVersion: 3,
+          profile: {riotId: 'Mayhem#TEST', region: 'OCE'},
+          matches: [match],
+          details: {},
+        },
+        details: {[match.id]: detail},
+        warnings: [],
+        source: {
+          provider: 'lcu',
+          mode: 'mayhem',
+          start: 0,
+          nextStart: 1,
+          hasMore: false,
+          accountKey: 'oc1:x',
+        },
+      });
+    },
+  });
+  assert.equal(sent.path, '/api/lcu/import');
+  assert.equal(sent.options.method, 'POST');
+  assert.equal(sent.options.headers['Content-Type'], 'application/json');
+  assert.deepEqual(result.history.details[match.id].participants[0].augments, [{id: 1386}]);
+  assert.equal(result.meta.provider, 'lcu');
+  await assert.rejects(
+    lcuDataSource.load({
+      fetchImpl: async () => Response.json({history: {matches: [{...match, queue: 'Ranked Solo'}]}}),
+    }),
+  );
+});
+
+test('League client errors are localized in English', () => {
+  setLanguage('en');
+  try {
+    assert.match(localizeLiveError('', 'LCU_CLIENT_CLOSED'), /League client/);
+    assert.match(localizeLiveError('', 'LCU_NOT_SIGNED_IN'), /sign/i);
   } finally {
     setLanguage('vi');
   }

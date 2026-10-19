@@ -1,0 +1,2777 @@
+{
+  "version": "16.20",
+  "source": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/",
+  "retrievedAt": "2026-10-19T15:00:03.390139+00:00",
+  "augments": {
+    "1": {
+      "english": "Accelerating Sorcery",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/acceleratingsorcery_small.png",
+      "sha256": "8b7e0e797cd4ac5e6501ff73250d4e046338c2e198c0240de28067119db4cea9"
+    },
+    "2": {
+      "english": "Apex Inventor",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/apexinventor_small.png",
+      "sha256": "d7dc2e007c8944d256fc42742f4283aace2d5bbe9a92d7d67087faae7d2174c5"
+    },
+    "3": {
+      "english": "Null Augment",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/canttouchthis_small.png",
+      "sha256": "03a0afee300a01d6b8e519d3d629be0edb7efb26869fd7770855ed41844bd510"
+    },
+    "4": {
+      "english": "Back To Basics",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/backtobasics_small.png",
+      "sha256": "b387a9a568f94156e6801d829c2a59f47ac3c9e5cf792c0cfb06bfb9b22f9109"
+    },
+    "5": {
+      "english": "Banner of Command",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bannerofcommand_small.png",
+      "sha256": "bba1e4d5d2fe9497f9b45a269d142dbe848ec8c1198945ca767f0f4fac46224b"
+    },
+    "6": {
+      "english": "Blade Waltz",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bladewaltz_small.png",
+      "sha256": "94455fb481862225055969fc0388d8b7d6e41accd2da7d373657695c54278a3e"
+    },
+    "7": {
+      "english": "Blunt Force",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bluntforce_small.png",
+      "sha256": "94455fb481862225055969fc0388d8b7d6e41accd2da7d373657695c54278a3e"
+    },
+    "8": {
+      "english": "Buckle Up",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/buckleup_small.png",
+      "sha256": "c2a70473108ac450b8a41e8bde5dd7d1bc37a1d11d9592e733a8459744defb13"
+    },
+    "9": {
+      "english": "Buff Buddies",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/buffbuddies_small.png",
+      "sha256": "693f872a8dbbf0fb8bbb59903a4bb6c4dc02b67cad24d93cc955f17d4e1dd25e"
+    },
+    "10": {
+      "english": "Cannon Fodder",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/cannonfodder_small.png",
+      "sha256": "0ed42b2f45b5f2afcc5ab49a9ea5328482d7e60de2ec25ee1896b250a4804cee"
+    },
+    "11": {
+      "english": "Can't Touch This",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/canttouchthis_small.png",
+      "sha256": "a2f0db039d4101366a58ab2b8a77fed5208b012042aea690a62bf07b316c4b1d"
+    },
+    "12": {
+      "english": "Castle",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/castle_small.png",
+      "sha256": "9653e62ac47082545f11fd128d181683d0cc5969fb42d18e4397b7b850bfd044"
+    },
+    "13": {
+      "english": "Celestial Body",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/celestialbody_small.png",
+      "sha256": "eec0300c8c30cd3068756216c2e52a431a98014a0999ca4cf904d0c4e3f52b91"
+    },
+    "14": {
+      "english": "Chauffeur",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/chauffeur_small.png",
+      "sha256": "d2c174ef93c515f96d4d584f5145d4a294ca7ba3f6a87219120790a47a95cc00"
+    },
+    "15": {
+      "english": "Circle of Death",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/circleofdeath_small.png",
+      "sha256": "06ab9c8bd4811284790f6902fa86f7bc747da8cc5c4d70dc4932958bc88a2852"
+    },
+    "16": {
+      "english": "Combo Master",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/combomaster_small.png",
+      "sha256": "79acff60ff05588017732834015bb274e3e137e40b9c8943363c6bc4018d2ccb"
+    },
+    "17": {
+      "english": "Contract Killer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/contractkiller_small.png",
+      "sha256": "0a02c7be09cf59e774c93ed3f9b07d0296193d9e159d1b3e1314175f35c85f63"
+    },
+    "18": {
+      "english": "Courage of the Colossus",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/courageofthecolossus_small.png",
+      "sha256": "e08ab7a2538a88f6e690220015b639beb1be93965bfaf56eb3851ba6868897ef"
+    },
+    "19": {
+      "english": "Dashing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dashing_small.png",
+      "sha256": "3586d5b3e3377b809804ee462f890f531d5b8be37cb715fec3d9feadbbbb3f02"
+    },
+    "20": {
+      "english": "Dawnbringer's Resolve",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dawnbringersresolve_small.png",
+      "sha256": "8d99605d4930658c8eb48f76f3085aca63b36a1deb2dc59bf1d0d88d16cd6e66"
+    },
+    "21": {
+      "english": "Defensive Maneuvers",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/defensivemaneuvers_small.png",
+      "sha256": "545bd5c1c8767408ddd2b52461c4291d5ccb4652a5d20b5f75f2456a00fc03a9"
+    },
+    "22": {
+      "english": "Deft",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/deft_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "23": {
+      "english": "Demon's Dance",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/demonsdance_small.png",
+      "sha256": "41a2c7806f450459ba1c7610921e6b7518d04929d9e11e02614d1082764007d7"
+    },
+    "24": {
+      "english": "Die Another Day",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dieanotherday_small.png",
+      "sha256": "a0a86dd62511609e4caebd3e7b4f85be5df6d3844a5bf3837d102a176f031767"
+    },
+    "25": {
+      "english": "Dive Bomber",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/divebomber_small.png",
+      "sha256": "8989868e7929788cd75439269d0624df5217eefd0c2fd4f6d05f3171ee698277"
+    },
+    "26": {
+      "english": "Don't Blink",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dontblink_small.png",
+      "sha256": "129f9555cac79e0d7401599048d41e7fd21844fb6f2a80e6c94525c40fe64117"
+    },
+    "27": {
+      "english": "Earthwake",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/earthwake_small.png",
+      "sha256": "9efe10e10eea41c5d82fdf6830941b1dcdcab34ddd08b5f5b9964941bdfcf031"
+    },
+    "28": {
+      "english": "Erosion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/erosion_small.png",
+      "sha256": "dd8478a3eb73352464f31c1b526939b8b41af8957c279a8ac9e042c2a6cb5673"
+    },
+    "29": {
+      "english": "Ethereal Weapon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/etherealweapon_small.png",
+      "sha256": "c8f1642d458ccadf255be8e45c72fd8d148c8df9411c6f1df815747fd6bb0640"
+    },
+    "30": {
+      "english": "Eureka",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/eureka_small.png",
+      "sha256": "cdf7f1e5de925525857a43f3edec27ce700aba92986dbf5d98d56dc70419fa3c"
+    },
+    "31": {
+      "english": "Evocation",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/evocation_small.png",
+      "sha256": "8d99605d4930658c8eb48f76f3085aca63b36a1deb2dc59bf1d0d88d16cd6e66"
+    },
+    "32": {
+      "english": "Executioner",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/executioner_small.png",
+      "sha256": "4c99efd0a3e9af41ed6893301014a0f01475b6446b568320dcd8664c7241a8bb"
+    },
+    "33": {
+      "english": "Extendo-Arm",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/extendoarm_small.png",
+      "sha256": "b0b0bc96a45670bcb69b48eba53ccb377a44cfb637ec3356aebde5bc5359f8e6"
+    },
+    "34": {
+      "english": "Fallen Aegis",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/fallenaegis_small.png",
+      "sha256": "7300acc91f3bad413edc960d3e6450d1d0536b825ed1465fc578c04048816c9a"
+    },
+    "35": {
+      "english": "Feel the Burn",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/feeltheburn_small.png",
+      "sha256": "fe1b81962c2c732b6f2891bb322b89ee855c7f643469d15113a539678a694a15"
+    },
+    "36": {
+      "english": "Firebrand",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/firebrand_small.png",
+      "sha256": "628babeea575b6ae1f6f19c22e879db3a8d3f526020fbca870abb4ff22b8916f"
+    },
+    "37": {
+      "english": "First-Aid Kit",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/firstaidkit_small.png",
+      "sha256": "d208fa0b7ce5b7ccd57176dc6a4a92a8bba5e83f992d83e765c393285ee13844"
+    },
+    "38": {
+      "english": "From Beginning to End",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/frombeginningtoend_small.png",
+      "sha256": "884e36e6ee6e617de195284a91b76ff822af4c742d4afff5d9b07eadd7b55779"
+    },
+    "39": {
+      "english": "Frost Wraith",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/frostwraith_small.png",
+      "sha256": "3420c1740c11ecec4604835f2bfd1ba0464772501c60eeb4b59f9dadf30b77b8"
+    },
+    "40": {
+      "english": "Frozen Foundations",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/frozenfoundations_small.png",
+      "sha256": "16ed5cf648634c31dab2d836de5b34a1d38d08f6bfab05cffeaf65b11c410bf3"
+    },
+    "41": {
+      "english": "Goliath",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/goliath_small.png",
+      "sha256": "efd464310463cddf7622af0d69718ac0b2a30e68a3ac3daddfcc6ec13629e3c8"
+    },
+    "42": {
+      "english": "Guilty Pleasure",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/guiltypleasure_small.png",
+      "sha256": "8ae7352de85e4045a5a2f956e505819c5a221f4a8189b0cae757d8c9cff12dd3"
+    },
+    "43": {
+      "english": "Now You See Me",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/nowyouseeme_small.png",
+      "sha256": "b10bd185f4b63ef1cd2e6ef59a8372f2a718bee4ef1fcf59587a447c09cb0c59"
+    },
+    "44": {
+      "english": "Ice Cold",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/icecold_small.png",
+      "sha256": "109d023ee996a86af1ea30ada861bcc322be60e3d267528168c761a5a10b30ce"
+    },
+    "45": {
+      "english": "Infernal Conduit",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/infernalconduit_small.png",
+      "sha256": "86bacb581608d1ea1cabd8f888e59e80f18e3d75484b7b38fc650623f826cf20"
+    },
+    "46": {
+      "english": "Infernal Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/infernalsoul_small.png",
+      "sha256": "dd8478a3eb73352464f31c1b526939b8b41af8957c279a8ac9e042c2a6cb5673"
+    },
+    "47": {
+      "english": "It's Critical",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/itscritical_small.png",
+      "sha256": "e5e7edae7e104986f459b6117e2717e19f3e0fc8aed3269064e6d0cfdbb9e28f"
+    },
+    "48": {
+      "english": "Jeweled Gauntlet",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/jeweledgauntlet_small.png",
+      "sha256": "2757b5ab36278ca4a8e6f60dcc02e1a4f33ee0e1b865f316cda9df4c6a495ef9"
+    },
+    "49": {
+      "english": "Juice Box",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/juicebox_small.png",
+      "sha256": "0bdb64aed7c855441bc3267b73a0299ba2a45c96ee55abb684831c1cdaf8a4fe"
+    },
+    "50": {
+      "english": "Keystone Conjurer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/keystoneconjurer_small.png",
+      "sha256": "3b099cca83a51a62ec464f08447f28262e7519596bd55f742b74eb4a19ce5033"
+    },
+    "51": {
+      "english": "Light 'em Up!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lightemup_small.png",
+      "sha256": "9b0fffe3852c5c0b49bf055495244b167cf06bf90982f82a2898fce2d271c05f"
+    },
+    "52": {
+      "english": "Lightning Strikes",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lightningstrikes_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "53": {
+      "english": "Mad Scientist",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/madscientist_small.png",
+      "sha256": "34d35a3646166a056e0d1e3d6074b3fd9e6bc767f886704ac7d11869e54d7881"
+    },
+    "54": {
+      "english": "Master of Duality",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/masterofduality_small.png",
+      "sha256": "39d0276d3aa1bf8bcdd2dd3865c582c9071d8746089b55e1c9a9c0a295a7fdad"
+    },
+    "55": {
+      "english": "Midnight Express",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/midnightexpress_small.png",
+      "sha256": "fca0511e0ccbf55846e4b57ba691e1088aff95c7e9b6eb3c8dfb18d49098cbde"
+    },
+    "56": {
+      "english": "Mind to Matter",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mindtomatter_small.png",
+      "sha256": "93e89ffa7f109b8799bcfeeb32ef48e59d6536f431ca7cdf54738c85abda4ca2"
+    },
+    "57": {
+      "english": "Mountain Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mountainsoul_small.png",
+      "sha256": "93e89ffa7f109b8799bcfeeb32ef48e59d6536f431ca7cdf54738c85abda4ca2"
+    },
+    "58": {
+      "english": "Mystic Punch",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mysticpunch_small.png",
+      "sha256": "8f0bcddbc0f8c26c8e500caa6caa16f8d779fc104f27b27b73eb2520a19cd227"
+    },
+    "59": {
+      "english": "Mythical",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mythical_small.png",
+      "sha256": "3747f1d670cbb112fff93562764a58663a8aec2e21c2d2bf56dbbb970a66c6e6"
+    },
+    "60": {
+      "english": "Ocean Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/oceansoul_small.png",
+      "sha256": "8cb5e707e3056fa9535b2aa2abda29f753a68dfedac3a02b88bd0103b58b2517"
+    },
+    "61": {
+      "english": "OK Boomerang",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/okboomerang_small.png",
+      "sha256": "17b07d9e8f93c2598362bdec9e68d385761410cce1f5d2251a2d53efc83dac0f"
+    },
+    "62": {
+      "english": "Omni Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/omnisoul_small.png",
+      "sha256": "0bdb64aed7c855441bc3267b73a0299ba2a45c96ee55abb684831c1cdaf8a4fe"
+    },
+    "63": {
+      "english": "Outlaw's Grit",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/outlawsgrit_small.png",
+      "sha256": "20ed7d953c7644771ef6bdba6730f9a25c7becbd23231be4bd54f9d4a5dc4758"
+    },
+    "64": {
+      "english": "Perseverance",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/perseverance_small.png",
+      "sha256": "8d99605d4930658c8eb48f76f3085aca63b36a1deb2dc59bf1d0d88d16cd6e66"
+    },
+    "65": {
+      "english": "Phenomenal Evil",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/phenomenalevil_small.png",
+      "sha256": "ddefae23f22f666ec34f860396efe5aa01c52078d027963b4076a89f66ae8b6c"
+    },
+    "66": {
+      "english": "Quantum Computing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quantumcomputing_small.png",
+      "sha256": "17b07d9e8f93c2598362bdec9e68d385761410cce1f5d2251a2d53efc83dac0f"
+    },
+    "67": {
+      "english": "Rabble Rousing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/rabblerousing_small.png",
+      "sha256": "40efdd0cb10fe53cdea1042f45b8c44163ecc3744b6c6383844da216e1b96ba9"
+    },
+    "68": {
+      "english": "Recursion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/recursion_small.png",
+      "sha256": "3ce90a01d6e7be459c6df424ec892e47ee09699851090f858141bfa5036bc9e9"
+    },
+    "69": {
+      "english": "Repulsor",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/repulsor_small.png",
+      "sha256": "fe07dcd32f153e0f339c1ba73acb5c6824025f6d5ac2deee92f1064a664b9ccc"
+    },
+    "70": {
+      "english": "Restless Restoration",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/restlessrestoration_small.png",
+      "sha256": "5f8142b56a7f54f9e1289381e9f1925217146d0134899100319eb81610c4e0b6"
+    },
+    "71": {
+      "english": "Scopier Weapons",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/scopierweapons_small.png",
+      "sha256": "44e0cc764854ad097164227ea052187046d0ffbe2c04d068f973ae0ef7c52233"
+    },
+    "72": {
+      "english": "Searing Dawn",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/searingdawn_small.png",
+      "sha256": "43786fbac87186d4b6874082b1c5d57b3f3fc4ce730db442ab15abc9901b2ea8"
+    },
+    "73": {
+      "english": "Shadow Runner",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/shadowrunner_small.png",
+      "sha256": "8e96e3f82501c8968c07345f26d163981952de82b8f7558450bb9b29f221cf89"
+    },
+    "74": {
+      "english": "Shrink Ray",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/shrinkray_small.png",
+      "sha256": "44b7e9af3bcec108994243979cc93e54a91ce7e694e99edeee16ada567bb9f0f"
+    },
+    "75": {
+      "english": "Slow Cooker",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slowcooker_small.png",
+      "sha256": "3932a2760ef99df7ff980445b616822a03b4a616a84bcf958fe9248ddfaa7ccb"
+    },
+    "76": {
+      "english": "Sonic Boom",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/sonicboom_small.png",
+      "sha256": "06ab9c8bd4811284790f6902fa86f7bc747da8cc5c4d70dc4932958bc88a2852"
+    },
+    "77": {
+      "english": "Soul Siphon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/soulsiphon_small.png",
+      "sha256": "2c2540bc29ba3ef38fe0ba6d9083fbb0f3e824e62d00b43949ed0c36b09b8075"
+    },
+    "78": {
+      "english": "Spirit Link",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/spiritlink_small.png",
+      "sha256": "fc723d30107e98c5d5c6363d018705e799f0d0876ec573b62af822ce65406ee9"
+    },
+    "79": {
+      "english": "Symphony of War",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/symphonyofwar_small.png",
+      "sha256": "cb7be70573f3964a2f7620f5cbe7f3558ab168068850d89e764e232978a1a97d"
+    },
+    "80": {
+      "english": "Tank It Or Leave It",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tankitorleaveit_small.png",
+      "sha256": "82e6f4bab2311e5cd1257d10dc7b7784230a7aa94728218dee50c672374cb821"
+    },
+    "81": {
+      "english": "Tap Dancer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tapdancer_small.png",
+      "sha256": "ad69f9626a6294b41a821604a348f712fd19b027f3083cd61ded5726443a6c9c"
+    },
+    "82": {
+      "english": "The Brutalizer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/thebrutalizer_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "83": {
+      "english": "Thief's Gloves",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/thiefsgloves_small.png",
+      "sha256": "46f238af5d48dd2e7da21100dbe67723f89d2eaaee936c2fffe0e6cc4e399efd"
+    },
+    "84": {
+      "english": "Thread the Needle",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/threadtheneedle_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "85": {
+      "english": "Tormentor",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tormentor_small.png",
+      "sha256": "c554550be27d1c7ecc6c22f38acdd9b9706a85380df16dee171d32c9344e5146"
+    },
+    "86": {
+      "english": "Trueshot Prodigy",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/trueshotprodigy_small.png",
+      "sha256": "9725385df56650a4635d8bf32932ca7b912df436bdefc88b85c11366d577eafd"
+    },
+    "87": {
+      "english": "Typhoon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/typhoon_small.png",
+      "sha256": "7e905b33c4c4d832987f6697e176739aa58abb23fecc74d90f165212afa0fc48"
+    },
+    "88": {
+      "english": "Ultimate Revolution",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/ultimaterevolution_small.png",
+      "sha256": "99cb5c5f99d5111cd6d4f4645554ff4d5bfe0f3d739f78adacaf0681a56cdd44"
+    },
+    "89": {
+      "english": "Vanish",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/vanish_small.png",
+      "sha256": "2f3af350fbb3a4f6fbf1c4484ff4c44cbf5a85483f84e9f8efcdc6fecd2dc2e3"
+    },
+    "90": {
+      "english": "Vengeance",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/vengeance_small.png",
+      "sha256": "9950aa83b917f61517b7fee6622b92056ce5ee641bebb30a18c69db12396402e"
+    },
+    "91": {
+      "english": "Virtuous Cycle",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/virtuouscycle_small.png",
+      "sha256": "7e5e619c4d8347964469f14dca39177533887fc44f7f21ab83fbb71d91580566"
+    },
+    "92": {
+      "english": "Vulnerability",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/vulnerability_small.png",
+      "sha256": "0760b349c7ca9aed513eae4787ae82d0a0da78d3667495bd0b1dff7ae31d4829"
+    },
+    "93": {
+      "english": "Warmup Routine",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/warmuproutine_small.png",
+      "sha256": "884e36e6ee6e617de195284a91b76ff822af4c742d4afff5d9b07eadd7b55779"
+    },
+    "94": {
+      "english": "Willing Sacrifice",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/willingsacrifice_small.png",
+      "sha256": "fc723d30107e98c5d5c6363d018705e799f0d0876ec573b62af822ce65406ee9"
+    },
+    "95": {
+      "english": "Windspeaker's Blessing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/windspeakersblessing_small.png",
+      "sha256": "72cef78b159ae6ee0b22da9d4bb5c85ec11981d283ad8d89fe81fec4cd2096a4"
+    },
+    "96": {
+      "english": "Wisdom of Ages",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/wisdomofages_small.png",
+      "sha256": "ee7ae989f15f25b770751b327e570210ae718ef796fefc9800e7f362e965b255"
+    },
+    "97": {
+      "english": "Witchful Thinking",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/witchfulthinking_small.png",
+      "sha256": "da06d2f30953c865c454428853d1d27d4247da39f42339a1b24adb268490c709"
+    },
+    "98": {
+      "english": "With Haste",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/withhaste_small.png",
+      "sha256": "8ed5fd461a2e9c18e7487a863358b32153a56baf8b9949067dba6f6eb7f55885"
+    },
+    "99": {
+      "english": "Zhonya's Epiphany",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/zhonyasepiphany_small.png",
+      "sha256": "2be9a6d795fe80ff48582af601f440879610dc602f1c45d9ee7dd2d7ec33f228"
+    },
+    "102": {
+      "english": "Don't Chase",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dontchase_small.png",
+      "sha256": "9efe10e10eea41c5d82fdf6830941b1dcdcab34ddd08b5f5b9964941bdfcf031"
+    },
+    "103": {
+      "english": "Bread And Butter",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/breadandbutter_small.png",
+      "sha256": "3ce90a01d6e7be459c6df424ec892e47ee09699851090f858141bfa5036bc9e9"
+    },
+    "104": {
+      "english": "Minionmancer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/minionmancer_small.png",
+      "sha256": "3ead5c1fc180db53b23a5c0fd031914118b1fa62d187502384f1e8a6e9f9a506"
+    },
+    "105": {
+      "english": "Homeguard",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/homeguard_small.png",
+      "sha256": "8bd202bc2c80cc54d46f4e58599f458e881c24cd4af40b56ade903e0741773db"
+    },
+    "107": {
+      "english": "Twice Thrice",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/twicethrice_small.png",
+      "sha256": "7e905b33c4c4d832987f6697e176739aa58abb23fecc74d90f165212afa0fc48"
+    },
+    "108": {
+      "english": "Self Destruct",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/selfdestruct_small.png",
+      "sha256": "6da1f6eaa84d952b5dacc9005d11405df917063d76275347fb67557cbca48506"
+    },
+    "109": {
+      "english": "Oathsworn",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/oathsworn_small.png",
+      "sha256": "9653e62ac47082545f11fd128d181683d0cc5969fb42d18e4397b7b850bfd044"
+    },
+    "110": {
+      "english": "Clothesline",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/clothesline_small.png",
+      "sha256": "bba1e4d5d2fe9497f9b45a269d142dbe848ec8c1198945ca767f0f4fac46224b"
+    },
+    "112": {
+      "english": "Ultimate Unstoppable",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/ultimateunstoppable_small.png",
+      "sha256": "6008ac576c8ee29bfbdb299b1f1072250a24745712609dc3847683f6a39a9d2c"
+    },
+    "113": {
+      "english": "Skilled Sniper",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/skilledsniper_small.png",
+      "sha256": "f50252f0637002c83e975232524bcd335b1442952f4bcd8a2bb7a364da342e3a"
+    },
+    "115": {
+      "english": "Scopiest Weapons",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/scopiestweapons_small.png",
+      "sha256": "44e0cc764854ad097164227ea052187046d0ffbe2c04d068f973ae0ef7c52233"
+    },
+    "116": {
+      "english": "Flashy",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/flashy_small.png",
+      "sha256": "3586d5b3e3377b809804ee462f890f531d5b8be37cb715fec3d9feadbbbb3f02"
+    },
+    "118": {
+      "english": "Critical Healing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/criticalhealing_small.png",
+      "sha256": "ba94ac0adcb30980ce2751dddf2123efb993f68a3495ed9856d310a7e62c2ebe"
+    },
+    "120": {
+      "english": "Serve Beyond Death",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/servebeyonddeath_small.png",
+      "sha256": "1df8b618e5966b15f10609ce2d37c3f8bbde1077de0287284d4b69032549aadb"
+    },
+    "123": {
+      "english": "Summoner's Roulette",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/summonersroulette_small.png",
+      "sha256": "027088a02d60e14d9c3078131ead4f0233211a330c93f61c220aebc3c6715f60"
+    },
+    "125": {
+      "english": "Raid Boss",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/raidboss_small.png",
+      "sha256": "55b0fd0511bd6b123fcf9a3794dfd518d19db3f2ea437ed8af9ba8e415f2e6ed"
+    },
+    "129": {
+      "english": "Marksmage",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/marksmage_small.png",
+      "sha256": "9b0fffe3852c5c0b49bf055495244b167cf06bf90982f82a2898fce2d271c05f"
+    },
+    "133": {
+      "english": "Magic Missile",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/magicmissile_small.png",
+      "sha256": "3b099cca83a51a62ec464f08447f28262e7519596bd55f742b74eb4a19ce5033"
+    },
+    "134": {
+      "english": "Draw Your Sword",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/drawyoursword_small.png",
+      "sha256": "6e3f73a5a44db96ec7c841d870047727a261d1786c42565f2a1265fe61023084"
+    },
+    "135": {
+      "english": "Spellwake",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/spellwake_small.png",
+      "sha256": "3b099cca83a51a62ec464f08447f28262e7519596bd55f742b74eb4a19ce5033"
+    },
+    "136": {
+      "english": "Slap Around",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slaparound_small.png",
+      "sha256": "798ab77559328d3b854f3545acbd276bacb9280470528b78b66aa0c83df9edb8"
+    },
+    "138": {
+      "english": "Goredrink",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/goredrink_small.png",
+      "sha256": "d10d572ef87b5034bc18dd89831b8a91fd5549d2cb45785e9c007918d153f0d8"
+    },
+    "141": {
+      "english": "All For You",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/allforyou_small.png",
+      "sha256": "8e91f07a91cab23ed37073536ee9787fcfc31e3c2e95163a23274a4e76190658"
+    },
+    "149": {
+      "english": "Impassable",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/impassable_small.png",
+      "sha256": "4d08d0a84c4c5191d75084024d456de86c6f943b5e664e0ae98308df5170822b"
+    },
+    "150": {
+      "english": "Bread And Jam",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/breadandjam_small.png",
+      "sha256": "3ce90a01d6e7be459c6df424ec892e47ee09699851090f858141bfa5036bc9e9"
+    },
+    "151": {
+      "english": "Bread And Cheese",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/breadandcheese_small.png",
+      "sha256": "3ce90a01d6e7be459c6df424ec892e47ee09699851090f858141bfa5036bc9e9"
+    },
+    "152": {
+      "english": "Quest: Steel Your Heart",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quest_steelyourheart_small.png",
+      "sha256": "41b9b7941d4b381cf9a33531c40ec85cabe2a77cfdec31f76898b1ac917627fa"
+    },
+    "154": {
+      "english": "Quest: Urf's Champion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quest_urfschampion_small.png",
+      "sha256": "78a3d59eb3945bb65060e0a7993bd501a74d04b5801360bf4ac0266a770e198a"
+    },
+    "156": {
+      "english": "Quest: Wooglet's Witchcap",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quest_woogletswitchcap_small.png",
+      "sha256": "41b9b7941d4b381cf9a33531c40ec85cabe2a77cfdec31f76898b1ac917627fa"
+    },
+    "165": {
+      "english": "Restart",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/restart_small.png",
+      "sha256": "a63e371f89a436cf1940f0da4282ac04ec8e1384b87d47f2712cf4db780dae39"
+    },
+    "166": {
+      "english": "Chain Lightning",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/chainlightning_small.png",
+      "sha256": "050b56bb5e021fedf156619a8b9d710826202f2eefb2ffff4e13b1a0fba2464f"
+    },
+    "170": {
+      "english": "Scoped Weapons",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/scopedweapons_small.png",
+      "sha256": "44e0cc764854ad097164227ea052187046d0ffbe2c04d068f973ae0ef7c52233"
+    },
+    "171": {
+      "english": "Dematerialize",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dematerialize_small.png",
+      "sha256": "29aa7c9dd1490afcce5e39855c2b6b15bdea25466821fd454cbf17cd8ffeec29"
+    },
+    "172": {
+      "english": "Mirror Image",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mirrorimage_small.png",
+      "sha256": "2f3af350fbb3a4f6fbf1c4484ff4c44cbf5a85483f84e9f8efcdc6fecd2dc2e3"
+    },
+    "174": {
+      "english": "Laser Eyes",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lasereyes_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "175": {
+      "english": "Parasitic Relationship",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/parasiticrelationship_small.png",
+      "sha256": "e0eea6d22e5ac2de74349b5b6b0813bd9da55e1ba0274c6b3a325fb39a30c819"
+    },
+    "176": {
+      "english": "Snowball Fight!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/snowballfight_small.png",
+      "sha256": "0ed42b2f45b5f2afcc5ab49a9ea5328482d7e60de2ec25ee1896b250a4804cee"
+    },
+    "177": {
+      "english": "Nesting Doll",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/nesting_doll_small.png",
+      "sha256": "7fda04070dea62b596effda4070c6fa391488139f5fd42d682deeebab9b3daf5"
+    },
+    "180": {
+      "english": "Big Brain",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bigbrain_small.png",
+      "sha256": "072185e14d71122a622f9ec7486817498ce62b1685ce7f48274cd112b7539c60"
+    },
+    "181": {
+      "english": "Heavy Hitter",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/heavyhitter_small.png",
+      "sha256": "9b0fffe3852c5c0b49bf055495244b167cf06bf90982f82a2898fce2d271c05f"
+    },
+    "187": {
+      "english": "Flashbang",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/flashbang_small.png",
+      "sha256": "9efe10e10eea41c5d82fdf6830941b1dcdcab34ddd08b5f5b9964941bdfcf031"
+    },
+    "192": {
+      "english": "Quest: Angel of Retribution",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quest_angelofretribution_small.png",
+      "sha256": "2228aec91f5b2282f35e84eae301cf02666af8ba849efa7f48d86af8df4f4dcf"
+    },
+    "193": {
+      "english": "Center of the Universe",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/centeroftheuniverse_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "194": {
+      "english": "Fey Magic",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/feymagic_small.png",
+      "sha256": "b2e2721a4ace974908a15d4b254d4adb57aca4730a86668aad2d4af47a29771d"
+    },
+    "195": {
+      "english": "Giant Slayer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/giantslayer_small.png",
+      "sha256": "0b4699f291d79e4712249001293898c53c8283771f0ceb1355f475593147771d"
+    },
+    "198": {
+      "english": "Holy Fire",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/holyfire_small.png",
+      "sha256": "747d1cbf73f6a1c23c49d93cec644b0c8a9e34b283bc1fb959a7c44761f42790"
+    },
+    "200": {
+      "english": "Blood Brother",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bloodbrother_small.png",
+      "sha256": "94455fb481862225055969fc0388d8b7d6e41accd2da7d373657695c54278a3e"
+    },
+    "204": {
+      "english": "Stackosaurus Rex",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/stackosaurusrex_small.png",
+      "sha256": "b6a1c3103d4d65223138dfa1823dacc822b69d610002ac1c172ad53847f99607"
+    },
+    "205": {
+      "english": "ADAPt",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/adapt_small.png",
+      "sha256": "e3f6be61bceb9ebdfb35f93caced9be22171b26a1ba65b297a16f47e03b72ff2"
+    },
+    "206": {
+      "english": "escAPADe",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/escapade_small.png",
+      "sha256": "e3f6be61bceb9ebdfb35f93caced9be22171b26a1ba65b297a16f47e03b72ff2"
+    },
+    "207": {
+      "english": "Hold Very Still",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/holdverystill_small.png",
+      "sha256": "e8e5d3338e3cacf4f77e59293afbc00fa27a0d22cf090d8b0ef829910c438a14"
+    },
+    "208": {
+      "english": "Orbital Laser",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/orbitallaser_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "211": {
+      "english": "It's Killing Time",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/itskillingtime_small.png",
+      "sha256": "986f5ec41dfbcb06ceeb516bd95f2bc1bb06ba397837f3329eb96e46d92e4fae"
+    },
+    "213": {
+      "english": "Fully Automated",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/fullyautomated_small.png",
+      "sha256": "a63e371f89a436cf1940f0da4282ac04ec8e1384b87d47f2712cf4db780dae39"
+    },
+    "214": {
+      "english": "Spin To Win",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/spintowin_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "215": {
+      "english": "Dark Blessing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/darkblessing_small.png",
+      "sha256": "f06f9ce5a34d0c840b5948d7a275fda96b0170170693af6a9da623c18b6c664a"
+    },
+    "216": {
+      "english": "Dreadbringer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/plaguebearer_small.png",
+      "sha256": "ff3fd13bed7a72c35f154e1b405911b90f7d3d37be2e3bfed6b10ae74552be0f"
+    },
+    "217": {
+      "english": "Deathtouch",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/deathtouch_small.png",
+      "sha256": "eadd80d0a612ccbe421a815356a21482d1c921ff9c798230d261f424d04e4c33"
+    },
+    "218": {
+      "english": "Desecrator",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/desecrator_small.png",
+      "sha256": "061e553e903393009e3fd286412c48e3fc19b84c1824c2b29fb0825720ebc590"
+    },
+    "219": {
+      "english": "Doomsayer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/doomsayer_small.png",
+      "sha256": "5f7b6df2be5511311a33d2b1e6aa1a461086e30601e87fe875074a10b16a93c4"
+    },
+    "220": {
+      "english": "Fan the Hammer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/fanthehammer_small.png",
+      "sha256": "9b0fffe3852c5c0b49bf055495244b167cf06bf90982f82a2898fce2d271c05f"
+    },
+    "221": {
+      "english": "Trailblazer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/trailblazer_small.png",
+      "sha256": "5877654c9b256d22100adab359519457204fe4b82dffa32e5d3037bb176b2e3f"
+    },
+    "222": {
+      "english": "Fruits of Your Labor",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/fruitarian_small.png",
+      "sha256": "17f0d8216e6a3ffa625d829f1506cea14674c5fa06dddb8502dfd8b3ba1123c9"
+    },
+    "223": {
+      "english": "Summoner Revolution",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/summonerrevolution_small.png",
+      "sha256": "16ed5cf648634c31dab2d836de5b34a1d38d08f6bfab05cffeaf65b11c410bf3"
+    },
+    "224": {
+      "english": "Prismatic Egg",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quest_prismaticegg_small.png",
+      "sha256": "d49ebfd6fbd6365cf9e5d8987ffd43f5665517e5d8345edc71af36049015f432"
+    },
+    "225": {
+      "english": "Dual Wield",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dualwield_small.png",
+      "sha256": "d18ba27c83e8a06eeae7052dc478a797003978c5a651bb8e1dbe0750292232dc"
+    },
+    "226": {
+      "english": "Stats!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/stats_small.png",
+      "sha256": "027088a02d60e14d9c3078131ead4f0233211a330c93f61c220aebc3c6715f60"
+    },
+    "227": {
+      "english": "Stats on Stats!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/statsonstats_small.png",
+      "sha256": "027088a02d60e14d9c3078131ead4f0233211a330c93f61c220aebc3c6715f60"
+    },
+    "228": {
+      "english": "Stats on Stats on Stats!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/statsonstatsonstats_small.png",
+      "sha256": "027088a02d60e14d9c3078131ead4f0233211a330c93f61c220aebc3c6715f60"
+    },
+    "229": {
+      "english": "Fire Sale",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/firesale_small.png",
+      "sha256": "fbf90585de1b4a8c5ae5754b355b4a121a25adc0806ccfe84d46faf155fde867"
+    },
+    "230": {
+      "english": "Bullet Heaven",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bulletheaven_small.png",
+      "sha256": "79e9891e06a82262893eceb3461b529852421f33a8af12c135e830000d1dfbfa"
+    },
+    "231": {
+      "english": "Light Warden",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lightwarden_small.png",
+      "sha256": "8ed5024649db7b6c827e26967636c22a8540b4fa7068157a66c793b777f3108f"
+    },
+    "232": {
+      "english": "Slime Time",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slimetime_small.png",
+      "sha256": "7ba02b8b7fd40907391d665305695a27b035f9199657f2e7e2a2e3156d65fd35"
+    },
+    "233": {
+      "english": "Ultimate Roulette",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/ultimaterevolution_small.png",
+      "sha256": "742e242bf537db3b92381f29f91772eff102a1e03c7c7473472e5dd2a1af3d7e"
+    },
+    "234": {
+      "english": "Gamba Anvil",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/thiefsgloves_small.png",
+      "sha256": "baf58ec23038360b0242320d152c88f1ba26ddfc92c0d14c9840e937b81cf3ef"
+    },
+    "236": {
+      "english": "Trickster Demon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tricksterdemon_small.png",
+      "sha256": "96490ac6f3174fa1f349cb8d0fc58016c40eda9e8796af18b0deaaa4321f3df5"
+    },
+    "237": {
+      "english": "Transmute: Gold",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/transmutegold_small.png",
+      "sha256": "75511e66f71c39b51e915854a379e698771ac98fdfb023a7e590bfad94640451"
+    },
+    "238": {
+      "english": "Transmute: Prismatic",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/transmuteprismatic_small.png",
+      "sha256": "75511e66f71c39b51e915854a379e698771ac98fdfb023a7e590bfad94640451"
+    },
+    "239": {
+      "english": "Symbiotic Mutation",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/symbioticmutation_small.png",
+      "sha256": "3618cf1498b689b07dc9db25b1e182fb5d4af6bd67cc11941fb5ac890d88a1a0"
+    },
+    "240": {
+      "english": "Parasitic Mutation",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/parasiticmutation_small.png",
+      "sha256": "3618cf1498b689b07dc9db25b1e182fb5d4af6bd67cc11941fb5ac890d88a1a0"
+    },
+    "241": {
+      "english": "Hat Trick",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/hattrick_small.png",
+      "sha256": "c45498c9d261619f09a239964f7c5943c9b554e03abe13f382c24053dfb2f96b"
+    },
+    "242": {
+      "english": "Juice Press",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/juicepress_small.png",
+      "sha256": "cfcfbe85a52d077e43ddb39a6e2fa77c22601bf71e57abae022673b7450731de"
+    },
+    "243": {
+      "english": "Transmute: Chaos",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/transmutechaos_small.png",
+      "sha256": "75511e66f71c39b51e915854a379e698771ac98fdfb023a7e590bfad94640451"
+    },
+    "250": {
+      "english": "Slow and Steady",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slowandsteady_small.png",
+      "sha256": "d18ba27c83e8a06eeae7052dc478a797003978c5a651bb8e1dbe0750292232dc"
+    },
+    "251": {
+      "english": "Numb to Pain",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/numbtopain_small.png",
+      "sha256": "072185e14d71122a622f9ec7486817498ce62b1685ce7f48274cd112b7539c60"
+    },
+    "301": {
+      "english": "Divine Intervention",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slowactingpainkillers_small.png",
+      "sha256": "34d4da7fc6625d7ee67ba709f43e89ea4fb4fd7614f614a60db1761f12110350"
+    },
+    "302": {
+      "english": "Sacrifice: For Silver",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/gohsacrificefor_small.png",
+      "sha256": "617ed70b561620f8bb31b999826009fe42e92982f64fc617c0f505580edd3448"
+    },
+    "303": {
+      "english": "Sacrifice: For Gold",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/gohsacrificefor_small.png",
+      "sha256": "617ed70b561620f8bb31b999826009fe42e92982f64fc617c0f505580edd3448"
+    },
+    "304": {
+      "english": "Sacrifice: For Prismatic",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/gohsacrificefor_small.png",
+      "sha256": "617ed70b561620f8bb31b999826009fe42e92982f64fc617c0f505580edd3448"
+    },
+    "305": {
+      "english": "Leg Day",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/legday_small.png",
+      "sha256": "cba62ed8896a27713e106c40ece3a20968699cc4619df2a9d157308ab9099a05"
+    },
+    "306": {
+      "english": "Parry",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dontblink_small.png",
+      "sha256": "6406272e7a3c6ce7f7fcba475877943387c840c5c0ce4cedb7f3cb157edb09d5"
+    },
+    "307": {
+      "english": "Sleep Dart",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/combomaster_small.png",
+      "sha256": "9bca014d8b8c3a89e05461cd3b99ca8ea7800ec1c0302d62d460a15f9c919f71"
+    },
+    "308": {
+      "english": "Firefox",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/firfox_small.png",
+      "sha256": "e3308fd2929e94222307574f373166c0d0793fca3a8e53c24558b2bedb0daa87"
+    },
+    "309": {
+      "english": "And My Axe!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/andmyaxe_small.png",
+      "sha256": "17b07d9e8f93c2598362bdec9e68d385761410cce1f5d2251a2d53efc83dac0f"
+    },
+    "310": {
+      "english": "Clown College",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/clowncollege_small.png",
+      "sha256": "969fa2ccfb157a52ef772f561d0fb47b94d07087d99e55063dc161ed2974b033"
+    },
+    "311": {
+      "english": "Overflow",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/overflow_small.png",
+      "sha256": "f8beb50fa2e62ec1af4a47578afe89c7c9952c9c3e25b3ab8c1dd42ecf5a3116"
+    },
+    "312": {
+      "english": "We'll Be Right Back",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/wellberightback_small.png",
+      "sha256": "3110186654ce87b1db5a79cf75076f1cab748e456250ef444585bbfd6bf4aaa9"
+    },
+    "313": {
+      "english": "Tank Engine",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tank_engine_small.png",
+      "sha256": "715590581e55c3040d258c99b8c50b41e4315b6ca37a5af767866e543af8555a"
+    },
+    "314": {
+      "english": "Unshackled",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/unshackled_small.png",
+      "sha256": "9653e62ac47082545f11fd128d181683d0cc5969fb42d18e4397b7b850bfd044"
+    },
+    "315": {
+      "english": "Energetic Caster",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/etherealweapon_small.png",
+      "sha256": "c8f1642d458ccadf255be8e45c72fd8d148c8df9411c6f1df815747fd6bb0640"
+    },
+    "316": {
+      "english": "Grievous Venom",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/grevious_venmon_small.png",
+      "sha256": "092f48ab94719235d1f35b55d3d2fb5e021e493317c4c900bbe613da25015315"
+    },
+    "317": {
+      "english": "Pandora's Box",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/pandoras_box_small.png",
+      "sha256": "d5942570a8625d36b96338b3dd058e59935fd81cbc88ce347ff5e271c744a8dc"
+    },
+    "318": {
+      "english": "Quest: Mad Hatter",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mad_hatter_small.png",
+      "sha256": "45c56c7c48680b6e1cb99983fd721d60d4a8725f889fcec48391f1dcb9819820"
+    },
+    "319": {
+      "english": "Quest: Three Sacred Treasures",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/threesacredtreasures_small.png",
+      "sha256": "0fbadeea5f9619707e2c5a26613353830e055d1b291c4c6f30f1806f9dfc44e7"
+    },
+    "320": {
+      "english": "Calculated Risk",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/calculated_risk_small.png",
+      "sha256": "5d541f9bce1b551e68bdcc15db9fe1b6a6fe96a534d4176a7f0cffd605f8457b"
+    },
+    "321": {
+      "english": "Bodyguard",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bodyguard_small.png",
+      "sha256": "bddd500970d558fd046cbb9673251602d041079d5456a5622e5049dc0ced3772"
+    },
+    "322": {
+      "english": "Augmented Power",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/augmented_power_small.png",
+      "sha256": "6236209dc18521294a910a4797de32a26a5fd96563f2e8dc1e88cbefb0a9ce28"
+    },
+    "323": {
+      "english": "Cerberus",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/cerberus_small.png",
+      "sha256": "7d50570dee85792407474e07457055a43452d3d104e9018c5a587d1685b508b3"
+    },
+    "324": {
+      "english": "Bravest of the Brave",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bravestofthebrave_small.png",
+      "sha256": "ade167e41c2b21f7cf897919020957855078b13971b0efdab4116c3d195efa8b"
+    },
+    "326": {
+      "english": "Spirit Infusion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/spirit_infusion_small.png",
+      "sha256": "673161fcbdd80b9a7c71aaa7144645f2ac00c92167da7761c5470bfc90eeab35"
+    },
+    "327": {
+      "english": "Undying Guard",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dawnbringersresolve_small.png",
+      "sha256": "57d33218e20f1c7c026642009e736cb9c2355d7c33741724b2762d22c0f55db6"
+    },
+    "328": {
+      "english": "Infernal Chains",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quantumcomputing_small.png",
+      "sha256": "267536c3dc96e4b2175d495e6c3fa7136f4cd761650a32992890cd068718574c"
+    },
+    "329": {
+      "english": "Necromancer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/windspeakersblessing_small.png",
+      "sha256": "5c0bb6da0c0df3ef9f3242fa4e7887d9447150cd08c233173914ed620cad8e2d"
+    },
+    "330": {
+      "english": "Despoil",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/desecrator_small.png",
+      "sha256": "8719174c3c982498df55ad4917b7c7a01fcd43563c03b1b4deb1733b66615a51"
+    },
+    "331": {
+      "english": "Multitool",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/multitool_small.png",
+      "sha256": "a3a69431554e9f9e1ab0347cf5751ce0b86f239f1637cfcdc167655b64ae375b"
+    },
+    "332": {
+      "english": "Blood Mage",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/centeroftheuniverse_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "333": {
+      "english": "Quest: Rite Of The Forge God",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quest_rite_of_the_forge_god_small.png",
+      "sha256": "51364683707c6ffae50ef0e58b98c02a4205b2d52e4aa60b1607203039a18f4a"
+    },
+    "334": {
+      "english": "Hallucinate",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bulletheaven_small.png",
+      "sha256": "3ed879fdc1475ff0117691f05c9c11252efca6e4b1c592e89d29aea35a47d95d"
+    },
+    "335": {
+      "english": "Panic Room",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/panic_room_small.png",
+      "sha256": "e1d7e76b2817c0b4ae3343d90d5a8f94eb3def574f31c7483116c858848267ae"
+    },
+    "336": {
+      "english": "Aim for the Head",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/aim_for_the_head_small.png",
+      "sha256": "d05ff40bdbf6edd12516219847a9d8f8f8111e4b5eb68deb2d700e87be62861d"
+    },
+    "338": {
+      "english": "Hive Mind",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/hive_mind_small.png",
+      "sha256": "ae50782e7a43c25100401094429a9efd1cf36fd4ce6930887d12c2a1c84e4a84"
+    },
+    "340": {
+      "english": "Gain a Prismatic Stat Anvil",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/crafting_prisstatanvil_small.png",
+      "sha256": "acbad095b795f40ecb14a6beffe451ae8e78f03c72b5973cbc0e3a456200fee5"
+    },
+    "341": {
+      "english": "Gain an Augment slot",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/crafting_slot_small.png",
+      "sha256": "a157ec4dae54728cd6c2919e61a5c2e9e0cead6012dd8488e9741e73b74f401e"
+    },
+    "342": {
+      "english": "Level Augments",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/crafting_sellaug_small.png",
+      "sha256": "352e68ea382d167a63ddbe6ecc30a923018ced5774a82dd5d8ea24d8a60e8937"
+    },
+    "343": {
+      "english": "Righteous Fury",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/righteous_fury_small.png",
+      "sha256": "cca9e42beeafbf877c14035cdf5e0d847e3560213ecb7e8a11862fa2d9df9d54"
+    },
+    "344": {
+      "english": "Energetic",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/energetic_small.png",
+      "sha256": "bd6abeac8355b5b13aba6f125a5a36cf6c79feb356a6e61a4151e8e008e31f7f"
+    },
+    "345": {
+      "english": "Magical Girl",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/magic_girl_small.png",
+      "sha256": "4437d7203f505dc13025fa3476dcc81ffde1e5cb168b56296f7131f11f4f3d21"
+    },
+    "346": {
+      "english": "Bread Sandwich",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bread_sandwhich_small.png",
+      "sha256": "627b63814d02c481e2198f75e043341ef47c93325c89ddefeacadc2abc8dc788"
+    },
+    "347": {
+      "english": "Chemtech Putrifier",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/chemtechpurifier_small.png",
+      "sha256": "f78742b67a6b50e7e9f4d861f31a66e45d00e76393403ccdb987bc87cc1bca6d"
+    },
+    "348": {
+      "english": "Bloodrazor",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bloodrazor_small.png",
+      "sha256": "2811b2f3ff0bdd1f888517cc17adbada46d2b029be9087370fe90fb3e5a15d0c"
+    },
+    "349": {
+      "english": "Dematerializer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dematerializer_small.png",
+      "sha256": "01f62f615503b14f157b1f836ce27febba8c91aa7d2cd858130a5c7bfc0f5016"
+    },
+    "350": {
+      "english": "Enchanted Flask",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/crystallineflask_small.png",
+      "sha256": "9442c1454d287cb21a197193ae2c3b58137d7cbedc136132b728148955446a39"
+    },
+    "351": {
+      "english": "Frozen Mallet",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/frozenmallet_small.png",
+      "sha256": "23f37cf40a99a7542fccfe8e1df63e085616a07f9a69927e6dd57120aa89b508"
+    },
+    "354": {
+      "english": "Remnant of the Watchers",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/remnantofthewatchers_small.png",
+      "sha256": "c0d635ba370fd84e0e0e092f32adfefa6bb881b3b8b1adb9dcdb17e68d01bdca"
+    },
+    "355": {
+      "english": "Gain Stat Anvil",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/gain_stat_anvil_small.png",
+      "sha256": "9293b857fc95caf4b395bd7a9dac3f3d97bfe38ef3e81ee4532f2317d73631fd"
+    },
+    "356": {
+      "english": "Silver Spoon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/silver_spoon_small.png",
+      "sha256": "1b9e254f78c98c1eb84f2bfd7639d22db2398da7a1485e59b261ce635f8e79fc"
+    },
+    "357": {
+      "english": "Hybrid",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/hybrid_small.png",
+      "sha256": "784b768e59c45da3c7a3e99fe143a66bc54e65c6a5cc16aa47264eb853d927d2"
+    },
+    "358": {
+      "english": "Wolf's Frenzy",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/wolf_small.png",
+      "sha256": "a192b4f11af1b80cd92fec006f87a1e07c31c7b0c1b78e19405f7e36df4be343"
+    },
+    "359": {
+      "english": "Lamb's Respite",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lamb_small.png",
+      "sha256": "df1ab76cb49c1db0880174448589c33c6b19c977f6ce2dcf04d7400e9be132da"
+    },
+    "361": {
+      "english": "Ally Demon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/yonedemon_small.png",
+      "sha256": "cab4ae8697136355ffdd0a7c95c5a4ac4d09c6e47b117c6b7b2d4a1b881880f6"
+    },
+    "362": {
+      "english": "Ally Hunter",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/yonehunter_small.png",
+      "sha256": "0b364d5c20dc6bedfa6b87506c79291276bc4eecf99513a72a513051565cf026"
+    },
+    "364": {
+      "english": "Replace Augment",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/replace_augment_small.png",
+      "sha256": "225a26bbc295aa160110d621cf9ed0bf02c82db9638d54615be0cf96247d9f69"
+    },
+    "365": {
+      "english": "Abstain From Wealth",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/wealth_small.png",
+      "sha256": "c09fc994481304888a41584c60eb8f6ad6f3343b0b705b3b6474debd446fc8a3"
+    },
+    "366": {
+      "english": "Abstain From Power",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/power_small.png",
+      "sha256": "154d6505d41325e7583cb181a71058e265bc9385cb24fbc4f836df82e37eeaa1"
+    },
+    "367": {
+      "english": "Abstain From Risk",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/risk_small.png",
+      "sha256": "e63378224d383a18c40b7fcda670a1ae7e4c532df2943002fe37a6faa7c1bf23"
+    },
+    "368": {
+      "english": "Craving For Wealth",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/wealth_large.png",
+      "sha256": "833415a1d6fbf61bce6e08a519bc02922ade414cced73abd8417873ff24d04f7"
+    },
+    "369": {
+      "english": "Craving For Power",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/power_small.png",
+      "sha256": "154d6505d41325e7583cb181a71058e265bc9385cb24fbc4f836df82e37eeaa1"
+    },
+    "370": {
+      "english": "Craving For Risk",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/risk_small.png",
+      "sha256": "e63378224d383a18c40b7fcda670a1ae7e4c532df2943002fe37a6faa7c1bf23"
+    },
+    "371": {
+      "english": "Compulsion For Wealth",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/wealth_small.png",
+      "sha256": "c09fc994481304888a41584c60eb8f6ad6f3343b0b705b3b6474debd446fc8a3"
+    },
+    "372": {
+      "english": "Compulsion For Power",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/power_small.png",
+      "sha256": "154d6505d41325e7583cb181a71058e265bc9385cb24fbc4f836df82e37eeaa1"
+    },
+    "373": {
+      "english": "Compulsion For Risk",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/risk_small.png",
+      "sha256": "00f7a7ce944eb37103bc668e3962af2ce152497701a16b7a9a43e26dd64b3576"
+    },
+    "374": {
+      "english": "Rice and Chicken",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/rice_and_chicken_small.png",
+      "sha256": "171c485eac9434c9c4185753ea771c21fbc1eda8cedc7a3e25bc64d7c1655867"
+    },
+    "375": {
+      "english": "Rice and Fish",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/rice_and_fish_small.png",
+      "sha256": "171c485eac9434c9c4185753ea771c21fbc1eda8cedc7a3e25bc64d7c1655867"
+    },
+    "376": {
+      "english": "Rice and Pork",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/rice_and_pork_small.png",
+      "sha256": "171c485eac9434c9c4185753ea771c21fbc1eda8cedc7a3e25bc64d7c1655867"
+    },
+    "377": {
+      "english": "Combination Fried Rice",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/combination_fried_rice_small.png",
+      "sha256": "171c485eac9434c9c4185753ea771c21fbc1eda8cedc7a3e25bc64d7c1655867"
+    },
+    "378": {
+      "english": "Transmute: Silver",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/transmute_silver_small.png",
+      "sha256": "6f966b502a7aa5718da0cab5a13d99fb64ec57e1b2204b42dcd7163d53e97c1a"
+    },
+    "379": {
+      "english": "Wild Fire",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/wild_fire_small.png",
+      "sha256": "64ee780d2866b7b85384d399cf98e8ea57b38680a1813e4b960bd566a627cee4"
+    },
+    "380": {
+      "english": "Mercy",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mercy_small.png",
+      "sha256": "13f8ca9496886b4ee13e14a3f29f68da0ff2dd9d7fba79ee7384e6ee3fec080d"
+    },
+    "381": {
+      "english": "Scavenger",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/scavenger_small.png",
+      "sha256": "73c266ee66e4b78efadfc8d9e6448cfc745c63fcd854dcbd8819b84c423c12a4"
+    },
+    "383": {
+      "english": "Demonic Clasp",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/demonic_clasp_small.png",
+      "sha256": "644f12c5f6a964bc3bcb4fce5bba7f7a65eca6a858ccb04e5f7f0ec11995c509"
+    },
+    "384": {
+      "english": "Spellcraft",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/spell_craft_small.png",
+      "sha256": "0937c6431bcead462cf8b68efa2aa9edc2e8203f95e4c59dcecc52b34efee009"
+    },
+    "387": {
+      "english": "Big Dragon Energy",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/frombeginningtoend_small.png",
+      "sha256": "bb13956282e3917e07ee8d6eb928e8031912e8ec55e83764f5d1fb62308f16be"
+    },
+    "388": {
+      "english": "Chroma Flux",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/chroma_flux_small.png",
+      "sha256": "9152a286ddc0603005e535658080cd026e564d799c0cf8ec9f649ab489bf07a6"
+    },
+    "389": {
+      "english": "Trash To Treasure",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/trash_treasure_small.png",
+      "sha256": "352e68ea382d167a63ddbe6ecc30a923018ced5774a82dd5d8ea24d8a60e8937"
+    },
+    "390": {
+      "english": "Unstable Transmutation",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/unstabletransmutation_small.png",
+      "sha256": "75511e66f71c39b51e915854a379e698771ac98fdfb023a7e590bfad94640451"
+    },
+    "391": {
+      "english": "Rags to Riches",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/rags_to_riches_small.png",
+      "sha256": "10c2ab82f1f5cc6468cfdfb829e15558d5c3665aa6fac7c4a7947a627502bf8e"
+    },
+    "392": {
+      "english": "Swindler's Orb",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/swindlers_orb_item_small.png",
+      "sha256": "31050edaac3460c2c3eb5955c0bda4f9c8041dab5796422121450d0e9a86f8cf"
+    },
+    "393": {
+      "english": "Icathia's Fall",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/quest_voidimmolation_small.png",
+      "sha256": "f2f80099f7e36f7af9bec7f688ecec996186de75e16b1ea4a4583ec146fb334e"
+    },
+    "394": {
+      "english": "Dust To Diamonds",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dust_to_diamonds_small.png",
+      "sha256": "334ee0fcb9af53f91b147fdc6dc7fb240b0e9ac493d38c12b6830f6c41719d75"
+    },
+    "396": {
+      "english": "Death Dealer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/death_dealer_small.png",
+      "sha256": "73c266ee66e4b78efadfc8d9e6448cfc745c63fcd854dcbd8819b84c423c12a4"
+    },
+    "397": {
+      "english": "Got That Dog In Em",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/got_that_dog_small.png",
+      "sha256": "bef172596b8632934b957637e01d6b799a4a93659a3e2392e955f4d8d8483bba"
+    },
+    "404": {
+      "english": "404 Augment Not Found",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/augment404_small.png",
+      "sha256": "c45498c9d261619f09a239964f7c5943c9b554e03abe13f382c24053dfb2f96b"
+    },
+    "405": {
+      "english": "Augment 405",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/augment405_small.png",
+      "sha256": "c45498c9d261619f09a239964f7c5943c9b554e03abe13f382c24053dfb2f96b"
+    },
+    "1001": {
+      "english": "Titan's Resolve",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/iamthejuggernaut_small.png",
+      "sha256": "01921c8332f0ec6d01564b26a443dfa743e6abc0949a62a36d6891222cf4fc1a"
+    },
+    "1002": {
+      "english": "Apex Inventor",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/apexinventor_small.png",
+      "sha256": "64d2d224fa00c84756e58b8df7f3b04124e1efad4bf3061341dc39dfb2f6b110"
+    },
+    "1004": {
+      "english": "Back To Basics",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/backtobasics_small.png",
+      "sha256": "3231811cf06462eb1b8087f26154c580f2fceac79a25416329cf9b8814f6427e"
+    },
+    "1005": {
+      "english": "Wee Woo Wee Woo",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/weewooweewoo_small.png",
+      "sha256": "14b7c415eaa75150819e01b325a58096ae12fcab05dc18cc504b2e188f5c0c57"
+    },
+    "1006": {
+      "english": "Blade Waltz",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bladewaltz_small.png",
+      "sha256": "6615a6e8d2d5a52e1648aaf4508d076c243e450aa4070ed7308730ba996ba856"
+    },
+    "1007": {
+      "english": "Blunt Force",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bluntforce_small.png",
+      "sha256": "6615a6e8d2d5a52e1648aaf4508d076c243e450aa4070ed7308730ba996ba856"
+    },
+    "1009": {
+      "english": "Buff Buddies",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/buffbuddies_small.png",
+      "sha256": "18ac0cd815913f7284e8f8b2c8d1f95a796f9be2ae48f83eff7ed161889116e1"
+    },
+    "1011": {
+      "english": "Can't Touch This",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/canttouchthis_small.png",
+      "sha256": "a2f0db039d4101366a58ab2b8a77fed5208b012042aea690a62bf07b316c4b1d"
+    },
+    "1013": {
+      "english": "Celestial Body",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/celestialbody_small.png",
+      "sha256": "e808d10b1cf0a4f24ce243eadd1dcb88476237e43365723085720f9084988f09"
+    },
+    "1015": {
+      "english": "Circle of Death",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/circleofdeath_small.png",
+      "sha256": "c379d6834f1aab0404df823154c06b9327f9602612f47c9666e3559ba5f1166e"
+    },
+    "1018": {
+      "english": "Courage of the Colossus",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/courageofthecolossus_small.png",
+      "sha256": "03febd3348593989e665bcd17053bf9a21879656307da4aad778f7afb18e5d2a"
+    },
+    "1019": {
+      "english": "Dashing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dashing_small.png",
+      "sha256": "1506fdec2884a5d2f05b6131c37ed428c44c948baf2ad8dfbb2eeecddb232c02"
+    },
+    "1020": {
+      "english": "Dawnbringer's Resolve",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dawnbringersresolve_small.png",
+      "sha256": "57d33218e20f1c7c026642009e736cb9c2355d7c33741724b2762d22c0f55db6"
+    },
+    "1022": {
+      "english": "Deft",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/deft_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "1023": {
+      "english": "Demon's Dance",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/demonsdance_small.png",
+      "sha256": "67e6583db2e22061ee6e9d48b1b2a63125b2b6fe36ed6fcd3bf2dce4481ed747"
+    },
+    "1025": {
+      "english": "Dive Bomber",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/divebomber_small.png",
+      "sha256": "5eaf91d6167800cc38ea82a5d56990d37578f6976a378d90b93bd3592c44953e"
+    },
+    "1026": {
+      "english": "Don't Blink",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dontblink_small.png",
+      "sha256": "6406272e7a3c6ce7f7fcba475877943387c840c5c0ce4cedb7f3cb157edb09d5"
+    },
+    "1027": {
+      "english": "Earthwake",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/earthwake_small.png",
+      "sha256": "d97e979f3b836a766a6a325ac7b97029776d0baceac8de66677a5a48cf61f95f"
+    },
+    "1028": {
+      "english": "Erosion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/erosion_small.png",
+      "sha256": "d426232d6cb1360e27d9f48c5a7275abbd87d8376dd223513d162ae3730e2ca3"
+    },
+    "1029": {
+      "english": "Ethereal Weapon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/etherealweapon_small.png",
+      "sha256": "c8f1642d458ccadf255be8e45c72fd8d148c8df9411c6f1df815747fd6bb0640"
+    },
+    "1030": {
+      "english": "Eureka",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/eureka_small.png",
+      "sha256": "c95f04074ef7dab13159020839f62642dd01e7088b483ea05d30285c9834d111"
+    },
+    "1032": {
+      "english": "Executioner",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/spiritualpurification_small.png",
+      "sha256": "82ad79316b031d28f44b7195929f77132b392af05dbfadccb5e1bb187c855f8d"
+    },
+    "1034": {
+      "english": "Veil of Warding",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/poltergeist_small.png",
+      "sha256": "0743d2f98fca076b457036fb5daabbf8b0faa0c0a18a91a28650cb7de8eb7f25"
+    },
+    "1035": {
+      "english": "Feel the Burn",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/feeltheburn_small.png",
+      "sha256": "84f2c5e73bf4750b1f6c8139c0abe104b429ec3d930d18c726ab8828a09bc4bb"
+    },
+    "1036": {
+      "english": "Firebrand",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/firebrand_small.png",
+      "sha256": "8f247dbf5ee89b8c1a87bc089bc6f14c6385018e500bb7939e998b51066504ca"
+    },
+    "1037": {
+      "english": "First-Aid Kit",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/firstaidkit_small.png",
+      "sha256": "3937b439cf71a905946ed08bca7e4019359d226022f9964536ecf650759f05ed"
+    },
+    "1038": {
+      "english": "From Beginning To End",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/frombeginningtoend_small.png",
+      "sha256": "bb13956282e3917e07ee8d6eb928e8031912e8ec55e83764f5d1fb62308f16be"
+    },
+    "1039": {
+      "english": "Frost Wraith",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/frostwraith_small.png",
+      "sha256": "7ad1254b58261e208d818be442bc4b9e118d697d21e7cc2e47823db8c28db3c7"
+    },
+    "1041": {
+      "english": "Goliath",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/goliath_small.png",
+      "sha256": "a1ae71718152c40b478d53067dff0ae6e0b97fc3263e05716a9e5e0fd2b9fd7f"
+    },
+    "1042": {
+      "english": "Guilty Pleasure",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/guiltypleasure_small.png",
+      "sha256": "7bb833614b56fe94e113660bb48118b81c4ee5aa2e14e63fdd52b3c4dd9707f9"
+    },
+    "1044": {
+      "english": "Ice Cold",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/icecold_small.png",
+      "sha256": "df4ce76e0e92fe1b01a7961627cec02089445fe633450818884c5d7e09ec4624"
+    },
+    "1045": {
+      "english": "Infernal Conduit",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/infernalconduit_small.png",
+      "sha256": "2fd8278a75c326a52e5cda3d28ca00adf6968b64f6d7a6c3e1b1b7fc79ab1519"
+    },
+    "1046": {
+      "english": "Infernal Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/infernalsoul_small.png",
+      "sha256": "d426232d6cb1360e27d9f48c5a7275abbd87d8376dd223513d162ae3730e2ca3"
+    },
+    "1047": {
+      "english": "It's Critical",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/itscritical_small.png",
+      "sha256": "381d65d35ed2e7345ccd6e8053fc0c56e347c6eb876d0d1d71d4ed7c3f67c459"
+    },
+    "1048": {
+      "english": "Jeweled Gauntlet",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/jeweledgauntlet_small.png",
+      "sha256": "b7d6383230d1c8fe367689bc43db24e72164d3ba0c8015c89d33cfbda4ec6ed0"
+    },
+    "1050": {
+      "english": "Keystone Conjurer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/keystoneconjurer_small.png",
+      "sha256": "c8436da49231dc58ef7f57114bae84d0e052ab3f04cb75c79965c13741f1d8e5"
+    },
+    "1051": {
+      "english": "Light 'Em Up!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lightemup_small.png",
+      "sha256": "5e94ef8e5b640793237a2a8b4d0f932a3f39ed2e4ef1d47687da73fad86ef340"
+    },
+    "1052": {
+      "english": "Lightning Strikes",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lightningstrikes_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "1053": {
+      "english": "Mad Scientist",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/madscientist_small.png",
+      "sha256": "2eed5ef15a074abc283da699daa7fc0bd9e22c8d5ad7e869a510c09569f496e7"
+    },
+    "1054": {
+      "english": "Master of Duality",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/masterofduality_small.png",
+      "sha256": "fdf159b0df8d85b9740b7237b3fe1dbb417305cb06860ac35c2eb699e628ebd3"
+    },
+    "1056": {
+      "english": "Mind to Matter",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mindtomatter_small.png",
+      "sha256": "626ad0924670de543258fc85c6b1c3cf55fc805f699c035828d0f599e47c6f84"
+    },
+    "1057": {
+      "english": "Mountain Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mountainsoul_small.png",
+      "sha256": "626ad0924670de543258fc85c6b1c3cf55fc805f699c035828d0f599e47c6f84"
+    },
+    "1058": {
+      "english": "Mystic Punch",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/mysticpunch_small.png",
+      "sha256": "527ffbae930c288ac447d3d1cbcee27b19ffb31987c5569a3eb1d967b19840af"
+    },
+    "1060": {
+      "english": "Ocean Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/oceansoul_small.png",
+      "sha256": "a132e68c472157ef5727843ff30e150ee65d97e39913aa4b57252a3730fd3ded"
+    },
+    "1061": {
+      "english": "Ok Boomerang",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/okboomerang_small.png",
+      "sha256": "267536c3dc96e4b2175d495e6c3fa7136f4cd761650a32992890cd068718574c"
+    },
+    "1062": {
+      "english": "Omni Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/omnisoul_small.png",
+      "sha256": "43c651afb7076897286e5d3e67799f2a5aa447e487289df6b8ab5aab3a74b2d2"
+    },
+    "1063": {
+      "english": "Outlaw's Grit",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/outlawsgrit_small.png",
+      "sha256": "43d5fee9abbd31ef77ca1a1986fdfb49a67661fc7dd88cdc6a17d41ef9241e7b"
+    },
+    "1064": {
+      "english": "Perseverance",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/perseverance_small.png",
+      "sha256": "57d33218e20f1c7c026642009e736cb9c2355d7c33741724b2762d22c0f55db6"
+    },
+    "1066": {
+      "english": "Quantum Computing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quantumcomputing_small.png",
+      "sha256": "267536c3dc96e4b2175d495e6c3fa7136f4cd761650a32992890cd068718574c"
+    },
+    "1067": {
+      "english": "Rejuvenation",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/rabblerousing_small.png",
+      "sha256": "f162e3ee0fee6386f167cb2fdc005062a873c17dee76224ea1a4897def4013d8"
+    },
+    "1068": {
+      "english": "Recursion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/recursion_small.png",
+      "sha256": "d4ba628893ae1ba910c219e2d57805cc226397d728f8cfb45ec01806818f7cab"
+    },
+    "1069": {
+      "english": "Repulsor",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/repulsor_small.png",
+      "sha256": "f162573a4e7a8d4197a83c25b1df349f84b1e360c9d1c6908711a52db24cc91a"
+    },
+    "1070": {
+      "english": "Restless Restoration",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/restlessrestoration_small.png",
+      "sha256": "af5edfab3444a99ff4342035291e33a8a2f46def7be317b3b1553f2b0bc24bc9"
+    },
+    "1071": {
+      "english": "Scopier Weapons",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/scopierweapons_small.png",
+      "sha256": "cc318bbef9a660bfd57672427c93c99e7a0268f859fc900ebe75484197675956"
+    },
+    "1072": {
+      "english": "Searing Dawn",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/searingdawn_small.png",
+      "sha256": "22a584de93ffa6bef270e4c9eee1635190cfdac1dfbfbba5183a43d2a8f84753"
+    },
+    "1073": {
+      "english": "Shadow Runner",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/shadowrunner_small.png",
+      "sha256": "35771c2a9131665808edfe249f04b329099cf821d074c8b91d8846ea89390854"
+    },
+    "1074": {
+      "english": "Shrink Ray",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/shrinkray_small.png",
+      "sha256": "ebc6ce8b4d27e463d79edd7e3425e0f4024d91cb29664e188ba2968900e763a7"
+    },
+    "1075": {
+      "english": "Slow Cooker",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slowcooker_small.png",
+      "sha256": "67d8c72fa18ceaa4c0193375fe6e10383c2dc4aebecbc1a806f6f5eac02d9c93"
+    },
+    "1076": {
+      "english": "Sonic Boom",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/sonicboom_small.png",
+      "sha256": "c379d6834f1aab0404df823154c06b9327f9602612f47c9666e3559ba5f1166e"
+    },
+    "1077": {
+      "english": "Soul Siphon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/soulsiphon_small.png",
+      "sha256": "71711ad6b94addaa25fa2e4e99f4a9875b28431579c8f4d93f73686c46e91a53"
+    },
+    "1079": {
+      "english": "Symphony of War",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/symphonyofwar_small.png",
+      "sha256": "cb64df366e029adc732a47d171a347d2cf4ac39dcfb36b1fdbc900a6ed5866a7"
+    },
+    "1080": {
+      "english": "Tank It Or Leave It",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tankitorleaveit_small.png",
+      "sha256": "eea323aa4e98eb9b756ee5dcd3f977c3bb41e7e9f84a77b0f4393eed8deda6e3"
+    },
+    "1081": {
+      "english": "Tap Dancer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tapdancer_small.png",
+      "sha256": "c501e76918615c0a62ed97663f1c6bd543da29c8742683c570fe985267c5048b"
+    },
+    "1082": {
+      "english": "The Brutalizer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/thebrutalizer_small.png",
+      "sha256": "6642b0fd56f6a76c2440ac8bd9fd10ca9e285e1393e3f75dd46e3397d6dc6575"
+    },
+    "1084": {
+      "english": "Thread the Needle",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/threadtheneedle_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "1085": {
+      "english": "Tormentor",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tormentor_small.png",
+      "sha256": "e1a2fee97eb89dcae4cf2a3eefb60da9d3af583d72bdaa653cb1fa73e6b1ab41"
+    },
+    "1086": {
+      "english": "Trueshot Prodigy",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/trueshotprodigy_small.png",
+      "sha256": "505cd004e08b89642249e6bc8904a403db0ae5cbf1573cfb212f8184bea0fb6c"
+    },
+    "1087": {
+      "english": "Typhoon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/typhoon_small.png",
+      "sha256": "d9fd9df6cefa9b226647a5223a9c21de1d5282d265f8ed084c557ae8cceec60b"
+    },
+    "1088": {
+      "english": "Ultimate Revolution",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/ultimaterevolution_small.png",
+      "sha256": "742e242bf537db3b92381f29f91772eff102a1e03c7c7473472e5dd2a1af3d7e"
+    },
+    "1092": {
+      "english": "Vulnerability",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/vulnerability_small.png",
+      "sha256": "8627c39436217b09513d334d5df830bb37067d4252dc3c71c24fee8245ebb76d"
+    },
+    "1095": {
+      "english": "Windspeaker's Blessing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/windspeakersblessing_small.png",
+      "sha256": "5c0bb6da0c0df3ef9f3242fa4e7887d9447150cd08c233173914ed620cad8e2d"
+    },
+    "1097": {
+      "english": "Witchful Thinking",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/witchfulthinking_small.png",
+      "sha256": "b68ce500ba1707c4049e2c6378127e6605e0f76fe3901372ad488e2ba037d584"
+    },
+    "1098": {
+      "english": "With Haste",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/withhaste_small.png",
+      "sha256": "49fde03d5a3932daa1bac399f7b1955b8612db87630f7df89f9ba1c54bc9b08d"
+    },
+    "1103": {
+      "english": "Bread And Butter",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "c603ddeecab769107aff5126e55c572b73c758705ad2bc6a9c97ddae37758bf1"
+    },
+    "1104": {
+      "english": "Minionmancer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/minionmancer_small.png",
+      "sha256": "59acd270f0e926c58f07f6f7c8e4acf58a19521c5db96cde5b584f28564abf75"
+    },
+    "1105": {
+      "english": "Homeguard",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/homeguard_small.png",
+      "sha256": "7772aaede1269760f8bf33aab45116374a00a1b1e83b0cf41cc42b8099aaa546"
+    },
+    "1107": {
+      "english": "Twice Thrice",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/twicethrice_small.png",
+      "sha256": "d9fd9df6cefa9b226647a5223a9c21de1d5282d265f8ed084c557ae8cceec60b"
+    },
+    "1108": {
+      "english": "Self Destruct",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/maps/particles/kiwi/selfdestruct_small.png",
+      "sha256": "6da1f6eaa84d952b5dacc9005d11405df917063d76275347fb67557cbca48506"
+    },
+    "1112": {
+      "english": "Ultimate Unstoppable",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/ultimateunstoppable_small.png",
+      "sha256": "d6361b0235e554633a780cc0288d606cc4266bda1dac96de7efa0bcf711c7dad"
+    },
+    "1113": {
+      "english": "Skilled Sniper",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/skilledsniper_small.png",
+      "sha256": "d593e95199bf3b55e28ac43ae893f835b3fe41438ae146a3edce52176459e843"
+    },
+    "1115": {
+      "english": "Scopiest Weapons",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/scopiestweapons_small.png",
+      "sha256": "cc318bbef9a660bfd57672427c93c99e7a0268f859fc900ebe75484197675956"
+    },
+    "1116": {
+      "english": "Flashy",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/flashy_small.png",
+      "sha256": "1506fdec2884a5d2f05b6131c37ed428c44c948baf2ad8dfbb2eeecddb232c02"
+    },
+    "1118": {
+      "english": "Critical Healing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/criticalhealing_small.png",
+      "sha256": "ae7b302ff1946b43569aaef2a4b47c2ff5768dc642c3b30f22ab245a58c311b6"
+    },
+    "1129": {
+      "english": "Marksmage",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/marksmage_small.png",
+      "sha256": "5e94ef8e5b640793237a2a8b4d0f932a3f39ed2e4ef1d47687da73fad86ef340"
+    },
+    "1133": {
+      "english": "Magic Missile",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/maps/particles/kiwi/magicmissile_small.png",
+      "sha256": "3b099cca83a51a62ec464f08447f28262e7519596bd55f742b74eb4a19ce5033"
+    },
+    "1134": {
+      "english": "Draw Your Sword",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/drawyoursword_small.png",
+      "sha256": "5214fb024f5b6a94956cf663b2468f990bf226a65ea9d1c785e4a31b69dec87e"
+    },
+    "1136": {
+      "english": "Slap Around",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slaparound_small.png",
+      "sha256": "c01c266e2aea892f0bf7c4b3c6cd94fd0af13716b4575f0495477565ec954e5e"
+    },
+    "1138": {
+      "english": "Goredrink",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/goredrink_small.png",
+      "sha256": "cced2b968dc1e5e084f78a364bdc5571e9d23a58b190476ce05e9f56cf37cc1a"
+    },
+    "1141": {
+      "english": "All For You",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/allforyou_small.png",
+      "sha256": "29a76b142d921df1de913174bc9808a6da4190afb2a89e735b5e73db89911d53"
+    },
+    "1149": {
+      "english": "Impassable",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/impassable_small.png",
+      "sha256": "61c7324c52d18cf882a828ea828213060124770f5f8f60a42806adb18a4ab989"
+    },
+    "1150": {
+      "english": "Bread And Jam",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "c603ddeecab769107aff5126e55c572b73c758705ad2bc6a9c97ddae37758bf1"
+    },
+    "1151": {
+      "english": "Bread and Cheese",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "c603ddeecab769107aff5126e55c572b73c758705ad2bc6a9c97ddae37758bf1"
+    },
+    "1152": {
+      "english": "Steel Your Heart",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quest_steelyourheart_small.png",
+      "sha256": "2a06ca7fcd4d87ffad4499d16a16a2ca4935ef72421e71a32b0569d0908e925e"
+    },
+    "1154": {
+      "english": "Urf's Champion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/quest_urfschampion_small.png",
+      "sha256": "41b9b7941d4b381cf9a33531c40ec85cabe2a77cfdec31f76898b1ac917627fa"
+    },
+    "1156": {
+      "english": "Wooglet's Witchcap",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/quest_woogletswitchcap_small.png",
+      "sha256": "2a06ca7fcd4d87ffad4499d16a16a2ca4935ef72421e71a32b0569d0908e925e"
+    },
+    "1170": {
+      "english": "Scoped Weapons",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/scopedweapons_small.png",
+      "sha256": "cc318bbef9a660bfd57672427c93c99e7a0268f859fc900ebe75484197675956"
+    },
+    "1180": {
+      "english": "Big Brain",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/bigbrain_small.png",
+      "sha256": "50a849db61a8ef6b83434277434516c7f73ba3af02abb0df3d7757374663ad20"
+    },
+    "1181": {
+      "english": "Heavy Hitter",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/heavyhitter_small.png",
+      "sha256": "5e94ef8e5b640793237a2a8b4d0f932a3f39ed2e4ef1d47687da73fad86ef340"
+    },
+    "1187": {
+      "english": "Flashbang",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/flashbang_small.png",
+      "sha256": "d97e979f3b836a766a6a325ac7b97029776d0baceac8de66677a5a48cf61f95f"
+    },
+    "1194": {
+      "english": "Fey Magic",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/feymagic_small.png",
+      "sha256": "f3555d3b678332dcf33863efc563697b4fed9e66088d9847eb237bf8a5fbba00"
+    },
+    "1195": {
+      "english": "Giant Slayer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/giantslayer_small.png",
+      "sha256": "1a7af04f00a9cfa2486d135f3d0db5bd243cbe2234833f840d28f1878bcd0b12"
+    },
+    "1198": {
+      "english": "Holy Fire",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/holyfire_small.png",
+      "sha256": "5ae3c3471ae9464b40c0f28ee0f65956990bfa29d271c3212aa0c877e3c92af4"
+    },
+    "1204": {
+      "english": "Stackosaurus Rex",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/stackosaurusrex_small.png",
+      "sha256": "9a7eeb34bf481559086ca75f1e36af54b57455e318c1c9c3cd1a52d1c9d54da1"
+    },
+    "1205": {
+      "english": "ADAPt",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/adapt_small.png",
+      "sha256": "437cd9d6fb2652d4f5a9bb658073f1f922b8412ceaba0b465793702043c3dd9e"
+    },
+    "1206": {
+      "english": "escAPADe",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/escapade_small.png",
+      "sha256": "437cd9d6fb2652d4f5a9bb658073f1f922b8412ceaba0b465793702043c3dd9e"
+    },
+    "1208": {
+      "english": "Orbital Laser",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/orbitallaser_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "1211": {
+      "english": "It's Killing Time",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/itskillingtime_small.png",
+      "sha256": "17f141ae171dc66a4ef3c9bec1ee5fcf94197a56b185a7222b200ace3b0e0a27"
+    },
+    "1214": {
+      "english": "Spin To Win",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/spintowin_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "1220": {
+      "english": "Fan The Hammer",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/fanthehammer_small.png",
+      "sha256": "5e94ef8e5b640793237a2a8b4d0f932a3f39ed2e4ef1d47687da73fad86ef340"
+    },
+    "1225": {
+      "english": "Dual Wield",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dualwield_small.png",
+      "sha256": "5926329aa19e8ffdfe996dee3863ed34e45b2b66f7c6bbcef94d67f8a4596bec"
+    },
+    "1237": {
+      "english": "Transmute: Gold",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/transmutegold_small.png",
+      "sha256": "1fea794f6938eeae643093bbf7ded715696c6dd0d58fb6aaaa9824d0e7a74fa9"
+    },
+    "1238": {
+      "english": "Transmute: Prismatic",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/transmuteprismatic_small.png",
+      "sha256": "1fea794f6938eeae643093bbf7ded715696c6dd0d58fb6aaaa9824d0e7a74fa9"
+    },
+    "1243": {
+      "english": "Transmute: Chaos",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/transmutechaos_small.png",
+      "sha256": "1fea794f6938eeae643093bbf7ded715696c6dd0d58fb6aaaa9824d0e7a74fa9"
+    },
+    "1250": {
+      "english": "Slow And Steady",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slowandsteady_small.png",
+      "sha256": "5926329aa19e8ffdfe996dee3863ed34e45b2b66f7c6bbcef94d67f8a4596bec"
+    },
+    "1301": {
+      "english": "Divine Intervention",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/slowactingpainkillers_small.png",
+      "sha256": "e701c5de5219c1775acad02cd5f095b788edd3494d918edee820ae45784e0dd6"
+    },
+    "1305": {
+      "english": "Leg Day",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/legday_small.png",
+      "sha256": "07dd3726f984541544cd690cc4fe6f8f23a166fa1b57ba828fa81291fe373380"
+    },
+    "1308": {
+      "english": "FireFox",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/firfox_small.png",
+      "sha256": "e3357253d1762ddbebf0b03930ef9cbae261453779fb278e20223014c5c859bc"
+    },
+    "1310": {
+      "english": "Clown College",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/clowncollege_small.png",
+      "sha256": "a564af0525bf2e01f8cb1133c7fd38d436e79ba8d076488c31c9117a6427622a"
+    },
+    "1311": {
+      "english": "Overflow",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/overflow_small.png",
+      "sha256": "c8f1642d458ccadf255be8e45c72fd8d148c8df9411c6f1df815747fd6bb0640"
+    },
+    "1313": {
+      "english": "Cheating",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/cheating_small.png",
+      "sha256": "478f4cf34457c949cf0a6426669cec62216199412db9a883d540db6e90e03e96"
+    },
+    "1314": {
+      "english": "Mighty Shield",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/mightyshield_small.png",
+      "sha256": "659ccad6ab6f0a0587dcf9bf21de3febe3acffc9f038bc5a815361f78f342437"
+    },
+    "1315": {
+      "english": "Swift and Safe",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/swiftandsafe_small.png",
+      "sha256": "5c5b8fd2b168aeae6cf23afc98d91e8af551450589524b94e16830f3d2012c72"
+    },
+    "1316": {
+      "english": "Wind Beneath Blade",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/windbeneathblade_small.png",
+      "sha256": "715930c53f9d0d39f2729896877c6a1acf4fa5d59cf7451e2f1512ddc24d0cd5"
+    },
+    "1317": {
+      "english": "Upgrade Cutlass",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradecutlass_small.png",
+      "sha256": "2c2373b6d82c8e0e053fd95466961920ab4404dc6109b311e0ef202489f3cce2"
+    },
+    "1318": {
+      "english": "Upgrade Zhonya's",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradezh_small.png",
+      "sha256": "ef9b50134d83a8a8919dc16c3af8b89b726909d3ab9ec5d729f09d7bfe69e157"
+    },
+    "1319": {
+      "english": "Upgrade Immolate",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradeimmolate_small.png",
+      "sha256": "7e54b3910ab5a1e37076f9c8088ee16bbdf76db20f450650aeeee81d92b9ca78"
+    },
+    "1320": {
+      "english": "Upgrade Collector",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradecollector_small.png",
+      "sha256": "2c2373b6d82c8e0e053fd95466961920ab4404dc6109b311e0ef202489f3cce2"
+    },
+    "1321": {
+      "english": "Gash",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/darksteeltalons_small.png",
+      "sha256": "485cc9492bb544dc306d9b493bb9a428775f9e3d70f054dd905256eed4833136"
+    },
+    "1322": {
+      "english": "Get Excited!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/getexcited_small.png",
+      "sha256": "19c778cd65b0b7b2a059a069db5f3be03f81780b243e1e757ee53e04af92a9c6"
+    },
+    "1323": {
+      "english": "Cruelty",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/cruelty_small.png",
+      "sha256": "dcf5a7a5e76fb4caaeea8e5bb76fe7ade5a77e7e632b3092f1132e29910fcffb"
+    },
+    "1324": {
+      "english": "Protein Shake",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/proteinshake_small.png",
+      "sha256": "72cef78b159ae6ee0b22da9d4bb5c85ec11981d283ad8d89fe81fec4cd2096a4"
+    },
+    "1325": {
+      "english": "Glass Cannon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/glasscannon_small.png",
+      "sha256": "81715f42e82d1e0e54198a20e922de43c5d23c8b8d00441396e540fc04c014d6"
+    },
+    "1326": {
+      "english": "Nightstalking",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/nightstalking_small.png",
+      "sha256": "81715f42e82d1e0e54198a20e922de43c5d23c8b8d00441396e540fc04c014d6"
+    },
+    "1327": {
+      "english": "Adamant",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/adamant_small.png",
+      "sha256": "6273e29243d2b24b9b909029bb2bf2f0cab8e21a82cf96f68aff327349f711a8"
+    },
+    "1328": {
+      "english": "Critical Rhythm",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/criticalrhythm_small.png",
+      "sha256": "19c778cd65b0b7b2a059a069db5f3be03f81780b243e1e757ee53e04af92a9c6"
+    },
+    "1329": {
+      "english": "Biggest Snowball Ever",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/biggestsnowballever_small.png",
+      "sha256": "4dffb019075bb662b0c3eebbd4237d33a5651149806645e86a46a0afab68a604"
+    },
+    "1330": {
+      "english": "ReEnergize",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/mobiuscoil_small.png",
+      "sha256": "9d84463b164597859e4cd56fc74d948e4c786016be093a716cb17e10d9965dee"
+    },
+    "1331": {
+      "english": "Empyrean Promise",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/empyreampromise_small.png",
+      "sha256": "4a1695cefa0417f2a96a0541d842466b887281784c7ede39a3eb6c45cd70b897"
+    },
+    "1332": {
+      "english": "Ominous Pact",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/wisdomofages_small.png",
+      "sha256": "40fff6f24993d07a76dde185769350ddefbd09f257fded708ec28441caf791da"
+    },
+    "1333": {
+      "english": "Escape Plan",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/escapeplan_small.png",
+      "sha256": "d58a15523ba5f09f3f912de91d4adce8dc3cf040d8dfaa776b53970e59f51c2e"
+    },
+    "1334": {
+      "english": "Snowball Upgrade",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/snowballupgrade_small.png",
+      "sha256": "8f5310191ce5b318dfcb8675a93af6c43c0a2cc16aedf82ce657b11df736c812"
+    },
+    "1335": {
+      "english": "Goldrend",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/goldrend_small.png",
+      "sha256": "309d9b98baf91aeb9ad6aa2be9b69779ba5b790b6cf6e75f4ff32443fab528bd"
+    },
+    "1336": {
+      "english": "Upgrade Infinity Edge",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradeie_small.png",
+      "sha256": "c80ecd03c58a65abcbc2392d711086fbe65073a2a5088bfc5170d0cba6f49ca3"
+    },
+    "1337": {
+      "english": "King Me",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/kingme_small.png",
+      "sha256": "7be34676b3cfa725154189cf900b5ad0774950e2911172fd677dad3f390718eb"
+    },
+    "1338": {
+      "english": "Upgrade Hubris",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradehubris_small.png",
+      "sha256": "309d9b98baf91aeb9ad6aa2be9b69779ba5b790b6cf6e75f4ff32443fab528bd"
+    },
+    "1339": {
+      "english": "Laser Heal",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/laseheal_small.png",
+      "sha256": "cca9e42beeafbf877c14035cdf5e0d847e3560213ecb7e8a11862fa2d9df9d54"
+    },
+    "1340": {
+      "english": "Upgrade Mikael's Blessing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgrademikaelsblessing_small.png",
+      "sha256": "96a433f8395911c09cd56ca58e356b22b48eb42926af8680a8e88dfec460fb74"
+    },
+    "1341": {
+      "english": "Hat on a Hat",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/hatonahat_small.png",
+      "sha256": "5e66e24dc412896299c1cdefa9cf19d60750523dace8912ab0758e9485a18c87"
+    },
+    "1342": {
+      "english": "Snowball Roulette",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/snowballupgrade_small.png",
+      "sha256": "8f5310191ce5b318dfcb8675a93af6c43c0a2cc16aedf82ce657b11df736c812"
+    },
+    "1343": {
+      "english": "Sneakerhead",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/sneakerhead_small.png",
+      "sha256": "0eb7f7200c28d1429975eac27fe341234fefe9ae9c664d43e6201163fd46c735"
+    },
+    "1344": {
+      "english": "Final Form",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/finalform_small.png",
+      "sha256": "ae9268735eb0b3905e5163c13c675c6ebe4795e6f7a03e9ea505a8a84a2b4975"
+    },
+    "1345": {
+      "english": "Spiritual Purification",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/spiritualpurification_small.png",
+      "sha256": "ea66e5a127cc00b1319fb9fa2267a02447d4608d70618c1b6083a15aa4de0260"
+    },
+    "1346": {
+      "english": "Vampirism",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/vampired_small.png",
+      "sha256": "982ac635fef918e03110788621f0e9c39a2ed9d2a3adbf5779ec3bf40f5c2e84"
+    },
+    "1347": {
+      "english": "Poltergeist",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/poltergeist_small.png",
+      "sha256": "9fa80e88cd577aab2e8241fd509b8e3dcaf7cb82fd483feef69ae15d5a1227dd"
+    },
+    "1348": {
+      "english": "Flash 2",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/flash2_small.png",
+      "sha256": "478f4cf34457c949cf0a6426669cec62216199412db9a883d540db6e90e03e96"
+    },
+    "1349": {
+      "english": "Ultimate Awakening",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/zerohour_small.png",
+      "sha256": "c186c0de60b1764a36d116528407428cf5c9379d6bd8ac07a07fac850343fdef"
+    },
+    "1353": {
+      "english": "Tank Engine",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/tank_engine_small.png",
+      "sha256": "851d37238c6b387a7aaaeb996e03f8a25a18fe4125cd3a99cb54917da318a7fa"
+    },
+    "1356": {
+      "english": "Critical Missile",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/criticalmissile_small.png",
+      "sha256": "0f43beabe222208fd44ebf107b20c6bfdff53cfebce5034a78e17ef79e74689f"
+    },
+    "1358": {
+      "english": "Pinball",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/pinballsnowball_small.png",
+      "sha256": "4dffb019075bb662b0c3eebbd4237d33a5651149806645e86a46a0afab68a604"
+    },
+    "1361": {
+      "english": "Icathia's Fall",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/quest_voidimmolation_small.png",
+      "sha256": "6164a913236a61ccd473376f8685639e75869a6c36a9df290f3b69392d6127f1"
+    },
+    "1372": {
+      "english": "I'm a Baby Kitty Where is Mama",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/babykitty_small.png",
+      "sha256": "5d6a12d8ddb26e564b3bf3fef8887378144d576cb07a361d626d65241e1ba3c7"
+    },
+    "1373": {
+      "english": "Shrink Engine",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/shrinkengine_small.png",
+      "sha256": "ccb19f67eb9d2163c550eb3b57ca7d470de60b9be167d3d6f46abf4e42044829"
+    },
+    "1375": {
+      "english": "Soul Eater",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/souleater_small.png",
+      "sha256": "d0217d93a8733b9cb010a4b166c5099c74717dff3b89abf39b099e641185b770"
+    },
+    "1379": {
+      "english": "Upgrade Sword of Blossoming Dawn",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgrademikaelsblessing_small.png",
+      "sha256": "9fcf159f89c113454b499403112a8bf949d2d5f2fdb828b4e438b7a8529732b8"
+    },
+    "1384": {
+      "english": "Donation",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/donation_small.png",
+      "sha256": "e4bbde49ad0a8d05609cc59606beeb6e8abebffd9a9ace749a2fd4d8c54947b1"
+    },
+    "1386": {
+      "english": "Spin Me Right Round",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/youspinmerightround_small.png",
+      "sha256": "3c8077913df6e438325790574a8e28de1c97d1d70d214f06d457791ae4e6e764"
+    },
+    "1388": {
+      "english": "Infinite Recursion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/infiniterecursion_small.png",
+      "sha256": "63190cfa5a944047987e563966014334e646844f27a99b317026d94d447f14e3"
+    },
+    "1389": {
+      "english": "Hand of Baron",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/handofbaron_small.png",
+      "sha256": "8a325c2610eece281ec17811e9ae9694a89d0bec91b69ab584be679aabbfe28b"
+    },
+    "1390": {
+      "english": "Phenomenal Evil",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/aram_phenomenalevil_small.png",
+      "sha256": "7aa0d22747eac7f195436d1f8ee4ff2a176107a07f44a125a4ede4f115733e95"
+    },
+    "1391": {
+      "english": "Red Envelopes",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/redenvelopes_small.png",
+      "sha256": "8c8323aa2b993313bc55117599a1a1645b5d0b0d9ab4ff8add947862e1fb4fc1"
+    },
+    "1392": {
+      "english": "Holy Snowball",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/goldensnowball_small.png",
+      "sha256": "c742df46c5c7ff6ed08cef48e345c96f10c383a6f9abe7ab0fb4d3ffdf93b596"
+    },
+    "1397": {
+      "english": "Cerberus",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/cerberus_small.png",
+      "sha256": "6f40b80692da5f4593b2d672d423d8f1eb0112b14603d1038ded82ead267c4c9"
+    },
+    "1400": {
+      "english": "Final City Transit",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/nightstalking_small.png",
+      "sha256": "faec17577b23701e508dbb6071123b657ee88ac30575f164ee9a499f15658d35"
+    },
+    "1401": {
+      "english": "Growth Spurt",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/growthspurt_small.png",
+      "sha256": "9653e62ac47082545f11fd128d181683d0cc5969fb42d18e4397b7b850bfd044"
+    },
+    "1402": {
+      "english": "Stats on Stats on Stats!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/statsonstatsonstats_small.png",
+      "sha256": "b4840109d096a5400bd6b76be5c104e55174a6d44a658566dc84d013c70fb5a2"
+    },
+    "1403": {
+      "english": "Stats on Stats!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/statsonstats_small.png",
+      "sha256": "b4840109d096a5400bd6b76be5c104e55174a6d44a658566dc84d013c70fb5a2"
+    },
+    "1404": {
+      "english": "Stats!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/stats_small.png",
+      "sha256": "b4840109d096a5400bd6b76be5c104e55174a6d44a658566dc84d013c70fb5a2"
+    },
+    "1405": {
+      "english": "Speed Demon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/speeddemon_small.png",
+      "sha256": "7d360c2f6313cf27c68267b5ce72aad086bd5aecaef6e31bcc0c348d6e50ee54"
+    },
+    "1406": {
+      "english": "Grandma's Chili Oil",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/grandmaschilioil_small.png",
+      "sha256": "d582592b8f6ced05bbfbe483594ad60fc30d5dee9dff9cc0fe3f770a6849e173"
+    },
+    "1409": {
+      "english": "Poro Blaster",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/poroblast_small.png",
+      "sha256": "48188e5f443618f7d81b90cfc0bd86bb99ae946e307343525b2857fff57f61fe"
+    },
+    "1411": {
+      "english": "Upgrade Thornmail",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradecollector_small.png",
+      "sha256": "59995bfe7f13db53360b49b2b125538f40cc868d2d7b36cc7e76833273c37509"
+    },
+    "1413": {
+      "english": "Stuck In Here With Me",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/stuckinherewithme_small.png",
+      "sha256": "659c952004442fce6ba588a521fbbe6684e05490d2bf4694738918b97ea1f1e6"
+    },
+    "1414": {
+      "english": "Droppybara",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/orbitallaser_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "1415": {
+      "english": "Twin Fire",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/twinfire_small.png",
+      "sha256": "539733efcefb95498356b3a86969de765d20f60631e9eed0b6d43abbc7c69fff"
+    },
+    "1416": {
+      "english": "Hextech Soul",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/infernalsoul_small.png",
+      "sha256": "d426232d6cb1360e27d9f48c5a7275abbd87d8376dd223513d162ae3730e2ca3"
+    },
+    "1418": {
+      "english": "Crack Open That Egg",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/crackopenthategg_small.png",
+      "sha256": "8f9576f6d4a16c67a83ca0ab02b3baa5f5c328f2260d4df8f7af791ce20e82e0"
+    },
+    "1420": {
+      "english": "Sonata",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/sonata_small.png",
+      "sha256": "a29df50edea03b80db3a8269acee75fa0d73452fd49c928e0a8c9c3d9920177c"
+    },
+    "1421": {
+      "english": "Prom Queen",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/promqueen_small.png",
+      "sha256": "73327d7a95ac159cd9e97b0e8c8b0e0eb4d298d0eec05388114d930f7e27b2ae"
+    },
+    "1424": {
+      "english": "???",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/missingping_small.png",
+      "sha256": "3fdeca489a0024cc0a2315ba1384f8d4f1036772424930efabb6c847ecac3d41"
+    },
+    "1996": {
+      "english": "Upgrade Sheen",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradesheen_small.png",
+      "sha256": "982ac635fef918e03110788621f0e9c39a2ed9d2a3adbf5779ec3bf40f5c2e84"
+    },
+    "2001": {
+      "english": "Heads Up Cupcake!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/watchoutgrapefruit_small.png",
+      "sha256": "367681e901c256cdebaf0d2e83e92079c60c02be054e7429889cb9406f1266b6"
+    },
+    "2002": {
+      "english": "Void Rift",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/voidrift_small.png",
+      "sha256": "042e807af21064cb323ccb8640e94b9939b04e0b2a151637fcb6c6fd742f4c1a"
+    },
+    "2003": {
+      "english": "Bounce of the Poro King",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/poroking_small.png",
+      "sha256": "8651ac7f2df287442a9faef9f46174eedab3481cf6d72e307153a9efaa3fbb73"
+    },
+    "2004": {
+      "english": "Empowered By The Faithful",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/empoweredbythefaithful_small.png",
+      "sha256": "0301211b31f4706b711bc53f48ad36f68a82ae0f68382b68aeff4f74d242480d"
+    },
+    "2005": {
+      "english": "Triggered Inferno",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/madscientist_small.png",
+      "sha256": "2eed5ef15a074abc283da699daa7fc0bd9e22c8d5ad7e869a510c09569f496e7"
+    },
+    "2006": {
+      "english": "Dropkick",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/dropkick_small.png",
+      "sha256": "aabd3443fa1245205d87c6db2e7dea33725317c6ebfd4b6061c757864da679b9"
+    },
+    "2007": {
+      "english": "Devil on Your Shoulder",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/littledevil_small.png",
+      "sha256": "b01375b9eb6ea6a18136c774f0e6b86c729cc2212502b426d6def9d09fbeb92f"
+    },
+    "2008": {
+      "english": "Weighted Popoffs",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/weightedpopoffs_small.png",
+      "sha256": "627b63814d02c481e2198f75e043341ef47c93325c89ddefeacadc2abc8dc788"
+    },
+    "2009": {
+      "english": "Zealot",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/zealot_small.png",
+      "sha256": "539733efcefb95498356b3a86969de765d20f60631e9eed0b6d43abbc7c69fff"
+    },
+    "2010": {
+      "english": "Double Tap",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dualwield_small.png",
+      "sha256": "5926329aa19e8ffdfe996dee3863ed34e45b2b66f7c6bbcef94d67f8a4596bec"
+    },
+    "2016": {
+      "english": "Juiced",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/juiced_small.png",
+      "sha256": "7f70db3e175873407ccb35633eb5eae16301e75d8994f283e87e344888209ab3"
+    },
+    "2018": {
+      "english": "Purist - Caster",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/puristcaster_small.png",
+      "sha256": "050e0cf11ae0194c618b4fcac48a238c674259eeb32bc9de3dd386490e0edb79"
+    },
+    "2024": {
+      "english": "Crit 'n Cast",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/critncast_small.png",
+      "sha256": "eca7d80fcdb2a2cfeabf9805eea5e3146b02317de606fcdbdf005506c77c1113"
+    },
+    "2026": {
+      "english": "Kill Secured",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/killsecure_small.png",
+      "sha256": "5bd8475412e4e20282893f854c89d946e6ae614e8b922145cd7d3ae2e9a730fd"
+    },
+    "2031": {
+      "english": "DropBear",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/drop_bear_small.png",
+      "sha256": "ec3fd068956543c4969bdfd20fc8380f28c0d54e4f27a445653ff94fa84bfec3"
+    },
+    "2032": {
+      "english": "Shark Bait",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/fishbait_small.png",
+      "sha256": "f430f4ff37056eb3e0e37043f5c679681e7a3cf67aad5a7556d03351a86f7085"
+    },
+    "2034": {
+      "english": "Shark Tempest",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/sharktempest_small.png",
+      "sha256": "37f619d2639fa1cae861e0912ed6f39ae1f963aa000c33570fbfef524dca907f"
+    },
+    "2042": {
+      "english": "Hide on Bush",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/brushpower_small.png",
+      "sha256": "cc32200164d2bb52692b873b80ef81eb5d17a9c41c1e233d1c1b8d5dc8d920b1"
+    },
+    "2043": {
+      "english": "Nature is Healing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/natureishealing_small.png",
+      "sha256": "96a433f8395911c09cd56ca58e356b22b48eb42926af8680a8e88dfec460fb74"
+    },
+    "2046": {
+      "english": "Poro Stampede",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/questporocharge_small.png",
+      "sha256": "ae50782e7a43c25100401094429a9efd1cf36fd4ce6930887d12c2a1c84e4a84"
+    },
+    "2054": {
+      "english": "Tripleshot",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_prismatic.png",
+      "sha256": "44bd8e4927a79f695341d269ef278b783269bf6c01e63192ade053e5cf1b180d"
+    },
+    "2055": {
+      "english": "Multishot",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_prismatic.png",
+      "sha256": "44bd8e4927a79f695341d269ef278b783269bf6c01e63192ade053e5cf1b180d"
+    },
+    "2062": {
+      "english": "Echo Cast",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_prismatic.png",
+      "sha256": "44bd8e4927a79f695341d269ef278b783269bf6c01e63192ade053e5cf1b180d"
+    },
+    "2063": {
+      "english": "Dimension Shift",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/whenthedarknesscomes_small.png",
+      "sha256": "8c3f520984ca28b4b95c1986e795c01e94ace97a40b44b9e6435158355902feb"
+    },
+    "2064": {
+      "english": "Quickstep",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "21a3accbd308d818140347ce9e584ff86f6e5be151f46c938af29183a6b1bac4"
+    },
+    "2065": {
+      "english": "Terror",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/desecrator_large.png",
+      "sha256": "830c6310df1ad274c0f15f7ab02e838f83dafcea5cb2c841c1360b93b854ddd9"
+    },
+    "2072": {
+      "english": "Spell Split",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_prismatic.png",
+      "sha256": "44bd8e4927a79f695341d269ef278b783269bf6c01e63192ade053e5cf1b180d"
+    },
+    "2073": {
+      "english": "Siphon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_silver.png",
+      "sha256": "6ee4074f6966d3f7f71e4dadc1c77f62912620d232d8ee205e0c2263961df89c"
+    },
+    "2076": {
+      "english": "Stay Resolute",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_silver.png",
+      "sha256": "6ee4074f6966d3f7f71e4dadc1c77f62912620d232d8ee205e0c2263961df89c"
+    },
+    "2077": {
+      "english": "Ravenous Bind",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradehubris_small.png",
+      "sha256": "e3bab2c962ded37613fb3ae58bb76bd1b9774ae0bad71782bbdf0792d9f99100"
+    },
+    "2078": {
+      "english": "Chain Reaction",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "21a3accbd308d818140347ce9e584ff86f6e5be151f46c938af29183a6b1bac4"
+    },
+    "2080": {
+      "english": "Snowblast",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/snowbomb_small.png",
+      "sha256": "8f5310191ce5b318dfcb8675a93af6c43c0a2cc16aedf82ce657b11df736c812"
+    },
+    "2082": {
+      "english": "Our Healing",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/equillibrium_small.png",
+      "sha256": "2e46f6d496815443d5797dd7496f02321515c0c872142d20a4d64c947e5807e2"
+    },
+    "2083": {
+      "english": "Tooth Fairy",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/questburstingteeth_small.png",
+      "sha256": "ae50782e7a43c25100401094429a9efd1cf36fd4ce6930887d12c2a1c84e4a84"
+    },
+    "2087": {
+      "english": "Archmage",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/eureka_small.png",
+      "sha256": "c95f04074ef7dab13159020839f62642dd01e7088b483ea05d30285c9834d111"
+    },
+    "2088": {
+      "english": "Snowday",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/snowday_small.png",
+      "sha256": "8f5310191ce5b318dfcb8675a93af6c43c0a2cc16aedf82ce657b11df736c812"
+    },
+    "2089": {
+      "english": "Yowch, My Coins!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/youchmycoins_small.png",
+      "sha256": "4914ae6469807ac36d0abe2d5f5435cf3817a7318d0cc5b870a94f3086742d40"
+    },
+    "2091": {
+      "english": "Endless Decimation",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/endlessdecimate_small.png",
+      "sha256": "17b07d9e8f93c2598362bdec9e68d385761410cce1f5d2251a2d53efc83dac0f"
+    },
+    "2095": {
+      "english": "High Roller",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/highroller_small.png",
+      "sha256": "965fbc2114dd95ab31ec7a8cd85cdc70c4274c1e3d4012ea233296e3de4dfb81"
+    },
+    "2096": {
+      "english": "Lil' Extra Help",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "21a3accbd308d818140347ce9e584ff86f6e5be151f46c938af29183a6b1bac4"
+    },
+    "2097": {
+      "english": "Void Dash",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "21a3accbd308d818140347ce9e584ff86f6e5be151f46c938af29183a6b1bac4"
+    },
+    "2098": {
+      "english": "En Passant",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/dashing_small.png",
+      "sha256": "1506fdec2884a5d2f05b6131c37ed428c44c948baf2ad8dfbb2eeecddb232c02"
+    },
+    "2099": {
+      "english": "Rite of Ascension",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/glasscannon_small.png",
+      "sha256": "faec17577b23701e508dbb6071123b657ee88ac30575f164ee9a499f15658d35"
+    },
+    "2100": {
+      "english": "Pursuit of Haste",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "21a3accbd308d818140347ce9e584ff86f6e5be151f46c938af29183a6b1bac4"
+    },
+    "2102": {
+      "english": "Pressure Cooker",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/questpressurecooker_small.png",
+      "sha256": "9a81abd9c626ee5fac29c38b6152a5d6869209fc9aec8cb03e5124be3a3b7bca"
+    },
+    "2103": {
+      "english": "From Downtown",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/questbangbang_small.png",
+      "sha256": "1543c76b7407d7bc86e5c070992c3d15304937cb229853a98643255d1730f20f"
+    },
+    "2104": {
+      "english": "Spirit Bomb",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/spiritbomb_small.png",
+      "sha256": "04d0b318fc3ad139d53f1d09d0d106008ae7ac99a01199f86ef42548d959e9f6"
+    },
+    "2107": {
+      "english": "Hellbent",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/hellbent_small.png",
+      "sha256": "166e863ba151342bfcbcf9c1d0e1ce108d5802e26f93a947ecfcc9e43b8e38df"
+    },
+    "2108": {
+      "english": "Support Main",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/questsupportmain_small.png",
+      "sha256": "ac659593be627f37928803cbca597cee29fab78ab278a44375625d076db0301e"
+    },
+    "2109": {
+      "english": "Snap Back",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "21a3accbd308d818140347ce9e584ff86f6e5be151f46c938af29183a6b1bac4"
+    },
+    "2111": {
+      "english": "BONK!",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/bonk_large.png",
+      "sha256": "093b18347a8b45cc091b6b194c5275eeddf5cd1129d7b2e741933d5eb2861947"
+    },
+    "2115": {
+      "english": "Squishy Slappy Grab",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/squishyslappygrab_small.png",
+      "sha256": "13f8ca9496886b4ee13e14a3f29f68da0ff2dd9d7fba79ee7384e6ee3fec080d"
+    },
+    "2116": {
+      "english": "Pursuit of Power",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/marksmage_small.png",
+      "sha256": "5e94ef8e5b640793237a2a8b4d0f932a3f39ed2e4ef1d47687da73fad86ef340"
+    },
+    "2118": {
+      "english": "Ult Bot",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/skipthebasic_small.png",
+      "sha256": "c9981506fe65c29e259557ff41ea206784456e9cace22782a5f9c0902bd00fc6"
+    },
+    "2119": {
+      "english": "Overextender",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/overextender_small.png",
+      "sha256": "60b3320bb95098639e8d6009079401dd59c5b94a5706bc8afbcd1dd340776122"
+    },
+    "2123": {
+      "english": "Overloaded",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_prismatic.png",
+      "sha256": "7b44b9ad23099a79b11e4aac83d76e02b5b7f8761bae8189096270bfafd01319"
+    },
+    "2125": {
+      "english": "It's Go Time",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_silver.png",
+      "sha256": "fea7f4f52e62c5808cd664eb5b5cb162e9331c1d6f22919cbd00c51c4f3aedd7"
+    },
+    "2126": {
+      "english": "Reload",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lightningstrikes_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "2127": {
+      "english": "Forged By The Master",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/forgedbythemaster_small.png",
+      "sha256": "1e0b75f606891eb8302c96ef86a5be4876811aee09a8ad830b0c1890e4781d8b"
+    },
+    "2128": {
+      "english": "Combusting Interest",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/bloodmoney2_small.png",
+      "sha256": "5f53956f36e8921fa8016db9c79bdc28a7bc6d1aae99f83a9335a6d8134a7abe"
+    },
+    "2129": {
+      "english": "Terrain'd",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/lightningstrikes_small.png",
+      "sha256": "be6667da1262c15d426d445421dcf9852b6bb2f907f3ab82babd73617e11527f"
+    },
+    "2131": {
+      "english": "Don't Change the Channel",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/dontchangethechannel_small.png",
+      "sha256": "b388be7836b0499b17547b55e95b3e084ce85cfffd4478a1a3f7da33e1b7d1f5"
+    },
+    "2132": {
+      "english": "Warlock Juicebox",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/warlockjuicebox_small.png",
+      "sha256": "cca9e42beeafbf877c14035cdf5e0d847e3560213ecb7e8a11862fa2d9df9d54"
+    },
+    "2133": {
+      "english": "Mercy's Strike",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_gold.png",
+      "sha256": "21a3accbd308d818140347ce9e584ff86f6e5be151f46c938af29183a6b1bac4"
+    },
+    "2134": {
+      "english": "Surge Field",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/surgefield_small.png",
+      "sha256": "ae9268735eb0b3905e5163c13c675c6ebe4795e6f7a03e9ea505a8a84a2b4975"
+    },
+    "2135": {
+      "english": "Pin Cushion",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/symphonyofwar_small.png",
+      "sha256": "cb64df366e029adc732a47d171a347d2cf4ac39dcfb36b1fdbc900a6ed5866a7"
+    },
+    "2136": {
+      "english": "Trusty Weapon",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_silver.png",
+      "sha256": "fea7f4f52e62c5808cd664eb5b5cb162e9331c1d6f22919cbd00c51c4f3aedd7"
+    },
+    "2137": {
+      "english": "Pat On The Back",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/patontheback_small.png",
+      "sha256": "715930c53f9d0d39f2729896877c6a1acf4fa5d59cf7451e2f1512ddc24d0cd5"
+    },
+    "2138": {
+      "english": "Adaptive Ward",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_silver.png",
+      "sha256": "fea7f4f52e62c5808cd664eb5b5cb162e9331c1d6f22919cbd00c51c4f3aedd7"
+    },
+    "2139": {
+      "english": "Porcupine",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/pincushion_small.png",
+      "sha256": "aabd3443fa1245205d87c6db2e7dea33725317c6ebfd4b6061c757864da679b9"
+    },
+    "2140": {
+      "english": "Upgrade Ravenous Hydra",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradesheen_small.png",
+      "sha256": "8d9442ce8261411ec20a09033497368b746c432316d8de9986fa948a30c85e7e"
+    },
+    "2141": {
+      "english": "Ultra Hydra",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/ultrahydra_small.png",
+      "sha256": "6f7253259b7aac9389a77f972f2a433a8e3bd07b649992d119087119e62b9507"
+    },
+    "2143": {
+      "english": "Upgrade Sundered Sky",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradeie_small.png",
+      "sha256": "3e3fea84bb46bccda2d8d88a836268867187156d1d1bd1e14eced01cbac7cc58"
+    },
+    "2144": {
+      "english": "Bolstered",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/genericabilityaugmenticon_silver.png",
+      "sha256": "fea7f4f52e62c5808cd664eb5b5cb162e9331c1d6f22919cbd00c51c4f3aedd7"
+    },
+    "2148": {
+      "english": "Double Strike",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/adamant_small.png",
+      "sha256": "5d5855983340849422bce00fed76a3da1c90d72f2f03367f216248dd13246d41"
+    },
+    "2157": {
+      "english": "Upgrade Death's Dance",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgradedeathdance_small.png",
+      "sha256": "af082c19f6e282ab0efade1983637555b4b372d5c0a361bd45c72b85313aa4bd"
+    },
+    "7001": {
+      "english": "Upgrade: Zz'Rot Portal",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgrade_zzrotportal_small.png",
+      "sha256": "1b7ebbcee3ea07a040fdd4e67e682e4fc7e7ea8baf40e4b724a301beb11d501f"
+    },
+    "7002": {
+      "english": "Don't Stop Cleavin'",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/dont_stop_cleaving_small.png",
+      "sha256": "ef0ea7a7db3adf60ce17f555c5b618df97e2838f2144320acebbddbc5fd92ee4"
+    },
+    "7003": {
+      "english": "Do or Die",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/do_or_die_small.png",
+      "sha256": "ef0ea7a7db3adf60ce17f555c5b618df97e2838f2144320acebbddbc5fd92ee4"
+    },
+    "7004": {
+      "english": "Drink Up",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/drink_up_small.png",
+      "sha256": "1b7ebbcee3ea07a040fdd4e67e682e4fc7e7ea8baf40e4b724a301beb11d501f"
+    },
+    "7005": {
+      "english": "Haste Makes Waste",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/haste_makes_waste_small.png",
+      "sha256": "cee11b554422620b5652ef7cae3716ab09864c9c074029387f1d1b4ac0f79e3a"
+    },
+    "7006": {
+      "english": "Stabby Stabby",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/stabby_stabby_small.png",
+      "sha256": "cee11b554422620b5652ef7cae3716ab09864c9c074029387f1d1b4ac0f79e3a"
+    },
+    "7007": {
+      "english": "Upgrade: Deathfire Grasp",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgrade_deathfire_small.png",
+      "sha256": "b1d49a6fc7fdc8876f14bb1b4197c40e5bf56d6a45466a92d6876d644ddebf2f"
+    },
+    "7008": {
+      "english": "Doran's Biggest Fan",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/dorans_fan_small.png",
+      "sha256": "1b7ebbcee3ea07a040fdd4e67e682e4fc7e7ea8baf40e4b724a301beb11d501f"
+    },
+    "7009": {
+      "english": "Upgrade: Innervating Locket",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/upgrade_innervating_small.png",
+      "sha256": "2641414c76987ff36860fc17a74321b632ca6a0b12cee8d4bf324c57398f3b33"
+    },
+    "7010": {
+      "english": "Time Warp: Heartsteel",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/fs_heart_steal_small.png",
+      "sha256": "ef0ea7a7db3adf60ce17f555c5b618df97e2838f2144320acebbddbc5fd92ee4"
+    },
+    "7011": {
+      "english": "True Eternity",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/do_or_die_small.png",
+      "sha256": "0af051ca99dad190d14e3bb4339d9c5f96934db4a03687d106feeec021e24d20"
+    },
+    "7012": {
+      "english": "The Hex Core",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/dont_stop_cleaving_small.png",
+      "sha256": "0af051ca99dad190d14e3bb4339d9c5f96934db4a03687d106feeec021e24d20"
+    },
+    "7013": {
+      "english": "Spirit of the Jungle Main",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/spiritualpurification_small.png",
+      "sha256": "ea66e5a127cc00b1319fb9fa2267a02447d4608d70618c1b6083a15aa4de0260"
+    },
+    "7014": {
+      "english": "Ragebait",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/stabby_stabby_small.png",
+      "sha256": "cee11b554422620b5652ef7cae3716ab09864c9c074029387f1d1b4ac0f79e3a"
+    },
+    "7015": {
+      "english": "Summoner's Safari",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/kiwi/augments/icons/stabby_stabby_small.png",
+      "sha256": "cee11b554422620b5652ef7cae3716ab09864c9c074029387f1d1b4ac0f79e3a"
+    },
+    "12317": {
+      "english": "Pandora's Box",
+      "url": "https://raw.communitydragon.org/16.20/plugins/rcp-be-lol-game-data/global/default/assets/ux/cherry/augments/icons/pandoras_box_small.png",
+      "sha256": "851c5fc89879abf3576b634a1afcf8ba3b5d49b2b11b278a23a3da1d82fec02a"
+    }
+  }
+}

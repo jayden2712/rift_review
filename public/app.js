@@ -10,7 +10,7 @@ import {
 } from './match-view.js';
 import {sampleMatchDetail} from './sample-loadouts.js';
 import {championAvatar as avatar} from './champion-icons.js';
-import {riotDataSource, loadLobbyRank, localizeLiveError} from './riot-source.js';
+import {riotDataSource, lcuDataSource, loadLobbyRank, localizeLiveError} from './riot-source.js';
 import {InputError} from './data.js';
 import {
   sampleHistory,
@@ -71,6 +71,7 @@ const sourceLabels = () => ({
   json: t('JSON do bạn nhập · chưa xác minh'),
   manual: t('Dữ liệu bạn nhập · chưa xác minh'),
   riot: t('Dữ liệu từ Riot API'),
+  lcu: t('Dữ liệu từ client LoL trên máy này'),
 });
 function filters() {
   const values = Object.fromEntries(new FormData($('#filters')).entries());
@@ -204,7 +205,7 @@ function metric(label, value, caption, extra = '') {
 function profile() {
   const p = history.profile;
   $('#profile-identity').innerHTML =
-    `<div class="identity-avatar" aria-hidden="true">${escape(initials(p.riotId))}</div><div><div class="profile-kicker">${t('HỒ SƠ NGƯỜI CHƠI ')}<span class="source-pill">${source === 'sample' ? t('MẪU GIẢ LẬP') : source === 'riot' ? 'RIOT API' : t('DỮ LIỆU NHẬP')}</span></div><h1>${escape(p.riotId)}</h1><p class="profile-meta">${escape(p.region || t('Khu vực chưa nhập'))} <span>·</span>${t(' {value5} trận trong lịch sử ', {value5: history.matches.length})}<span>·</span> ${filters().mode === 'mayhem' ? t('Sau trận · không áp dụng rank hoặc MMR Mayhem') : p.rank ? escape(p.rank) + t(' (tự nhập)') : t('Rank chưa cung cấp')}</p></div>`;
+    `<div class="identity-avatar" aria-hidden="true">${escape(initials(p.riotId))}</div><div><div class="profile-kicker">${t('HỒ SƠ NGƯỜI CHƠI ')}<span class="source-pill">${source === 'sample' ? t('MẪU GIẢ LẬP') : source === 'riot' ? 'RIOT API' : source === 'lcu' ? t('CLIENT LOL') : t('DỮ LIỆU NHẬP')}</span></div><h1>${escape(p.riotId)}</h1><p class="profile-meta">${escape(p.region || t('Khu vực chưa nhập'))} <span>·</span>${t(' {value5} trận trong lịch sử ', {value5: history.matches.length})}<span>·</span> ${filters().mode === 'mayhem' ? t('Sau trận · không áp dụng rank hoặc MMR Mayhem') : p.rank ? escape(p.rank) + t(' (tự nhập)') : t('Rank chưa cung cấp')}</p></div>`;
   const sourceTitle =
     source === 'device'
       ? t('Bản lưu trên thiết bị.')
@@ -212,11 +213,13 @@ function profile() {
         ? t('Bạn đang xem lịch sử mẫu.')
         : source === 'riot'
           ? t('Đã tải dữ liệu từ Riot.')
-          : t('Đang phân tích lịch sử bạn cung cấp.');
+          : source === 'lcu'
+            ? t('Đã tải dữ liệu từ client LoL.')
+            : t('Đang phân tích lịch sử bạn cung cấp.');
   const sourceMessage =
     source === 'sample'
       ? t('Các trận được giả lập. Tra cứu Riot ID ở trên để xem lịch sử thật.')
-      : source === 'riot'
+      : source === 'riot' || source === 'lcu'
         ? t('Đã tải {count} trận; {skipped} mục bị bỏ qua vì thiếu dữ liệu hoặc sai chế độ.', {
             count: history.matches.length,
             skipped: liveMeta?.warnings?.length || 0,
@@ -949,6 +952,62 @@ $('#riot-lookup').addEventListener('submit', event => {
   syncHistory();
 });
 $('#load-older').addEventListener('click', () => syncHistory(true));
+
+// Riot's public API does not serve ARAM Mayhem; the local server can read the signed-in
+// League client instead. Results merge into the same account's saved Mayhem history.
+async function importFromClient() {
+  if (lookupBusy) return;
+  const context = history;
+  lookupBusy = true;
+  lookupState = {kind: 'loading'};
+  renderLookupStatus();
+  try {
+    const result = await lcuDataSource.load();
+    if (history !== context)
+      throw new InputError([() => t('Dữ liệu đã thay đổi trong lúc tải. Hãy tra cứu lại.')]);
+    const profile = result.history.profile;
+    const query = {riotId: profile.riotId, region: profile.region.toLowerCase(), mode: 'mayhem'};
+    const saved = loadSavedHistory();
+    const base =
+      source !== 'sample' && matchesQuery(history, query)
+        ? history
+        : saved && matchesQuery(saved.history, query)
+          ? saved.history
+          : null;
+    if (base === history && liveMeta?.accountKey && result.meta.accountKey !== liveMeta.accountKey)
+      throw new InputError([() => t('Không thể gộp lịch sử khác tài khoản hoặc chế độ.')]);
+    const next = base
+      ? mergeHistoryPage(base, result.history, {prependNew: true, allowMixed: true})
+      : result.history;
+    const form = $('#riot-lookup');
+    form.elements.riotId.value = query.riotId;
+    form.elements.region.value = query.region;
+    form.elements.mode.value = 'mayhem';
+    activate(next, 'lcu', {
+      meta: result.meta,
+      query: {...query, count: 20, nextStart: result.meta.nextStart, hasMore: false},
+    });
+    $('#limit-filter').value = '500';
+    render();
+    switchView('history');
+    lookupState = {
+      kind: 'success',
+      values: {
+        loaded: result.history.matches.length,
+        total: history.matches.length,
+        id: history.profile.riotId,
+        region: history.profile.region,
+      },
+    };
+    notify(() => t('Lịch sử đã cập nhật.'));
+  } catch (error) {
+    lookupState = {kind: 'error', error};
+  } finally {
+    lookupBusy = false;
+    renderLookupStatus();
+  }
+}
+$('#lcu-import').addEventListener('click', importFromClient);
 const restored = loadSavedHistory();
 if (restored) {
   history = restored.history;
@@ -975,6 +1034,22 @@ fetch('/api/status', {credentials: 'same-origin'})
       lookupState = {kind: 'setup'};
       renderLookupStatus();
     }
+  })
+  .catch(() => {});
+
+// The League client import exists only when the local server enables it.
+fetch('/api/lcu/status', {credentials: 'same-origin'})
+  .then(response => (response.ok ? response.json() : null))
+  .then(status => {
+    if (status?.enabled !== true) return;
+    const button = $('#lcu-import');
+    button.hidden = false;
+    button.title =
+      status.status === 'connected'
+        ? t('Đang đăng nhập: {id}', {id: status.riotId})
+        : status.status === 'not_signed_in'
+          ? t('Client LoL chưa đăng nhập xong.')
+          : t('Mở client LoL trên máy này để nhập trận Mayhem.');
   })
   .catch(() => {});
 

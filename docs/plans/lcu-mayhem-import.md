@@ -1,6 +1,6 @@
 # Plan: import ARAM Mayhem from the League client (LCU)
 
-Status: plan only, nothing implemented. Written 2026-10-20.
+Status: phase 1 implemented and verified against a live client on 2026-10-20. Phase 2 not started.
 
 ## Why
 

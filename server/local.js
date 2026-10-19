@@ -106,7 +106,7 @@ async function serveStatic(incoming, url, directory, dataLabEnabled) {
   // Permit only known frontend files and game icons, never arbitrary nested paths.
   const allowed =
     /^[a-zA-Z0-9_-]+\.(html|js|css|svg)$/.test(file) ||
-    /^(champions|items|spells|runes|ranks)\/[a-zA-Z0-9]+\.png$/.test(file);
+    /^(champions|items|spells|runes|ranks|augments)\/[a-zA-Z0-9]+\.png$/.test(file);
   if (!allowed) return new Response('Not found', {status: 404});
   try {
     const root = await realpath(directory);
