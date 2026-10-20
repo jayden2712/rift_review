@@ -5,6 +5,7 @@ import staticTranslations from './i18n-en.js';
 import appTranslations from './i18n-app.js';
 import matchTranslations from './i18n-match.js';
 import domainTranslations from './i18n-domain.js';
+import coachingTranslations from './i18n-coaching.js';
 
 const translations = {
   ...staticTranslations,
@@ -14,6 +15,7 @@ const translations = {
   ...mayhemTranslations,
   ...mayhemMatchTranslations,
   ...mayhemDomainTranslations,
+  ...coachingTranslations,
 };
 const storageKey = 'rift-review-language';
 const supported = value => value === 'vi' || value === 'en';

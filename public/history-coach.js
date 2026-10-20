@@ -2,6 +2,8 @@ import {t, getLocale} from './i18n.js';
 import {generateReport, RULES} from './coach.js';
 import {exclusionReason} from './history-data.js';
 import {augmentStats} from './augment-stats.js';
+import {compareHistory} from './comparison.js';
+import {comparisonTakeaways} from './comparison-view.js';
 
 const sum = (list, field) => list.reduce((total, item) => total + item[field], 0);
 const ratio = (a, b) => (b > 0 ? a / b : null);
@@ -261,6 +263,7 @@ export function analyzeHistory(history, filters = {}) {
   );
   const priorities = findings.slice(0, 2);
   const trend = buildTrend(matches, roles);
+  const comparison = compareHistory({matches, details: history.details});
   return {
     engine: t('Quy tắc coaching v2'),
     coachingAvailable: true,
@@ -275,6 +278,7 @@ export function analyzeHistory(history, filters = {}) {
     strengths,
     priorities,
     trend,
+    comparison,
     coverage: [
       {label: 'CS', known: stats.cs.known, total: stats.n},
       {label: 'Vision', known: stats.vision.known, total: stats.n},
@@ -392,6 +396,9 @@ export function historyReportToMarkdown(r) {
       kp: format(s.participation === null ? null : s.participation * 100),
       kpKnown: s.participationKnown,
     }),
+    ...(r.comparison
+      ? [t('## So sánh để tìm điều cần tập'), ...comparisonTakeaways(r.comparison).map(line => '- ' + line)]
+      : []),
     t('## Điểm mạnh'),
     ...(r.strengths.length
       ? r.strengths.map(x =>
