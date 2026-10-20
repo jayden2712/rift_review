@@ -1,4 +1,5 @@
 import {t, getLocale} from './i18n.js';
+import {championAvatar} from './champion-icons.js';
 
 const escape = value =>
   String(value ?? '').replace(
@@ -117,4 +118,26 @@ export function renderComparison(c) {
     ? `<ul class="compare-takeaways">${takeaways.map(line => `<li>${escape(line)}</li>`).join('')}</ul>`
     : `<p class="small muted">${t('Chưa có khác biệt đủ rõ để rút ra điều cần tập.')}</p>`;
   return `<section class="coaching-section compare-section"><div class="section-heading"><h2>${t('So sánh để tìm điều cần tập')}</h2><span>${t('{known}/{total} trận có dữ liệu chi tiết', {known: c.coverage.withDetail, total: c.coverage.total})}</span></div><div class="panel compare-lead"><span class="eyebrow">${t('ĐIỂM RÚT RA')}</span>${lead}</div><div class="compare-grid">${laneCard(c.lane)}${winLossCard(c.winLoss)}${selfCard(c.self)}</div></section>`;
+}
+
+function signed(value, digits = 1) {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return '<span class="muted">—</span>';
+  const text = new Intl.NumberFormat(getLocale(), {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  }).format(Math.abs(value));
+  if (Math.abs(value) < 10 ** -digits / 2) return `<span class="muted">${text}</span>`;
+  return `<span class="${value > 0 ? 'win-text' : 'loss-text'}">${value > 0 ? '+' : '−'}${text}</span>`;
+}
+
+export function renderChampionBreakdown(rows) {
+  const body = rows.length
+    ? `<div class="table-scroll"><table class="compare-table champion-table"><thead><tr><th>${t('Tướng')}</th><th>${t('Trận')}</th><th>${t('Tỉ lệ thắng')}</th><th>KDA</th><th>${t('Chết / 30 phút')}</th><th>${t('CS / phút')}</th><th>${t('CS / phút so với đối thủ')}</th><th>${t('Vàng / phút so với đối thủ')}</th></tr></thead><tbody>${rows
+        .map(
+          row =>
+            `<tr><th scope="row"><span class="champion-cell">${championAvatar(row.champion, true)}<span>${escape(row.champion)}</span></span></th><td>${row.games}</td><td class="${row.wins / row.games >= 0.5 ? 'win-text' : 'loss-text'}">${Math.round((row.wins / row.games) * 100)}%</td><td>${formatMetric('kda', row.kda)}</td><td>${formatMetric('deathsPer30', row.deathsPer30)}</td><td>${formatMetric('csPerMin', row.csPerMin)}</td><td>${signed(row.csDiffPerMin)}</td><td>${signed(row.goldDiffPerMin, 0)}</td></tr>`,
+        )
+        .join('')}</tbody></table></div>`
+    : `<p class="small muted">${t('Cần ít nhất 3 trận với một tướng trong bộ lọc.')}</p>`;
+  return `<section class="coaching-section"><div class="section-heading"><h2>${t('Theo tướng')}</h2><span>${t('Tướng có từ 3 trận · so với đối thủ cùng đường')}</span></div><div class="panel">${body}</div></section>`;
 }

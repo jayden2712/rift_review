@@ -762,6 +762,24 @@ textarea:hover {
   }
 }
 
+.table-scroll {
+  overflow-x: auto;
+}
+.champion-table {
+  min-width: 640px;
+}
+.champion-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+.champion-cell .champion-avatar {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+}
+
 /* ---------- Tooltip ---------- */
 .game-tooltip {
   position: absolute;

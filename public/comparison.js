@@ -216,3 +216,43 @@ export function compareHistory({matches, details}) {
     winLoss: winLossComparison(covered),
   };
 }
+
+const MIN_CHAMPION_GAMES = 3;
+const meanOf = values => (values.length ? mean(values) : null);
+// Per-champion summary for champions with enough games, including the average gap to the
+// opposing laner, so a champion that wins despite losing lane stands out from one that
+// dominates lane.
+export function championBreakdown({matches, details}) {
+  const byChampion = new Map();
+  for (const match of matches) {
+    if (!byChampion.has(match.champion)) byChampion.set(match.champion, []);
+    byChampion.get(match.champion).push({match, metrics: matchMetrics(match, details?.[match.id])});
+  }
+  return [...byChampion]
+    .filter(([, rows]) => rows.length >= MIN_CHAMPION_GAMES)
+    .map(([champion, rows]) => {
+      const you = rows.filter(row => row.metrics.you);
+      const lane = you.filter(row => row.metrics.opponent);
+      const values = (list, pick) => list.map(pick).filter(known);
+      const kills = rows.reduce((total, row) => total + row.match.kills, 0);
+      const deaths = rows.reduce((total, row) => total + row.match.deaths, 0);
+      const assists = rows.reduce((total, row) => total + row.match.assists, 0);
+      const support = rows.every(row => row.match.role === 'Support');
+      return {
+        champion,
+        games: rows.length,
+        wins: rows.filter(row => row.match.result === 'Victory').length,
+        kda: deaths ? (kills + assists) / deaths : null,
+        deathsPer30: meanOf(values(you, row => row.metrics.you.deathsPer30)),
+        csPerMin: support ? null : meanOf(values(you, row => row.metrics.you.csPerMin)),
+        laneGames: lane.length,
+        csDiffPerMin: support
+          ? null
+          : meanOf(values(lane, row => row.metrics.you.csPerMin - row.metrics.opponent.csPerMin)),
+        goldDiffPerMin: meanOf(
+          values(lane, row => row.metrics.you.goldPerMin - row.metrics.opponent.goldPerMin),
+        ),
+      };
+    })
+    .sort((a, b) => b.games - a.games || b.wins - a.wins || a.champion.localeCompare(b.champion));
+}

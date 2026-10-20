@@ -145,3 +145,38 @@ test('missing lenses explain what is needed, in English too', () => {
     setLanguage('vi');
   }
 });
+
+test('champion table shows lane gaps with a sign and hides champions below three games', async () => {
+  const {renderChampionBreakdown} = await import('../public/comparison-view.js');
+  const html = renderChampionBreakdown([
+    {
+      champion: 'Jayce',
+      games: 5,
+      wins: 5,
+      kda: 6.55,
+      deathsPer30: 3.2,
+      csPerMin: 7.4,
+      laneGames: 5,
+      csDiffPerMin: 0.8,
+      goldDiffPerMin: 52,
+    },
+    {
+      champion: 'TwistedFate',
+      games: 5,
+      wins: 4,
+      kda: 3.46,
+      deathsPer30: 4.1,
+      csPerMin: 6.1,
+      laneGames: 4,
+      csDiffPerMin: -1.2,
+      goldDiffPerMin: -10,
+    },
+  ]);
+  assert.match(html, /Theo tướng/);
+  assert.match(html, /Jayce/);
+  assert.match(html, /100%/);
+  assert.match(html, /\+0,8/);
+  assert.match(html, /−1,2/);
+  assert.match(html, /class="[^"]*loss-text[^"]*">−1,2/);
+  assert.match(renderChampionBreakdown([]), /ít nhất 3 trận/);
+});

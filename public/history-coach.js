@@ -2,7 +2,7 @@ import {t, getLocale} from './i18n.js';
 import {generateReport, RULES} from './coach.js';
 import {exclusionReason} from './history-data.js';
 import {augmentStats} from './augment-stats.js';
-import {compareHistory} from './comparison.js';
+import {compareHistory, championBreakdown} from './comparison.js';
 import {comparisonTakeaways} from './comparison-view.js';
 
 const sum = (list, field) => list.reduce((total, item) => total + item[field], 0);
@@ -264,6 +264,7 @@ export function analyzeHistory(history, filters = {}) {
   const priorities = findings.slice(0, 2);
   const trend = buildTrend(matches, roles);
   const comparison = compareHistory({matches, details: history.details});
+  const championComparison = championBreakdown({matches, details: history.details});
   return {
     engine: t('Quy tắc coaching v2'),
     coachingAvailable: true,
@@ -279,6 +280,7 @@ export function analyzeHistory(history, filters = {}) {
     priorities,
     trend,
     comparison,
+    championComparison,
     coverage: [
       {label: 'CS', known: stats.cs.known, total: stats.n},
       {label: 'Vision', known: stats.vision.known, total: stats.n},

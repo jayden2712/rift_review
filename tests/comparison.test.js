@@ -124,3 +124,33 @@ test('supports skip CS, and matches without details are counted as uncovered', (
   assert.deepEqual(result.coverage, {withDetail: 1, total: 2});
   assert.equal(result.lane.metrics.find(x => x.id === 'csPerMin').total, 0);
 });
+
+test('champion breakdown summarises champions with at least three games against their lane opponents', async () => {
+  const {championBreakdown} = await import('../public/comparison.js');
+  const pick = (id, champion, result, you, opp) => {
+    const g = game(id, {result, you, opp});
+    g.match.champion = champion;
+    return g;
+  };
+  const games = [
+    pick('a1', 'Ahri', 'Victory', {cs: 240}, {cs: 180}),
+    pick('a2', 'Ahri', 'Victory', {cs: 240}, {cs: 180}),
+    pick('a3', 'Ahri', 'Defeat', {cs: 210}, {cs: 180}),
+    pick('z1', 'Zed', 'Defeat', {cs: 150}, {cs: 210}),
+    pick('z2', 'Zed', 'Defeat', {cs: 150}, {cs: 210}),
+    pick('z3', 'Zed', 'Victory', {cs: 150}, {cs: 210}),
+    pick('l1', 'Lux', 'Victory', {}, {}),
+  ];
+  const rows = championBreakdown(build(games));
+  assert.deepEqual(
+    rows.map(r => r.champion),
+    ['Ahri', 'Zed'],
+  );
+  const ahri = rows[0];
+  assert.equal(ahri.games, 3);
+  assert.equal(ahri.wins, 2);
+  assert.equal(ahri.csPerMin, 23 / 3);
+  assert.ok(Math.abs(ahri.csDiffPerMin - (23 / 3 - 6)) < 1e-9);
+  assert.ok(rows[1].csDiffPerMin < 0);
+  assert.equal(rows[1].laneGames, 3);
+});
