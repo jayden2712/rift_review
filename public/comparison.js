@@ -3,16 +3,28 @@
 // earlier games in the main role and (3) the player's wins versus losses. Everything is
 // descriptive: a difference shows where to look in replays, not what caused a result.
 
+const ROLES = ['Top', 'Jungle', 'Mid', 'ADC', 'Support'];
+const LANERS = ['Top', 'Mid', 'ADC'];
+// `roles` limits a metric to positions where it describes the job; omitted means all.
+// Metrics from `extra` come from MATCH-V5 challenges and are missing for older imports.
 export const COMPARISON_METRICS = Object.freeze([
   {id: 'deathsPer30', higherIsBetter: false},
-  {id: 'csPerMin', higherIsBetter: true, skipSupport: true},
+  {id: 'timeDeadShare', higherIsBetter: false},
+  {id: 'csPerMin', higherIsBetter: true, roles: ['Top', 'Jungle', 'Mid', 'ADC']},
+  {id: 'csAt10', higherIsBetter: true, roles: LANERS},
+  {id: 'jungleCsAt10', higherIsBetter: true, roles: ['Jungle']},
   {id: 'goldPerMin', higherIsBetter: true},
   {id: 'damagePerMin', higherIsBetter: true},
   {id: 'damageShare', higherIsBetter: true},
   {id: 'kp', higherIsBetter: true},
+  {id: 'soloKills', higherIsBetter: true, roles: ['Top', 'Mid']},
+  {id: 'plates', higherIsBetter: true, roles: LANERS},
+  {id: 'objectives', higherIsBetter: true, roles: ['Jungle', 'Support', 'Top', 'Mid', 'ADC']},
+  {id: 'enemyJungleCamps', higherIsBetter: true, roles: ['Jungle']},
   {id: 'visionPerMin', higherIsBetter: true},
+  {id: 'controlWardsPer30', higherIsBetter: true},
+  {id: 'wardKillsPer30', higherIsBetter: true, roles: ['Jungle', 'Support']},
 ]);
-const ROLES = ['Top', 'Jungle', 'Mid', 'ADC', 'Support'];
 const RECENT_GAMES = 5;
 const MIN_GROUP = 5;
 const MIN_WIN_LOSS = 3;
@@ -20,6 +32,8 @@ const CONSISTENT_SHARE = 0.6;
 // Below these, a change is reported as "about the same" rather than better or worse.
 const NOTABLE_CHANGE = 0.1;
 const NOTABLE_EFFECT = 0.5;
+// Role-specific metrics can have few games per side; only call them out with enough of each.
+const NOTABLE_SIDE = 5;
 
 const known = value => typeof value === 'number' && Number.isFinite(value);
 const per = (value, minutes) => (known(value) && minutes > 0 ? value / minutes : null);
@@ -39,7 +53,20 @@ function teamTotals(participants, teamId) {
 
 function playerMetrics(p, participants, minutes) {
   const totals = teamTotals(participants, p.teamId);
+  const extra = p.extra && typeof p.extra === 'object' ? p.extra : {};
+  const objectives = ['dragons', 'barons', 'heralds'].every(key => known(extra[key]))
+    ? extra.dragons + extra.barons + extra.heralds
+    : null;
   return {
+    timeDeadShare: known(extra.timeDead) ? extra.timeDead / (minutes * 60) : null,
+    csAt10: known(extra.laneCs10) ? extra.laneCs10 : null,
+    jungleCsAt10: known(extra.jungleCs10) ? extra.jungleCs10 : null,
+    soloKills: known(extra.soloKills) ? extra.soloKills : null,
+    plates: known(extra.plates) ? extra.plates : null,
+    objectives,
+    enemyJungleCamps: known(extra.enemyJungleCamps) ? extra.enemyJungleCamps : null,
+    controlWardsPer30: known(extra.controlWards) ? (extra.controlWards * 30) / minutes : null,
+    wardKillsPer30: known(extra.wardTakedowns) ? (extra.wardTakedowns * 30) / minutes : null,
     deathsPer30: known(p.deaths) ? (p.deaths * 30) / minutes : null,
     csPerMin: per(p.cs, minutes),
     goldPerMin: per(p.goldEarned, minutes),
@@ -67,7 +94,7 @@ export function matchMetrics(match, detail) {
   };
 }
 
-const applies = (metric, role) => !(metric.skipSupport && role === 'Support');
+const applies = (metric, role) => !metric.roles || metric.roles.includes(role);
 const isBetter = (metric, a, b) => (metric.higherIsBetter ? a > b : a < b);
 
 function laneComparison(rows) {
@@ -171,7 +198,7 @@ function winLossComparison(rows) {
         win,
         loss,
         effect,
-        notable: Math.abs(effect) >= NOTABLE_EFFECT,
+        notable: Math.abs(effect) >= NOTABLE_EFFECT && w.length >= NOTABLE_SIDE && l.length >= NOTABLE_SIDE,
         favorsWins: isBetter(metric, win, loss),
       },
     ];

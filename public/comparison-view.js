@@ -13,10 +13,19 @@ const LABELS = {
   damageShare: '% sát thương của đội',
   kp: 'Tham gia hạ gục',
   visionPerMin: 'Tầm nhìn / phút',
+  timeDeadShare: '% thời gian chết',
+  csAt10: 'Lính 10 phút đầu',
+  jungleCsAt10: 'CS rừng 10 phút đầu',
+  soloKills: 'Hạ gục solo',
+  plates: 'Mảnh giáp trụ',
+  objectives: 'Rồng · Sứ giả · Baron',
+  enemyJungleCamps: 'Quái rừng đối phương',
+  controlWardsPer30: 'Mắt kiểm soát / 30 phút',
+  wardKillsPer30: 'Mắt phá / 30 phút',
 };
 const label = id => t(LABELS[id]);
-const PERCENT = new Set(['damageShare', 'kp']);
-const WHOLE = new Set(['goldPerMin', 'damagePerMin']);
+const PERCENT = new Set(['damageShare', 'kp', 'timeDeadShare']);
+const WHOLE = new Set(['goldPerMin', 'damagePerMin', 'csAt10']);
 export function formatMetric(id, value) {
   if (typeof value !== 'number' || !Number.isFinite(value)) return '—';
   if (PERCENT.has(id)) return Math.round(value * 100) + '%';

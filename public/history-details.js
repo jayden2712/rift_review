@@ -41,6 +41,38 @@ function augments(value, mayhem) {
     return {id: number(augment.id)};
   });
 }
+// Selected MATCH-V5 challenge metrics for coaching comparisons. Keep in sync with
+// CHALLENGE_FIELDS in server/riot.js. Values are non-negative; unknown keys are rejected.
+const EXTRA_FIELDS = Object.freeze([
+  'laneCs10',
+  'jungleCs10',
+  'controlWards',
+  'wardTakedowns',
+  'plates',
+  'dragons',
+  'barons',
+  'heralds',
+  'enemyJungleCamps',
+  'soloKills',
+  'timeDead',
+]);
+function extra(value, mayhem) {
+  if (value === undefined || value === null) return null;
+  if (mayhem || !object(value)) invalid();
+  const result = {};
+  for (const [key, field] of Object.entries(value)) {
+    if (
+      !EXTRA_FIELDS.includes(key) ||
+      typeof field !== 'number' ||
+      !Number.isFinite(field) ||
+      field < 0 ||
+      field > 100000
+    )
+      invalid();
+    result[key] = field;
+  }
+  return result;
+}
 function participant(value, mayhem) {
   if (!object(value)) invalid();
   if (value.teamId !== undefined && value.teamId !== null && ![100, 200].includes(value.teamId)) invalid();
@@ -65,6 +97,7 @@ function participant(value, mayhem) {
     summonerSpells: slots(value.summonerSpells, 2),
     runes: runes(value.runes),
     augments: augments(value.augments, mayhem),
+    extra: extra(value.extra, mayhem),
   };
 }
 function detail(value, match) {

@@ -262,6 +262,29 @@ function runeView(perks) {
 export function mapRiotAugments(_participant) {
   return null;
 }
+// A whitelist of MATCH-V5 `challenges` (and one participant field) used by coaching
+// comparisons. Keep in sync with EXTRA_FIELDS in public/history-details.js.
+const CHALLENGE_FIELDS = Object.freeze({
+  laneCs10: 'laneMinionsFirst10Minutes',
+  jungleCs10: 'jungleCsBefore10Minutes',
+  controlWards: 'controlWardsPlaced',
+  wardTakedowns: 'wardTakedowns',
+  plates: 'turretPlatesTaken',
+  dragons: 'dragonTakedowns',
+  barons: 'baronTakedowns',
+  heralds: 'riftHeraldTakedowns',
+  enemyJungleCamps: 'enemyJungleMonsterKills',
+  soloKills: 'soloKills',
+});
+function extraView(p) {
+  const extra = {};
+  for (const [key, source] of Object.entries(CHALLENGE_FIELDS)) {
+    const value = finite(p.challenges?.[source]);
+    if (value !== null) extra[key] = Math.round(value * 100) / 100;
+  }
+  if (finite(p.totalTimeSpentDead) !== null) extra.timeDead = p.totalTimeSpentDead;
+  return Object.keys(extra).length ? extra : null;
+}
 function participantView(p, targetPuuid, mode = 'sr') {
   return {
     championLevel: positiveId(p.champLevel),
@@ -285,6 +308,7 @@ function participantView(p, targetPuuid, mode = 'sr') {
     damageToChampions: integer(p.totalDamageDealtToChampions),
     goldEarned: integer(p.goldEarned),
     visionScore: integer(p.visionScore),
+    extra: mode === 'mayhem' ? null : extraView(p),
   };
 }
 export function mapRiotMatch(raw, puuid, expectedId, mode = 'sr') {

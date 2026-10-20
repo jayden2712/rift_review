@@ -81,13 +81,13 @@ test('lane comparison counts how often you are ahead of your opponent per metric
 });
 
 test('wins and losses are contrasted only with enough of each, strongest difference first', () => {
-  const wins = Array.from({length: 4}, (_, i) => game(`w${i}`, {you: {deaths: 2 + (i % 2)}}));
-  const losses = Array.from({length: 4}, (_, i) =>
+  const wins = Array.from({length: 5}, (_, i) => game(`w${i}`, {you: {deaths: 2 + (i % 2)}}));
+  const losses = Array.from({length: 5}, (_, i) =>
     game(`l${i}`, {result: 'Defeat', you: {deaths: 7 + (i % 2), cs: 180 + i}}),
   );
   const {winLoss} = compareHistory(build([...wins, ...losses]));
   assert.equal(winLoss.available, true);
-  assert.deepEqual([winLoss.wins, winLoss.losses], [4, 4]);
+  assert.deepEqual([winLoss.wins, winLoss.losses], [5, 5]);
   assert.equal(winLoss.metrics[0].id, 'deathsPer30');
   assert.ok(winLoss.metrics[0].win < winLoss.metrics[0].loss);
   assert.equal(winLoss.metrics[0].favorsWins, true);
@@ -95,6 +95,9 @@ test('wins and losses are contrasted only with enough of each, strongest differe
   assert.equal(winLoss.metrics.find(x => x.id === 'goldPerMin').notable, false);
   const few = compareHistory(build([...wins, losses[0]])).winLoss;
   assert.equal(few.available, false);
+  const thin = compareHistory(build([...wins, ...losses.slice(0, 3)])).winLoss;
+  assert.equal(thin.available, true);
+  assert.equal(thin.metrics[0].notable, false, 'three losses are too few to call out');
 });
 
 test('self comparison sets the last five games of the main role against your earlier median', () => {
