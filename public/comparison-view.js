@@ -24,7 +24,8 @@ const LABELS = {
   controlWardsPer30: 'Mắt kiểm soát / 30 phút',
   wardKillsPer30: 'Mắt phá / 30 phút',
 };
-const label = id => t(LABELS[id]);
+export const metricLabel = id => t(LABELS[id]);
+const label = metricLabel;
 const PERCENT = new Set(['damageShare', 'kp', 'timeDeadShare']);
 const WHOLE = new Set(['goldPerMin', 'damagePerMin', 'csAt10']);
 export function formatMetric(id, value) {

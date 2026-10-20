@@ -57,4 +57,21 @@ export default {
     'The biggest difference between your wins and losses: {metric} ({win} in wins, {loss} in losses).',
   '5 trận gần nhất, {metric} kém hơn mức thường của bạn ({typical} → {recent}).':
     'In your last 5 games, {metric} is worse than your usual level ({typical} → {recent}).',
+  'Đang theo dõi': 'Tracking',
+  'Đạt mục tiêu': 'Target met',
+  'Chưa đạt': 'Not met',
+  'mục tiêu {target}': 'target {target}',
+  'Tra cứu bằng Riot ID để theo dõi kế hoạch qua các trận tiếp theo.':
+    'Look up a Riot ID to track the plan over your next games.',
+  'Chưa có chỉ số đủ rõ để đặt mục tiêu theo dõi.': 'No metric is clear enough yet to set a tracked target.',
+  'Theo dõi tự động: {metrics}. Mục tiêu là cải thiện 10% so với mức hiện tại trong {n} trận tiếp theo.':
+    'Tracked automatically: {metrics}. The target is a 10% improvement on your current level over the next {n} games.',
+  'Bắt đầu theo dõi 5 trận tới': 'Track my next 5 games',
+  'Kế hoạch hoàn tất: đạt {met}/{total} mục tiêu.': 'Plan complete: {met}/{total} targets met.',
+  'Đã chơi {played}/{n} trận sau khi bắt đầu kế hoạch.': '{played}/{n} games played since the plan started.',
+  'Kết thúc và tạo kế hoạch mới': 'Finish and start a new plan',
+  'Huỷ kế hoạch': 'Cancel plan',
+  'Tra cứu lại sau khi chơi để cập nhật. Kế hoạch chỉ lưu trên trình duyệt này.':
+    'Look up again after playing to update. The plan is stored in this browser only.',
+  'Không lưu được kế hoạch trên trình duyệt này.': 'The plan could not be saved in this browser.',
 };
