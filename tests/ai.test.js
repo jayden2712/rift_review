@@ -53,6 +53,9 @@ test('grounding removes sentences and focus items with numbers that are not in t
   assert.equal(removed, 2);
   // Small counts and numbers written with the other decimal separator are accepted.
   assert.equal(groundAnswer({summary: 'Tập 2 thói quen, CS 6.6.', focus: []}, facts).removed, 0);
+  // A number shown as a percentage must also be a percentage in the facts.
+  assert.equal(groundAnswer({summary: 'Vàng của Jayce tăng 128%.', focus: []}, facts).removed, 1);
+  assert.equal(groundAnswer({summary: 'Jayce hơn 128 vàng mỗi phút.', focus: []}, facts).removed, 0);
   // Percentages and decimals are never exempt, even when small.
   assert.equal(groundAnswer({summary: 'Bạn chết 6% thời gian.', focus: []}, facts).removed, 1);
   assert.equal(groundAnswer({summary: 'CS của bạn là 6.9.', focus: []}, facts).removed, 1);
@@ -99,4 +102,31 @@ test('requestSummary maps transport and output failures to explicit errors', asy
   await assert.rejects(requestSummary(facts, {config, fetchImpl: garbage}), {code: 'AI_BAD_OUTPUT'});
   const wrongShape = async () => Response.json({choices: [{message: {content: '{"summary": 5}'}}]});
   await assert.rejects(requestSummary(facts, {config, fetchImpl: wrongShape}), {code: 'AI_BAD_OUTPUT'});
+});
+
+test('a personal style is appended after the fixed rules and capped in length', async () => {
+  const {systemPrompt, readStyle, MAX_STYLE_CHARS} = await import('../server/ai.js');
+  const prompt = systemPrompt('vi', 'Xưng "bạn". Giữ thuật ngữ: farm, gank, wave.');
+  assert.match(prompt, /Chỉ dùng số liệu có trong FACTS/);
+  assert.ok(prompt.indexOf('FACTS') < prompt.indexOf('farm, gank'), 'rules come first');
+  assert.match(prompt, /không được làm trái các quy tắc trên/);
+  assert.equal(systemPrompt('vi', ''), systemPrompt('vi'));
+  const files = {'F:/x/style.md': 'a'.repeat(MAX_STYLE_CHARS + 50)};
+  const readFile = async path => {
+    if (Object.hasOwn(files, path)) return files[path];
+    throw Object.assign(new Error('missing'), {code: 'ENOENT'});
+  };
+  assert.equal((await readStyle('F:/x/style.md', readFile)).length, MAX_STYLE_CHARS);
+  assert.equal(await readStyle('F:/x/missing.md', readFile), '');
+  assert.equal(await readStyle('', readFile), '');
+});
+
+test('requestSummary sends the style inside the system message', async () => {
+  let body;
+  const fetchImpl = async (url, options) => {
+    body = JSON.parse(options.body);
+    return Response.json({choices: [{message: {content: '{"summary":"ok","focus":[]}'}}]});
+  };
+  await requestSummary(facts, {config: aiConfig({}), fetchImpl, style: 'Giọng anh em game thủ.'});
+  assert.match(body.messages[0].content, /Giọng anh em game thủ\./);
 });

@@ -2,7 +2,13 @@
 // never includes this module.
 import {jsonResponse} from './worker.js';
 import {RiotError} from './riot.js';
-import {aiConfig, requestSummary} from './ai.js';
+import {readFile} from 'node:fs/promises';
+import {isAbsolute, resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {aiConfig, readStyle, requestSummary} from './ai.js';
+
+const projectRoot = fileURLToPath(new URL('..', import.meta.url));
+const DEFAULT_STYLE_FILE = '.local/ai-style.md';
 
 export const AI_BODY_LIMIT = 32768;
 
@@ -13,7 +19,12 @@ function errorResponse(error) {
   return jsonResponse({error: {code: 'SERVER_ERROR', message: 'Chưa thể tạo tóm tắt AI. Thử lại sau.'}}, 500);
 }
 
-export function createAiApi({env = {}, fetchImpl = fetch} = {}) {
+export function createAiApi({env = {}, fetchImpl = fetch, readFileImpl = readFile} = {}) {
+  const styleSetting =
+    typeof env.AI_STYLE_FILE === 'string' && env.AI_STYLE_FILE.trim()
+      ? env.AI_STYLE_FILE.trim()
+      : DEFAULT_STYLE_FILE;
+  const stylePath = isAbsolute(styleSetting) ? styleSetting : resolve(projectRoot, styleSetting);
   return async function aiApi(request) {
     const {pathname} = new URL(request.url);
     try {
@@ -39,7 +50,9 @@ export function createAiApi({env = {}, fetchImpl = fetch} = {}) {
       } catch {
         throw new RiotError('INVALID_JSON', 'Dữ liệu gửi cho AI không hợp lệ.', 400);
       }
-      return jsonResponse(await requestSummary(input?.facts, {config, fetchImpl}));
+      // Read on every request so edits to the style file apply on the next "Rewrite".
+      const style = await readStyle(stylePath, readFileImpl);
+      return jsonResponse(await requestSummary(input?.facts, {config, fetchImpl, style}));
     } catch (error) {
       return errorResponse(error);
     }

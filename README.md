@@ -49,11 +49,17 @@ The client only exposes its latest 20 games, so import regularly; each import me
 
 ## AI summary for coaching (optional, local)
 
-The coaching tab can turn its computed comparisons into written advice with a language model. The model never calculates: the browser sends the figures the app already computed (as full sentences, without any Riot ID), and the local server drops every sentence or focus item containing a number that is not in those figures, including any percentage or decimal. Whole counts up to 10 are allowed.
+The coaching tab can turn its computed comparisons into written advice with a language model. The model never calculates: the browser sends the figures the app already computed (as full sentences, without any Riot ID), and the local server drops every sentence or focus item containing a number that is not in those figures, including any percentage or decimal; a number written as a percentage must also be a percentage in the figures. Whole counts up to 10 are allowed.
 
 1. Install [Ollama](https://ollama.com) and pull a model, for example `ollama pull qwen3:4b-instruct` (about 2.5 GB; runs fully on an 8 GB GPU).
 2. Add `AI_ENABLED=1` to `.env` (see `.env.example` for `AI_BASE_URL`, `AI_MODEL`, `AI_API_KEY`), then `npm start`.
 3. Look up a Riot ID, open **Báo cáo coaching** and click **Tóm tắt bằng AI / Summarise with AI**.
+
+**Your own writing style.** Copy [docs/ai-style.example.md](docs/ai-style.example.md) to `.local/ai-style.md` (ignored by Git) and edit the tone, how the coach addresses you, the game terms to keep or translate, and one or two example paragraphs. The server re-reads the file on every click, so press **Viết lại / Rewrite** to see a change; no restart is needed. Use `AI_STYLE_FILE` for another path; at most 4000 characters are used. The style is added after the fixed rules and cannot switch off the number check. Small models copy examples closely, so write examples about a champion or situation you do not want repeated word for word, or keep them generic.
+
+```bash
+copy docsi-style.example.md .locali-style.md
+```
 
 Any OpenAI-compatible endpoint works by changing `AI_BASE_URL` and `AI_MODEL` (LM Studio, OpenRouter, Gemini's compatibility endpoint, OpenAI). Hosted providers receive the figures, so check their privacy terms. Small local models occasionally write impractical drills or causal wording; the panel labels the text as AI-written correlation. The hosted Worker contains none of this.
 

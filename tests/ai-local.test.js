@@ -105,3 +105,30 @@ test('local config reads the AI settings', () => {
     }
   }
 });
+
+test('the AI route re-reads the style file on every summary', async () => {
+  const {createAiApi} = await import('../server/ai-api.js');
+  let style = 'Giọng A.';
+  const sent = [];
+  const api = createAiApi({
+    env: {AI_STYLE_FILE: 'F:/style.md'},
+    readFileImpl: async () => style,
+    fetchImpl: async (url, options) => {
+      sent.push(JSON.parse(options.body).messages[0].content);
+      return fakeModel();
+    },
+  });
+  const call = () =>
+    api(
+      new Request('http://127.0.0.1/api/ai/summary', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({facts}),
+      }),
+    );
+  assert.equal((await call()).status, 200);
+  style = 'Giọng B.';
+  await call();
+  assert.match(sent[0], /Giọng A\./);
+  assert.match(sent[1], /Giọng B\./);
+});

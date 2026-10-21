@@ -28,6 +28,7 @@ export function loadLocalConfig(envFile = defaultEnvFile) {
       AI_BASE_URL: (process.env.AI_BASE_URL ?? '').trim(),
       AI_MODEL: (process.env.AI_MODEL ?? '').trim(),
       AI_API_KEY: (process.env.AI_API_KEY ?? '').trim(),
+      AI_STYLE_FILE: (process.env.AI_STYLE_FILE ?? '').trim(),
     },
   };
 }

@@ -73,22 +73,30 @@ const variants = token => [
   token.replace(/[.,]/g, ''),
 ];
 
-// Only small whole counts ("2 habits") are exempt; percentages and decimals must match.
-function exempt(token, next) {
-  return /^\d+$/.test(token) && Number(token) <= SMALL_NUMBER && next !== '%';
+// Each number with whether it is written as a percentage ("55%", "55 %").
+function numbersIn(text) {
+  const source = String(text);
+  return [...source.matchAll(NUMBER)].map(match => ({
+    token: match[0],
+    percent: source.slice(match.index + match[0].length).trimStart()[0] === '%',
+  }));
 }
+// Only small whole counts ("2 habits") are exempt. A percentage must also be a percentage
+// in the facts, so "+99 gold" cannot come back as "99%".
 function groundedText(text, allowed) {
-  return [...String(text).matchAll(NUMBER)].every(match => {
-    const token = match[0];
-    const next = String(text)
-      .slice(match.index + token.length)
-      .trimStart()[0];
-    return exempt(token, next) || variants(token).some(variant => allowed.has(variant));
+  return numbersIn(text).every(({token, percent}) => {
+    if (/^\d+$/.test(token) && Number(token) <= SMALL_NUMBER && !percent) return true;
+    const pool = percent ? allowed.percent : allowed.any;
+    return variants(token).some(variant => pool.has(variant));
   });
 }
 
 export function groundAnswer(answer, facts) {
-  const allowed = new Set((JSON.stringify(facts).match(NUMBER) ?? []).flatMap(variants));
+  const found = numbersIn(JSON.stringify(facts));
+  const allowed = {
+    any: new Set(found.flatMap(({token}) => variants(token))),
+    percent: new Set(found.filter(({percent}) => percent).flatMap(({token}) => variants(token))),
+  };
   const sentences = String(answer.summary ?? '')
     .split(/(?<=[.!?])\s+/)
     .filter(Boolean);
@@ -122,7 +130,37 @@ const SCHEMA = {
   required: ['summary', 'focus'],
 };
 
-function systemPrompt(language) {
+export const MAX_STYLE_CHARS = 4000;
+
+// The user's own style file (tone, game terms, example paragraphs). Missing means none.
+export async function readStyle(path, readFile) {
+  if (!path) return '';
+  try {
+    return String(await readFile(path, 'utf8'))
+      .trim()
+      .slice(0, MAX_STYLE_CHARS);
+  } catch {
+    return '';
+  }
+}
+
+// Fixed rules first; a personal style can change tone and wording but not these rules,
+// and the number check in groundAnswer applies whatever the style says.
+export function systemPrompt(language, style = '') {
+  const rules = baseRules(language);
+  if (!style) return rules;
+  return language === 'en'
+    ? `${rules}
+
+Personal writing style from the user (tone, wording, game terms, examples). It must not break the rules above:
+${style}`
+    : `${rules}
+
+Phong cách viết riêng của người dùng (giọng, cách xưng hô, thuật ngữ, ví dụ). Phần này không được làm trái các quy tắc trên:
+${style}`;
+}
+
+function baseRules(language) {
   return language === 'en'
     ? 'You are a League of Legends coach. Use only the numbers in FACTS; never calculate or add new numbers. ' +
         'Differences are correlations, not proven causes. Write natural, concise English. ' +
@@ -155,7 +193,7 @@ function parseAnswer(content) {
   return {summary: answer.summary.trim(), focus: answer.focus.slice(0, MAX_FOCUS)};
 }
 
-export async function requestSummary(facts, {config, fetchImpl = fetch}) {
+export async function requestSummary(facts, {config, fetchImpl = fetch, style = ''}) {
   validateFacts(facts);
   let response;
   try {
@@ -173,7 +211,7 @@ export async function requestSummary(facts, {config, fetchImpl = fetch}) {
           json_schema: {name: 'coaching_summary', strict: true, schema: SCHEMA},
         },
         messages: [
-          {role: 'system', content: systemPrompt(facts.language)},
+          {role: 'system', content: systemPrompt(facts.language, style)},
           {role: 'user', content: 'FACTS:\n' + JSON.stringify(facts)},
         ],
       }),

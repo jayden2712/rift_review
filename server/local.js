@@ -151,7 +151,10 @@ export function createLocalServer({
       ? createLcuApi({env: lcuEnv, ...(lcuConnect ? {connect: lcuConnect} : {})})
       : null;
   const aiEnv = Object.fromEntries(
-    ['AI_BASE_URL', 'AI_MODEL', 'AI_API_KEY'].map(key => [key, typeof env[key] === 'string' ? env[key] : '']),
+    ['AI_BASE_URL', 'AI_MODEL', 'AI_API_KEY', 'AI_STYLE_FILE'].map(key => [
+      key,
+      typeof env[key] === 'string' ? env[key] : '',
+    ]),
   );
   const ai = env.AI_ENABLED === '1' ? createAiApi({env: aiEnv, fetchImpl}) : null;
   return createServer({requestTimeout: 15000, headersTimeout: 10000}, async (incoming, outgoing) => {
