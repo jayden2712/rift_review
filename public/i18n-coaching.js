@@ -74,4 +74,34 @@ export default {
   'Tra cứu lại sau khi chơi để cập nhật. Kế hoạch chỉ lưu trên trình duyệt này.':
     'Look up again after playing to update. The plan is stored in this browser only.',
   'Không lưu được kế hoạch trên trình duyệt này.': 'The plan could not be saved in this browser.',
+  'Không kết nối được AI. Kiểm tra Ollama đang chạy rồi thử lại.':
+    'Could not reach the AI. Check that Ollama is running and try again.',
+  'AI phản hồi quá lâu. Thử lại sau.': 'The AI took too long to respond. Try again later.',
+  'Dịch vụ AI trả lỗi. Kiểm tra tên model trong AI_MODEL.':
+    'The AI service returned an error. Check the model name in AI_MODEL.',
+  'AI trả về nội dung không dùng được. Thử lại.': 'The AI returned unusable output. Try again.',
+  'Dữ liệu gửi cho AI không hợp lệ.': 'The data sent to the AI is invalid.',
+  'Cấu hình AI_BASE_URL không hợp lệ.': 'The AI_BASE_URL setting is invalid.',
+  'Chưa thể tạo tóm tắt AI. Thử lại sau.': 'Could not create the AI summary. Try again later.',
+  'AI đang viết tóm tắt từ số liệu ở trên…': 'The AI is writing a summary from the figures above…',
+  'Thử lại': 'Try again',
+  Tập: 'Practise',
+  'Do AI ({model}) viết lại từ số liệu ở trên. Chỉ là tương quan, không phải nguyên nhân chắc chắn.':
+    'Written by AI ({model}) from the figures above. These are correlations, not proven causes.',
+  'Đã bỏ {n} câu có số không khớp với dữ liệu.':
+    'Removed {n} sentence(s) with numbers that did not match the data.',
+  'Viết lại': 'Rewrite',
+  'Dùng model {model} trên máy bạn để viết lại các điểm trên thành lời khuyên. Chỉ gửi số liệu đã tính, không gửi Riot ID.':
+    'Use the {model} model on your computer to turn the points above into advice. Only the computed figures are sent, never Riot IDs.',
+  'Tóm tắt bằng AI': 'Summarise with AI',
+  '{metric}: bạn {you}, đối thủ cùng đường {opponent}; bạn kém hơn ở {n}/{total} trận.':
+    '{metric}: you {you}, lane opponent {opponent}; you were behind in {n}/{total} games.',
+  '{metric}: bạn {you}, đối thủ cùng đường {opponent}; bạn hơn ở {n}/{total} trận.':
+    '{metric}: you {you}, lane opponent {opponent}; you were ahead in {n}/{total} games.',
+  '{metric}: {win} trong các trận thắng, {loss} trong các trận thua.':
+    '{metric}: {win} in wins, {loss} in losses.',
+  '{metric}: mức thường của bạn {usual}, 5 trận gần nhất {recent}.':
+    '{metric}: your usual level {usual}, last 5 games {recent}.',
+  '{champion}: {games} trận, thắng {wins}; CS/phút so với đối thủ {cs}; vàng/phút so với đối thủ {gold}.':
+    '{champion}: {games} games, {wins} wins; CS/min vs opponent {cs}; gold/min vs opponent {gold}.',
 };

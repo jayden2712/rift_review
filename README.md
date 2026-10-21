@@ -47,6 +47,16 @@ Riot's public MATCH-V5 API does not return ARAM Mayhem games: Riot keeps them pr
 
 The client only exposes its latest 20 games, so import regularly; each import merges into the saved Mayhem history of that account. Matches include all ten players, items, spells and augments (names and icons vendored by `python scripts/sync-augments.py`). The reader is read-only, limited to an allowlist of client paths, verifies TLS against Riot's published root certificate (`server/riotgames.pem`) and never sends the client password to the browser. It is local-only: the hosted Worker contains none of it. The League client API is unofficial and may change. Design notes: [docs/plans/lcu-mayhem-import.md](docs/plans/lcu-mayhem-import.md).
 
+## AI summary for coaching (optional, local)
+
+The coaching tab can turn its computed comparisons into written advice with a language model. The model never calculates: the browser sends the figures the app already computed (as full sentences, without any Riot ID), and the local server drops every sentence or focus item containing a number that is not in those figures, including any percentage or decimal. Whole counts up to 10 are allowed.
+
+1. Install [Ollama](https://ollama.com) and pull a model, for example `ollama pull qwen3:4b-instruct` (about 2.5 GB; runs fully on an 8 GB GPU).
+2. Add `AI_ENABLED=1` to `.env` (see `.env.example` for `AI_BASE_URL`, `AI_MODEL`, `AI_API_KEY`), then `npm start`.
+3. Look up a Riot ID, open **Báo cáo coaching** and click **Tóm tắt bằng AI / Summarise with AI**.
+
+Any OpenAI-compatible endpoint works by changing `AI_BASE_URL` and `AI_MODEL` (LM Studio, OpenRouter, Gemini's compatibility endpoint, OpenAI). Hosted providers receive the figures, so check their privacy terms. Small local models occasionally write impractical drills or causal wording; the panel labels the text as AI-written correlation. The hosted Worker contains none of this.
+
 ## Development
 
 ```bash
@@ -71,6 +81,7 @@ Navigation, forms, accessible labels, dynamic statistics/coaching, loadout names
 - **"Rift Review API was not found" (`API_UNAVAILABLE`):** the page is served by another static server (Live Server, `npx serve`, opening the file directly), which has no `/api`. Open the URL printed by `npm start` instead.
 - **HTTP 502 with "Riot từ chối quyền truy cập" / access denied:** Riot answered 403. Common causes are an expired or regenerated development key (they last 24 hours), a key without access to the endpoint, or a wrong route. Replace `RIOT_API_KEY` in `.env` and restart. See the [Riot portal documentation](https://developer.riotgames.com/docs/portal).
 - **`NO_MATCHES` in ARAM Mayhem mode (Riot lookup):** expected. MATCH-V5 does not serve Mayhem games; use the League client import above.
+- **"Could not reach the AI" (`AI_UNAVAILABLE`):** Ollama is not running or `AI_BASE_URL` is wrong. Start Ollama and check `ollama list` contains `AI_MODEL`. An HTTP error (`AI_UPSTREAM`) usually means the model name is not installed.
 - **"League client is not running" (`LCU_CLIENT_CLOSED`):** only the Riot Client launcher is open, or League is installed somewhere the server did not look. Start League of Legends, or set `LCU_INSTALL_DIR` to the folder that contains `LeagueClient.exe`.
 
 ## Hosting

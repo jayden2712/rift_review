@@ -1,0 +1,47 @@
+// Local-only AI routes, mounted by server/local.js when AI_ENABLED=1. The hosted Worker
+// never includes this module.
+import {jsonResponse} from './worker.js';
+import {RiotError} from './riot.js';
+import {aiConfig, requestSummary} from './ai.js';
+
+export const AI_BODY_LIMIT = 32768;
+
+function errorResponse(error) {
+  if (error instanceof RiotError)
+    return jsonResponse({error: {code: error.code, message: error.message}}, error.status);
+  // Never echo raw errors: they can contain the API key or upstream URLs.
+  return jsonResponse({error: {code: 'SERVER_ERROR', message: 'Chưa thể tạo tóm tắt AI. Thử lại sau.'}}, 500);
+}
+
+export function createAiApi({env = {}, fetchImpl = fetch} = {}) {
+  return async function aiApi(request) {
+    const {pathname} = new URL(request.url);
+    try {
+      const config = aiConfig(env);
+      if (pathname === '/api/ai/status') {
+        if (request.method !== 'GET')
+          return jsonResponse({error: {code: 'METHOD_NOT_ALLOWED', message: 'Dùng GET.'}}, 405, {
+            Allow: 'GET',
+          });
+        return jsonResponse({enabled: true, model: config.model});
+      }
+      if (pathname !== '/api/ai/summary')
+        return jsonResponse({error: {code: 'NOT_FOUND', message: 'Không tìm thấy chức năng này.'}}, 404);
+      if (request.method !== 'POST')
+        return jsonResponse({error: {code: 'METHOD_NOT_ALLOWED', message: 'Dùng POST.'}}, 405, {
+          Allow: 'POST',
+        });
+      if (!request.headers.get('Content-Type')?.toLowerCase().startsWith('application/json'))
+        return jsonResponse({error: {code: 'INVALID_CONTENT', message: 'Yêu cầu cần là JSON.'}}, 415);
+      let input;
+      try {
+        input = JSON.parse(await request.text());
+      } catch {
+        throw new RiotError('INVALID_JSON', 'Dữ liệu gửi cho AI không hợp lệ.', 400);
+      }
+      return jsonResponse(await requestSummary(input?.facts, {config, fetchImpl}));
+    } catch (error) {
+      return errorResponse(error);
+    }
+  };
+}

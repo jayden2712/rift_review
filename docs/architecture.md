@@ -56,3 +56,9 @@ The client does not call Riot or OP.GG directly. Browser CSP permits only same-o
 - `server/lcu-map.js`: maps client games (`/lol-match-history/v1/games/{id}`) to History v3; augments come from `stats.playerAugment1..6`, champion names from `champion-summary.json` aliases.
 - `server/lcu-api.js`: `GET /api/lcu/status` and `POST /api/lcu/import`, mounted by `server/local.js` only when `LCU_ENABLED=1`. `build.mjs` never embeds these modules, so the hosted Worker answers 404.
 - Browser: `lcuDataSource` in `public/riot-source.js`, the import button in `public/app.js`, augment rendering in `public/match-view.js` with names and icons from `public/augment-assets.js` and `public/augments/`.
+
+## AI summary (local only)
+
+- `public/ai-summary.js`: `buildAiFacts` turns the coaching report (takeaways, lane, win/loss, recent form, champions) into context-rich sentences with no Riot IDs; `renderAiPanel` shows the button, progress and the result labelled as AI-written.
+- `server/ai.js`: OpenAI-compatible Chat Completions client with a JSON schema response, input validation (size, depth, no Riot IDs) and `groundAnswer`, which removes sentences and focus items whose numbers are not in the facts (only whole counts up to 10 are exempt).
+- `server/ai-api.js`: `GET /api/ai/status`, `POST /api/ai/summary`, mounted by `server/local.js` only with `AI_ENABLED=1`; never part of the Worker build.

@@ -851,6 +851,73 @@ textarea:hover {
   }
 }
 
+/* ---------- AI summary ---------- */
+.ai-panel .panel {
+  border-color: rgba(43, 217, 232, 0.35);
+  background:
+    radial-gradient(600px 200px at 0% 0%, rgba(43, 217, 232, 0.1), transparent 70%),
+    linear-gradient(180deg, var(--panel-high), var(--panel));
+}
+.ai-badge {
+  padding: 1px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(43, 217, 232, 0.55);
+  color: var(--hex);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.ai-text {
+  margin: 0 0 14px;
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.ai-focus {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.ai-focus-card {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(4, 8, 15, 0.45);
+}
+.ai-focus-card h3 {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  color: var(--gold-bright);
+}
+.ai-focus-card p {
+  margin: 0 0 6px;
+  font-size: 0.84rem;
+  color: var(--text-soft);
+}
+.ai-drill strong {
+  color: var(--hex);
+  margin-right: 4px;
+}
+.ai-note {
+  margin: 0 0 12px;
+}
+.ai-loading {
+  margin: 0;
+  color: var(--hex);
+  animation: ai-pulse 1.4s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-loading {
+    animation: none;
+  }
+}
+
 /* ---------- Tooltip ---------- */
 .game-tooltip {
   position: absolute;

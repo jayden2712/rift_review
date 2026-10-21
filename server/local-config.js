@@ -24,6 +24,10 @@ export function loadLocalConfig(envFile = defaultEnvFile) {
       DATA_LAB_ENABLED: process.env.DATA_LAB_ENABLED === '1' ? '1' : '0',
       LCU_ENABLED: process.env.LCU_ENABLED === '1' ? '1' : '0',
       LCU_INSTALL_DIR: (process.env.LCU_INSTALL_DIR ?? '').trim(),
+      AI_ENABLED: process.env.AI_ENABLED === '1' ? '1' : '0',
+      AI_BASE_URL: (process.env.AI_BASE_URL ?? '').trim(),
+      AI_MODEL: (process.env.AI_MODEL ?? '').trim(),
+      AI_API_KEY: (process.env.AI_API_KEY ?? '').trim(),
     },
   };
 }

@@ -1,5 +1,5 @@
 import {loadSavedHistory, saveHistorySnapshot, clearSavedHistory, mergeHistoryPage} from './history-store.js';
-import {t, getLocale, onLanguageChange, initLanguageUI} from './i18n.js';
+import {t, getLocale, getLanguage, onLanguageChange, initLanguageUI} from './i18n.js';
 import {
   renderMatchSummary,
   renderLoadout,
@@ -24,6 +24,7 @@ import {renderAugmentPanel} from './augment-view.js';
 import {renderComparison, renderChampionBreakdown} from './comparison-view.js';
 import {choosePlanFocus, createPlan, evaluatePlan, loadPlan, savePlan, clearPlan} from './practice-plan.js';
 import {renderPlanTracker} from './practice-plan-view.js';
+import {buildAiFacts, requestAiSummary, renderAiPanel} from './ai-summary.js';
 import {initTooltips} from './tooltip.js';
 
 const $ = selector => document.querySelector(selector);
@@ -468,6 +469,34 @@ function renderHistory() {
 function evidenceButton(f) {
   return `<button class="text-btn" type="button" data-evidence="${f.id}">${t('Xem {value2} trận làm dẫn chứng ↗', {value2: f.count})}</button>`;
 }
+// AI summaries exist only when the local server enables them. A result belongs to the exact
+// facts it was written from; changing filters or language goes back to the button.
+let aiStatus = {enabled: false, model: ''};
+let aiRun = {key: null, state: {kind: 'idle'}};
+const aiFacts = () => buildAiFacts(report, getLanguage());
+function aiPanel() {
+  const key = JSON.stringify(aiFacts());
+  const state = aiRun.key === key ? aiRun.state : {kind: 'idle'};
+  return renderAiPanel({...aiStatus, state});
+}
+function refreshAiPanel() {
+  const target = $('#ai-summary');
+  if (target) target.innerHTML = aiPanel();
+}
+async function summariseWithAi() {
+  const facts = aiFacts();
+  if (!facts) return;
+  const key = JSON.stringify(facts);
+  aiRun = {key, state: {kind: 'loading'}};
+  refreshAiPanel();
+  try {
+    const result = await requestAiSummary(facts);
+    if (aiRun.key === key) aiRun = {key, state: {kind: 'done', result}};
+  } catch (error) {
+    if (aiRun.key === key) aiRun = {key, state: {kind: 'error', message: error.message}};
+  }
+  refreshAiPanel();
+}
 // Plans only make sense for a real account whose later games can be looked up again.
 function planTracker(r) {
   const canTrack = source === 'riot' || source === 'device';
@@ -490,6 +519,7 @@ function renderCoaching() {
   $('#coaching-report').innerHTML =
     `<section class="coaching-intro panel"><div><span class="eyebrow">${t('ĐÁNH GIÁ TỪ LỊCH SỬ TRẬN')}</span><h2>${t('{value1} trận. Những điều đáng tập trung.', {value1: r.stats.n})}</h2><p>${r.stats.n < 5 ? t('Mẫu còn nhỏ: kết quả mới là tín hiệu ban đầu, chưa đủ xác định một thói quen.') : t('Có {value1} vấn đề đạt ngưỡng lặp lại và {value2} tín hiệu tích cực xuất hiện đều.', {value1: r.findings.filter(x => x.repeated).length, value2: r.strengths.length})}</p></div><div class="report-actions"><button class="secondary-btn" type="button" id="copy-report">${t('Sao chép')}</button><button class="secondary-btn" type="button" id="download-report">${t('Tải báo cáo ↓')}</button></div></section>
 ${renderComparison(r.comparison)}
+<div id="ai-summary">${aiPanel()}</div>
 ${renderChampionBreakdown(r.championComparison)}
 <section class="coaching-section"><div class="section-heading"><h2>${t('Điểm mạnh nên giữ')}</h2><span>${t('{value3} tín hiệu', {value3: r.strengths.length})}</span></div><div class="strength-grid">${r.strengths.length ? r.strengths.map(s => `<article class="strength-card"><span class="signal-count">${t('{value1}/{value2} trận', {value1: s.count, value2: s.denominator})}</span><h3>${escape(s.title)}</h3><p>${escape(s.caveat)}</p></article>`).join('') : `<div class="panel empty-small">${t('Chưa có điểm mạnh lặp lại đủ rõ từ các chỉ số được cung cấp. Điều này không có nghĩa là bạn chơi kém.')}</div>`}</div></section>
 <section class="coaching-section"><div class="section-heading"><h2>${t('Vấn đề cần xem lại')}</h2><span>${t('{value5} tín hiệu', {value5: r.findings.length})}</span></div>${r.findings.length ? r.findings.map(f => `<article class="finding-card"><div class="finding-heading"><h3>${escape(f.title)}</h3><span class="finding-badge ${f.repeated ? 'repeated' : ''}">${f.repeated ? t('Lặp lại') : t('Theo dõi thêm')}</span></div><div class="finding-frequency"><strong>${f.count}<span>${t('/{value5} trận có dữ liệu', {value5: f.denominator})}</span></strong><meter min="0" max="${f.denominator}" value="${f.count}" aria-label="${t('Xuất hiện ở {value8} trên {value9} trận', {value8: f.count, value9: f.denominator})}"></meter></div><p>${escape(f.caveat)}</p>${evidenceButton(f)}</article>`).join('') : `<div class="panel empty-small">${t('Chưa có chỉ số vượt ngưỡng xem lại. Dùng replay để tìm các quyết định cần cải thiện.')}</div>`}</section>
@@ -703,6 +733,10 @@ document.addEventListener('click', async e => {
   if (button.hasAttribute('data-load-rank')) {
     e.preventDefault();
     await fetchMatchRank(button.dataset.loadRank);
+    return;
+  }
+  if (button.hasAttribute('data-ai-summary')) {
+    await summariseWithAi();
     return;
   }
   if (button.hasAttribute('data-plan-start')) {
@@ -1071,6 +1105,15 @@ fetch('/api/status', {credentials: 'same-origin'})
       lookupState = {kind: 'setup'};
       renderLookupStatus();
     }
+  })
+  .catch(() => {});
+
+fetch('/api/ai/status', {credentials: 'same-origin'})
+  .then(response => (response.ok ? response.json() : null))
+  .then(status => {
+    if (status?.enabled !== true) return;
+    aiStatus = {enabled: true, model: typeof status.model === 'string' ? status.model : ''};
+    refreshAiPanel();
   })
   .catch(() => {});
 

@@ -36,17 +36,44 @@ test('local config loads .env, handles missing file and honors shell overrides',
   assert.equal(missing.status, 0);
   assert.deepEqual(JSON.parse(missing.stdout), {
     port: 4173,
-    env: {RIOT_API_KEY: '', DATA_LAB_ENABLED: '0', LCU_ENABLED: '0', LCU_INSTALL_DIR: ''},
+    env: {
+      RIOT_API_KEY: '',
+      DATA_LAB_ENABLED: '0',
+      LCU_ENABLED: '0',
+      LCU_INSTALL_DIR: '',
+      AI_ENABLED: '0',
+      AI_BASE_URL: '',
+      AI_MODEL: '',
+      AI_API_KEY: '',
+    },
   });
   await writeFile(file, '# comment\nRIOT_API_KEY="fixture-file-secret"\nPORT=4180\n');
   assert.deepEqual(JSON.parse(readConfig(file).stdout), {
     port: 4180,
-    env: {RIOT_API_KEY: 'fixture-file-secret', DATA_LAB_ENABLED: '0', LCU_ENABLED: '0', LCU_INSTALL_DIR: ''},
+    env: {
+      RIOT_API_KEY: 'fixture-file-secret',
+      DATA_LAB_ENABLED: '0',
+      LCU_ENABLED: '0',
+      LCU_INSTALL_DIR: '',
+      AI_ENABLED: '0',
+      AI_BASE_URL: '',
+      AI_MODEL: '',
+      AI_API_KEY: '',
+    },
   });
   const overridden = readConfig(file, {RIOT_API_KEY: 'fixture-shell-secret', PORT: '4190'});
   assert.deepEqual(JSON.parse(overridden.stdout), {
     port: 4190,
-    env: {RIOT_API_KEY: 'fixture-shell-secret', DATA_LAB_ENABLED: '0', LCU_ENABLED: '0', LCU_INSTALL_DIR: ''},
+    env: {
+      RIOT_API_KEY: 'fixture-shell-secret',
+      DATA_LAB_ENABLED: '0',
+      LCU_ENABLED: '0',
+      LCU_INSTALL_DIR: '',
+      AI_ENABLED: '0',
+      AI_BASE_URL: '',
+      AI_MODEL: '',
+      AI_API_KEY: '',
+    },
   });
   await writeFile(file, 'RIOT_API_KEY="  "\n');
   assert.equal(JSON.parse(readConfig(file).stdout).env.RIOT_API_KEY, '');

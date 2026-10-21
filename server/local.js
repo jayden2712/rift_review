@@ -7,6 +7,7 @@ import {RiotError} from './riot.js';
 import {loadLocalConfig} from './local-config.js';
 import {createDataLab, LAB_BODY_LIMIT, defaultLabDirectory} from './data-lab.js';
 import {createLcuApi} from './lcu-api.js';
+import {createAiApi, AI_BODY_LIMIT} from './ai-api.js';
 
 const publicRoot = fileURLToPath(new URL('../public/', import.meta.url));
 const bodyLimit = 2048;
@@ -70,10 +71,11 @@ function drainRequest(incoming) {
   });
 }
 
-async function serveApi(incoming, url, env, fetchImpl, {lab, lcu}) {
+async function serveApi(incoming, url, env, fetchImpl, {lab, lcu, ai}) {
   const isLab = url.pathname.startsWith('/api/lab/');
   const isLcu = url.pathname.startsWith('/api/lcu/');
-  if ((isLab && !lab) || (isLcu && !lcu))
+  const isAi = url.pathname.startsWith('/api/ai/');
+  if ((isLab && !lab) || (isLcu && !lcu) || (isAi && !ai))
     return jsonResponse({error: {code: 'NOT_FOUND', message: 'Không tìm thấy chức năng này.'}}, 404);
   const headers = new Headers(
     Object.entries(incoming.headers).filter(([name]) =>
@@ -84,9 +86,10 @@ async function serveApi(incoming, url, env, fetchImpl, {lab, lcu}) {
   headers.set('oai-authenticated-user-id', 'local-developer');
   const body = ['GET', 'HEAD'].includes(incoming.method)
     ? undefined
-    : await readBody(incoming, isLab ? LAB_BODY_LIMIT : bodyLimit);
+    : await readBody(incoming, isLab ? LAB_BODY_LIMIT : isAi ? AI_BODY_LIMIT : bodyLimit);
   const request = new Request(url, {method: incoming.method, headers, body});
   if (isLab) return lab(request);
+  if (isAi) return ai(request);
   return isLcu ? lcu(request) : handleApi(request, env, {fetchImpl});
 }
 
@@ -147,11 +150,15 @@ export function createLocalServer({
     env.LCU_ENABLED === '1'
       ? createLcuApi({env: lcuEnv, ...(lcuConnect ? {connect: lcuConnect} : {})})
       : null;
+  const aiEnv = Object.fromEntries(
+    ['AI_BASE_URL', 'AI_MODEL', 'AI_API_KEY'].map(key => [key, typeof env[key] === 'string' ? env[key] : '']),
+  );
+  const ai = env.AI_ENABLED === '1' ? createAiApi({env: aiEnv, fetchImpl}) : null;
   return createServer({requestTimeout: 15000, headersTimeout: 10000}, async (incoming, outgoing) => {
     try {
       const url = validateLocalRequest(incoming);
       const response = url.pathname.startsWith('/api/')
-        ? await serveApi(incoming, url, localEnv, fetchImpl, {lab, lcu})
+        ? await serveApi(incoming, url, localEnv, fetchImpl, {lab, lcu, ai})
         : await serveStatic(incoming, url, publicDirectory, dataLabEnabled);
       const body = Buffer.from(await response.arrayBuffer());
       outgoing.writeHead(response.status, Object.fromEntries(response.headers));
