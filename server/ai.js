@@ -34,7 +34,18 @@ export function aiConfig(env = {}) {
     baseUrl: url.href.replace(/\/+$/, ''),
     model: typeof env.AI_MODEL === 'string' && env.AI_MODEL.trim() ? env.AI_MODEL.trim() : DEFAULT_MODEL,
     apiKey: typeof env.AI_API_KEY === 'string' ? env.AI_API_KEY.trim() : '',
+    reasoningEffort: reasoningEffort(env.AI_REASONING_EFFORT),
   };
+}
+
+// Hybrid reasoning models (qwen3:8b) think before answering unless told not to, which is
+// several times slower. Only sent when set, because some providers reject the parameter.
+const REASONING_EFFORTS = ['none', 'low', 'medium', 'high'];
+function reasoningEffort(value) {
+  const effort = typeof value === 'string' ? value.trim().toLowerCase() : '';
+  if (effort && !REASONING_EFFORTS.includes(effort))
+    throw aiError('AI_CONFIG', 'AI_REASONING_EFFORT cần là none, low, medium hoặc high.', 500);
+  return effort;
 }
 
 export function validateFacts(facts) {
@@ -206,6 +217,7 @@ export async function requestSummary(facts, {config, fetchImpl = fetch, style = 
       body: JSON.stringify({
         model: config.model,
         temperature: 0.2,
+        ...(config.reasoningEffort ? {reasoning_effort: config.reasoningEffort} : {}),
         response_format: {
           type: 'json_schema',
           json_schema: {name: 'coaching_summary', strict: true, schema: SCHEMA},

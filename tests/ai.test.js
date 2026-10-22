@@ -15,6 +15,7 @@ test('config defaults to local Ollama and only accepts http(s) URLs', () => {
     baseUrl: 'http://127.0.0.1:11434/v1',
     model: 'qwen3:4b-instruct',
     apiKey: '',
+    reasoningEffort: '',
   });
   assert.equal(
     aiConfig({AI_BASE_URL: 'https://openrouter.ai/api/v1/', AI_MODEL: 'x/y'}).baseUrl,
@@ -129,4 +130,17 @@ test('requestSummary sends the style inside the system message', async () => {
   };
   await requestSummary(facts, {config: aiConfig({}), fetchImpl, style: 'Giọng anh em game thủ.'});
   assert.match(body.messages[0].content, /Giọng anh em game thủ\./);
+});
+
+test('reasoning effort is sent only when configured and only with known values', async () => {
+  const bodies = [];
+  const fetchImpl = async (url, options) => {
+    bodies.push(JSON.parse(options.body));
+    return Response.json({choices: [{message: {content: '{"summary":"ok","focus":[]}'}}]});
+  };
+  await requestSummary(facts, {config: aiConfig({}), fetchImpl});
+  await requestSummary(facts, {config: aiConfig({AI_REASONING_EFFORT: 'none'}), fetchImpl});
+  assert.equal('reasoning_effort' in bodies[0], false);
+  assert.equal(bodies[1].reasoning_effort, 'none');
+  assert.throws(() => aiConfig({AI_REASONING_EFFORT: 'max'}), {code: 'AI_CONFIG'});
 });

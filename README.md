@@ -55,6 +55,8 @@ The coaching tab can turn its computed comparisons into written advice with a la
 2. Add `AI_ENABLED=1` to `.env` (see `.env.example` for `AI_BASE_URL`, `AI_MODEL`, `AI_API_KEY`), then `npm start`.
 3. Look up a Riot ID, open **Báo cáo coaching** and click **Tóm tắt bằng AI / Summarise with AI**.
 
+**Choosing a model.** Compared on the same data and style (RTX 5060 8 GB): `qwen3:4b-instruct` answers in about 5 s but sometimes reverses a comparison (for example calling a vision lead a weakness). `qwen3:8b` (5.2 GB, fits an 8 GB GPU) is clearly more accurate; with its default thinking it takes up to about 30 s, and with `AI_REASONING_EFFORT=none` it answers in about 5 s, at the cost of occasionally attaching a figure to the wrong metric. For `qwen3:8b` set `AI_MODEL=qwen3:8b` and usually `AI_REASONING_EFFORT=none`.
+
 **Your own writing style.** Copy [docs/ai-style.example.md](docs/ai-style.example.md) to `.local/ai-style.md` (ignored by Git) and edit the tone, how the coach addresses you, the game terms to keep or translate, and one or two example paragraphs. The server re-reads the file on every click, so press **Viết lại / Rewrite** to see a change; no restart is needed. Use `AI_STYLE_FILE` for another path; at most 4000 characters are used. The style is added after the fixed rules and cannot switch off the number check. Small models copy examples closely, so write examples about a champion or situation you do not want repeated word for word, or keep them generic.
 
 ```bash

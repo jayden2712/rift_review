@@ -46,6 +46,7 @@ test('local config loads .env, handles missing file and honors shell overrides',
       AI_MODEL: '',
       AI_API_KEY: '',
       AI_STYLE_FILE: '',
+      AI_REASONING_EFFORT: '',
     },
   });
   await writeFile(file, '# comment\nRIOT_API_KEY="fixture-file-secret"\nPORT=4180\n');
@@ -61,6 +62,7 @@ test('local config loads .env, handles missing file and honors shell overrides',
       AI_MODEL: '',
       AI_API_KEY: '',
       AI_STYLE_FILE: '',
+      AI_REASONING_EFFORT: '',
     },
   });
   const overridden = readConfig(file, {RIOT_API_KEY: 'fixture-shell-secret', PORT: '4190'});
@@ -76,6 +78,7 @@ test('local config loads .env, handles missing file and honors shell overrides',
       AI_MODEL: '',
       AI_API_KEY: '',
       AI_STYLE_FILE: '',
+      AI_REASONING_EFFORT: '',
     },
   });
   await writeFile(file, 'RIOT_API_KEY="  "\n');

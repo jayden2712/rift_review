@@ -151,7 +151,7 @@ export function createLocalServer({
       ? createLcuApi({env: lcuEnv, ...(lcuConnect ? {connect: lcuConnect} : {})})
       : null;
   const aiEnv = Object.fromEntries(
-    ['AI_BASE_URL', 'AI_MODEL', 'AI_API_KEY', 'AI_STYLE_FILE'].map(key => [
+    ['AI_BASE_URL', 'AI_MODEL', 'AI_API_KEY', 'AI_STYLE_FILE', 'AI_REASONING_EFFORT'].map(key => [
       key,
       typeof env[key] === 'string' ? env[key] : '',
     ]),
