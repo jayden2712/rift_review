@@ -2,7 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 
 export default [
-  {ignores: ['dist/', 'node_modules/', '.local/']},
+  {ignores: ['dist/', 'release/', 'node_modules/', '.local/']},
   js.configs.recommended,
   {
     languageOptions: {ecmaVersion: 2024, sourceType: 'module'},
@@ -15,6 +15,7 @@ export default [
   },
   {files: ['public/**/*.js'], languageOptions: {globals: globals.browser}},
   {files: ['server/**/*.js'], languageOptions: {globals: {...globals.node, ...globals.serviceworker}}},
+  {files: ['desktop/**/*.js'], languageOptions: {globals: globals.node}},
   // build.mjs prepends STATIC_ASSETS to the Worker bundle.
   {files: ['server/worker.js'], languageOptions: {globals: {STATIC_ASSETS: 'readonly'}}},
   {

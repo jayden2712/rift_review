@@ -1,21 +1,29 @@
 {
   "name": "rift-review",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
+  "description": "Private League of Legends history and post-match coaching workspace",
+  "author": "Rift Review",
+  "license": "UNLICENSED",
+  "main": "desktop/main.js",
   "engines": {
-    "node": ">=20.12.0"
+    "node": ">=22.12.0"
   },
   "scripts": {
     "build": "node build.mjs",
     "test": "node --test",
     "start": "node server/local.js",
+    "desktop": "electron .",
+    "desktop:build": "node desktop/build.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@eslint/js": "9.39.5",
+    "electron": "45.0.0",
+    "electron-builder": "26.18.0",
     "eslint": "9.39.5",
     "globals": "15.15.0",
     "prettier": "3.9.10"

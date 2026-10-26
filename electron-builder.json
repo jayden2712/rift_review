@@ -1,0 +1,29 @@
+{
+  "appId": "com.riftreview.desktop",
+  "productName": "Rift Review",
+  "directories": {"output": "release", "buildResources": "desktop/assets"},
+  "files": [
+    "desktop/main.js",
+    "desktop/config.js",
+    "desktop/runtime.js",
+    "desktop/default.env",
+    "desktop/assets/icon.png",
+    "public/**/*",
+    "server/**/*.js",
+    "server/riotgames.pem",
+    "package.json"
+  ],
+  "asar": true,
+  "npmRebuild": false,
+  "electronFuses": {
+    "runAsNode": false,
+    "enableNodeOptionsEnvironmentVariable": false,
+    "enableNodeCliInspectArguments": false
+  },
+  "win": {"target": [{"target": "portable", "arch": ["x64"]}], "icon": "desktop/assets/icon.ico"},
+  "portable": {
+    "artifactName": "Rift-Review-${version}-Windows-${arch}.exe",
+    "requestExecutionLevel": "user",
+    "unpackDirName": false
+  }
+}

@@ -1,6 +1,16 @@
 # Rift Review — Riot history integration
 
-Private, English/Vietnamese League of Legends history dashboard and post-match coaching workspace. Vanilla HTML/CSS/ES modules with a private Cloudflare Worker backend. No added dependencies or model calls. The server retrieves completed matches from Riot with a secret environment key. Summoner’s Rift history uses the existing coaching rules; ARAM Mayhem has separate post-match history and descriptive statistics without coaching. A history containing Mayhem can be saved on this browser, including match details; SR-only lookups stay in tab memory and do not replace that saved snapshot. On reload, a valid saved snapshot is restored, otherwise the app opens clearly labelled fictional data. JSON export/import remains available for backups. Source and hosting remain attached to the original private Site.
+Private, English/Vietnamese League of Legends history dashboard and post-match coaching workspace. The web frontend uses vanilla HTML/CSS/ES modules; Windows desktop uses Electron with the same local Node backend. The server retrieves completed matches from Riot with a secret environment key. Summoner’s Rift history uses the existing coaching rules; ARAM Mayhem has separate post-match history and descriptive statistics without coaching. A history containing Mayhem can be saved on this browser, including match details; SR-only lookups stay in tab memory and do not replace that saved snapshot. On reload, a valid saved snapshot is restored, otherwise the app opens clearly labelled fictional data. JSON export/import remains available for backups. Source and hosting remain attached to the original private Site.
+
+## Windows desktop
+
+Double-click `release/Rift-Review-2.1.0-Windows-x64.exe`. The portable application includes Chromium and Node; no PowerShell, Node installation or separate `npm start` is needed. Closing its window stops its local server. It preserves the web app's Riot lookup, League client import, charts, coaching, optional AI, Data Lab and JSON workflows.
+
+Use **Ứng dụng → Nhập cấu hình .env…** to copy an existing project's settings, personal AI style and Data Lab snapshots into the desktop data folder. Existing desktop settings are backed up before replacement; existing style and snapshots are retained. Use **Chỉnh cấu hình** to edit settings in Notepad, then **Khởi động lại**. League client imports still require League running; Ollama-based AI still requires Ollama and its model.
+
+Desktop data lives in `%APPDATA%/Rift Review`, independently of the EXE and its temporary extraction directory. Browser history and practice plans are not automatically imported from Edge/Chrome; export the desired history as JSON in the web app, then import it in desktop. Mayhem snapshots and language/practice preferences persist across launches; SR-only history retains its existing session-only behavior. Keep `DESKTOP_PORT=4179` stable so the browser-storage origin remains the same. The web server's `PORT` remains separate.
+
+The EXE is currently unsigned. Build and architecture details: [Windows desktop](docs/windows-desktop.md).
 
 ## Workflows
 
@@ -16,7 +26,7 @@ Private, English/Vietnamese League of Legends history dashboard and post-match c
 
 ## Local commands
 
-Requires Node.js 20.12 or newer. No dependency installation is needed.
+Source development requires Node.js 22.12 or newer (Node 24 is used in CI). The desktop EXE needs no separate Node installation. The web server can still run without installing dependencies.
 
 ```bash
 # Run once if you do not already have a .env file:
