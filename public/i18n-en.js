@@ -7,12 +7,19 @@ export default {
   'Không gian riêng tư': 'Private workspace',
   'Điều hướng': 'Navigation',
   'Tra cứu lịch sử từ Riot': 'Look up match history from Riot',
+  'Bắt đầu từ lịch sử của bạn': 'Start with your match history',
+  'Tra cứu Riot ID hoặc nhập các trận đã lưu để xem lại cách bạn chơi.':
+    'Look up a Riot ID or import saved matches to review your play.',
+  'Cách nhập khác': 'Other ways to import',
+  'Đến phần phân tích ↓': 'Jump to analysis ↓',
+  'Mở một trận để xem trang bị, đội hình và chỉ số chi tiết.':
+    'Open a match to explore its loadout, teams and detailed stats.',
   'Lịch sử': 'History',
   '20 trận gần nhất': 'Last 20 matches',
   '10 trận gần nhất': 'Last 10 matches',
   'Tra cứu lịch sử': 'Look up history',
-  'Tra cứu trận đã kết thúc. Bạn vẫn có thể nhập JSON hoặc thêm trận thủ công ở bên dưới.':
-    'Look up completed matches. You can also import JSON or add matches manually below.',
+  'Chỉ tra cứu các trận đã kết thúc. Bạn cũng có thể nhập file JSON hoặc thêm trận thủ công.':
+    'Look up completed matches only. You can also import a JSON file or add matches manually.',
   'Hồ sơ người chơi': 'Player profile',
   '+ Thêm trận': '+ Add match',
   'Nhập lịch sử': 'Import history',

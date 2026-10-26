@@ -24,6 +24,55 @@ export class RiotError extends Error {
     this.retryAfter = retryAfter;
   }
 }
+// Official Riot Data Dragon icons; host and patch are server-controlled.
+// https://developer.riotgames.com/docs/lol/#data-dragon_profile-icons
+export const PROFILE_ICON_PATCH = '16.21.1';
+export async function loadProfileIcon(id, fetchImpl = fetch) {
+  if (!/^(0|[1-9]\d{0,5})$/.test(String(id)))
+    throw new RiotError('INVALID_ICON', 'Biểu tượng hồ sơ không hợp lệ.', 400);
+  try {
+    const response = await fetchImpl(
+      `https://ddragon.leagueoflegends.com/cdn/${PROFILE_ICON_PATCH}/img/profileicon/${id}.png`,
+      {redirect: 'error', signal: AbortSignal.timeout(8000)},
+    );
+    if (response.status === 404) throw new RiotError('ICON_NOT_FOUND', 'Chưa có biểu tượng này.', 404);
+    if (!response.ok || !response.headers.get('Content-Type')?.toLowerCase().startsWith('image/png'))
+      throw new Error('Invalid icon response');
+    const maximum = 512 * 1024;
+    if (Number(response.headers.get('Content-Length')) > maximum) throw new Error('Icon too large');
+    const reader = response.body.getReader();
+    const chunks = [];
+    let length = 0;
+    while (true) {
+      const {done, value} = await reader.read();
+      if (done) break;
+      length += value.length;
+      if (length > maximum) {
+        await reader.cancel();
+        throw new Error('Icon too large');
+      }
+      chunks.push(value);
+    }
+    const bytes = new Uint8Array(length);
+    let offset = 0;
+    for (const chunk of chunks) {
+      bytes.set(chunk, offset);
+      offset += chunk.length;
+    }
+    if (![137, 80, 78, 71, 13, 10, 26, 10].every((byte, index) => bytes[index] === byte))
+      throw new Error('Invalid PNG');
+    return new Response(bytes, {
+      headers: {
+        'Content-Type': 'image/png',
+        'Cache-Control': 'private, max-age=86400',
+        'X-Content-Type-Options': 'nosniff',
+      },
+    });
+  } catch (error) {
+    if (error instanceof RiotError) throw error;
+    throw new RiotError('ICON_UNAVAILABLE', 'Chưa tải được biểu tượng hồ sơ.', 502);
+  }
+}
 export function parseLookup(input) {
   if (!input || typeof input !== 'object' || Array.isArray(input))
     throw new RiotError('INVALID_INPUT', 'Nhập Riot ID và chọn server.', 400);
@@ -391,8 +440,9 @@ export async function loadRiotHistory(input, client) {
   if (typeof account?.puuid !== 'string' || !account.puuid)
     throw new RiotError('RIOT_BAD_ACCOUNT', 'Riot chưa trả mã định danh của tài khoản.', 502);
   const puuid = account.puuid;
+  let summoner;
   try {
-    await client.get(
+    summoner = await client.get(
       region.platform,
       `/lol/summoner/v4/summoners/by-puuid/${encodeURIComponent(puuid)}`,
       600,
@@ -471,6 +521,11 @@ export async function loadRiotHistory(input, client) {
           riotId: `${account.gameName || query.gameName}#${account.tagLine || query.tagLine}`,
           region: region.label,
           rank: '',
+          ...(Number.isInteger(summoner?.profileIconId) &&
+          summoner.profileIconId >= 0 &&
+          summoner.profileIconId <= 999999
+            ? {profileIconId: summoner.profileIconId}
+            : {}),
         },
         matches,
         details,

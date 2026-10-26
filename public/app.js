@@ -26,6 +26,8 @@ import {choosePlanFocus, createPlan, evaluatePlan, loadPlan, savePlan, clearPlan
 import {renderPlanTracker} from './practice-plan-view.js';
 import {buildAiFacts, requestAiSummary, renderAiPanel} from './ai-summary.js';
 import {initTooltips} from './tooltip.js';
+import {renderProfileAvatar} from './profile-view.js';
+import {chartMetrics, renderStatsCharts, updateChartPoint} from './stats-charts.js';
 
 const $ = selector => document.querySelector(selector);
 const escape = value =>
@@ -71,6 +73,30 @@ let lookupState = {kind: 'idle'},
   inputError = null,
   toastMessage = null;
 const perPage = 10;
+let chartMetric = 'cs',
+  chartMode = 'sr';
+function renderCharts() {
+  if (chartMode !== report.mode || !chartMetrics(report.mode).some(metric => metric.id === chartMetric))
+    chartMetric = report.mode === 'mayhem' ? 'damage' : 'cs';
+  chartMode = report.mode;
+  $('#stats-chart-content').innerHTML = renderStatsCharts(report, chartMetric);
+}
+$('#stats-chart-content').addEventListener('change', event => {
+  if (event.target.id !== 'chart-metric') return;
+  chartMetric = event.target.value;
+  renderCharts();
+  $('#chart-metric').focus();
+});
+$('#stats-chart-content').addEventListener('input', event => {
+  if (event.target.id === 'chart-match')
+    updateChartPoint($('#stats-chart-content'), report, chartMetric, Number(event.target.value));
+});
+$('#stats-chart-content').addEventListener('click', event => {
+  const dot = event.target.closest('[data-chart-index]');
+  if (!dot) return;
+  $('#chart-match').value = dot.dataset.chartIndex;
+  updateChartPoint($('#stats-chart-content'), report, chartMetric, Number(dot.dataset.chartIndex));
+});
 const sourceLabels = () => ({
   device: t('Dữ liệu lưu trên thiết bị · chưa xác minh lại'),
   sample: t('Dữ liệu mẫu giả lập'),
@@ -121,9 +147,6 @@ function showError(error, focus = true) {
   }
   el.replaceChildren(ul);
   if (focus) el.focus();
-}
-function initials(name) {
-  return name.slice(0, 2).toUpperCase();
 }
 function resetFilters() {
   const mayhem = $('#queue-filter').value === 'ARAM Mayhem';
@@ -211,7 +234,7 @@ function metric(label, value, caption, extra = '') {
 function profile() {
   const p = history.profile;
   $('#profile-identity').innerHTML =
-    `<div class="identity-avatar" aria-hidden="true">${escape(initials(p.riotId))}</div><div><div class="profile-kicker">${t('HỒ SƠ NGƯỜI CHƠI ')}<span class="source-pill">${source === 'sample' ? t('MẪU GIẢ LẬP') : source === 'riot' ? 'RIOT API' : source === 'lcu' ? t('CLIENT LOL') : t('DỮ LIỆU NHẬP')}</span></div><h1>${escape(p.riotId)}</h1><p class="profile-meta">${escape(p.region || t('Khu vực chưa nhập'))} <span>·</span>${t(' {value5} trận trong lịch sử ', {value5: history.matches.length})}<span>·</span> ${filters().mode === 'mayhem' ? t('Sau trận · không áp dụng rank hoặc MMR Mayhem') : p.rank ? escape(p.rank) + t(' (tự nhập)') : t('Rank chưa cung cấp')}</p></div>`;
+    `${renderProfileAvatar(p)}<div><div class="profile-kicker">${t('HỒ SƠ NGƯỜI CHƠI ')}<span class="source-pill">${source === 'sample' ? t('MẪU GIẢ LẬP') : source === 'riot' ? 'RIOT API' : source === 'lcu' ? t('CLIENT LOL') : t('DỮ LIỆU NHẬP')}</span></div><h1>${escape(p.riotId)}</h1><p class="profile-meta">${escape(p.region || t('Khu vực chưa nhập'))} <span>·</span>${t(' {value5} trận trong lịch sử ', {value5: history.matches.length})}<span>·</span> ${filters().mode === 'mayhem' ? t('Sau trận · không áp dụng rank hoặc MMR Mayhem') : p.rank ? escape(p.rank) + t(' (tự nhập)') : t('Rank chưa cung cấp')}</p></div>`;
   const sourceTitle =
     source === 'device'
       ? t('Bản lưu trên thiết bị.')
@@ -551,6 +574,7 @@ function render() {
   renderFocus();
   renderTrend();
   renderAugmentStats();
+  renderCharts();
   renderHistory();
   renderCoaching();
   renderStorage();
@@ -694,6 +718,9 @@ $('#manual-form').addEventListener('submit', async e => {
         riotId: data.riotId,
         region: data.region,
         rank: source === 'sample' ? '' : history.profile.rank,
+        ...(source !== 'sample' && history.profile.profileIconId !== undefined
+          ? {profileIconId: history.profile.profileIconId}
+          : {}),
       },
       matches: [entry, ...previous],
       details: source === 'sample' ? {} : history.details,
@@ -831,9 +858,16 @@ document.addEventListener(
     const image = event.target;
     if (
       image instanceof HTMLImageElement &&
-      (image.hasAttribute('data-champion-icon') || image.hasAttribute('data-game-icon'))
-    )
+      (image.hasAttribute('data-champion-icon') ||
+        image.hasAttribute('data-game-icon') ||
+        image.hasAttribute('data-profile-icon'))
+    ) {
+      if (image.hasAttribute('data-profile-icon')) {
+        image.parentElement.classList.remove('has-profile-icon');
+        image.parentElement.setAttribute('aria-label', t('Hồ sơ chưa có biểu tượng'));
+      }
       image.remove();
+    }
   },
   true,
 );
@@ -875,7 +909,7 @@ function renderLookupStatus() {
     );
   else
     status.textContent = t(
-      'Tra cứu trận đã kết thúc. Bạn vẫn có thể nhập JSON hoặc thêm trận thủ công ở bên dưới.',
+      'Chỉ tra cứu các trận đã kết thúc. Bạn cũng có thể nhập file JSON hoặc thêm trận thủ công.',
     );
 }
 function renderDialogCopy() {

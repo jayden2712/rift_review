@@ -210,7 +210,16 @@ export async function loadLcuMayhem(client) {
   };
   const history = {
     schemaVersion: 3,
-    profile: {riotId: `${summoner.gameName}#${summoner.tagLine}`, region: region.label, rank: ''},
+    profile: {
+      riotId: `${summoner.gameName}#${summoner.tagLine}`,
+      region: region.label,
+      rank: '',
+      ...(Number.isInteger(summoner.profileIconId) &&
+      summoner.profileIconId >= 0 &&
+      summoner.profileIconId <= 999999
+        ? {profileIconId: summoner.profileIconId}
+        : {}),
+    },
     matches,
     details,
   };

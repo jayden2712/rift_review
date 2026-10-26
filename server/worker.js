@@ -1,4 +1,11 @@
-import {RiotError, createRiotClient, createMemoryRiotCache, loadRiotHistory, loadLobbyRank} from './riot.js';
+import {
+  RiotError,
+  createRiotClient,
+  createMemoryRiotCache,
+  loadRiotHistory,
+  loadLobbyRank,
+  loadProfileIcon,
+} from './riot.js';
 
 const localRiotCache = createMemoryRiotCache();
 
@@ -20,6 +27,17 @@ export async function handleApi(request, env, {cache = null, fetchImpl = fetch} 
       401,
     );
   const url = new URL(request.url);
+  if (url.pathname.startsWith('/api/profile-icon/')) {
+    if (request.method !== 'GET')
+      return jsonResponse({error: {code: 'METHOD_NOT_ALLOWED'}}, 405, {Allow: 'GET'});
+    const icon = url.pathname.match(/^\/api\/profile-icon\/(0|[1-9]\d{0,5})\.png$/);
+    if (!icon) return jsonResponse({error: {code: 'INVALID_ICON'}}, 400);
+    try {
+      return await loadProfileIcon(icon[1], fetchImpl);
+    } catch (error) {
+      return jsonResponse({error: {code: error.code || 'ICON_UNAVAILABLE'}}, error.status || 502);
+    }
+  }
   if (url.pathname === '/api/status' && request.method === 'GET')
     return jsonResponse({riotConfigured: Boolean(env.RIOT_API_KEY)});
   if (!['/api/history', '/api/lobby-rank'].includes(url.pathname))

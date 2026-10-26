@@ -164,7 +164,7 @@ test('loading Mayhem from the client fetches each Mayhem game once and returns t
     async get(path) {
       calls.push(path);
       if (path === '/lol-summoner/v1/current-summoner')
-        return {puuid: selfPuuid, gameName: 'Fixture Self', tagLine: 'FIX'};
+        return {puuid: selfPuuid, gameName: 'Fixture Self', tagLine: 'FIX', profileIconId: 685};
       if (path === '/riotclient/region-locale') return {region: 'OC1'};
       if (path.startsWith('/lol-match-history/v1/products/lol/current-summoner/matches'))
         return {games: {games: [listEntry, {...listEntry, gameId: 5, queueId: 3100}]}};
@@ -177,7 +177,12 @@ test('loading Mayhem from the client fetches each Mayhem game once and returns t
   const result = await loadLcuMayhem(client);
   assert.equal(calls.filter(path => path.includes('/games/')).length, 1);
   assert.equal(result.history.schemaVersion, 3);
-  assert.deepEqual(result.history.profile, {riotId: 'Fixture Self#FIX', region: 'OCE', rank: ''});
+  assert.deepEqual(result.history.profile, {
+    riotId: 'Fixture Self#FIX',
+    region: 'OCE',
+    rank: '',
+    profileIconId: 685,
+  });
   assert.equal(result.history.matches.length, 1);
   assert.ok(result.history.details.OC1_1000001);
   assert.equal(result.source.provider, 'lcu');

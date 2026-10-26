@@ -16,7 +16,7 @@
     <title data-i18n="Rift Review · Lịch sử trận &amp; coaching">Rift Review · Lịch sử trận & coaching</title>
     <link rel="icon" href="/mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/theme.css" />
+    <link rel="stylesheet" href="/theme.css?v=stats-charts" />
   </head>
   <body>
     <a class="skip-link" href="#workspace" data-i18n="Đến nội dung chính">Đến nội dung chính</a>
@@ -48,6 +48,17 @@
         aria-label="Tra cứu lịch sử từ Riot"
         data-i18n-aria-label="Tra cứu lịch sử từ Riot"
       >
+        <div class="lookup-heading">
+          <div>
+            <h2 data-i18n="Bắt đầu từ lịch sử của bạn">Bắt đầu từ lịch sử của bạn</h2>
+            <p data-i18n="Tra cứu Riot ID hoặc nhập các trận đã lưu để xem lại cách bạn chơi.">
+              Tra cứu Riot ID hoặc nhập các trận đã lưu để xem lại cách bạn chơi.
+            </p>
+          </div>
+          <a class="text-btn workspace-link" href="#workspace" data-i18n="Đến phần phân tích ↓"
+            >Đến phần phân tích ↓</a
+          >
+        </div>
         <form id="riot-lookup">
           <label class="lookup-id"
             >Riot ID<input
@@ -88,36 +99,40 @@
               <option value="10" data-i18n="10 trận gần nhất">10 trận gần nhất</option>
             </select></label
           ><button class="primary-btn" type="submit" id="lookup-button" data-i18n="Tra cứu lịch sử">
-            Tra cứu lịch sử</button
-          ><button
+            Tra cứu lịch sử
+          </button>
+        </form>
+        <div class="source-actions">
+          <span class="source-actions-label" data-i18n="Cách nhập khác">Cách nhập khác</span>
+          <button class="secondary-btn" id="import-history" type="button" data-i18n="Nhập lịch sử">
+            Nhập lịch sử
+          </button>
+          <button class="secondary-btn" id="add-match" type="button" data-i18n="+ Thêm trận">
+            + Thêm trận
+          </button>
+          <button
             class="secondary-btn"
             type="button"
             id="lcu-import"
+            form="riot-lookup"
             hidden
             data-i18n="Nhập Mayhem từ client LoL"
           >
             Nhập Mayhem từ client LoL
           </button>
-        </form>
+        </div>
         <p
           id="lookup-status"
           class="small muted"
           role="status"
           aria-live="polite"
-          data-i18n="Tra cứu trận đã kết thúc. Bạn vẫn có thể nhập JSON hoặc thêm trận thủ công ở bên dưới."
+          data-i18n="Chỉ tra cứu các trận đã kết thúc. Bạn cũng có thể nhập file JSON hoặc thêm trận thủ công."
         >
-          Tra cứu trận đã kết thúc. Bạn vẫn có thể nhập JSON hoặc thêm trận thủ công ở bên dưới.
+          Chỉ tra cứu các trận đã kết thúc. Bạn cũng có thể nhập file JSON hoặc thêm trận thủ công.
         </p>
       </section>
       <section class="profile" aria-label="Hồ sơ người chơi" data-i18n-aria-label="Hồ sơ người chơi">
         <div id="profile-identity"></div>
-        <div class="profile-actions">
-          <button class="secondary-btn" id="add-match" type="button" data-i18n="+ Thêm trận">
-            + Thêm trận</button
-          ><button class="primary-btn" id="import-history" type="button" data-i18n="Nhập lịch sử">
-            Nhập lịch sử
-          </button>
-        </div>
       </section>
       <div class="device-history">
         <span id="storage-status" role="status"></span
@@ -162,93 +177,109 @@
           </section>
         </aside>
         <div class="main-column">
-          <div class="analysis-toolbar">
-            <div
-              class="tab-list"
-              role="tablist"
-              aria-label="Nội dung phân tích"
-              data-i18n-aria-label="Nội dung phân tích"
-            >
-              <button
-                type="button"
-                role="tab"
-                id="history-tab"
-                aria-controls="history-panel"
-                aria-selected="true"
-                data-i18n="Lịch sử trận"
+          <div class="history-controls">
+            <div class="analysis-toolbar">
+              <div
+                class="tab-list"
+                role="tablist"
+                aria-label="Nội dung phân tích"
+                data-i18n-aria-label="Nội dung phân tích"
               >
-                Lịch sử trận</button
-              ><button
-                type="button"
-                role="tab"
-                id="coaching-tab"
-                aria-controls="coaching-panel"
-                aria-selected="false"
-                tabindex="-1"
-                data-i18n="Báo cáo coaching"
+                <button
+                  type="button"
+                  role="tab"
+                  id="history-tab"
+                  aria-controls="history-panel"
+                  aria-selected="true"
+                  data-i18n="Lịch sử trận"
+                >
+                  Lịch sử trận</button
+                ><button
+                  type="button"
+                  role="tab"
+                  id="coaching-tab"
+                  aria-controls="coaching-panel"
+                  aria-selected="false"
+                  tabindex="-1"
+                  data-i18n="Báo cáo coaching"
+                >
+                  Báo cáo coaching
+                </button>
+              </div>
+              <span
+                class="rule-badge"
+                title="Đánh giá bằng quy tắc minh bạch; chưa gọi mô hình AI"
+                data-i18n-title="Đánh giá bằng quy tắc minh bạch; chưa gọi mô hình AI"
+                data-i18n="Phân tích theo quy tắc"
+                >Phân tích theo quy tắc</span
               >
-                Báo cáo coaching
-              </button>
             </div>
-            <span
-              class="rule-badge"
-              title="Đánh giá bằng quy tắc minh bạch; chưa gọi mô hình AI"
-              data-i18n-title="Đánh giá bằng quy tắc minh bạch; chưa gọi mô hình AI"
-              data-i18n="Phân tích theo quy tắc"
-              >Phân tích theo quy tắc</span
+            <form
+              id="filters"
+              class="filters"
+              aria-label="Bộ lọc phân tích"
+              data-i18n-aria-label="Bộ lọc phân tích"
             >
+              <label
+                ><span data-i18n="Chế độ">Chế độ</span
+                ><select name="queue" id="queue-filter">
+                  <option value="" data-i18n="Tất cả chế độ SR">Tất cả chế độ SR</option>
+                  <option value="Ranked Solo">Ranked Solo</option>
+                  <option value="Ranked Flex">Ranked Flex</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Standard" data-i18n="SR · chưa rõ chế độ">SR · chưa rõ chế độ</option>
+                  <option value="ARAM Mayhem">ARAM Mayhem</option>
+                </select></label
+              ><label
+                ><span data-i18n="Vị trí">Vị trí</span
+                ><select name="role" id="role-filter">
+                  <option value="" data-i18n="Tất cả vị trí">Tất cả vị trí</option>
+                  <option value="Top">Top</option>
+                  <option value="Jungle">Jungle</option>
+                  <option value="Mid">Mid</option>
+                  <option value="ADC">ADC</option>
+                  <option value="Support">Support</option>
+                </select></label
+              ><label
+                ><span data-i18n="Tướng">Tướng</span
+                ><select name="champion" id="champion-filter">
+                  <option value="" data-i18n="Tất cả tướng">Tất cả tướng</option>
+                </select></label
+              ><label
+                ><span data-i18n="Số trận gần nhất">Số trận gần nhất</span
+                ><select name="limit" id="limit-filter">
+                  <option value="10" data-i18n="10 trận">10 trận</option>
+                  <option value="20" selected data-i18n="20 trận">20 trận</option>
+                  <option value="50" data-i18n="50 trận">50 trận</option>
+                  <option value="100" data-i18n="100 trận">100 trận</option>
+                  <option value="500" data-i18n="Tất cả (tối đa 500)">Tất cả (tối đa 500)</option>
+                </select></label
+              ><button class="text-btn reset-filters" id="reset-filters" type="button" data-i18n="Đặt lại">
+                Đặt lại
+              </button>
+            </form>
+            <p id="scope" class="scope" role="status" aria-live="polite"></p>
           </div>
-          <form
-            id="filters"
-            class="filters"
-            aria-label="Bộ lọc phân tích"
-            data-i18n-aria-label="Bộ lọc phân tích"
-          >
-            <label
-              ><span data-i18n="Chế độ">Chế độ</span
-              ><select name="queue" id="queue-filter">
-                <option value="" data-i18n="Tất cả chế độ SR">Tất cả chế độ SR</option>
-                <option value="Ranked Solo">Ranked Solo</option>
-                <option value="Ranked Flex">Ranked Flex</option>
-                <option value="Normal">Normal</option>
-                <option value="Standard" data-i18n="SR · chưa rõ chế độ">SR · chưa rõ chế độ</option>
-                <option value="ARAM Mayhem">ARAM Mayhem</option>
-              </select></label
-            ><label
-              ><span data-i18n="Vị trí">Vị trí</span
-              ><select name="role" id="role-filter">
-                <option value="" data-i18n="Tất cả vị trí">Tất cả vị trí</option>
-                <option value="Top">Top</option>
-                <option value="Jungle">Jungle</option>
-                <option value="Mid">Mid</option>
-                <option value="ADC">ADC</option>
-                <option value="Support">Support</option>
-              </select></label
-            ><label
-              ><span data-i18n="Tướng">Tướng</span
-              ><select name="champion" id="champion-filter">
-                <option value="" data-i18n="Tất cả tướng">Tất cả tướng</option>
-              </select></label
-            ><label
-              ><span data-i18n="Số trận gần nhất">Số trận gần nhất</span
-              ><select name="limit" id="limit-filter">
-                <option value="10" data-i18n="10 trận">10 trận</option>
-                <option value="20" selected data-i18n="20 trận">20 trận</option>
-                <option value="50" data-i18n="50 trận">50 trận</option>
-                <option value="100" data-i18n="100 trận">100 trận</option>
-                <option value="500" data-i18n="Tất cả (tối đa 500)">Tất cả (tối đa 500)</option>
-              </select></label
-            ><button class="text-btn reset-filters" id="reset-filters" type="button" data-i18n="Đặt lại">
-              Đặt lại
-            </button>
-          </form>
-          <p id="scope" class="scope" role="status" aria-live="polite"></p>
           <div id="history-panel" role="tabpanel" aria-labelledby="history-tab">
             <div id="focus-preview"></div>
             <section class="panel trend-panel" id="trend"></section>
             <section class="panel augment-stats-panel" id="augment-stats" hidden></section>
+            <details id="stats-charts" class="panel stats-charts">
+              <summary class="chart-toggle">
+                <strong data-i18n="Đồ thị thống kê">Đồ thị thống kê</strong>
+                <span data-i18n="Diễn biến từng trận · tỉ lệ thắng theo tướng"
+                  >Diễn biến từng trận · tỉ lệ thắng theo tướng</span
+                >
+              </summary>
+              <div id="stats-chart-content"></div>
+            </details>
             <div class="history-heading">
-              <h2 data-i18n="Lịch sử trận đấu">Lịch sử trận đấu</h2>
+              <div>
+                <h2 data-i18n="Lịch sử trận đấu">Lịch sử trận đấu</h2>
+                <p class="history-hint" data-i18n="Mở một trận để xem trang bị, đội hình và chỉ số chi tiết.">
+                  Mở một trận để xem trang bị, đội hình và chỉ số chi tiết.
+                </p>
+              </div>
               <div
                 id="result-strip"
                 class="result-strip"

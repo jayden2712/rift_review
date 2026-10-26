@@ -31,6 +31,15 @@ export function normalizeHistory(input) {
     region: shortText(profile.region, '', 'Khu vực', 30),
     rank: shortText(profile.rank, '', 'Rank', 60),
   };
+  if (profile.profileIconId !== undefined && profile.profileIconId !== null) {
+    if (
+      !Number.isInteger(profile.profileIconId) ||
+      profile.profileIconId < 0 ||
+      profile.profileIconId > 999999
+    )
+      throw new InputError([() => t('profileIconId cần số nguyên từ 0 đến 999999.')]);
+    normalizedProfile.profileIconId = profile.profileIconId;
+  }
   const ids = new Set();
   const errors = [];
   const matches = entries.map((entry, index) => {

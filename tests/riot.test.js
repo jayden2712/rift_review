@@ -95,7 +95,7 @@ test('Riot lookup uses ACCOUNT Asia, OCE platform and SEA match routing with enc
   const client = clientFixture(async (url, options) => {
     calls.push({url, options});
     if (url.includes('/accounts/')) return Response.json({puuid, gameName: 'not tày enough', tagLine: 'idc'});
-    if (url.includes('/summoner/')) return Response.json({puuid});
+    if (url.includes('/summoner/')) return Response.json({puuid, profileIconId: 685});
     if (url.includes('/ids?')) return Response.json(['OC1_123', 'OC1_123']);
     return Response.json(rawMatch());
   });
@@ -106,6 +106,7 @@ test('Riot lookup uses ACCOUNT Asia, OCE platform and SEA match routing with enc
   assert.ok(calls[2].url.startsWith('https://sea.api.riotgames.com/'));
   assert.equal(out.history.matches.length, 1);
   assert.equal(out.history.profile.region, 'OCE');
+  assert.equal(out.history.profile.profileIconId, 685);
   assert.ok(calls.every(c => c.options.headers['X-Riot-Token'] === 'fixture-secret'));
   assert.ok(!JSON.stringify(out).includes('fixture-secret'));
 });

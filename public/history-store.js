@@ -168,5 +168,10 @@ export function mergeHistoryPage(existing, incoming, {prependNew = false, allowM
   // Dates take precedence when all are known; otherwise preserve the caller's page direction.
   const matches = prependNew ? [...added, ...updated] : [...updated, ...added];
   if (matches.length > MAX_MATCHES) fail('history_limit');
-  return checkedHistory({...exportHistory(next), matches, details: {...previous.details, ...next.details}});
+  return checkedHistory({
+    ...exportHistory(next),
+    profile: {...previous.profile, ...next.profile},
+    matches,
+    details: {...previous.details, ...next.details},
+  });
 }

@@ -33,6 +33,8 @@ Queue values are `Ranked Solo`, `Ranked Flex`, `Normal`, `Standard`, `ARAM`, `AR
 
 If every match has a timezone-qualified ISO timestamp, sorting is newest first; otherwise the complete input order is preserved and should be newest first. Duplicate IDs reject a JSON import. IDs generated for records without IDs are import-local; identical statistics do not imply duplicate matches. Imports are atomic and limited to 500 matches and two million characters/bytes for text/files respectively. Full participant metadata may reach the size limit before 500 matches.
 
+`profile.profileIconId` is optional: an integer from 0 through 999999 identifying the account's selected summoner icon. Missing/null values keep the initials fallback; supplied invalid values reject the import. Riot and League client adapters populate it, and export, device snapshots, manual additions and page merging preserve it. It is an icon ID, never a URL or a champion inferred from match history.
+
 ### Saving on this device
 
 A non-sample history containing at least one Mayhem match is automatically saved under localStorage key `rift-review-history-v1`. The snapshot contains History v3 data and, when applicable, a validated lookup cursor. This is one latest active history/account snapshot, not a multi-account archive or database. Activating another Mayhem account replaces the previous saved snapshot; export JSON first to keep multiple histories. SR-only lookups and fictional samples do not overwrite the saved Mayhem history.
