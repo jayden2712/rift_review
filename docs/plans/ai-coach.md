@@ -13,6 +13,8 @@ Trạng thái: kế hoạch, chưa triển khai. Viết ngày 2026-10-27.
 3. **Được phép nói "không biết".** Lỗi vị trí đứng, quyết định giao tranh không thấy được từ số liệu; model phải từ chối thay vì đoán.
 4. **Đo trước, chi tiền sau.** Không thuê GPU khi chưa có bộ đánh giá chứng minh model hiện tại thiếu ở đâu.
 5. **Không lưu Riot ID.** Dữ liệu thu thập dùng mã ẩn danh; không công bố dữ liệu gắn với danh tính người chơi.
+6. **Quan sát trước, giả thuyết sau.** Nhãn và nhận xét mô tả điều số liệu cho thấy ("CS giảm sau khi rời đường"), không khẳng định nguyên nhân ("bỏ wave"). Giả thuyết chỉ được nêu khi đủ bằng chứng và luôn ghi rõ là giả thuyết.
+7. **Mọi con số về số trận, thời gian, dung lượng, chi phí trong tài liệu này là ước tính**, phải đo lại sau lần chạy thử đầu tiên.
 
 ## 1. Kiến trúc tổng quan
 
@@ -40,34 +42,45 @@ Phần đã có và được tái sử dụng:
 | Server | OCE (platform `oc1`, routing `sea`) |
 | Chế độ | Rank Đơn (queue 420) |
 | Vai trò | Mid |
-| Rank | Lục Bảo I–IV |
+| Rank | Lục Bảo I–IV **tại thời điểm thu thập** (xem ghi chú bên dưới) |
 | Patch | Patch hiện tại (lọc theo `gameVersion`) |
-| Số trận | ~1.000, có timeline |
+| Số trận | Mục tiêu ~1.000, có timeline (ước tính; xác nhận sau chạy thử) |
+
+**Ghi chú về rank:** `league-v4` chỉ trả rank **hiện tại**, không có rank lúc trận diễn ra. Vì vậy:
+
+- Lưu rank cùng thời điểm quan sát (`rank_observed_at`) và coi đó là rank xấp xỉ của trận.
+- Phạm vi dữ liệu được mô tả là "trận có một người chơi Mid đang ở Lục Bảo khi thu thập", **không** phải "trận Lục Bảo". Đối thủ Mid không mặc nhiên cùng bậc; nếu cần, tra rank hiện tại của đối thủ và lưu riêng, cũng kèm thời điểm quan sát.
+- Mốc so sánh ở giai đoạn 3 ghi rõ rank được xác định theo cách này.
 
 ### Luồng thu thập
 
 1. `league-v4` entries theo bậc Lục Bảo → danh sách người chơi (PUUID).
 2. Mỗi người: `match-v5 ids?queue=420&startTime=<ngày đầu patch>&count=20`.
 3. Bỏ trùng mã trận; xếp vào hàng đợi.
-4. Mỗi trận: chi tiết trận; nếu người chơi Mid của trận nằm trong bậc rank mục tiêu → tải thêm timeline.
-5. Trích đặc trưng cho **cả hai người chơi Mid** (đối xứng: mỗi trận cho 2 mẫu).
+4. Mỗi trận: chi tiết trận; nếu người chơi Mid của trận là người được tìm thấy từ danh sách Lục Bảo ở bước 1 → tải thêm timeline.
+5. Trích đặc trưng cho **cả hai người chơi Mid** (đối xứng: mỗi trận cho 2 mẫu). Hai mẫu này luôn đi cùng nhau khi chia tập (xem giai đoạn 2).
 
 ### Lưu trữ (SQLite, một file)
 
 | Bảng | Nội dung |
 |---|---|
-| `players` | `player_key` (HMAC của PUUID với khoá bí mật), tier, division, lần quét cuối |
+| `players` | `player_key` (HMAC của PUUID với khoá bí mật), tier, division, `rank_observed_at`, lần quét cuối |
 | `queue` | mã trận, trạng thái (`pending`/`done`/`failed`), số lần thử, lỗi gần nhất |
 | `matches` | mã trận, patch, thời lượng, kết quả, JSON chi tiết **đã xoá trường danh tính**, nén gzip |
 | `timelines` | mã trận, JSON timeline nén gzip |
-| `features` | một dòng mỗi (trận, người chơi Mid): chỉ số cuối trận, chỉ số @10/@15, chênh lệch với đối thủ, sự kiện chết, mốc đồ |
+| `features` | một dòng mỗi (trận, người chơi Mid): `player_key`, rank đã quan sát (nếu có), chỉ số cuối trận, chỉ số @10/@15, chênh lệch với đối thủ, sự kiện chết, mốc đồ |
 | `runs` | thời điểm chạy, số request, số trận thêm mới, lỗi |
 
-Ước tính dung lượng cho 1.000 trận có timeline: dưới 1 GB khi nén.
+Ước tính dung lượng cho 1.000 trận có timeline: dưới 1 GB khi nén (đo lại sau chạy thử).
 
 ### Tốc độ và vận hành
 
-- Key cá nhân: khoảng 100 request / 2 phút / khu vực. 1.000 trận ≈ 1.000 chi tiết + ~1.000 timeline + vài trăm request danh sách ≈ 2.500 request ≈ **khoảng 1 giờ**.
+- Key cá nhân: khoảng 100 request / 2 phút / khu vực. Ước tính trên giấy: 1.000 trận ≈ 1.000 chi tiết + ~1.000 timeline + vài trăm request danh sách ≈ 2.500 request ≈ **khoảng 1 giờ**. Thực tế có thể chậm hơn nhiều do 429, lỗi mạng và tỉ lệ trận bị loại.
+- **Chạy thử 50 trận để đo**, trước khi tin bất kỳ con số nào ở trên hay ở giai đoạn 3:
+  - số request thực tế cho mỗi trận giữ lại (tính cả trận bị loại vì sai queue, sai patch, sai vai trò);
+  - tốc độ thu thập thực tế (trận/giờ);
+  - số trận Mid phù hợp mới mỗi ngày trên OCE (server nhỏ, có thể không đủ để đạt mục tiêu trong một patch);
+  - dung lượng mỗi trận sau nén.
 - Tôn trọng `Retry-After` và header giới hạn của Riot; không chạy song song với tra cứu thủ công trên cùng key (giới hạn tính theo key).
 - **Dừng lúc nào cũng được:** mỗi bước ghi trạng thái vào `queue`; chạy lại thì tiếp tục từ chỗ dừng.
 - Chạy bằng `systemd` (tự khởi động lại), log ra journal. Lệnh: `npm run collect -- --status | --run | --export features.csv`.
@@ -80,7 +93,8 @@ Phần đã có và được tái sử dụng:
 
 ### Hoàn thành khi
 
-- 1.000 trận Mid Lục Bảo OCE patch hiện tại có đủ chi tiết + timeline + đặc trưng.
+- Có báo cáo đo từ lần chạy thử 50 trận; mục tiêu số trận và thời gian đã được cập nhật theo số đo.
+- Đạt mục tiêu số trận đã cập nhật (ban đầu ~1.000) trong phạm vi đã mô tả, có đủ chi tiết + timeline + đặc trưng.
 - Dừng giữa chừng rồi chạy lại không mất hay trùng dữ liệu (có test).
 - Không có Riot ID trong file SQLite (có test quét).
 
@@ -89,6 +103,11 @@ Phần đã có và được tái sử dụng:
 ### Thành phần
 
 - **60 trận** lấy ngẫu nhiên từ dữ liệu giai đoạn 1: 40 trận "dev" để chỉnh prompt, 20 trận "test" **khoá lại**, chỉ dùng cho quyết định cuối.
+- **Quy tắc chia tập** (áp dụng cho mọi giai đoạn, kể cả train/test của LightGBM): chia theo nhóm, không chia theo từng mẫu.
+  - Hai mẫu của cùng một trận luôn nằm cùng một tập.
+  - Mọi trận của cùng một `player_key` luôn nằm cùng một tập, để model không "học thuộc" lối chơi của một người rồi được chấm trên chính người đó.
+  - Khi hai quy tắc chồng nhau (cùng người xuất hiện ở nhiều trận), gộp thành nhóm liên thông rồi mới chia.
+  - Lưu danh sách nhóm và hạt giống ngẫu nhiên để chia lại y hệt.
 - Mỗi trận: bộ **facts** (câu có ngữ cảnh, mỗi câu có `fact_id`) do code sinh từ đặc trưng và timeline.
 - Mỗi trận có **nhãn chuẩn** do bạn viết:
 
@@ -97,7 +116,7 @@ Phần đã có và được tái sử dụng:
   "match": "OC1_123",
   "issues": [
     {"category": "early_deaths", "facts": ["f12", "f13"], "drill": "…"},
-    {"category": "wave_before_roam", "facts": ["f04"], "drill": "…"}
+    {"category": "cs_drop_after_roam", "facts": ["f04"], "drill": "…"}
   ],
   "abstain": ["positioning"],
   "notes": "Đội thua do bot sập; không tính vào Mid."
@@ -106,31 +125,36 @@ Phần đã có và được tái sử dụng:
 
 ### Danh mục vấn đề (cố định, ~10 loại)
 
-| Mã | Ý nghĩa | Bằng chứng cần có |
-|---|---|---|
-| `lane_cs` | Hụt farm khi đi đường | CS @10/@15, chênh lệch với đối thủ |
-| `lane_trade` | Thua giao tranh đường | Vàng/kinh nghiệm @10, hạ gục/chết trước 14 phút |
-| `early_deaths` | Chết sớm | Sự kiện chết trước 14 phút, ai hạ gục |
-| `death_before_objective` | Chết ngay trước rồng/Baron | Chết trong 60 giây trước sự kiện objective |
-| `wave_before_roam` | Rời đường bỏ wave | CS giảm quanh thời điểm tham gia hạ gục ở đường khác |
-| `vision_setup` | Thiếu chuẩn bị tầm nhìn | Mắt kiểm soát, mắt phá, objective |
-| `objective_presence` | Vắng mặt ở objective | Tham gia rồng/Sứ giả/Baron |
-| `item_timing` | Lên đồ chậm | Phút hoàn thành món chính so với mốc |
-| `kp_low` | Ít tham gia giao tranh | KP so với đối thủ |
-| `insufficient` | Không đủ bằng chứng | — |
+Mỗi mã mô tả **điều quan sát được** trong số liệu. Cột "Giả thuyết có thể nêu" chỉ được dùng khi có đủ bằng chứng ở cột cuối, và luôn dùng từ dè dặt ("có thể", "nhiều khả năng").
+
+| Mã (quan sát) | Quan sát | Giả thuyết có thể nêu | Bằng chứng cần có cho giả thuyết |
+|---|---|---|---|
+| `lane_cs_gap` | CS @10/@15 thấp hơn đối thủ cùng đường | Farm khi đi đường chưa ổn | Chênh lệch vượt ngưỡng; không có cái chết hay lần rời đường giải thích được |
+| `lane_resource_gap` | Vàng/kinh nghiệm @10 thấp hơn đối thủ | Thua trao đổi ở đường | Kèm cái chết do đối thủ cùng đường trước 14 phút |
+| `early_deaths` | Chết trước 14 phút | — (chỉ nêu số lần, thời điểm, ai hạ gục) | — |
+| `death_before_objective_window` | Chết trong 60 giây trước khi một objective bị hạ | Cái chết làm đội mất objective | Objective đó rơi vào tay **đội địch**; kể cả vậy vẫn là tương quan, không phải nhân quả |
+| `cs_drop_after_roam` | CS tăng chậm lại sau khi tham gia hạ gục ở đường khác | Rời đường làm mất lính | Timeline **không có trạng thái lính trên đường**, nên không chứng minh được "bỏ wave"; chỉ nêu là khả năng |
+| `low_vision_control` | Ít mắt kiểm soát / phá mắt hơn đối thủ | Thiếu chuẩn bị tầm nhìn trước objective | Có dữ liệu mắt theo thời gian quanh objective |
+| `low_objective_presence` | Ít tham gia hạ rồng/Sứ giả/Baron | Vắng mặt ở objective | Không tham gia nhiều objective của đội |
+| `late_item` | Hoàn thành món chính muộn hơn mốc | Lên đồ chậm | Có mốc cùng tướng/vai trò (giai đoạn 3) |
+| `low_kp` | KP thấp hơn đối thủ | Ít tham gia giao tranh | — |
+| `insufficient` | Không đủ bằng chứng | — | — |
 
 Không có trong danh mục (vị trí đứng, quyết định combat) thì nhãn chuẩn phải là `abstain`.
 
 ### Chỉ số chấm
 
-| Chỉ số | Cách đo | Tự động? |
+| Chỉ số | Máy kiểm tra | Người chấm |
 |---|---|---|
-| **Bằng chứng đúng** | Mọi `fact_id` model trích có tồn tại và mọi số khớp đúng fact đó (mở rộng bộ lọc hiện tại từ "số có trong dữ liệu" thành "số thuộc đúng fact được trích") | Có |
-| **Trùng vấn đề** | Số vấn đề model chọn trùng nhãn chuẩn: 0, 1 hoặc 2 | Có |
-| **Từ chối đúng** | Khi nhãn chuẩn có `abstain`, model có từ chối hay bịa | Có |
-| **Hữu ích** | Bạn chấm 1–5, **mù** (không biết model nào) | Không |
-| **Hợp lệ** | Đúng JSON schema, không bị bộ lọc bỏ toàn bộ | Có |
-| **Tốc độ** | Giây mỗi trận trên laptop | Có |
+| **Bằng chứng đúng** | Mọi `fact_id` model trích có tồn tại và mọi số khớp đúng fact đó (mở rộng bộ lọc hiện tại từ "số có trong dữ liệu" thành "số thuộc đúng fact được trích") | — |
+| **Diễn giải đúng** | — | Câu nhận xét có nói đúng điều fact cho thấy không; có biến quan sát thành khẳng định nguyên nhân không (đúng / quá mạnh / sai) |
+| **Trùng vấn đề** | Số vấn đề model chọn trùng nhãn chuẩn: 0, 1 hoặc 2 | — |
+| **Từ chối đúng** | Khi nhãn chuẩn có `abstain`, model có từ chối không | Lý do từ chối có hợp lý không; khi không từ chối thì nội dung có bịa không |
+| **Hữu ích** | — | Bạn chấm 1–5, **mù** (không biết model nào) |
+| **Hợp lệ** | Đúng JSON schema, không bị bộ lọc bỏ toàn bộ | — |
+| **Tốc độ** | Giây mỗi trận trên laptop | — |
+
+Phần máy kiểm tra chỉ đảm bảo **cấu trúc**: `fact_id` tồn tại và số khớp không có nghĩa câu diễn giải đúng. Quyết định ở giai đoạn 4 và 5 dựa trên cả hai cột.
 
 Mỗi cấu hình chạy 3 lần (nhiệt độ cố định) để đo độ ổn định.
 
@@ -138,20 +162,20 @@ Mỗi cấu hình chạy 3 lần (nhiệt độ cố định) để đo độ �
 
 - `npm run eval -- --model qwen3:8b --set dev` → báo cáo JSON + Markdown trong `.local/eval/`.
 - Gán nhãn: file JSONL sửa tay trước; nếu chậm thì làm một trang local nhỏ hiển thị facts và các ô chọn danh mục.
-- Công sức ước tính: 60 trận × 10–15 phút = **10–15 giờ** viết nhãn. Đây là phần tốn nhất của giai đoạn 2.
+- Công sức ước tính: 60 trận × 10–15 phút = **10–15 giờ** viết nhãn, cộng thời gian chấm tay "diễn giải đúng", "từ chối đúng" và "hữu ích" cho mỗi cấu hình (ước tính 3–5 phút mỗi trận). Đây là phần tốn nhất của giai đoạn 2.
 
 ### Hoàn thành khi
 
-- 60 trận có nhãn; bộ test khoá lại.
-- Chạy được baseline (quy tắc hiện tại + `qwen3:8b`) và có số liệu cho mọi chỉ số tự động.
+- 60 trận có nhãn; bộ test khoá lại; cách chia nhóm theo trận và người chơi được lưu lại.
+- Chạy được baseline (quy tắc hiện tại + `qwen3:8b`) và có số liệu cho cả phần máy kiểm tra lẫn phần người chấm.
 
 ## 4. Giai đoạn 3 — Thống kê và mốc so sánh theo rank
 
-Cần nhiều dữ liệu hơn giai đoạn 1: mở rộng collector lên **20.000–50.000 trận** Mid Lục Bảo OCE (khoảng 15–30 giờ chạy trên VPS, có thể kéo dài nhiều ngày).
+Cần nhiều dữ liệu hơn giai đoạn 1: mục tiêu ban đầu **20.000–50.000 trận** có người chơi Mid đang ở Lục Bảo OCE (ước tính 15–30 giờ chạy trên VPS). Tính lại mục tiêu từ số đo của lần chạy thử; nếu OCE không đủ trận trong một patch, chọn giữa gộp nhiều patch, mở rộng sang bậc rank lân cận hoặc thêm server khác, và ghi rõ lựa chọn.
 
 - **Mốc so sánh**: trung vị và khoảng tứ phân vị của CS/vàng/kinh nghiệm @10/@15, số lần chết trước 14 phút, mốc món chính, theo vai trò và theo tướng (chỉ tướng đủ mẫu, ví dụ ≥ 200 lượt).
-- **Yếu tố đầu trận**: LightGBM dự đoán thắng/thua **chỉ từ đặc trưng tới phút 15**, để tránh rò rỉ kết quả từ chỉ số cuối trận; đọc mức quan trọng của đặc trưng như tương quan, không phải nhân quả.
-- **Đưa vào app**: mốc so sánh thành facts mới ("CS @10 của bạn 68, trung vị Mid Lục Bảo 74"); thay dần các ngưỡng "demo" trong `public/coach.js`.
+- **Yếu tố đầu trận**: LightGBM dự đoán thắng/thua **chỉ từ đặc trưng tới phút 15**, để tránh rò rỉ kết quả từ chỉ số cuối trận; chia train/test theo nhóm trận và người chơi như giai đoạn 2; đọc mức quan trọng của đặc trưng như tương quan, không phải nhân quả.
+- **Đưa vào app**: mốc so sánh thành facts mới ("CS @10 của bạn 68, trung vị người chơi Mid đang ở Lục Bảo OCE, patch X: 74"), luôn kèm phạm vi mẫu; thay dần các ngưỡng "demo" trong `public/coach.js`.
 
 Hoàn thành khi: có file mốc so sánh theo patch, dùng được trong coaching và trong facts gửi AI, có test.
 
@@ -191,6 +215,8 @@ Kiến thức đổi mỗi patch không nằm trong model mà nằm trong kho tr
 
 ## 8. Chi phí và thời gian ước tính
 
+Tất cả là ước tính trước khi đo; cập nhật bảng này sau lần chạy thử 50 trận.
+
 | Hạng mục | Ước tính |
 |---|---|
 | VPS | ~4–6 USD/tháng (kiểm tra giá hiện tại) |
@@ -209,6 +235,10 @@ Chi phí lớn nhất là **thời gian gán nhãn**, không phải tiền máy.
 | Rò rỉ kết quả trong model thống kê | Chỉ dùng đặc trưng tới phút 15 |
 | Patch đổi làm sai mốc | Lưu `gameVersion`; tính lại mốc mỗi patch |
 | Lệch mẫu theo rank/server | Báo cáo rõ phạm vi; mở rộng dần |
+| Rank lúc thu thập khác rank lúc chơi | Lưu `rank_observed_at`; mô tả phạm vi là "đang ở bậc X khi thu thập"; không gán rank cho đối thủ khi chưa tra |
+| Rò rỉ giữa các tập train/dev/test | Chia theo nhóm trận và người chơi; lưu hạt giống và danh sách nhóm |
+| Nhận xét biến quan sát thành nguyên nhân | Mã nhãn mô tả quan sát; giả thuyết cần bằng chứng riêng; chấm tay "diễn giải đúng" |
+| OCE không đủ trận cho mục tiêu | Đo trong lần chạy thử; điều chỉnh phạm vi và ghi rõ |
 | Nhãn chuẩn thiếu nhất quán | Danh mục cố định, hướng dẫn gán nhãn, gán lại 10 trận sau một tuần để đo độ nhất quán |
 | Riot đổi API hoặc giới hạn | Collector đọc header giới hạn; dừng và báo lỗi thay vì thử dồn dập |
 | Key bị lộ trên VPS | Chỉ đăng nhập bằng khoá SSH, `.env` quyền 600, xoay key nếu nghi lộ |
@@ -221,10 +251,10 @@ Chi phí lớn nhất là **thời gian gán nhãn**, không phải tiền máy.
 
 ## 11. Việc cần làm đầu tiên (sprint 1)
 
-1. Thuê VPS Ubuntu, cài Node 20, cấu hình SSH và tường lửa.
+1. Thuê VPS Ubuntu, cài Node 24 (tối thiểu 22.12, khớp `package.json` và CI), cấu hình SSH và tường lửa.
 2. Viết `tools/collector/` với SQLite, hàng đợi dừng/tiếp tục, test bằng fixture ẩn danh.
-3. Chạy thử trên laptop với 50 trận; kiểm tra không có Riot ID, kiểm tra dừng giữa chừng.
-4. Chuyển lên VPS, chạy tới 1.000 trận có timeline.
+3. Chạy thử trên laptop với 50 trận; kiểm tra không có Riot ID, kiểm tra dừng giữa chừng; đo request mỗi trận, trận/giờ, số trận phù hợp mỗi ngày và dung lượng; cập nhật các ước tính trong tài liệu này.
+4. Chuyển lên VPS, chạy tới mục tiêu số trận đã cập nhật (ban đầu ~1.000) có timeline.
 5. Viết bộ sinh facts có `fact_id` từ đặc trưng và timeline.
-6. Chọn ngẫu nhiên 60 trận, gán nhãn 10 trận đầu để thử danh mục, chỉnh danh mục rồi gán tiếp.
+6. Chia nhóm theo trận và người chơi, chọn ngẫu nhiên 60 trận, gán nhãn 10 trận đầu để thử danh mục, chỉnh danh mục rồi gán tiếp.
 7. Viết `npm run eval`, chạy baseline, ghi kết quả vào `.local/eval/`.
